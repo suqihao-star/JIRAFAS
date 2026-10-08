@@ -87,7 +87,7 @@ clara, precisa y verificable.
 | FR-04 | El sistema debe perseguir el cobro por sí mismo a través de un flujo de impago | BR-03 |
 | FR-05 | El sistema debe permitir el registro de administradores o usuarios a través de correo y contraseña secreta | UR-07 |
 | FR-06 | El sistema debe asegurarse que el correo introducido es de dominio @turbineh.com | UR-07 |
-| FR-07 | El sistema debe tener 2 roles diferentes: Administrador y usuario (PENDIENTE TRANSCRIPCION) <-- Ver punto 7 del markdown | UR-06 |
+| FR-07 | El sistema debe tener 3 roles diferentes: Superadministrador, administrador y usuario | UR-06 |
 | FR-08 | El sistema debe poder incluir la importación de datos de clientes de forma masiva a través de un .csv | UR-07 |
 | FR-09 | El sistema debe mantener la información de un cliente dado de baja el tiempo que la ley permita | BR-05 |
 | FR-10 | El sistema debe impedir que un cliente se dé de baja si tiene algún impago | BR-03 |
@@ -149,7 +149,7 @@ ambiguos, incompletos, contradictorios o que requieran aclaración.
 
 | ID | Cuestión | Origen | Impacto | Estado / resolución |
 |---|---|---|---|---|
-| Q-01 | ¿Qué roles hay en el sistema? | Entrevista | Los roles del sistema están ambiguos. El rol de usuario está claro, pero no está claro si admin y superadmin son el mismo rol o son cosas diferentes | Pendiente |
+| Q-01 | ¿Qué roles hay en el sistema? | Entrevista | Los roles del sistema están ambiguos. El rol de usuario está claro, pero no está claro si admin y superadmin son el mismo rol o son cosas diferentes | Resuelto, hay tres roles. Usuario, admin y superadmin |
 
 
 ## 8. Trazabilidad
