@@ -16,24 +16,12 @@ Debe poder gestionar todas las facturas de la empresa sin gestionar los pagos en
 Identificar las personas, organizaciones o sistemas que interactúan con el sistema
 o tienen algún interés relevante en su funcionamiento.
 
-<!--
-EJEMPLO:
-
 | Actor / stakeholder | Descripción | Intereses principales |
 |---|---|---|
-| Personal administrativo | Personal de Turbine encargado de gestionar clientes, facturas y cobros | Realizar las tareas administrativas de forma rápida y disponer de información actualizada |
-| Administrador | Usuario con permisos sobre la gestión del sistema y sus usuarios | Gestionar usuarios, permisos y configuración |
-| Cliente de Turbine | Empresa a la que Turbine presta sus servicios y factura periódicamente | Recibir correctamente sus facturas y comunicaciones relacionadas con los pagos |
+| Superadministrador | Personal de Turbine con permisos de gestión de la plataforma | Asignar roles y crear usuarios |
+| Administrador | Usuario con permisos de edición sobre facturas y empresas | Ejecutar acciones de escritura |
+| Lector | Usuario estandar con permisos básicos | Ejecutar acciones de lectura |
 | Sistema de pagos | Sistema externo en el que se reflejan los cobros | Proporcionar información que permita determinar si una factura ha sido pagada |
-
-Los elementos anteriores son únicamente un ejemplo de cómo documentar esta sección.
-El equipo debe identificar y justificar los actores y stakeholders que considere
-adecuados a partir de la información del caso.
--->
-
-| Actor / stakeholder | Descripción | Intereses principales |
-|---|---|---|
-| ... | ... | ... |
 
 
 ## 2. Requisitos de negocio
