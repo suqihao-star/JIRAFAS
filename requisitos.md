@@ -32,11 +32,11 @@ todavía funcionalidades concretas del software.
 
 | ID | Requisito | Fuente |
 |---|---|---|
-| BR-01 | Eliminar la carga administrativa que se ejercía antes en la facturación manual | Cliente / entrevista |
-| BR-02 | Dar soporte a una facturación de precios variables y suscripciones recurrentes ( buscamos no requerir de hacer cálculos manuales) | Cliente / entrevista |
-| BR-03 | Gestionar los impagos de forma automática | Cliente / entrevista |
-| BR-04 | Proporcionar a los administradores reportes de la salud financiera del negocio | Cliente / entrevista |
-| BR-05 | Cumplir requisitos legales (protección de datos) | Cliente / entrevista |
+| BR-01 | Eliminar la carga administrativa que se ejercía antes en la facturación manual | Cliente / Entrevista |
+| BR-02 | Dar soporte a una facturación de precios variables y suscripciones recurrentes ( buscamos no requerir de hacer cálculos manuales) | Cliente / Entrevista |
+| BR-03 | Gestionar los impagos de forma automática | Cliente / Entrevista |
+| BR-04 | Proporcionar a los administradores reportes de la salud financiera del negocio | Cliente / Entrevista |
+| BR-05 | Cumplir requisitos legales (protección de datos) | Cliente / Entrevista |
 
 ## 3. Requisitos de usuario
 
