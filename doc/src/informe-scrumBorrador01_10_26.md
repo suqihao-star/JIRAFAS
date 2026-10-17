@@ -1,8 +1,8 @@
 # Informe Scrum: Entrega 1 
  
 ## 1. Identificación del equipo 
- 
-| Nombre y apellidos              | Rol | 
+| Nombre y apellidos              | Rol |
+|---|---|
 | Pablo Fernández Carabantes      | Scrum Master | 
 | Carlos “Emérito” López Lovera   | Dev | 
 | Juan Romero Cobos               | Dev | 
