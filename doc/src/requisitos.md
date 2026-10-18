@@ -66,29 +66,47 @@ usuario, evitando entrar todavía en detalles internos de implementación.
 Los requisitos funcionales describen comportamientos, servicios u operaciones que
 debe proporcionar el sistema. Siempre que sea posible, deben formularse de manera
 clara, precisa y verificable.
-
 | ID | Requisito | Relacionado con |
 |---|---|---|
-| FR-01 | El sistema debe gestionar y crear facturas válidas, con numeración correlativa, datos fiscales correspondientes y cálculo de IVA automáticamente | UR-01 |
-| FR-02 | El sistema debe gestionar factures puntuales o recurrentes | UR-01 |
-| FR-03 | El sistema debe incluir clientes nuevos y facturas nuevas registrando su nombre, correo y datos fiscales | UR-11 |
-| FR-04 | El sistema debe perseguir el cobro por sí mismo a través de un flujo de impago | BR-03 |
-| FR-05 | El sistema debe permitir el registro de administradores o usuarios a través de correo y contraseña secreta | UR-07 |
-| FR-06 | El sistema debe asegurarse que el correo introducido es de dominio @turbineh.com | UR-07 |
-| FR-07 | El sistema debe tener 3 roles diferentes: Superadministrador, administrador y usuario | UR-06 |
-| FR-08 | El sistema debe poder incluir la importación de datos de clientes de forma masiva a través de un .csv | UR-07 |
-| FR-09 | El sistema debe mantener la información de un cliente dado de baja el tiempo que la ley permita | BR-05 |
-| FR-10 | El sistema debe impedir que un cliente se dé de baja si tiene algún impago | BR-03 |
-| FR-11 | El sistema debe permitir la actualización del plan de precios de un cliente anualmente en función de su facturación | BR-02 |
-| FR-12 | El sistema debe emitir facturas el día 1 de cada mes. En caso de contratar a mitad de mes, facturarse proporcionalmente| BR-02 |
-| FR-13 | El sistema debe permitir exportar facturas en formato PDF | UR-02 |
-| FR-14 | El sistema debe permitir cambiar la cuantía de las facturas | UR-05 |
-| FR-15 | El sistema debe bloquear la edición de facturas una vez pasada su fecha de presentación trimestral | UR-05 |
-| FR-16 | El sistema debe conectarse con Stripe (o Revolut) para el seguimiento del pago | UR-01, BR-01 |
-| FR-17 | El sistema debe usar mensajes distintos en la notificación según si es por emisión de factura recurrente o aviso de impago | BR-03 |
-| FR-18 | El sistema debe incluir un buscador que permita filtrar clientes por nicho y por estado de la factura: (pagada, impagada, pendiente) | UR-03 |
-| FR-19 | El sistema debe mostrar la relación de facturación del cliente a nivel semanal, mensual y anual | UR-04 |
-| FR-20 | El sistema debe dejar editar las plantillas de correo electrónico de factura, recordatorio previo, vencimiento, impago, disputa resuelta | BR-01 |
+| FR-01 | El sistema permitirá gestionar y crear facturas válidas, con numeración correlativa y única dentro de su serie, datos fiscales correspondientes y cálculo del IVA con los impuestos configurados. El superadministrador configurará las series, y los impuestos de una factura podrán configurarse o seleccionarse entre los dados de alta. | UR10 |
+| FR-02 | El sistema permitirá registrar facturas nuevas, que podrán ser puntuales o recurrentes. Una factura puntual podrá tener varias líneas, cada una con concepto, cantidad, precio unitario, descuento (si aplica) e impuesto, y se podrán ajustar el precio y la descripción. | UR10 |
+| FR-03 | El sistema permitirá dar de alta clientes con una ficha comercial y sus datos fiscales: nombre comercial, razón social, NIF o identificador fiscal, domicilio fiscal, país, moneda de trabajo y datos de contacto. El modelo de datos fiscales será universal (NIF y monedas de varios países). | — |
+| FR-04 | Un cliente podrá tener múltiples contactos (contratación, recepción de facturas, impagos), con su nombre y correo, y un contacto podrá pertenecer a varias empresas. | — |
+| FR-05 | El sistema perseguirá el cobro por sí mismo mediante un flujo de recordatorios e impago, con notificaciones al cliente por defecto cada 2 días. El superadministrador podrá configurar los tiempos de recordatorio e impago, y el vencimiento pactado con un cliente prevalecerá sobre el general. Se podrán suspender temporalmente los recordatorios de una factura concreta. | — |
+| FR-06 | El sistema permitirá el login mediante correo y contraseña. El correo deberá pertenecer al dominio corporativo de TurbineH autorizado. | UR7 |
+| FR-07 | El sistema tendrá tres roles: Superadministrador, Administrador y Usuario operativo. | UR6 |
+| FR-08 | El sistema permitirá importar datos de clientes de forma masiva mediante CSV, con previsualización antes de confirmar, posibilidad de corregir errores y registro de la operación, con el resumen de registros creados, actualizados y rechazados y sus motivos. De forma opcional, podrá importar facturas históricas, que quedarán marcadas como migradas, con su número y documento original, sin enviar notificación al cliente. | — |
+| FR-9 | El sistema permitirá registrar la baja de un cliente. Desde la fecha de baja dejará de generar mensualidades pero, si tiene facturas pendientes, mantendrá activo el flujo de recobro. La información del cliente dado de baja se mantendrá el tiempo que la ley permita. | — |
+| FR-10 | El sistema permitirá actualizar anualmente el plan de precios de un cliente en función de su facturación: se introducirá la facturación anual verificada y el sistema propondrá el rango de tarifa que corresponde. Cuando el responsable apruebe el cambio, quedará registrado quién lo aprobó, cuándo, y el precio anterior y el nuevo. | — |
+| FR-11 | El sistema debe emitir facturas el día 1 de cada mes. En caso de contratar a mitad de mes, se facturará proporcionalmente. | — |
+| FR-12 | Las facturas se generarán en PDF y se guardarán en la base de datos. | UR2 |
+| FR-13 | El administrador podrá cambiar la cuantía de las facturas. Las facturas idénticas al mes anterior se aprueban solas. Si alguien modifica algo de importancia (como el importe, un descuento extraordinario, una fecha de vencimiento fuera de lo habitual, o crea una factura puntual con importe muy alto), la factura quedará retenida para revisión. | UR5 |
+| FR-14 | El sistema debe bloquear la edición de facturas una vez pasada su fecha de presentación trimestral. | UR5 |
+| FR-15 | El sistema debe conectarse con Stripe o Revolut para el seguimiento del pago: podrá consultar pagos, recibir notificaciones de pago simuladas y permitirá incorporar otras fuentes de pago. Cada movimiento podrá incluir importe, fecha, moneda, concepto y referencia. | — |
+| FR-16 | El sistema permitirá pausar una suscripción indicando motivo, fecha de inicio y, si se conoce, fecha prevista de reactivación. | — |
+| FR-17 | El Superadministrador debe poder cambiar la tabla de tarifas para futuras revisiones sin que esto reescriba ni afecte a las facturas históricas ya emitidas. | — |
+| FR-18 | El usuario que gestiona el cliente podrá solicitar o preparar un descuento. Un administrador lo aprobará y, si supera un umbral configurable, lo aprobará el Superadministrador. El sistema deberá explicar siempre el motivo por el cual una factura o descuento queda pendiente de aprobación. | — |
+| FR-19 | Las facturas tendrán estados (borrador, aprobada, emitida, enviada, vencida, pagada, parcialmente conciliada, anulada, rectificada). | UR3 |
+| FR-20 | El sistema mostrará una vista previa antes de emitir una factura. Si falta un dato fiscal imprescindible, bloqueará la emisión e indicará qué falta. | UR10 |
+| FR-21 | El sistema detectará si una factura no está totalmente saldada o si se ha pagado de más. | — |
+| FR-22 | Cuando se deshaga una conciliación automática por un error, el sistema dejará constancia de ello. | — |
+| FR-23 | Si un correo rebota, el sistema no marcará la factura como notificada, avisará al responsable del cliente, creará una incidencia de entrega y permitirá corregir el contacto y reenviar. | — |
+| FR-24 | Cada cliente tendrá un responsable interno que recibirá los eventos relevantes. El administrador verá una bandeja global y cada usuario la suya. El superadministrador podrá elegir qué notificaciones se muestran dentro de la aplicación, cuáles se envían por email y cuáles en un resumen diario. Las notificaciones se podrán marcar como leídas. | — |
+| FR-25 | El sistema generará informes que se podrán filtrar por periodo, cliente, responsable interno, país, sector, estado de factura, tipo (recurrente o puntual) y moneda. Se podrán exportar a CSV y a un informe legible en PDF, respetando los permisos del usuario, y serán accesibles también mediante enlace autenticado. | UR9 |
+| FR-26 | El sistema usará mensajes distintos según se trate de la emisión de una factura recurrente o de un aviso de impago. Los emails de factura, recordatorio previo, vencimiento, impago, disputa resuelta y, quizá, revisión de datos tendrán plantillas editables por quien tenga permiso, con variables dinámicas (nombre de empresa, nº de factura, importe, responsable, etc.). Si falta una variable, la previsualización avisará mediante una alerta. Se guardará el historial de qué plantilla se usó en cada envío. Las comunicaciones al cliente podrán elegir idioma por cliente o contacto. | — |
+| FR-27 | El sistema detectará posibles clientes duplicados por identificador fiscal y avisará al usuario. | — |
+| FR-28 | El sistema incluirá un buscador para buscar y filtrar por nombre comercial, razón social, NIF, persona de contacto, número de factura y correo, y para filtrar clientes por nicho y por estado de la factura (pagada, impagada, pendiente). Se podrán guardar filtros. | UR3, UR4, UR07 |
+| FR-29 | El administrador puede ver un dashboard que muestre la relación de facturación del cliente a nivel semanal, mensual y anual, y con lo facturado en la semana, el mes, el trimestre y el año; lo cobrado, pendiente y vencido; el tiempo medio de cobro; su evolución; los clientes con mayor deuda; los ingresos recurrentes esperados del mes; la facturación puntual y una previsión sencilla basada en las recurrencias activas. | UR9, UR-04 |
+| FR-30 | El sistema debe autocompletar campos recurrentes (como el país, la moneda, el vencimiento o la tarifa). | — |
+| FR-31 | Se prohíben categóricamente acciones masivas de alto impacto económico sin controles estrictos. Toda acción masiva debe mostrar de forma explícita el número exacto de elementos afectados antes de ejecutar el proceso. | — |
+| FR-32 | El sistema permitirá asociar tareas pendientes a los clientes (no a los usuarios), que se heredarán si cambia el responsable. | — |
+| FR-33 | El sistema permitirá etiquetar clientes (por ejemplo, estratégico, beta, partner, riesgo de cobro), además de por sector y ubicación. | — |
+| FR-34 | Las incidencias de facturación deben tener responsable, estado, prioridad, comentarios adjuntos e internos. | — |
+| FR-35 | Canales para comunicación tanto internamente como para facturas adjuntas. | — |
+| FR-36 | Una mención en un comentario o en una factura puede generar una notificación. | — |
+| FR-37 | Retención de informes temporales, conservarlos en un tiempo configurable y regenerarlos si los datos lo permiten, las facturas tienen otra política diferente. | — |
+| FR-38 | Registrar cuánto tarda el equipo en ciertas operaciones pero que no sea una vigilancia. | — |
+| FR-39 | Funciones inteligentes opcionales debe poder ser desactivado por el usuario. Las sugerencias económicas deben de ser confirmadas por el usuario. | — |
 
 
 
