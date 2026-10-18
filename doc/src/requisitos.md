@@ -20,7 +20,7 @@ o tienen algún interés relevante en su funcionamiento.
 |---|---|---|
 | Superadministrador | Personal de Turbine con permisos de gestión de la plataforma | Asignar roles y crear usuarios |
 | Administrador | Usuario con permisos de edición sobre facturas y empresas | Ejecutar acciones de escritura |
-| Lector | Usuario estandar con permisos básicos | Ejecutar acciones de lectura |
+| Usuario Operativo | Usuario estandar con permisos básicos | Ejecutar acciones de lectura |
 | Sistema de pagos | Sistema externo en el que se reflejan los cobros | Proporcionar información que permita determinar si una factura ha sido pagada |
 
 
@@ -46,9 +46,9 @@ usuario, evitando entrar todavía en detalles internos de implementación.
 
 | ID | Actor | Requisito | Fuente |
 |---|---|---|---|
-| UR-01 | Lector | Podrá consultar la información básica de las facturas | Cliente / Entrevista |
-| UR-02 | Lector | Podrá descargar facturas en PDF | Cliente / Entrevista |
-| UR-03 | Lector | Podrá consultar y (filtrar por) el estado de las facturas | Cliente / Entrevista |
+| UR-01 | Usuario Operativo | Podrá consultar la información básica de las facturas | Cliente / Entrevista |
+| UR-02 | Usuario Operativo | Podrá descargar facturas en PDF | Cliente / Entrevista |
+| UR-03 | Usuario Operativo | Podrá consultar y (filtrar por) el estado de las facturas | Cliente / Entrevista |
 | UR-04 | Usuario | Podrá filtrar facturas por empresa, fecha, nombre de empresa y tipo de pago | Cliente / Entrevista |
 | UR-05 | Administrador | Podrá editar datos de las facturas que tiene asignadas (modificar cantidad del pago y su plazo) | Cliente / Entrevista |
 | UR-06 | Administrador | Podrá asignar roles al resto de usuarios de la plataforma | Cliente / Entrevista |
