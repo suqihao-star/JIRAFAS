@@ -26,37 +26,52 @@ o tienen algún interés relevante en su funcionamiento.
 
 ## 2. Requisitos de negocio
 
-Los requisitos de negocio describen los objetivos, necesidades o resultados que
-la organización pretende conseguir mediante el desarrollo del sistema. No describen
-todavía funcionalidades concretas del software.
+Los requisitos de negocio describen los objetivos, necesidades o resultados que la organización pretende conseguir mediante el desarrollo del sistema. No describen todavía funcionalidades concretas del softwar>
 
 | ID | Requisito | Fuente |
-|---|---|---|
-| BR-01 | Eliminar la carga administrativa que se ejercía antes en la facturación manual | Cliente / Entrevista |
-| BR-02 | Dar soporte a una facturación de precios variables y suscripciones recurrentes ( buscamos no requerir de hacer cálculos manuales) | Cliente / Entrevista |
-| BR-03 | Gestionar los impagos de forma automática | Cliente / Entrevista |
-| BR-04 | Proporcionar a los administradores reportes de la salud financiera del negocio | Cliente / Entrevista |
-| BR-05 | Cumplir requisitos legales (protección de datos) | Cliente / Entrevista |
+| :--- | :--- | :--- |
+| BR-01 | Eliminar la carga administrativa que se ejercía en la facturación manual. | Cliente / Especificación |
+| BR-02 | El modelo comercial se basa en facturación mensual sin permanencia. Se debe dar soporte a una facturación de precios variables y suscripciones recurrentes, evitando requerir cálculos manuales. | Clie>
+| BR-03 | Gestionar los impagos de forma automática. | Cliente / Especificación |
+| BR-04 | Proporcionar a los administradores reportes de la salud financiera del negocio. | Cliente / Especificación |
+| BR-05 | Cerciorarnos del debido cumplimiento de las leyes vigentes (ej. protección de datos). | Cliente / Especificación |
+| BR-06 | Las integraciones externas principales (Stripe, CSV, correo y WhatsApp) deben estar encapsuladas para aislar el modelo de factura de cambios de proveedor. | Cliente / Especificación |
+| BR-07 | El sistema debe exponer una API documentada y segura para que sistemas externos consulten datos o envíen solicitudes bajo las mismas reglas de negocio de la aplicación. | Cliente / Especificación |
+| BR-08 | Registrar métricas de rendimiento del equipo para evaluar operaciones, sin que esto se convierta en un ranking de trabajadores ni en una herramienta de vigilancia. | Cliente / Especificación |
+| BR-09 | Una factura emitida no puede modificarse, borrarse ni reescribirse. Cualquier corrección exige una factura rectificativa vinculada a la original. Los borradores nunca emitidos sí podrán eliminarse de>
+| BR-10 | Cada factura tendrá un número único dentro de su serie. Ni los reintentos de envío ni las acciones simultáneas de varios usuarios generarán duplicados ni consumirán numeración nueva. | Cliente / Espe>
+| BR-11 | Los cambios en tarifas, catálogo de conceptos o plantillas de correo no alterarán ni reescribirán las facturas históricas ya emitidas. | Cliente / Especificación |
+| BR-12 | Todo cambio de rango de tarifa o excepciones económicas sensibles requieren validación y aprobación humana por alguien distinto a quien realizó la solicitud. | Cliente / Especificación |
+| BR-13 | Una factura solo se considera “pagada” cuando existe un cobro detectado o validado. Una deuda marcada como incobrable, anulada o rectificada no equivale a "pagada" y requiere de aprobación administra>
+| BR-14 | La baja comercial detiene la generación de nuevas mensualidades, pero el flujo de recobro de las facturas pendientes continúa activo. | Cliente / Especificación |
+| BR-15 | La pausa de una suscripción es distinta de la baja: el cliente sigue activo y conserva sus facturas pendientes. | Cliente / Especificación |
+| BR-16 | El vencimiento pactado con un cliente prevalece sobre el vencimiento general. | Cliente / Especificación |
+| BR-17 | El prorrateo seguirá una regla única, documentada y consistente, incluidos los casos límite (ej. alta en el último día del mes). | Cliente / Especificación |
+| BR-18 | Las excepciones comerciales (primer mes gratuito, sin prorrateo, inicio futuro) deben quedar registradas de forma explícita. | Cliente / Especificación |
+| BR-19 | Desactivar, dar de baja o anonimizar a un contacto no elimina el histórico de facturas emitidas, cuyos documentos se conservan por obligación legal. | Cliente / Especificación |
+| BR-20 | Los datos de facturación no se utilizarán para campañas de marketing. | Cliente / Especificación |
+| BR-21 | Los comentarios internos en la plataforma nunca se envían al cliente. | Cliente / Especificación |
+| BR-22 | Ningún sistema externo podrá saltarse las reglas de negocio de la aplicación ni modificar o eliminar recurrencias directamente. | Cliente / Especificación |
+| BR-23 | El sistema debe operar sin dependencia crítica del componente de Inteligencia Artificial (Brain). Las funciones de IA son opcionales, no pueden saltarse permisos y toda sugerencia económica requiere >
+| BR-24 | Cada factura conserva su importe en la moneda original en que se emitió. La conversión a la moneda base solo se usa para informes y no altera el total legal. | Cliente / Especificación |
+
 
 ## 3. Requisitos de usuario
 
-Los requisitos de usuario describen las necesidades, objetivos o servicios que los
-usuarios esperan obtener del sistema. Deben expresarse desde el punto de vista del
-usuario, evitando entrar todavía en detalles internos de implementación.
+Los requisitos de usuario describen las necesidades, objetivos o servicios que los usuarios esperan obtener del sistema. Deben expresarse desde el punto de vista del usuario, evitando entrar todavía en detalle>
 
 | ID | Actor | Requisito | Fuente |
-|---|---|---|---|
-| UR-01 | Usuario Operativo | Podrá consultar la información básica de las facturas | Cliente / Entrevista |
-| UR-02 | Usuario Operativo | Podrá descargar facturas en PDF | Cliente / Entrevista |
-| UR-03 | Usuario Operativo | Podrá consultar y (filtrar por) el estado de las facturas | Cliente / Entrevista |
-| UR-04 | Usuario | Podrá filtrar facturas por empresa, fecha, nombre de empresa y tipo de pago | Cliente / Entrevista |
-| UR-05 | Administrador | Podrá editar datos de las facturas que tiene asignadas (modificar cantidad del pago y su plazo) | Cliente / Entrevista |
-| UR-06 | Administrador | Podrá asignar roles al resto de usuarios de la plataforma | Cliente / Entrevista |
-| UR-07 | Administrador | Podrá invitar a usuarios a la plataforma | Cliente / Entrevista |
-| UR-08 | Administrador | Podrá asignar acceso a las facturas | Cliente / Entrevista |
-| UR-09 | Superadministrador | Podrá acceder a información de facturación de la empresa | Cliente / Entrevista |
-| UR-10 | Usuario | Podrá emitir facturas a los clientes | Cliente / Entrevista |
-| UR-11 | Administrador | Podrá añadir empresas nuevas | Cliente / Entrevista |
+| :--- | :--- | :--- | :--- |
+| UR-01 | Todos | El sistema contará con tres perfiles delimitados: Superadministrador (acceso total), Administrador (permisos amplios y edición) y Usuario Operativo (funciones limitadas a sus clientes asignad>
+| UR-02 | Usuario Operativo | Podrá descargar las facturas en PDF. | Cliente / Especificación |
+| UR-03 | Usuario Operativo | Podrá consultar la información básica y filtrar por el estado de las facturas. | Cliente / Especificación |
+| UR-04 | Usuario Operativo | Podrá interactuar con el dashboard financiero haciendo clic en métricas (ej. importes pendientes) para desplegar el detalle exacto que compone la cifra, y filtrar por empresa o fe>
+| UR-05 | Administrador | Podrá proponer, generar y modificar datos o cuantías de facturas que tiene asignadas. | Cliente / Especificación |
+| UR-06 | Superadministrador / Administrador | Podrán invitar a nuevos usuarios, asignarles roles, asignar accesos a facturas y desactivar cuentas. | Cliente / Especificación |
+| UR-07 | Todos | Podrán localizar rápidamente a cualquier cliente, usuario o factura mediante un buscador, y recuperar su contraseña mediante un enlace temporal. | Cliente / Especificación |
+| UR-08 | Administrador | Podrá visualizar un panel de monitorización sencillo con el estado de las tareas automatizadas, colas y errores recientes. | Cliente / Especificación |
+| UR-09 | Superadministrador / Administrador | Podrán acceder a la información de facturación global y reportes financieros completos de la empresa. | Cliente / Especificación |
+| UR-10 | Usuario Operativo | Podrá emitir y enviar facturas a los clientes. | Cliente / Especificación |
 
 
 ## 4. Requisitos del sistema
