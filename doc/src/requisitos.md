@@ -107,7 +107,11 @@ clara, precisa y verificable.
 | FR-37 | Retención de informes temporales, conservarlos en un tiempo configurable y regenerarlos si los datos lo permiten, las facturas tienen otra política diferente. | — |
 | FR-38 | Registrar cuánto tarda el equipo en ciertas operaciones pero que no sea una vigilancia. | — |
 | FR-39 | Funciones inteligentes opcionales debe poder ser desactivado por el usuario. Las sugerencias económicas deben de ser confirmadas por el usuario. | — |
-
+| FR-40 | El sistema permitirá clasificar clientes y facturas mediante centros de coste o proyectos, con categorías administrables para su uso en informes, sin implementar una contabilidad completa. La modificación del nombre de una categoría no alterará ni eliminará la información histórica asociada. | UR9 |
+| FR-41 | El sistema permitirá definir y modificar objetivos de facturación que se visualizarán en el dashboard. Cada modificación deberá quedar registrada, indicando el usuario que la realizó, la fecha y los valores anteriores y nuevos. | UR9 |
+| FR-42 | El sistema permitirá configurar alertas mediante un conjunto cerrado de reglas parametrizables, como facturas con más de un número determinado de días de vencimiento o clientes que acumulen un número determinado de facturas impagadas. Cada usuario podrá configurar los canales por los que recibirá dichas alertas, como notificaciones internas o correo electrónico, sin incorporar un motor de procesos BPMN. | — |
+| FR-43 | El sistema mostrará una línea temporal por cliente con los eventos relevantes de su actividad, incluyendo altas, bajas, emisión de facturas y pagos, ordenados cronológicamente. | — |
+| FR-44 | El sistema permitirá marcar clientes como favoritos para acceder rápidamente a sus fichas desde una sección de acceso rápido, sin utilizar un historial automático de clientes recientes. | — |
 
 
 ### 4.2. Requisitos no funcionales
