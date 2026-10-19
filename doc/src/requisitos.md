@@ -120,13 +120,24 @@ Los requisitos no funcionales describen propiedades de calidad, restricciones o
 condiciones que debe satisfacer el sistema. Cuando sea posible, deberán incluir
 algún criterio que permita determinar si el requisito se cumple.
 
-| ID | Categoría | Requisito | Criterio verificable |
-|---|---|---|---|
-| NFR-01 | Usabilidad | Crear facturas rápidamente | Se podría poder completar en aproximadamente menos de un minuto |
-| NFR-02 | Usabilidad | Se debe poder llegar a la información en el menor número de clicks | Una operación estándar, como consultar las facturas de una empresa, se debería hacer en máximo dos clicks |
-| NFR-03 | Usabilidad | Debe tener una interfaz limpia | TODO |
-| NFR-04 | Portabilidad / Usabilidad | La aplicación deberá poder utilizarse desde distintos tipos de dispositivo | Las principales funcionalidades deberán ser utilizables desde ordenador, tableta y teléfono móvil |
-| NFR-05 | Diseño | Debe respetar el diseño corporativo del cliente | Debe utilizar colores corporativos y sus logos |
+| ID | Categoría | Requisito |
+|---|---|---|
+| NFR-01 | Usabilidad | Crear facturas rápidamente, en un flujo estándar de menos de un minuto |
+| NFR-02 | Usabilidad | Acceder a la información en el menor número de clics posible, con operaciones clave en dos clics o menos |
+| NFR-03 | Usabilidad | Mantener una interfaz limpia, comprensible y consistente en la navegación |
+| NFR-04 | Portabilidad | Hacer que la aplicación sea usable desde ordenador, tableta y móvil |
+| NFR-05 | Diseño | Respetar la identidad visual corporativa con colores y logotipos del cliente |
+| NFR-06 | Fiabilidad / Exactitud | Gestionar los importes con precisión decimal y evitar pérdidas de céntimos por uso de float |
+| NFR-07 | Seguridad | Controlar acceso y autorización en servidor para rechazar rutas o recursos no permitidos |
+| NFR-08 | Seguridad | Garantizar sesiones seguras, caducidad razonable, invalidación al desactivar usuarios y protección básica frente a intentos fallidos |
+| NFR-09 | Seguridad / Auditoría | Registrar errores y cambios críticos con trazabilidad, y permitir autenticación de doble factor cuando sea necesario |
+| NFR-10 | Documentación | Proporcionar una documentación breve, clara y útil para el usuario |
+| NFR-11 | Tecnología / Despliegue | Usar software libre o razonablemente accesible, con una web y app responsive compatibles con navegadores habituales, iOS y Android |
+| NFR-12 | Rendimiento | Hacer que búsquedas y aperturas habituales sean prácticamente inmediatas, dejando tareas pesadas en segundo plano |
+| NFR-13 | Escalabilidad / Concurrencia | Permitir escalabilidad por encima de 10 usuarios y evitar conflictos con ediciones simultáneas |
+| NFR-14 | Fiabilidad | Realizar copias de seguridad automáticas y validar la restauración de datos en pruebas prácticas |
+| NFR-15 | Tolerancia a fallos | Recuperar la generación de facturas sin duplicarlas tras interrupciones o fallos del sistema |
+| NFR-16 | Mantenibilidad | Contar con un entorno de pruebas independiente para validar cambios antes de desplegarse |
 
 
 ## 5. Reglas de negocio
