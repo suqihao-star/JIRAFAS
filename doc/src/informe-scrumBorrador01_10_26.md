@@ -69,9 +69,9 @@
  
 ### Sprint 2 
  
-- Fecha de inicio: 
-- Fecha de finalización: 
-- Objetivo del Sprint: 
+- Fecha de inicio: 08/10/26
+- Fecha de finalización: -
+- Objetivo del Sprint:
 - Tareas planificadas: 
 - Tareas completadas: 
 - Reuniones realizadas: 
