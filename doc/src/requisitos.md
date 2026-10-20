@@ -18,12 +18,11 @@ o tienen algún interés relevante en su funcionamiento.
 
 | Actor / stakeholder | Descripción | Intereses principales |
 |---|---|---|
-| Superadministrador | Personal de Turbine con permisos de gestión de la plataforma | Asignar roles y crear usuarios |
-| Administrador | Usuario con permisos de edición sobre facturas y empresas | Ejecutar acciones de escritura |
-| Usuario Operativo | Usuario estandar con permisos básicos | Ejecutar acciones de lectura |
+| Superadministrador | Personal de Turbine con configuración profunda. Tiene más permisos que el administrador | Configurar tarifas, series, plazos, cadencia de recordatorios, umbrales de aprobación, plantillas y datos del emisor. Consultar la auditoría. Reabrir periodos cerrados. Aprobar descuentos sobre el umbral |
+| Administrador | Usuario de Turbine con permisos de edición sobre facturas y empresas | Gestionar clientes, facturas, cobros, asignaciones y aprobaciones. Invitar usuarios si tiene permiso. Ver el dashboard financiero global.|
+| Usuario Operativo | Usuario de Turbine que trabaja sobre los clientes asignados| Dar de alta y gestionar sus clientes. Puede preparar o emitir facturas siempre que su permiso lo permita, seguir cobros, registrar incidencias, descargar documentos que tenga disponible y solicitar descuentos |
 | Sistema de pagos | Sistema externo en el que se reflejan los cobros | Proporcionar información que permita determinar si una factura ha sido pagada |
-
-
+| Proveedores de correos | Servicios de envió de comunicaciones | Entrega de mensaje y devuelta de resultados: enviados, rebotados o fallidos |
 ## 2. Requisitos de negocio
 
 Los requisitos de negocio describen los objetivos, necesidades o resultados que la organización pretende conseguir mediante el desarrollo del sistema. No describen todavía funcionalidades concretas del softwar>
@@ -177,6 +176,7 @@ un requisito.
 | A-01 | ... | ... | FR-... |
 | A-02 | Se ha de usar un dominio corportativo de TurbineH autorizado | Se habla de email de turbineh y luego de dominio corporativo autorizado | FR-06 |
 | A-03 | El rol lector pasa a llamarse Usuario Operativo | El cliente dijo en la amplaición de requisitos que no usaramos lector | FR-07 |
+| A-04 | Los enlaces temporales caducan a la hora de ser enviados | En la ampliación habla de enlaces temporales pero no determina el tiempo en el que estos funcionan, suponemos esta medida por seguridad | FR-37, NFR-17| 
 
 ## 7. Dudas, ambigüedades y cuestiones pendientes
 
@@ -186,7 +186,7 @@ ambiguos, incompletos, contradictorios o que requieran aclaración.
 | ID | Cuestión | Origen | Impacto | Estado / resolución |
 |---|---|---|---|---|
 | Q-01 | ¿Qué roles hay en el sistema? | Entrevista | Los roles del sistema están ambiguos. El rol de usuario está claro, pero no está claro si admin y superadmin son el mismo rol o son cosas diferentes | Resuelto, hay tres roles. Usuario, admin y superadmin |
-
+| Q-02 | Baja de un cliente con deuda. El cliente dijo en la charla inicial que no puedes darte de baja hasta que pagues y en la ampliación se habla de que la deuda no bloquea la baja comercial. | Charla y requisistos ampliados | FR-9, BR-14. | Tomamos la información de la ampliación de requisistos. |
 
 ## 8. Trazabilidad
 
