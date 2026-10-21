@@ -23,6 +23,7 @@ o tienen algún interés relevante en su funcionamiento.
 | Usuario Operativo | Usuario de Turbine que trabaja sobre los clientes asignados| Dar de alta y gestionar sus clientes. Puede preparar o emitir facturas siempre que su permiso lo permita, seguir cobros, registrar incidencias, descargar documentos que tenga disponible y solicitar descuentos |
 | Sistema de pagos | Sistema externo en el que se reflejan los cobros | Proporcionar información que permita determinar si una factura ha sido pagada |
 | Proveedores de correos | Servicios de envió de comunicaciones | Entrega de mensaje y devuelta de resultados: enviados, rebotados o fallidos |
+| Sistema externo | Consume la API documentada |
 ## 2. Requisitos de negocio
 
 Los requisitos de negocio describen los objetivos, necesidades o resultados que la organización pretende conseguir mediante el desarrollo del sistema. No describen todavía funcionalidades concretas del softwar>
