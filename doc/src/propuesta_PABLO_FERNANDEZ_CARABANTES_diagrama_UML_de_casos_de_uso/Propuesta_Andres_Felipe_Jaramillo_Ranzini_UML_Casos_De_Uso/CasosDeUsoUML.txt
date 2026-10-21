@@ -1,0 +1,64 @@
+@startuml
+
+:SUPERADMINISTRADOR: as sa
+:ADMINISTRADOR: as ad
+:USUARIO OPERATIVO: as uo
+:PLATAFORMA DE PAGOS: as pp
+:SISTEMA: as sy
+:PLATAFORMA DE MENSAJERIA: as pm
+
+ad ---|>sa
+uo ---|> ad
+
+(CU-1 Alta de otros usuarios) as CU1
+(CU-2 Alta de cliente) as CU2
+(CU-3 Asignacion de clientes) as CU3
+(CU-4 Baja temporal/definitiva de cliente) as CU4
+(CU-5 Alta de factura recurrente/puntual) as CU5
+(CU-6 Edicion manual de factura) as CU6
+(CU-7 Emision automatica de factura) as CU7
+(CU-8 Cambio de estado de pago de factura) as CU8
+(CU-9 Descarga/envio de copia de factura) as CU9
+(CU-10 Gestion de contactos de cliente) as CU10
+(CU-11 Notificacion de impago) as CU11
+(CU-12 Consulta/edicion ficha de cliente) as CU12
+(CU-13 Solicitar descuento) as CU13
+(CU-14 Configurar tarifas) as CU14
+(CU-15 Recuperar contraseña) as CU15
+(CU-16 Configurar/gestionar notificaciones cliente) as CU16
+(CU-17 Buscar/filtrar clientes/facturas) as CU17
+(CU-18 Consultar informes y totales del sistema) as CU18
+(CU-19 Importacion masiva de datos) as CU19
+(CU-20 Escalar incidencia) as CU20
+
+sa -r-> CU1
+ad -r-> CU2
+ad -r-> CU3
+ad -r-> CU4
+uo -r-> CU5
+ad -r-> CU6
+sy -r-> CU7
+CU7 .-> CU9 : ENVIAR COPIA PDF
+ad -r-> CU8
+pp -r-> CU8
+uo -r-> CU9
+CU9 .-> pm : ENVIAR
+uo -r-> CU10
+uo -r-> CU11
+sy -r-> CU11
+CU11 .-> pm : ENVIAR
+uo -r-> CU12
+uo -r-> CU13
+CU13 .-> ad :DEBE AUTORIZARLO 
+sa -r-> CU14
+uo -r-> CU15
+uo -r-> CU16
+uo -r-> CU17
+sa -r-> CU18
+sa -r-> CU19
+uo -r-> CU20
+CU20 .-> ad
+
+
+@enduml
+
