@@ -224,6 +224,12 @@ los requisitos de usuario y los requisitos del sistema.
 | BR-14 | UR-12 | FR-09 | |
 | BR-15 | UR-12 | FR-16 | |
 | BR-16 | UR-13, UR-14 | FR-05 | |
+| BR-17 | UR-10 | FR-11 | |
+| BR-18 | UR-12 | FR-47 | |
+| BR-19 | UR-12 | FR-04, FR-09 | |
+| BR-21 | UR-14 | FR-35 | |
+| BR-22 | — | FR-49 | |
+| BR-25 | — | FR-39 | |
 
 
 
