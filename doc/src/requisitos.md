@@ -208,11 +208,22 @@ los requisitos de usuario y los requisitos del sistema.
 
 | Requisito de negocio | Requisito de usuario | Requisito funcional / no funcional |
 |---|---|---|
-| BR-01 | UR-01 | FR-16 |
-| BR-02 | UR-05 | FR-11 |
-| BR-03 | UR-10 | FR-04 |
-| BR-04 | UR-09 | - |
-| BR-05 | - | FR-09 |
+| BR-01 | UR-10, UR-12 | FR-08, FR-20, FR-27, FR-30 | |
+| BR-02 | UR-05, UR-10, UR-12, UR-13 | FR-01, FR-02, FR-03, FR-11 | |
+| BR-03 | UR-08, UR-13, UR-14 | FR-05, FR-23, FR-24, FR-42, FR-48, FR-50 | |
+| BR-04 | UR-04, UR-09, UR-15 | FR-25, FR-29, FR-37, FR-40, FR-41 | |
+| BR-05 | UR-01, UR-11 | FR-06 | |
+| BR-06 | UR-12, UR-14 | FR-08, FR-15 | |
+| BR-07 | — | FR-49 | |
+| BR-08 | UR-08 | FR-38 | |
+| BR-09 | UR-02, UR-05, UR-13 | FR-12, FR-14, FR-45 | |
+| BR-10 | UR-05, UR-10, UR-13 | FR-01, FR-46 | |
+| BR-11 | UR-02, UR-13, UR-15 | FR-12, FR-17, FR-26 | |
+| BR-12 | UR-05, UR-12, UR-13 | FR-10, FR-13, FR-18, FR-31 | |
+| BR-13 | UR-03, UR-13, UR-14 | FR-15, FR-19, FR-21, FR-22 | |
+| BR-14 | UR-12 | FR-09 | |
+| BR-15 | UR-12 | FR-16 | |
+| BR-16 | UR-13, UR-14 | FR-05 | |
 
 
 
