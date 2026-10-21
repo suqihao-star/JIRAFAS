@@ -1,0 +1,27 @@
+@startuml
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+left to right direction
+title Bloque A. Clientes y contactos
+actor "Usuario operativo" as UO
+actor "Administrador" as ADMIN
+actor "Superadministrador" as SADMIN
+UO <|-- ADMIN
+ADMIN <|-- SADMIN
+
+rectangle "Sistema de facturación de Turbine" {
+  usecase "CU-01 Gestionar cliente y contactos" as CU01
+  usecase "CU-02 Detectar cliente duplicado" as CU02
+  usecase "CU-03 Importar datos por CSV" as CU03
+  usecase "CU-04 Gestionar tareas del cliente" as CU04
+}
+UO -- CU01
+UO -- CU03
+UO -- CU04
+CU01 ..> CU02 : <<include>>
+CU03 ..> CU02 : <<include>>
+legend bottom
+Herencia: el Administrador puede hacer todo lo del Usuario Operativo y el Superadministrador todo lo del Administrador. 
+Cada caso se asocia solo al rol más bajo que puede hacerlo. Los roles superiores lo heredan.
+endlegend
+@enduml
