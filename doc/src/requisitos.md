@@ -104,7 +104,7 @@ clara, precisa y verificable.
 | FR-06 | El sistema permitirá el login mediante correo y contraseña. El correo deberá pertenecer al dominio corporativo autorizado. No hay autorregistro. Los usuarios podrán recuperar su contraseña mediante el uso de un enlace temporal el cual caducará pasado un tiempo razonable.| UR-01, UR-11, BR-05 |
 | FR-07 | El sistema tendrá tres roles: Superadministrador, Administrador y Usuario operativo. El superadministrador o un administrador con permiso, podrán crear o invitar usuarios, asignarles rol y desactivar cuentas sin borrar el rastro de sus acciones. El administrador podrá asignar y desasignar clientes a los usuarios operativos. | UR-01, UR-06 |
 | FR-08 | El sistema permitirá importar datos de clientes de forma masiva mediante CSV, con previsualización antes de confirmar, posibilidad de corregir errores y registro de la operación, con el resumen de registros creados, actualizados y rechazados y sus motivos. De forma opcional, podrá importar facturas históricas, que quedarán marcadas como migradas, con su número y documento original, sin enviar notificación al cliente. | UR-12, BR-01, BR-06 |
-| FR-9 | El sistema permitirá registrar la baja de un cliente. Desde la fecha de baja dejará de generar mensualidades pero, si tiene facturas pendientes, mantendrá activo el flujo de recobro. La información del cliente dado de baja se mantendrá el tiempo que la ley permita. | UR-12, BR-14, BR-19 |
+| FR-09 | El sistema permitirá registrar la baja de un cliente. Desde la fecha de baja dejará de generar mensualidades pero, si tiene facturas pendientes, mantendrá activo el flujo de recobro. La información del cliente dado de baja se mantendrá el tiempo que la ley permita. | UR-12, BR-14, BR-19 |
 | FR-10 | El sistema permitirá actualizar anualmente el plan de precios de un cliente en función de su facturación: se introducirá la facturación anual verificada y el sistema propondrá el rango de tarifa que corresponde. Cuando el responsable apruebe el cambio, quedará registrado quién lo aprobó, cuándo, y el precio anterior y el nuevo. | UR-13, BR-12 |
 | FR-11 | El sistema debe emitir facturas el día 1 de cada mes. En caso de contratar a mitad de mes, se facturará proporcionalmente con una regla de prorrateo única y documentada, además el calculo se mostrará antes de confirmar el alta. | UR-10, BR-02, BR-17 |
 | FR-12 | Las facturas se generarán en PDF y se guardarán en la base de datos. | UR-02, BR-09, BR-11 |
@@ -199,6 +199,7 @@ un requisito.
 | A-02 | El rol lector pasa a llamarse Usuario Operativo | El cliente dijo en la amplaición de requisitos que no usaramos lector | FR-07 |
 | A-03 | Los enlaces temporales caducan a la hora de ser enviados | En la ampliación habla de enlaces temporales pero no determina el tiempo en el que estos funcionan, suponemos esta medida por seguridad | FR-37, NFR-17| 
 | A-04 | En BR-02 se habla de precios variables | El motivo es porque se puede dar el caso de que un cliente se da de alta a mitad de mes, entonces no se le cobra el mes entero sino la parte proporcional. Además se pueden aplicar ciertos descuentos y excepciones. | | BR-02, FR-18, BR-18 |
+| A-05 | Se ha aumentado la sección de trazabilidad de la plantilla orginal | Debido a que no contemplaba todos los casos para todos los FR | Sección 8 |
 
 
 ## 7. Dudas, ambigüedades y cuestiones pendientes
@@ -241,6 +242,64 @@ los requisitos de usuario y los requisitos del sistema.
 | BR-20 | UR-14 | FR-35 | 
 | BR-21 | — | FR-49 | 
 | BR-22 | - | FR-39 | 
+
+
+
+| FR | Casos de uso | UR / BR |
+|---|---|---|
+| FR-01 | CU-12, CU-35 | UR-05, UR-10, UR-13, BR-02, BR-10 |
+| FR-02 | CU-10 | UR-05, UR-10, BR-02 |
+| FR-03 | CU-01 | UR-12, BR-02 |
+| FR-04 | CU-01 | UR-12, BR-19 |
+| FR-05 | CU-20, CU-21, CU-36 | UR-13, UR-14, BR-03, BR-16 |
+| FR-06 | CU-30 | UR-01, UR-11, BR-05 |
+| FR-07 | CU-31 | UR-01, UR-06 |
+| FR-08 | CU-03 | UR-12, BR-01, BR-06 |
+| FR-09 | CU-05 | UR-12, BR-14, BR-19 |
+| FR-10 | CU-06 | UR-13, BR-12 |
+| FR-11 | CU-01, CU-11 | UR-10, BR-02, BR-17 |
+| FR-12 | CU-12, CU-15 | UR-02, BR-09, BR-11 |
+| FR-13 | CU-10, CU-13 | UR-05, UR-13, BR-12 |
+| FR-14 | CU-10, CU-12, CU-14 | UR-05, BR-09 |
+| FR-15 | CU-16, CU-17 | UR-14, BR-06, BR-13 |
+| FR-16 | CU-05 | UR-12, BR-15 |
+| FR-17 | CU-35 | UR-13, BR-11 |
+| FR-18 | CU-07, CU-08, CU-09, CU-13, CU-35 | UR-12, UR-13, BR-12 |
+| FR-19 | CU-12, CU-14, CU-15 | UR-03, UR-13, BR-13 |
+| FR-20 | CU-12 | UR-10, BR-01 |
+| FR-21 | CU-17 | UR-14, BR-13 |
+| FR-22 | CU-17 | UR-14, BR-13 |
+| FR-23 | CU-19 | UR-14, BR-03 |
+| FR-24 | CU-23 | UR-14, BR-03 |
+| FR-25 | CU-26 | UR-09, UR-15, BR-04 |
+| FR-26 | CU-18, CU-22 | UR-15, BR-11 |
+| FR-27 | CU-01, CU-03 | UR-12, BR-01 |
+| FR-28 | CU-15 | UR-03, UR-07 |
+| FR-29 | CU-27 | UR-04, UR-09, BR-04 |
+| FR-30 | CU-01, CU-10 | UR-10, BR-01 |
+| FR-31 | CU-32 | UR-12, BR-12 |
+| FR-32 | CU-04, CU-31 | UR-06, UR-12 |
+| FR-33 | CU-01 | UR-12 |
+| FR-34 | CU-25 | UR-14 |
+| FR-35 | CU-25 | UR-14, BR-20 |
+| FR-36 | CU-23, CU-25 | UR-14 |
+| FR-37 | CU-26 | UR-15, BR-04 |
+| FR-38 | CU-33 | UR-08, BR-08 |
+| FR-39 | CU-36 | BR-22 |
+| FR-40 | CU-28 | UR-15, BR-04 |
+| FR-41 | CU-28 | UR-15, BR-04 |
+| FR-42 | CU-23, CU-24 | UR-14, BR-03 |
+| FR-43 | CU-01 | UR-12 |
+| FR-44 | CU-01 | UR-07, UR-12 |
+| FR-45 | CU-14 | UR-13, BR-09 |
+| FR-46 | CU-18 | UR-10, BR-10 |
+| FR-47 | CU-01 | UR-12, BR-18 |
+| FR-48 | CU-33 | UR-08, BR-03 |
+| FR-49 | CU-37 | BR-07, BR-21 |
+| FR-50 | CU-29 | UR-14, BR-03 |
+| NFR-09 | CU-34  | - |
+| NFR-18 | CU-01  | BR-19 |
+| NFR-08, NFR-17 | CU-30 CU-31 CU-30 CU-26 | UR-11 |
 
 ## 9. Glosario
 
