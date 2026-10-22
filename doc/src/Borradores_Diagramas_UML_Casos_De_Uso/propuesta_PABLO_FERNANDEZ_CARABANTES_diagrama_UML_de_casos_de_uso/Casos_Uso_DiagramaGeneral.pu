@@ -10,9 +10,9 @@ ADMIN <|-- SADMIN
 rectangle "Sistema de facturación de Turbine" {
 rectangle "A. Clientes y contactos" {
     usecase "CU-01 Gestionar cliente y contactos" as CU01
-    usecase "CU-02 Detectar cliente duplicado" as CU02
     usecase "CU-03 Importar datos por CSV" as CU03
     usecase "CU-04 Gestionar tareas del cliente" as CU04
+note "Nota técnica: El CU-02, detectar cliente duplicado, ha sido eliminado \ncomo caso de uso independiente y absorbido como flujo de excepción." as NotaCU02
   }
 rectangle "B. Suscripciones, tarifas y descuentos" {
     usecase "CU-05 Gestionar baja y pausa de suscripción" as CU05
@@ -103,8 +103,7 @@ SADMIN -- CU34
 SADMIN -- CU35
 SADMIN -- CU36
 EXT -- CU37
-CU01 ..> CU02 : <<include>>
-CU03 ..> CU02 : <<include>>
+
 CU11 ..> CU12 : <<include>>
 CU12 ..> CU18 : <<include>>
 CU16 ..> CU17 : <<include>>
