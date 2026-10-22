@@ -122,7 +122,7 @@ clara, precisa y verificable.
 | FR-36 | Una mención a un usuario en un comentario generará una notificación. | UR-14 |
 | FR-37 | Los informes y exportaciones generados se conservarán un tiempo configurable y podrán regenerarse si los datos y permisos lo permiten. Las facturas tendrán una política de conservación distinta. |UR-15, BR-04 |
 | FR-38 | El sistema podrá registrar métricas agregadas de rendimiento como tiempos de generación y fallos, sin identificar ni clasificar a los empleados. | UR-08, BR-08 |
-| FR-39 | Las funciones inteligentes opcionales podrán desactivarse y nunca se saltarán los permisos. Las sugerencias económicas requerirán confirmación humana. | BR-25 |
+| FR-39 | Las funciones inteligentes opcionales podrán desactivarse y nunca se saltarán los permisos. Las sugerencias económicas requerirán confirmación humana. | RN-3 |
 | FR-40 | El sistema permitirá clasificar clientes y facturas mediante centros de coste o proyectos, con categorías administrables para su uso en informes, sin implementar una contabilidad completa. La modificación del nombre de una categoría no alterará ni eliminará la información histórica asociada. | UR-15, BR-04 |
 | FR-41 | El sistema permitirá definir y modificar objetivos de facturación que se visualizarán en el dashboard. Cada modificación deberá quedar registrada, indicando el usuario que la realizó, la fecha y los valores anteriores y nuevos. Estos objetivos son solo informativos, no alteran facturas y los gestionan los administradores.|	UR-15, BR-04 |
 | FR-42 | El sistema permitirá a los administradores configurar alertas mediante un conjunto cerrado de reglas parametrizables, como facturas con más de un número determinado de días vencidas o clientes que acumulen un importe pendiente determinado. Cada usuario podrá configurar los canales por los que recibirá dichas alertas, sin incorporar un motor de procesos BPMN.|	UR-14, BR-03 |
@@ -132,7 +132,7 @@ clara, precisa y verificable.
 | FR-46 | El sistema enviará automáticamente la factura emitida por correo electrónico al contacto de facturación (y por WhatsApp, de forma simulada, si hay consentimiento), registrando canal, intento, resultado, fecha y destinatario. Un fallo de envío no deshará la emisión y un reintento no creará otra factura ni otro número. | UR-10, BR-10 |
 | FR-47 | El sistema permitirá registrar excepciones comerciales explícitas: inicio futuro (el cliente queda pendiente de activación, sin facturas ni recordatorios hasta esa fecha), primer mes gratuito o facturación sin prorrateo.      |UR-12, BR-18|
 | FR-48 | El sistema mostrará un panel de monitorización con la última ejecución de la generación recurrente, la cola de correos pendientes, los errores de integración recientes y la última copia de seguridad correcta.|	UR-08, BR-03 |
-| FR-49 | El sistema expondrá una API documentada y autenticada para consultar clientes, facturas y deuda pendiente y registrar solicitudes controladas (por ejemplo, una solicitud de baja), aplicando las mismas reglas y permisos que la interfaz. | BR-07, BR-22 |
+| FR-49 | El sistema expondrá una API documentada y autenticada para consultar clientes, facturas y deuda pendiente y registrar solicitudes controladas (por ejemplo, una solicitud de baja), aplicando las mismas reglas y permisos que la interfaz. | BR-07, BR-21 |
 | FR-50 | El sistema mostrará a cada usuario al entrar, una pantalla de trabajo diario con las facturas que vencen pronto o vencidas, los pagos pendientes de conciliar, los problemas de entrega, las aprobaciones pendientes y sus tareas asignadas, con acceso directo a cada elemento. | UR-14, BR-03 |
 
 ### 4.2. Requisitos no funcionales
@@ -173,7 +173,7 @@ pero que no representan por sí mismas una funcionalidad.
 |---|---|
 | RB-01 | Los datos de facturación no se utilizarán para campañas de marketing. |
 | RB-02 | Cada factura conserva su importe en la moneda original en que se emitió. La conversión a la moneda base solo se usa para informes y no altera el total legal. |
-
+| RB-03 | Las funciones de IA son opcionales, no pueden saltarse permisos y toda sugerencia económica requiere autorización |
 
 ## 6. Suposiciones y decisiones de análisis
 
@@ -224,10 +224,8 @@ los requisitos de usuario y los requisitos del sistema.
 | BR-17 | UR-10 | FR-11 | |
 | BR-18 | UR-12 | FR-47 | |
 | BR-19 | UR-12 | FR-04, FR-09 | |
-| BR-21 | UR-14 | FR-35 | |
-| BR-22 | — | FR-49 | |
-| BR-25 | — | FR-39 | |
-
+| BR-20 | UR-14 | FR-35 | |
+| BR-21 | — | FR-49 | |
 
 
 ## 9. Glosario
