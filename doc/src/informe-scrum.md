@@ -11,7 +11,6 @@
 | Su Qihao                        | Dev |
 | Pablo Roldán Coll               | Dev |
 | Pablo Ferreiro Romero           | Dev |
-
  
 ## 2. Organización del trabajo 
 
