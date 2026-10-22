@@ -51,7 +51,7 @@ Los requisitos de negocio describen los objetivos, necesidades o resultados que 
 | BR-19 | Desactivar, dar de baja o anonimizar a un contacto no elimina el histórico de facturas emitidas, cuyos documentos se conservan por obligación legal. | Cliente / Especificación |
 | BR-20 | Los comentarios internos en la plataforma nunca se envían al cliente. | Cliente / Especificación |
 | BR-21 | Ningún sistema externo podrá saltarse las reglas de negocio de la aplicación ni modificar o eliminar recurrencias directamente. | Cliente / Especificación |
-| BR-22 | El sistema debe operar sin dependencia crítica del componente de Inteligencia Artificial (Brain). | Cliente / Especificación |
+| BR-22 | Las funciones de IA son opcionales, no pueden saltarse permisos y toda sugerencia económica requiere autorización  | Cliente / Especificación |
 
 
 ## 3. Requisitos de usuario
@@ -118,11 +118,11 @@ clara, precisa y verificable.
 | FR-32 | El sistema permitirá asociar tareas pendientes a los clientes (no a los usuarios), que se heredarán si cambia el responsable. | UR-06, UR-12 |
 | FR-33 | El sistema permitirá etiquetar clientes (por ejemplo, estratégico, beta, partner, riesgo de cobro), además de por sector y ubicación. | UR-12 |
 | FR-34 | Las incidencias de facturación tendrán responsable, estado, prioridad, comentarios internos y adjuntos. | UR-14 |
-| FR-35 | Canales para comunicación tanto internamente como para facturas adjuntas. | UR-14, BR-21 |
+| FR-35 | Canales para comunicación tanto internamente como para facturas adjuntas. | UR-14, BR-20 |
 | FR-36 | Una mención a un usuario en un comentario generará una notificación. | UR-14 |
 | FR-37 | Los informes y exportaciones generados se conservarán un tiempo configurable y podrán regenerarse si los datos y permisos lo permiten. Las facturas tendrán una política de conservación distinta. |UR-15, BR-04 |
 | FR-38 | El sistema podrá registrar métricas agregadas de rendimiento como tiempos de generación y fallos, sin identificar ni clasificar a los empleados. | UR-08, BR-08 |
-| FR-39 | Las funciones inteligentes opcionales podrán desactivarse y nunca se saltarán los permisos. Las sugerencias económicas requerirán confirmación humana. | RN-3 |
+| FR-39 | Las funciones inteligentes opcionales podrán desactivarse y nunca se saltarán los permisos. Las sugerencias económicas requerirán confirmación humana. | BR-22 |
 | FR-40 | El sistema permitirá clasificar clientes y facturas mediante centros de coste o proyectos, con categorías administrables para su uso en informes, sin implementar una contabilidad completa. La modificación del nombre de una categoría no alterará ni eliminará la información histórica asociada. | UR-15, BR-04 |
 | FR-41 | El sistema permitirá definir y modificar objetivos de facturación que se visualizarán en el dashboard. Cada modificación deberá quedar registrada, indicando el usuario que la realizó, la fecha y los valores anteriores y nuevos. Estos objetivos son solo informativos, no alteran facturas y los gestionan los administradores.|	UR-15, BR-04 |
 | FR-42 | El sistema permitirá a los administradores configurar alertas mediante un conjunto cerrado de reglas parametrizables, como facturas con más de un número determinado de días vencidas o clientes que acumulen un importe pendiente determinado. Cada usuario podrá configurar los canales por los que recibirá dichas alertas, sin incorporar un motor de procesos BPMN.|	UR-14, BR-03 |
@@ -173,7 +173,7 @@ pero que no representan por sí mismas una funcionalidad.
 |---|---|
 | RB-01 | Los datos de facturación no se utilizarán para campañas de marketing. |
 | RB-02 | Cada factura conserva su importe en la moneda original en que se emitió. La conversión a la moneda base solo se usa para informes y no altera el total legal. |
-| RB-03 | Las funciones de IA son opcionales, no pueden saltarse permisos y toda sugerencia económica requiere autorización |
+| RB-03 | El sistema debe operar sin dependencia crítica del componente de Inteligencia Artificial (Brain). |
 
 ## 6. Suposiciones y decisiones de análisis
 
@@ -226,7 +226,7 @@ los requisitos de usuario y los requisitos del sistema.
 | BR-19 | UR-12 | FR-04, FR-09 | |
 | BR-20 | UR-14 | FR-35 | |
 | BR-21 | — | FR-49 | |
-
+| BR-22 | - | FR-39 | |
 
 ## 9. Glosario
 
