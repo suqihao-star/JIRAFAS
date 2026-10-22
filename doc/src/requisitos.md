@@ -175,8 +175,8 @@ pero que no representan por sí mismas una funcionalidad.
 
 | ID | Regla |
 |---|---|
-| RB-01 | ... |
-| RB-02 | ... |
+| RB-01 | Los datos de facturación no se utilizarán para campañas de marketing. |
+| RB-02 | Cada factura conserva su importe en la moneda original en que se emitió. La conversión a la moneda base solo se usa para informes y no altera el total legal. |
 
 
 ## 6. Suposiciones y decisiones de análisis
