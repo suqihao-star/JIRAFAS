@@ -46,6 +46,7 @@
     - Elección del Scrum Master y definición de roles
     - Creación del repositorio GitHub
     - Creación del primer borrador común de la primera versión de los requisitos extraídos.
+    - Realización del informe Scrum y creación del tablero en Trello
 
 - Reuniones realizadas: 
 
@@ -54,7 +55,7 @@
 | 01/10/2026 | 09:10 | 20 minutos | Todo el equipo | Toma de contacto sobre la charla del método del caso y exposición de las notas individuales de cada miembro. |
 | 01/10/2026 | 09:30 | 40 minutos | Todo el equipo | Reunión de planificación previa: reparto en subgrupos del trabajo de requisitos. |
 | 01/10/2026 | 10:10 | 20 minutos | Todo el equipo | Reunión posterior de debate: exposición del trabajo de cada subgrupo y validación. | 
-| 01/10/2026 | 18:00 | 1h y 30 minutos | Pablo Fernández Carabantes | Realización del informe Scrum Sprint 1 y tableros de Sprint Planning y Sprint Retroespective en Trello | 
+| 01/10/2026 | 18:00 | 20 minutos | Todo el equipo | Revisión del informe Scrum Sprint 1 elaborado por el Scrum Master, y establecer como completados las tareas del tablero del Sprint Retroespective en Trello | 
 
 - Problemas encontrados: Durante la clasificación de requisitos y actores del sistema, surgieron distintos puntos devista y dudas improtantes respecto a los roles. El equipo no tenía claro si era realmente necesario separar la figura del Superadministrador de la del Administrador, debido a la falta de claridad en la información inicial.
 - Soluciones aplicadas: Se debatió el problema en la puesta en común final y tras consultarlo con el profesor se decidió dejarlo pendiente de revisión para el siguiente sprint, a la espera de la transcripción de la charla y de una ampliación de requisitos para tomar una decisión definitiva.
@@ -70,10 +71,21 @@
 ### Sprint 2 
  
 - Fecha de inicio: 08/10/26
-- Fecha de finalización: -
+- Fecha de finalización: 23/10/26
 - Objetivo del Sprint:
-- Tareas planificadas: 
-- Tareas completadas: 
+   Consolidar una versión definitiva y sin conflictos de los requisitos para utilizarlos como base del diseño funcional. A partir de ahí, modelar la arquitectura mediante diagramas UML, redactar las fichas de especificación de los casos de uso y garantizar la coherencia del sistema elaborando la trazabilidad.
+- Tareas planificadas:
+    - Revisión profunda del borrador de requisitos, limpieza de contradicciones y agrupación de requisistos comunes.
+    - Creación de la trazabilidad entre requisistos.
+    - Definición de reglas de negocio.
+    - Creación y modelado de los diagramas UML de Casos de Uso divididos por bloques funcionales.
+    - Redacción y especificación de los casos de uso.
+    - Subida de los borradores de diagramas UML de casos de uso al GitHub.
+    - Subida de los  borradores de especificación al GitHub.
+- Tareas completadas:
+    - Documento .md de requisistos actualizado y validado mediante Pull Request.
+    - Diagramas UML de Casos de Uso y capturas de plantUML
+    - Trazabilidad entre requisistos completada.
 - Reuniones realizadas: 
 - Problemas encontrados: 
 - Soluciones aplicadas: 
