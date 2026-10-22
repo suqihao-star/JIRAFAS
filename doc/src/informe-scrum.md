@@ -31,8 +31,8 @@
  
 ### Sprint 1 
  
-- Fecha de inicio: 01/10/26 8:45am
-- Fecha de finalización: 01/10/26 18:00pm
+- Fecha de inicio: 01/10/26 
+- Fecha de finalización: 01/10/26 
 - Objetivo del Sprint: 
     Comprender y debatir el problema planteado por TurbineH, establecer los roles dentro del equipo, creación de un repositorio compartido en GitHub y la realización de una primera clasificación y extracción de requisitos para el sistema de facturación solicitado.
 
@@ -116,14 +116,14 @@ En Trello no aparecen los nombres completos sino unas siglas:
 | 18/10/2026 | 17:00 | 35 minutos | Todo el equipo | Presentación a todos los miembros de los nuevos requisitos actualizados y su posterior puesta en común. |
 | 19/10/2026 | 16:30 | 15 minutos | Todo el equipo | Planificación y reparto en subgrupos para la realización de los diagramas UML de Casos de Uso y la especificación |
 | 22/10/2026 | 8:45 | 1h y 45 minutos | Todo el equipo menos Pablo Ferreiro por examen en la misma hora | Puesta en común de los diagramas UML de Casos de Uso y realización de la especificación.|
-| 23/10/2026 | XX:XX | 1h y 45 minutos | Todo el equipo | Puesta en común de la especificación|
+| 23/10/2026 | 19:00 |  45 minutos | Todo el equipo | Puesta en común de la especificación. |
 
 - Problemas encontrados:
 
    - Tras la realización de los requisitos ampliados se detectó que una parte de la extracción y la identificación era incorrecta,
   pues varios requisitos entraban en conflicto. Lo que provocó un imprevisto en la planificación original y se tuvo que hacer una
   actualización y corrección de requisitos para después presentarlos y validarlos por los miembros del equipo.
-    - Tras la puesta en común de los diagramas UML y posterior validación del profesor en la clase práctica, se detectó que el caso de uso CU-02(Detectar cliente duplicado) no debía modelasrse como un caso de uso independiente. 
+    - Tras la puesta en común de los diagramas UML y posterior validación del profesor en la clase práctica, se detectó que el caso de uso CU-02(Detectar cliente duplicado) no debía modelarse como un caso de uso independiente. 
  
   
 - Soluciones aplicadas:
@@ -148,8 +148,8 @@ En Trello no aparecen los nombres completos sino unas siglas:
  
 ## 4. Problemas y riesgos 
 
-
+Aparte de los problemas ya mencionados en cada sprint, a la hora de trabajar en equipo existe el riesgo de que pequeños cambios en los documentos generen incoherencias. Sin embargo siempre que se hace un commit se comunica con el grupo y se pregunta por la opinión de los demás miembros. 
 
 ## 5. Valoración final 
  
-Reflexión sobre el trabajo realizado y propuestas de mejora. 
+El equipo considera esta primera entrega como buena y satisfactoria desde el punto de vista metodológico y de aprendizaje Scrum. Aunque la ampliación de requisitos supuso un gran reto, nos ha servido para aprender a adaptarnos cuando el entorno cambia. Además nos ha sido de gran ayuda Trello para poder organizarnos y repartirnos las tareas.
