@@ -1,4 +1,3 @@
-
 # Requisitos
 
 ## 1. Contexto y alcance
