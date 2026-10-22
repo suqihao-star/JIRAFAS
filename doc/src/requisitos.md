@@ -23,7 +23,7 @@ o tienen algún interés relevante en su funcionamiento.
 | Usuario Operativo | Usuario de Turbine que trabaja sobre los clientes asignados| Dar de alta y gestionar sus clientes. Puede preparar o emitir facturas siempre que su permiso lo permita, seguir cobros, registrar incidencias, descargar documentos que tenga disponible y solicitar descuentos |
 | Sistema de pagos | Sistema externo en el que se reflejan los cobros | Proporcionar información que permita determinar si una factura ha sido pagada |
 | Proveedores de correos | Servicios de envió de comunicaciones | Entrega de mensaje y devuelta de resultados: enviados, rebotados o fallidos |
-| Sistema externo | Consume la API documentada |
+| Sistema externo | Consume la API documentada | Integración de la aplicación en sistemas externos |
 ## 2. Requisitos de negocio
 
 Los requisitos de negocio describen los objetivos, necesidades o resultados que la organización pretende conseguir mediante el desarrollo del sistema. No describen todavía funcionalidades concretas del software
@@ -31,31 +31,27 @@ Los requisitos de negocio describen los objetivos, necesidades o resultados que 
 | ID | Requisito | Fuente |
 | :--- | :--- | :--- |
 | BR-01 | Reducir la carga administrativa que se ejercía en la facturación manual y el seguimiento de cobros. | Cliente / Especificación |
-| BR-02 | El modelo comercial se basa en facturación mensual sin permanencia. Se debe dar soporte a una facturación de precios variables y suscripciones recurrentes, evitando requerir cálculos manuales. | Cliente
+| BR-02 | El modelo comercial se basa en facturación mensual sin permanencia. Se debe dar soporte a una facturación de precios variables y suscripciones recurrentes, evitando requerir cálculos manuales. | Cliente / Especificación |
 | BR-03 | Gestionar los impagos de forma automática. | Cliente / Especificación |
 | BR-04 | Proporcionar a los administradores reportes de la salud financiera del negocio. | Cliente / Especificación |
 | BR-05 | 	Facilitar el cumplimiento de las obligaciones legales vigentes (ej. protección de datos), cuyas reglas concretas marca la gestoría. | Cliente / Especificación |
 | BR-06 | Las integraciones externas principales (Stripe, CSV, correo y WhatsApp) deben estar encapsuladas para aislar el modelo de factura de cambios de proveedor. | Cliente / Especificación |
 | BR-07 | El sistema debe exponer una API documentada y segura para que sistemas externos consulten datos o envíen solicitudes bajo las mismas reglas de negocio de la aplicación. | Cliente / Especificación |
 | BR-08 | Registrar métricas de rendimiento del equipo para evaluar operaciones, sin que esto se convierta en un ranking de trabajadores ni en una herramienta de vigilancia. | Cliente / Especificación |
-| BR-09 | Una factura emitida no puede modificarse, borrarse ni reescribirse. Cualquier corrección exige una factura rectificativa vinculada a la original. Los borradores nunca emitidos sí podrán eliminarse de>
-| BR-10 | Cada factura tendrá un número único dentro de su serie. Ni los reintentos de envío ni las acciones simultáneas de varios usuarios generarán duplicados ni consumirán numeración nueva. | Cliente / Especificación
+| BR-09 | Una factura emitida no puede modificarse, borrarse ni reescribirse. Cualquier corrección exige una factura rectificativa vinculada a la original. Los borradores nunca emitidos sí podrán eliminarse definitivamente | Cliente / Especificación |
+| BR-10 | Cada factura tendrá un número único dentro de su serie. Ni los reintentos de envío ni las acciones simultáneas de varios usuarios generarán duplicados ni consumirán numeración nueva. | Cliente / Especificación |
 | BR-11 | Los cambios en tarifas, catálogo de conceptos o plantillas de correo no alterarán ni reescribirán las facturas históricas ya emitidas. | Cliente / Especificación |
 | BR-12 | Todo cambio de rango de tarifa o excepciones económicas sensibles requieren validación y aprobación humana. En importes sensibles, el aprobador no puede ser quien realizo la solicitud.| Cliente / Especificación |
-| BR-13 | Una factura solo se considera “pagada” cuando existe un cobro detectado o validado. Una deuda marcada como incobrable, anulada o rectificada no equivale a "pagada" y requiere de aprobación administra>
+| BR-13 | Una factura solo se considera “pagada” cuando existe un cobro detectado o validado. Una deuda marcada como incobrable, anulada o rectificada no equivale a "pagada" y requiere de aprobación administrativa | Cliente / Especificación |
 | BR-14 | La baja comercial detiene la generación de nuevas mensualidades, pero el flujo de recobro de las facturas pendientes continúa activo. | Cliente / Especificación |
 | BR-15 | La pausa de una suscripción es distinta de la baja: el cliente sigue activo y conserva sus facturas pendientes. | Cliente / Especificación |
 | BR-16 | El vencimiento pactado con un cliente prevalece sobre el vencimiento general. | Cliente / Especificación |
 | BR-17 | El prorrateo seguirá una regla única, documentada y consistente, incluidos los casos límite (ej. alta en el último día del mes). | Cliente / Especificación |
 | BR-18 | Las excepciones comerciales (primer mes gratuito, sin prorrateo, inicio futuro) deben quedar registradas de forma explícita. | Cliente / Especificación |
 | BR-19 | Desactivar, dar de baja o anonimizar a un contacto no elimina el histórico de facturas emitidas, cuyos documentos se conservan por obligación legal. | Cliente / Especificación |
-| BR-20 | Los datos de facturación no se utilizarán para campañas de marketing. | Cliente / Especificación |
-| BR-21 | Los comentarios internos en la plataforma nunca se envían al cliente. | Cliente / Especificación |
-| BR-22 | Ningún sistema externo podrá saltarse las reglas de negocio de la aplicación ni modificar o eliminar recurrencias directamente. | Cliente / Especificación |
-| BR-23 | El sistema debe operar sin dependencia crítica del componente de Inteligencia Artificial (Brain). | Cliente / Especificación |
-| BR-24 | Cada factura conserva su importe en la moneda original en que se emitió. La conversión a la moneda base solo se usa para informes y no altera el total legal. | Cliente / Especificación |
-|BR- 25| Las funciones de IA son opcionales, no pueden saltarse permisos y toda sugerencia económica requiere autorización
-
+| BR-20 | Los comentarios internos en la plataforma nunca se envían al cliente. | Cliente / Especificación |
+| BR-21 | Ningún sistema externo podrá saltarse las reglas de negocio de la aplicación ni modificar o eliminar recurrencias directamente. | Cliente / Especificación |
+| BR-22 | Las funciones de IA son opcionales, no pueden saltarse permisos y toda sugerencia económica requiere autorización  | Cliente / Especificación |
 
 
 ## 3. Requisitos de usuario
@@ -122,11 +118,11 @@ clara, precisa y verificable.
 | FR-32 | El sistema permitirá asociar tareas pendientes a los clientes (no a los usuarios), que se heredarán si cambia el responsable. | UR-06, UR-12 |
 | FR-33 | El sistema permitirá etiquetar clientes (por ejemplo, estratégico, beta, partner, riesgo de cobro), además de por sector y ubicación. | UR-12 |
 | FR-34 | Las incidencias de facturación tendrán responsable, estado, prioridad, comentarios internos y adjuntos. | UR-14 |
-| FR-35 | Canales para comunicación tanto internamente como para facturas adjuntas. | UR-14, BR-21 |
+| FR-35 | Canales para comunicación tanto internamente como para facturas adjuntas. | UR-14, BR-20 |
 | FR-36 | Una mención a un usuario en un comentario generará una notificación. | UR-14 |
 | FR-37 | Los informes y exportaciones generados se conservarán un tiempo configurable y podrán regenerarse si los datos y permisos lo permiten. Las facturas tendrán una política de conservación distinta. |UR-15, BR-04 |
 | FR-38 | El sistema podrá registrar métricas agregadas de rendimiento como tiempos de generación y fallos, sin identificar ni clasificar a los empleados. | UR-08, BR-08 |
-| FR-39 | Las funciones inteligentes opcionales podrán desactivarse y nunca se saltarán los permisos. Las sugerencias económicas requerirán confirmación humana. | BR-25 |
+| FR-39 | Las funciones inteligentes opcionales podrán desactivarse y nunca se saltarán los permisos. Las sugerencias económicas requerirán confirmación humana. | BR-22 |
 | FR-40 | El sistema permitirá clasificar clientes y facturas mediante centros de coste o proyectos, con categorías administrables para su uso en informes, sin implementar una contabilidad completa. La modificación del nombre de una categoría no alterará ni eliminará la información histórica asociada. | UR-15, BR-04 |
 | FR-41 | El sistema permitirá definir y modificar objetivos de facturación que se visualizarán en el dashboard. Cada modificación deberá quedar registrada, indicando el usuario que la realizó, la fecha y los valores anteriores y nuevos. Estos objetivos son solo informativos, no alteran facturas y los gestionan los administradores.|	UR-15, BR-04 |
 | FR-42 | El sistema permitirá a los administradores configurar alertas mediante un conjunto cerrado de reglas parametrizables, como facturas con más de un número determinado de días vencidas o clientes que acumulen un importe pendiente determinado. Cada usuario podrá configurar los canales por los que recibirá dichas alertas, sin incorporar un motor de procesos BPMN.|	UR-14, BR-03 |
@@ -136,7 +132,7 @@ clara, precisa y verificable.
 | FR-46 | El sistema enviará automáticamente la factura emitida por correo electrónico al contacto de facturación (y por WhatsApp, de forma simulada, si hay consentimiento), registrando canal, intento, resultado, fecha y destinatario. Un fallo de envío no deshará la emisión y un reintento no creará otra factura ni otro número. | UR-10, BR-10 |
 | FR-47 | El sistema permitirá registrar excepciones comerciales explícitas: inicio futuro (el cliente queda pendiente de activación, sin facturas ni recordatorios hasta esa fecha), primer mes gratuito o facturación sin prorrateo.      |UR-12, BR-18|
 | FR-48 | El sistema mostrará un panel de monitorización con la última ejecución de la generación recurrente, la cola de correos pendientes, los errores de integración recientes y la última copia de seguridad correcta.|	UR-08, BR-03 |
-| FR-49 | El sistema expondrá una API documentada y autenticada para consultar clientes, facturas y deuda pendiente y registrar solicitudes controladas (por ejemplo, una solicitud de baja), aplicando las mismas reglas y permisos que la interfaz. | BR-07, BR-22 |
+| FR-49 | El sistema expondrá una API documentada y autenticada para consultar clientes, facturas y deuda pendiente y registrar solicitudes controladas (por ejemplo, una solicitud de baja), aplicando las mismas reglas y permisos que la interfaz. | BR-07, BR-21 |
 | FR-50 | El sistema mostrará a cada usuario al entrar, una pantalla de trabajo diario con las facturas que vencen pronto o vencidas, los pagos pendientes de conciliar, los problemas de entrega, las aprobaciones pendientes y sus tareas asignadas, con acceso directo a cada elemento. | UR-14, BR-03 |
 
 ### 4.2. Requisitos no funcionales
@@ -175,9 +171,9 @@ pero que no representan por sí mismas una funcionalidad.
 
 | ID | Regla |
 |---|---|
-| RB-01 | ... |
-| RB-02 | ... |
-
+| RB-01 | Los datos de facturación no se utilizarán para campañas de marketing. |
+| RB-02 | Cada factura conserva su importe en la moneda original en que se emitió. La conversión a la moneda base solo se usa para informes y no altera el total legal. |
+| RB-03 | El sistema debe operar sin dependencia crítica del componente de Inteligencia Artificial (Brain). |
 
 ## 6. Suposiciones y decisiones de análisis
 
@@ -228,11 +224,9 @@ los requisitos de usuario y los requisitos del sistema.
 | BR-17 | UR-10 | FR-11 | |
 | BR-18 | UR-12 | FR-47 | |
 | BR-19 | UR-12 | FR-04, FR-09 | |
-| BR-21 | UR-14 | FR-35 | |
-| BR-22 | — | FR-49 | |
-| BR-25 | — | FR-39 | |
-
-
+| BR-20 | UR-14 | FR-35 | |
+| BR-21 | — | FR-49 | |
+| BR-22 | - | FR-39 | |
 
 ## 9. Glosario
 

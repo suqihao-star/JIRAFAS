@@ -1,0 +1,70 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor :SUPERADMINISTRADOR: as sa
+actor :ADMINISTRADOR: as ad
+actor :USUARIO OPERATIVO: as uo
+actor :PLATAFORMA DE PAGOS: as pp
+actor :SISTEMA: as sy
+actor :PLATAFORMA DE MENSAJERIA: as pm
+
+' Jerarquía de actores (Herencia UML)
+sa --|> ad
+ad --|> uo
+
+rectangle "Sistema de Facturación Turbine" {
+  (CU-1 Alta de otros usuarios) as CU1
+  (CU-2 Alta de cliente) as CU2
+  (CU-3 Asignación de clientes) as CU3
+  (CU-4 Baja temporal/definitiva de cliente) as CU4
+  (CU-5 Alta de factura recurrente/puntual) as CU5
+  (CU-6 Edición manual de factura) as CU6
+  (CU-7 Emisión automática de factura) as CU7
+  (CU-8 Cambio de estado de pago de factura) as CU8
+  (CU-9 Descarga/envío de copia de factura) as CU9
+  (CU-10 Gestión de contactos de cliente) as CU10
+  (CU-11 Notificación de impago) as CU11
+  (CU-12 Consulta/edición ficha de cliente) as CU12
+  (CU-13 Solicitar descuento) as CU13
+  (CU-14 Configurar tarifas) as CU14
+  (CU-15 Recuperar contraseña) as CU15
+  (CU-16 Configurar/gestionar notificaciones cliente) as CU16
+  (CU-17 Buscar/filtrar clientes/facturas) as CU17
+  (CU-18 Consultar informes y totales del sistema) as CU18
+  (CU-19 Importación masiva de datos) as CU19
+  (CU-20 Escalar incidencia) as CU20
+}
+
+' Relaciones de Actores con Casos de Uso
+sa -r-> CU1
+ad -r-> CU2
+ad -r-> CU3
+ad -r-> CU4
+uo -r-> CU5
+ad -r-> CU6
+sy -r-> CU7
+ad -r-> CU8
+pp -r-> CU8
+uo -r-> CU9
+uo -r-> CU10
+uo -r-> CU11
+sy -r-> CU11
+uo -r-> CU12
+uo -r-> CU13
+sa -r-> CU14
+uo -r-> CU15
+uo -r-> CU16
+uo -r-> CU17
+sa -r-> CU18
+sa -r-> CU19
+uo -r-> CU20
+
+' Relaciones UML estándar (include / extend)
+CU7 ..> CU9 : <<include>>
+CU9 ..> pm : <<include>>
+CU11 ..> pm : <<include>>
+CU13 ..> ad : <<extend>> \n (requiere autorización)
+CU20 ..> ad : <<extend>> \n (requiere intervención)
+
+@enduml
