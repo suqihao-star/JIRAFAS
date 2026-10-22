@@ -117,7 +117,7 @@
 
 ---
 
-## CU-02 - Importar datos por CSV
+## CU-03 - Importar datos por CSV
 
 ### 1. Identificación
 
@@ -220,7 +220,7 @@
 
 ---
 
-## CU-03 - Gestionar tareas del cliente
+## CU-04 - Gestionar tareas del cliente
 
 ### 1. Identificación
 
@@ -319,7 +319,7 @@
 
 # Bloque B. Suscripciones, tarifas y descuentos
 
-## CU-01 - Gestionar baja y pausa de suscripción
+## CU-05 - Gestionar baja y pausa de suscripción
 
 ### 1. Identificación
 
@@ -398,7 +398,7 @@
 
 ---
 
-## CU-02 - Revisar y aprobar rango de tarifa anual
+## CU-06 - Revisar y aprobar rango de tarifa anual
 
 ### 1. Identificación
 
@@ -475,7 +475,7 @@
 
 ---
 
-## CU-03 - Solicitar descuento
+## CU-07 - Solicitar descuento
 
 ### 1. Identificación
 
@@ -552,7 +552,7 @@
 
 ---
 
-## CU-04 - Aprobar descuento
+## CU-08 - Aprobar descuento
 
 ### 1. Identificación
 
@@ -630,7 +630,7 @@
 
 ---
 
-## CU-05 - Escalar aprobación al Superadministrador
+## CU-09 - Escalar aprobación al Superadministrador
 
 ### 1. Identificación
 
