@@ -12,11 +12,12 @@ rectangle "Sistema de facturación de Turbine" {
   usecase "CU-01 Gestionar cliente y contactos" as CU01
   usecase "CU-03 Importar datos por CSV" as CU03
   usecase "CU-04 Gestionar tareas del cliente" as CU04
+note "Nota técnica: El CU-02, detectar cliente duplicado, ha sido eliminado como caso de uso independiente y absorbido como flujo de excepción." as NotaCU02
 }
 UO -- CU01
 UO -- CU03
 UO -- CU04
-note "Nota técnica: El CU-02, detectar cliente duplicado, ha sido eliminado como caso de uso independiente y absorbido como flujo de excepción." as NotaCU02
+
 legend bottom
 Herencia: el Administrador puede hacer todo lo del Usuario Operativo y el Superadministrador todo lo del Administrador. 
 Cada caso se asocia solo al rol más bajo que puede hacerlo. Los roles superiores lo heredan.
