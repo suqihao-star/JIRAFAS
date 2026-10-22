@@ -10,6 +10,7 @@
 | Andrés Felipe Jaramillo Ranzini | Dev | 
 | Su Qihao                        | Dev |
 | Pablo Roldán Coll               | Dev |
+| Pablo Ferreiro Romero           | Dev |
 
  
 ## 2. Organización del trabajo 
@@ -57,10 +58,23 @@
 | 01/10/2026 | 10:10 | 20 minutos | Todo el equipo | Reunión posterior de debate: exposición del trabajo de cada subgrupo y validación. | 
 | 01/10/2026 | 18:00 | 20 minutos | Todo el equipo | Revisión del informe Scrum Sprint 1 elaborado por el Scrum Master, y establecer como completados las tareas del tablero del Sprint Retroespective en Trello | 
 
-- Problemas encontrados: Durante la clasificación de requisitos y actores del sistema, surgieron distintos puntos devista y dudas improtantes respecto a los roles. El equipo no tenía claro si era realmente necesario separar la figura del Superadministrador de la del Administrador, debido a la falta de claridad en la información inicial.
+- Problemas encontrados: Durante la clasificación de requisitos y actores del sistema, surgieron distintos puntos de vista y dudas importantes respecto a los roles. El equipo no tenía claro si era realmente necesario separar la figura del Superadministrador de la del Administrador, debido a la falta de claridad en la información inicial.
 - Soluciones aplicadas: Se debatió el problema en la puesta en común final y tras consultarlo con el profesor se decidió dejarlo pendiente de revisión para el siguiente sprint, a la espera de la transcripción de la charla y de una ampliación de requisitos para tomar una decisión definitiva.
  
 #### Estado del tablero en el Sprint Planning 
+En Trello no aparecen los nombres completos sino unas siglas:
+PFC = Pablo Fernández Carabantes
+E = Carlos “Emérito” López Lovera
+JC = Juan Romero Cobos
+LS = Laura Santiago Medina
+AR = Andrés Felipe Jaramillo Ranzini
+SQ = Su Qihao
+PC = Pablo Roldán Coll
+PR = Pablo Ferreiro Romero
+
+
+
+
  
 ![Tablero Trello Sprint Planning](sprint1_planning.png) 
 
@@ -73,35 +87,65 @@
 - Fecha de inicio: 08/10/26
 - Fecha de finalización: 23/10/26
 - Objetivo del Sprint:
-   Consolidar una versión definitiva y sin conflictos de los requisitos para utilizarlos como base del diseño funcional. A partir de ahí, modelar la arquitectura mediante diagramas UML, redactar las fichas de especificación de los casos de uso y garantizar la coherencia del sistema elaborando la trazabilidad.
+   Consolidar una versión definitiva y sin conflictos de los requisitos, integrando la ampliación de requisitos, para utilizarlos como base del diseño funcional. A partir de ahí, modelar la arquitectura mediante diagramas UML, redactar las fichas de especificación de los casos de uso y garantizar la coherencia del sistema elaborando la trazabilidad.
 - Tareas planificadas:
-    - Revisión profunda del borrador de requisitos, limpieza de contradicciones y agrupación de requisistos comunes.
-    - Creación de la trazabilidad entre requisistos.
+    - Subida al GitHub del primer borrador de los requisitos extraidos en el sprint 1.
+    - Análisis, identificación de los requisitos ampliados.
+    - Puesta en común de los requisitos extraidos.
+    - Creación de la trazabilidad entre requisitos.
     - Definición de reglas de negocio.
+    - Redacción de los casos de uso.
     - Creación y modelado de los diagramas UML de Casos de Uso divididos por bloques funcionales.
-    - Redacción y especificación de los casos de uso.
-    - Subida de los borradores de diagramas UML de casos de uso al GitHub.
-    - Subida de los  borradores de especificación al GitHub.
+    - Puesta en común de los diagramas UML de Casos de Uso.
+    - Especificación de los casos de uso.
+    - Subir los borradores de diagramas UML de casos de uso al GitHub.
+    - Subir los  borradores de especificación al GitHub.
+    - Subir el informe Scrum completo al GitHub.
 - Tareas completadas:
-    - Documento .md de requisistos actualizado y validado mediante Pull Request.
+    - Subida al GitHub del primer borrador de los requisitos extraidos en el sprint 1.
+    - Análisis, identificación de los requisitos ampliados.
+    - Imprevisto. Revisión profunda del borrador de requisitos, limpieza de contradicciones y agrupación de requisitos comunes.
+    - Puesta en común de los requisitos extraidos.
+    - Documento .md de requisitos actualizado y validado mediante Pull Request.
+    - Trazabilidad entre requisitos completada.
+    - Definición de reglas de negocio.
+    - Redacción de los casos de uso.
     - Diagramas UML de Casos de Uso y capturas de plantUML
-    - Trazabilidad entre requisistos completada.
-- Reuniones realizadas: 
-- Problemas encontrados: 
-- Soluciones aplicadas: 
+    - Especificación de los casos de uso.
+- Reuniones realizadas:
+
+| Fecha | Hora aprox | Duración | Participantes | Temas abordados |
+|---|---|---|---|---|
+| 08/10/2026 | 09:00 | 10 minutos | Todo el equipo menos Carlos “Emérito” López Lovera por examen en la misma hora | Planificación inicial del sprint 2 en la que se indicó la metodología a seguir en esa semana para subir los requisitos iniciales, y analizar e identificar los requisitos ampliados|
+| 17/10/2026 | 12:00 | 20 minutos | Todo el equipo | Reunión para presentar varios imprevistos con los requisitos ampliados e iniciales en la que se acordó actualizarlos y arreglarlos para que no hubiese problemas de contradicciones y duplicados a la hora de hacer los casos de uso y los diagramas UML de casos de uso. |
+| 18/10/2026 | 17:00 | 35 minutos | Todo el equipo | Presentación a todos los miembros de los nuevos requisitos actualizados y su posterior puesta en común. |
+| 19/10/2026 | 16:30 | 15 minutos | Todo el equipo | Planificación y reparto en subgrupos para la realización de los diagramas UML de Casos de Uso y la especificación |
+| 22/10/2026 | 8:45 | 1h y 45 minutos | Todo el equipo menos Pablo Ferreiro por examen en la misma hora | Puesta en común de los diagramas UML de Casos de Uso y realización de la especificación.|
+| 23/10/2026 | XX:XX | 1h y 45 minutos | Todo el equipo | Puesta en común de la especificación|
+
+- Problemas encontrados:
+
+   - Tras la realización de los requisitos ampliados se detectó que una parte de la extracción y la identificación era incorrecta,
+  pues varios requisitos entraban en conflicto. Lo que provocó un imprevisto en la planificación original y se tuvo que hacer una
+  actualización y corrección de requisitos para después presentarlos y validarlos por los miembros del equipo.
+    - Tras la puesta en común de los diagramas UML y posterior validación del profesor en la clase práctica, se detectó que el caso de uso CU-02(Detectar cliente duplicado) no debía modelasrse como un caso de uso independiente. 
  
+  
+- Soluciones aplicadas:
+    - Se procedió a la lectura de requisitos ampliados por segunda vez y al analisis de dichas páginas. Una vez obtenido todos los requisitos otra vez se presentaron al grupo para su validación, para poder seguir con la planificación inicial.
+   - Respecto a la corrección del CU-02, el equipo evaluó el impacto de rehacer la arquitectura documental (lo que habría roto dependencias previas). Se optó por una solución ágil consultada con el profesor de prácticas, mantener la trazabilidad añadiendo una nota técnica aclaratoria en los diagramas y en la sección de decisiones de requisitos.md. Estas notas especifican formalmente que el CU-02 se interpreta y absorbe como un flujo de excepción, garantizando la coherencia metodológica sin comprometer la estabilidad del sistema a escasos días de la entrega.
 #### Estado del tablero en el Sprint Planning 
  
-[Insertar captura del tablero] 
+![Tablero Trello Sprint Planning](sprint2_planning.png) 
  
 #### Estado del tablero en la Sprint Retrospective 
  
-[Insertar captura del tablero] 
+![Tablero Trello Sprint Retroespective](sprint2_retroespective.png) 
  
 ## 4. Problemas y riesgos 
- 
-Descripción de los problemas y riesgos encontrados durante la entrega. 
- 
+
+
+
 ## 5. Valoración final 
  
 Reflexión sobre el trabajo realizado y propuestas de mejora. 
