@@ -33,7 +33,7 @@ o tienen algún interés relevante en su funcionamiento.
 | Usuario Operativo | Usuario de Turbine que trabaja sobre los clientes asignados| Dar de alta y gestionar sus clientes. Puede preparar o emitir facturas siempre que su permiso lo permita, seguir cobros, registrar incidencias, descargar documentos que tenga disponible y solicitar descuentos. |
 | Sistema de pagos | Sistema externo en el que se reflejan los cobros | Proporcionar información que permita determinar si una factura ha sido pagada. |
 | Proveedores de correos | Servicios de envió de comunicaciones | Entrega de mensaje y devuelta de resultados: enviados, rebotados o fallidos. |
-| Planificador del sistema| Componente de software encargado de ejecutar flujos de trabajo asíncronos en el sistema basandose en eventos temporales o fechas programadas, sin necesidad de intervención manual por parte de un usuario. | Es responsable de iniciar la generación masiva de cuotas de suscripciones en sus fechas de vencimiento, realizar las comprobaciones periódicas de facturas vencidas e inciar los envíos automáticos.|
+| Planificador del sistema| Componente de software encargado de ejecutar flujos de trabajo asíncronos en el sistema basandose en eventos temporales o fechas programadas, sin necesidad de intervención manual por parte de un usuario. | Es responsable de iniciar la generación masiva de cuotas de suscripciones en sus fechas de vencimiento, realizar las comprobaciones periódicas de facturas vencidas e iniciar los envíos automáticos.|
 | Sistema externo | Consume la API documentada | Integración de la aplicación en sistemas externos. |
 ## 2. Requisitos de negocio
 
@@ -45,7 +45,7 @@ Los requisitos de negocio describen los objetivos, necesidades o resultados que 
 | BR-02 | El modelo comercial se basa en facturación mensual sin permanencia. Se debe dar soporte a una facturación de precios variables y suscripciones recurrentes, evitando requerir cálculos manuales. | Cliente / Especificación |
 | BR-03 | Gestionar los impagos de forma automática. | Cliente / Especificación |
 | BR-04 | Proporcionar a los administradores reportes de la salud financiera del negocio. | Cliente / Especificación |
-| BR-05 | Facilitar el cumplimiento de las obligaciones legales vigentes (ej. protección de datos), cuyas reglas concretas marca la gestoría. | Cliente / Especificación |
+| BR-05 | Facilitar el cumplimiento de las obligaciones legales vigentes, cuyas reglas concretas marca la gestoría. | Cliente / Especificación |
 | BR-06 | Las integraciones externas principales (Stripe, CSV, correo y WhatsApp) deben estar encapsuladas para aislar el modelo de factura de cambios de proveedor. | Cliente / Especificación |
 | BR-07 | El sistema debe exponer una API documentada y segura para que sistemas externos consulten datos o envíen solicitudes bajo las mismas reglas de negocio de la aplicación. | Cliente / Especificación |
 | BR-08 | Registrar métricas de rendimiento del equipo para evaluar operaciones, sin que esto se convierta en un ranking de trabajadores ni en una herramienta de vigilancia. | Cliente / Especificación |
@@ -83,7 +83,7 @@ Los requisitos de usuario describen las necesidades, objetivos o servicios que l
 |UR-11| Todos | Podran iniciar sesion con su correo corporativo y recuperar su contraseña mediante un enlace temporal. | Cliente / Especificación |
 |UR-12| Usuario Operativo/Administrador | Administrador	Podrán dar de alta y gestionar sus clientes y contactos (etiquetas, favoritos, línea temporal, tareas, aviso de duplicados, importación CSV), registrar su baja o pausa y solicitar descuentos o excepciones comerciales. | Cliente / Especificación |
 |UR-13| Administrador/Superadministrador | Podrán revisar el rango de tarifa de un cliente, aprobar o rechazar descuentos y facturas retenidas y emitir rectificativas. El Superadministrador podrá además cambiar la tabla de tarifas, las series y los tiempos de recordatorio. | Cliente / Especificación |
-|UR-14| Usuario Opeativo/Administrador | Podran seguir los cobros de sus clientes, conciliar pagos, recibir las notificaciones y alertas relevantes y registrar incidencias y comentarios internos | Cliente / Especificación |
+|UR-14| Usuario Operativo/Administrador | Podran seguir los cobros de sus clientes, conciliar pagos, recibir las notificaciones y alertas relevantes y registrar incidencias y comentarios internos | Cliente / Especificación |
 |UR-15| Administrador | Podrá gestionar las plantillas de comunicación y obtener informes, objetivos y clasificaciones por centro de coste. | Cliente / Especificación |
 
 ## 4. Requisitos del sistema
@@ -97,7 +97,7 @@ clara, precisa y verificable.
 |---|---|---|
 | FR-01 | El sistema permitirá gestionar y crear facturas válidas, con numeración correlativa y única dentro de su serie, datos fiscales correspondientes y cálculo del IVA con los impuestos configurados. El superadministrador configurará las series, y los impuestos de una factura podrán configurarse o seleccionarse entre los dados de alta. | UR-5, UR-10, UR-13, BR-02, BR-10 |
 | FR-02 | El sistema permitirá registrar facturas nuevas, que podrán ser puntuales o recurrentes. Una factura puntual podrá tener varias líneas, cada una con concepto, cantidad, precio unitario, descuento (si aplica) e impuesto, y se podrán ajustar el precio y la descripción. | UR-05, UR10, BR-02 |
-| FR-03 | El sistema permitirá dar de alta clientes con una ficha comercial(fecha de inicio, plan o servicio, tarifa acordada, responsable interno, condiciones de pago y documento firmado fuera de la plataforma, si existe) y sus datos fiscales: nombre comercial, razón social, NIF o identificador fiscal, domicilio fiscal, país, moneda de trabajo y datos de contacto. El modelo de datos fiscales será universal (NIF y monedas de varios países). | UR-12, BR-02 |
+| FR-03 | El sistema permitirá dar de alta clientes con una ficha comercial (fecha de inicio, plan o servicio, tarifa acordada, responsable interno, condiciones de pago y documento firmado fuera de la plataforma, si existe) y sus datos fiscales: nombre comercial, razón social, NIF o identificador fiscal, domicilio fiscal, país, moneda de trabajo y datos de contacto. El modelo de datos fiscales será universal (NIF y monedas de varios países). | UR-12, BR-02 |
 | FR-04 | Un cliente podrá tener múltiples contactos (contratación, recepción de facturas, impagos), con su nombre y correo, y un contacto podrá pertenecer a varias empresas. Un contacto podrá marcarse como inactivo conservando el histórico, y el sistema conservará los destinatarios de cada factura enviada.| UR-12, BR-19 |
 | FR-05 | El sistema perseguirá el cobro por sí mismo: enviará un recordatorio previo (alrededor el día tres) y otro al vencimiento (por defecto es cinco dias) y, tras el vencimiento, avisos de impago por defecto cada 2 días hasta que se detecte el pago o intervenga una persona. El superadministrador podrá configurar estos tiempos y el vencimiento pactado con un cliente prevalecerá sobre el general. Se podrán suspender temporalmente los recordatorios de una factura concreta, indicando motivo y fecha de revisión. | UR-13, UR-14, BR-03, BR-16 |
 | FR-06 | El sistema permitirá el login mediante correo y contraseña. El correo deberá pertenecer al dominio corporativo autorizado. No hay autorregistro. Los usuarios podrán recuperar su contraseña mediante el uso de un enlace temporal el cual caducará pasado un tiempo razonable.| UR-01, UR-11, BR-05 |
@@ -138,7 +138,7 @@ clara, precisa y verificable.
 | FR-41 | El sistema permitirá definir y modificar objetivos de facturación que se visualizarán en el dashboard. Cada modificación deberá quedar registrada, indicando el usuario que la realizó, la fecha y los valores anteriores y nuevos. Estos objetivos son solo informativos, no alteran facturas y los gestionan los administradores.|	UR-15, BR-04 |
 | FR-42 | El sistema permitirá a los administradores configurar alertas mediante un conjunto cerrado de reglas parametrizables, como facturas con más de un número determinado de días vencidas o clientes que acumulen un importe pendiente determinado. Cada usuario podrá configurar los canales por los que recibirá dichas alertas, sin incorporar un motor de procesos BPMN.|	UR-14, BR-03 |
 | FR-43 | El sistema mostrará una línea temporal por cliente con los eventos relevantes de su actividad, incluyendo altas, bajas, emisión de facturas y pagos, ordenados cronológicamente. | UR-12 |
-| FR-44 | El sistema permitirá marcar clientes como favoritos para acceder rápidamente a sus fichas El acceso rápido no sustituirá la comprobación de permisos | UR-07, UR-12 |
+| FR-44 | El sistema permitirá marcar clientes como favoritos para acceder rápidamente a sus fichas El acceso rápido no sustituirá la comprobación de permisos. | UR-07, UR-12 |
 | FR-45 | El sistema permitirá generar una factura rectificativa a partir de una factura emitida, proponiendo los datos que se rectifican y manteniendo el vínculo con la original. También permitirá anularla cuando legalmente proceda. Requerirá permiso administrativo y, según el importe, aprobación. | UR-13, BR-09 |
 | FR-46 | El sistema enviará automáticamente la factura emitida por correo electrónico al contacto de facturación (y por WhatsApp, de forma simulada, si hay consentimiento), registrando canal, intento, resultado, fecha y destinatario. Un fallo de envío no deshará la emisión y un reintento no creará otra factura ni otro número. | UR-10, BR-10 |
 | FR-47 | El sistema permitirá registrar excepciones comerciales explícitas: inicio futuro (el cliente queda pendiente de activación, sin facturas ni recordatorios hasta esa fecha), primer mes gratuito o facturación sin prorrateo.      |UR-12, BR-18|
@@ -194,11 +194,11 @@ un requisito.
 
 | ID | Suposición o decisión | Justificación | Requisitos afectados |
 |---|---|---|---|
-| A-01 | Se ha de usar un dominio corportativo de TurbineH autorizado, por motivo de seguridad | Se habla de email de turbineh y luego de dominio corporativo autorizado | FR-06 |
-| A-02 | El rol lector pasa a llamarse Usuario Operativo | El cliente dijo en la amplaición de requisitos que no usaramos lector | FR-07 |
+| A-01 | Se ha de usar un dominio corporativo de TurbineH autorizado, por motivo de seguridad | Se habla de email de turbineh y luego de dominio corporativo autorizado | FR-06 |
+| A-02 | El rol lector pasa a llamarse Usuario Operativo | El cliente dijo en la ampliación de requisitos que no usaramos lector | FR-07 |
 | A-03 | Los enlaces temporales caducan a la hora de ser enviados | En la ampliación habla de enlaces temporales pero no determina el tiempo en el que estos funcionan, suponemos esta medida por seguridad | FR-37, NFR-17| 
 | A-04 | En BR-02 se habla de precios variables | El motivo es porque se puede dar el caso de que un cliente se da de alta a mitad de mes, entonces no se le cobra el mes entero sino la parte proporcional. Además se pueden aplicar ciertos descuentos y excepciones. | | BR-02, FR-18, BR-18 |
-| A-05 | Se ha aumentado la sección de trazabilidad de la plantilla orginal | Debido a que no contemplaba todos los casos para todos los FR | Sección 8 |
+| A-05 | Se ha aumentado la sección de trazabilidad de la plantilla original | Debido a que no contemplaba todos los casos para todos los FR | Sección 8 |
 
 
 ## 7. Dudas, ambigüedades y cuestiones pendientes
@@ -209,7 +209,7 @@ ambiguos, incompletos, contradictorios o que requieran aclaración.
 | ID | Cuestión | Origen | Impacto | Estado / resolución |
 |---|---|---|---|---|
 | Q-01 | ¿Qué roles hay en el sistema? | Entrevista | Los roles del sistema están ambiguos. El rol de usuario está claro, pero no está claro si admin y superadmin son el mismo rol o son cosas diferentes | Resuelto, hay tres roles. Usuario, admin y superadmin |
-| Q-02 | Baja de un cliente con deuda. El cliente dijo en la charla inicial que no puedes darte de baja hasta que pagues y en la ampliación se habla de que la deuda no bloquea la baja comercial. | Charla y requisistos ampliados | FR-9, BR-14. | Tomamos la información de la ampliación de requisistos. |
+| Q-02 | Baja de un cliente con deuda. El cliente dijo en la charla inicial que no puedes darte de baja hasta que pagues y en la ampliación se habla de que la deuda no bloquea la baja comercial. | Charla y requisitos ampliados | FR-9, BR-14. | Tomamos la información de la ampliación de requisitos. |
 | Q-03 | ¿Es realmente un caso de uso que un cliente esté duplicado?| Inicialmente teníamos como caso de uso la duplicidad de un cliente, resultante de un include entre dos casos de uso: gestionar cliente y contactos y gestionar tareas del cliente. | Dudas acerca de si era necesario | Eliminado. Tras consultarlo con el profesor en la clase práctica nos comentó que efectivamente no era necesario. |
 
 ## 8. Trazabilidad
@@ -305,7 +305,7 @@ los requisitos de usuario y los requisitos del sistema.
 | Término | Definición |
 |---|---|
 | Descuento extraordinario | Reducción económica aplicada a un cliente que supera un cierto umbral configurable, requiriendo la aprobación del Superadministrador. |
-| Factura rectificativa| Documento legal emitido exclusivamente para corregir errores fiscales en una factura emitida anteriorimente. |
+| Factura rectificativa| Documento legal emitido exclusivamente para corregir errores fiscales en una factura emitida anteriormente. |
 | Rebote de correo| Acción de devolver un correo debido a que no ha podido ser entregado al destinatario, lo que dispara la apertura automática de una incidencia. |
 | Prorrateo | Cálculo económico proporcional que se realiza automáticamente cuando un cliente activa una suscripción a mitad de un ciclo de facturación. |
 
