@@ -62,19 +62,15 @@
  
 #### Estado del tablero en el Sprint Planning 
 En Trello no aparecen los nombres completos sino unas siglas:
-PFC = Pablo Fernández Carabantes
-E = Carlos “Emérito” López Lovera
-JC = Juan Romero Cobos
-LS = Laura Santiago Medina
-AR = Andrés Felipe Jaramillo Ranzini
-SQ = Su Qihao
-PC = Pablo Roldán Coll
-PR = Pablo Ferreiro Romero
+  - PFC = Pablo Fernández Carabantes
+  - E = Carlos “Emérito” López Lovera
+  - JC = Juan Romero Cobos
+  - LS = Laura Santiago Medina
+  - AR = Andrés Felipe Jaramillo Ranzini
+  - SQ = Su Qihao
+  - PC = Pablo Roldán Coll
+  - PR = Pablo Ferreiro Romero
 
-
-
-
- 
 ![Tablero Trello Sprint Planning](sprint1_planning.png) 
 
 #### Estado del tablero en la Sprint Retrospective 
@@ -132,9 +128,18 @@ PR = Pablo Ferreiro Romero
   
 - Soluciones aplicadas:
     - Se procedió a la lectura de requisitos ampliados por segunda vez y al analisis de dichas páginas. Una vez obtenido todos los requisitos otra vez se presentaron al grupo para su validación, para poder seguir con la planificación inicial.
-   - Respecto a la corrección del CU-02, el equipo evaluó el impacto de rehacer la arquitectura documental (lo que habría roto dependencias previas). Se optó por una solución ágil consultada con el profesor de prácticas, mantener la trazabilidad añadiendo una nota técnica aclaratoria en los diagramas y en la sección de decisiones de requisitos.md. Estas notas especifican formalmente que el CU-02 se interpreta y absorbe como un flujo de excepción, garantizando la coherencia metodológica sin comprometer la estabilidad del sistema a escasos días de la entrega.
+   - Respecto a la corrección del CU-02, el equipo evaluó el impacto de rehacer la arquitectura documental (lo que habría roto dependencias previas). Se optó por una solución ágil consultada con el profesor de prácticas, mantener la trazabilidad añadiendo una nota técnica aclaratoria en los diagramas y en la sección de dudas de requisitos.md. Estas notas especifican formalmente que el CU-02 se interpreta y absorbe como un flujo de excepción, garantizando la coherencia metodológica sin comprometer la estabilidad del sistema a escasos días de la entrega.
 #### Estado del tablero en el Sprint Planning 
- 
+ En Trello no aparecen los nombres completos sino unas siglas:
+  - PFC = Pablo Fernández Carabantes
+  - E = Carlos “Emérito” López Lovera
+  - JC = Juan Romero Cobos
+  - LS = Laura Santiago Medina
+  - AR = Andrés Felipe Jaramillo Ranzini
+  - SQ = Su Qihao
+  - PC = Pablo Roldán Coll
+  - PR = Pablo Ferreiro Romero
+    
 ![Tablero Trello Sprint Planning](sprint2_planning.png) 
  
 #### Estado del tablero en la Sprint Retrospective 
