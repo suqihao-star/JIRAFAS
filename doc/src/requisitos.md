@@ -23,7 +23,7 @@ o tienen algún interés relevante en su funcionamiento.
 | Usuario Operativo | Usuario de Turbine que trabaja sobre los clientes asignados| Dar de alta y gestionar sus clientes. Puede preparar o emitir facturas siempre que su permiso lo permita, seguir cobros, registrar incidencias, descargar documentos que tenga disponible y solicitar descuentos |
 | Sistema de pagos | Sistema externo en el que se reflejan los cobros | Proporcionar información que permita determinar si una factura ha sido pagada |
 | Proveedores de correos | Servicios de envió de comunicaciones | Entrega de mensaje y devuelta de resultados: enviados, rebotados o fallidos |
-| Sistema externo | Consume la API documentada |
+| Sistema externo | Consume la API documentada | Integración de la aplicación en sistemas externos |
 ## 2. Requisitos de negocio
 
 Los requisitos de negocio describen los objetivos, necesidades o resultados que la organización pretende conseguir mediante el desarrollo del sistema. No describen todavía funcionalidades concretas del software
@@ -31,7 +31,7 @@ Los requisitos de negocio describen los objetivos, necesidades o resultados que 
 | ID | Requisito | Fuente |
 | :--- | :--- | :--- |
 | BR-01 | Reducir la carga administrativa que se ejercía en la facturación manual y el seguimiento de cobros. | Cliente / Especificación |
-| BR-02 | El modelo comercial se basa en facturación mensual sin permanencia. Se debe dar soporte a una facturación de precios variables y suscripciones recurrentes, evitando requerir cálculos manuales. | Cliente
+| BR-02 | El modelo comercial se basa en facturación mensual sin permanencia. Se debe dar soporte a una facturación de precios variables y suscripciones recurrentes, evitando requerir cálculos manuales. | Cliente / Especificación |
 | BR-03 | Gestionar los impagos de forma automática. | Cliente / Especificación |
 | BR-04 | Proporcionar a los administradores reportes de la salud financiera del negocio. | Cliente / Especificación |
 | BR-05 | 	Facilitar el cumplimiento de las obligaciones legales vigentes (ej. protección de datos), cuyas reglas concretas marca la gestoría. | Cliente / Especificación |
@@ -49,13 +49,9 @@ Los requisitos de negocio describen los objetivos, necesidades o resultados que 
 | BR-17 | El prorrateo seguirá una regla única, documentada y consistente, incluidos los casos límite (ej. alta en el último día del mes). | Cliente / Especificación |
 | BR-18 | Las excepciones comerciales (primer mes gratuito, sin prorrateo, inicio futuro) deben quedar registradas de forma explícita. | Cliente / Especificación |
 | BR-19 | Desactivar, dar de baja o anonimizar a un contacto no elimina el histórico de facturas emitidas, cuyos documentos se conservan por obligación legal. | Cliente / Especificación |
-| BR-20 | Los datos de facturación no se utilizarán para campañas de marketing. | Cliente / Especificación |
-| BR-21 | Los comentarios internos en la plataforma nunca se envían al cliente. | Cliente / Especificación |
-| BR-22 | Ningún sistema externo podrá saltarse las reglas de negocio de la aplicación ni modificar o eliminar recurrencias directamente. | Cliente / Especificación |
-| BR-23 | El sistema debe operar sin dependencia crítica del componente de Inteligencia Artificial (Brain). | Cliente / Especificación |
-| BR-24 | Cada factura conserva su importe en la moneda original en que se emitió. La conversión a la moneda base solo se usa para informes y no altera el total legal. | Cliente / Especificación |
-|BR- 25| Las funciones de IA son opcionales, no pueden saltarse permisos y toda sugerencia económica requiere autorización | Cliente / Especificación |
-
+| BR-20 | Los comentarios internos en la plataforma nunca se envían al cliente. | Cliente / Especificación |
+| BR-21 | Ningún sistema externo podrá saltarse las reglas de negocio de la aplicación ni modificar o eliminar recurrencias directamente. | Cliente / Especificación |
+| BR-22 | El sistema debe operar sin dependencia crítica del componente de Inteligencia Artificial (Brain). | Cliente / Especificación |
 
 
 ## 3. Requisitos de usuario
