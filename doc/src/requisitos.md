@@ -299,7 +299,7 @@ los requisitos de usuario y los requisitos del sistema.
 | FR-50 | CU-29 | UR-14, BR-03 |
 | NFR-09 | CU-34  | - |
 | NFR-18 | CU-01  | BR-19 |
-| NFR-08, NFR-17 | CU-30 CU-31 CU-30 CU-26 | UR-11 |
+| NFR-08, NFR-17 | CU-30 CU-31 CU-26 | UR-11 |
 
 ## 9. Glosario
 
