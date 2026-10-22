@@ -38,11 +38,11 @@ Los requisitos de negocio describen los objetivos, necesidades o resultados que 
 | BR-06 | Las integraciones externas principales (Stripe, CSV, correo y WhatsApp) deben estar encapsuladas para aislar el modelo de factura de cambios de proveedor. | Cliente / Especificación |
 | BR-07 | El sistema debe exponer una API documentada y segura para que sistemas externos consulten datos o envíen solicitudes bajo las mismas reglas de negocio de la aplicación. | Cliente / Especificación |
 | BR-08 | Registrar métricas de rendimiento del equipo para evaluar operaciones, sin que esto se convierta en un ranking de trabajadores ni en una herramienta de vigilancia. | Cliente / Especificación |
-| BR-09 | Una factura emitida no puede modificarse, borrarse ni reescribirse. Cualquier corrección exige una factura rectificativa vinculada a la original. Los borradores nunca emitidos sí podrán eliminarse definitivamente
-| BR-10 | Cada factura tendrá un número único dentro de su serie. Ni los reintentos de envío ni las acciones simultáneas de varios usuarios generarán duplicados ni consumirán numeración nueva. | Cliente / Especificación
+| BR-09 | Una factura emitida no puede modificarse, borrarse ni reescribirse. Cualquier corrección exige una factura rectificativa vinculada a la original. Los borradores nunca emitidos sí podrán eliminarse definitivamente | Cliente / Especificación |
+| BR-10 | Cada factura tendrá un número único dentro de su serie. Ni los reintentos de envío ni las acciones simultáneas de varios usuarios generarán duplicados ni consumirán numeración nueva. | Cliente / Especificación |
 | BR-11 | Los cambios en tarifas, catálogo de conceptos o plantillas de correo no alterarán ni reescribirán las facturas históricas ya emitidas. | Cliente / Especificación |
 | BR-12 | Todo cambio de rango de tarifa o excepciones económicas sensibles requieren validación y aprobación humana. En importes sensibles, el aprobador no puede ser quien realizo la solicitud.| Cliente / Especificación |
-| BR-13 | Una factura solo se considera “pagada” cuando existe un cobro detectado o validado. Una deuda marcada como incobrable, anulada o rectificada no equivale a "pagada" y requiere de aprobación administrativa
+| BR-13 | Una factura solo se considera “pagada” cuando existe un cobro detectado o validado. Una deuda marcada como incobrable, anulada o rectificada no equivale a "pagada" y requiere de aprobación administrativa | Cliente / Especificación |
 | BR-14 | La baja comercial detiene la generación de nuevas mensualidades, pero el flujo de recobro de las facturas pendientes continúa activo. | Cliente / Especificación |
 | BR-15 | La pausa de una suscripción es distinta de la baja: el cliente sigue activo y conserva sus facturas pendientes. | Cliente / Especificación |
 | BR-16 | El vencimiento pactado con un cliente prevalece sobre el vencimiento general. | Cliente / Especificación |
@@ -54,7 +54,7 @@ Los requisitos de negocio describen los objetivos, necesidades o resultados que 
 | BR-22 | Ningún sistema externo podrá saltarse las reglas de negocio de la aplicación ni modificar o eliminar recurrencias directamente. | Cliente / Especificación |
 | BR-23 | El sistema debe operar sin dependencia crítica del componente de Inteligencia Artificial (Brain). | Cliente / Especificación |
 | BR-24 | Cada factura conserva su importe en la moneda original en que se emitió. La conversión a la moneda base solo se usa para informes y no altera el total legal. | Cliente / Especificación |
-|BR- 25| Las funciones de IA son opcionales, no pueden saltarse permisos y toda sugerencia económica requiere autorización
+|BR- 25| Las funciones de IA son opcionales, no pueden saltarse permisos y toda sugerencia económica requiere autorización | Cliente / Especificación |
 
 
 
