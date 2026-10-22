@@ -1,4 +1,4 @@
-k## Bloque D. Cobros y comunicaciones
+# Bloque D. Cobros y comunicaciones
 
 ### CU-16 - Registrar movimiento de cobro
 

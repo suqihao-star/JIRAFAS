@@ -1,5 +1,109 @@
 # Bloque F. Administración, seguridad y sistema
 
+## CU-30 — Iniciar sesión y recuperar contraseña
+
+### 1. Identificación
+
+| Campo | Descripción |
+|---|---|
+| **Identificador** | CU-30 |
+| **Nombre** | Iniciar sesión y recuperar contraseña |
+| **Objetivo** | Permitir el acceso seguro a la plataforma con cuenta corporativa y recuperar la contraseña de forma segura. |
+| **Actores participantes** | Usuario operativo (principal) |
+
+---
+
+### 2. Precondiciones
+
+- PRE-1. El usuario tiene una cuenta activa creada por invitación (CU-31).
+
+---
+
+### 3. Flujo principal
+
+*Escenario descrito: iniciar sesión.*
+
+1. **Usuario operativo:** Accede a la plataforma e introduce su correo corporativo y su contraseña.
+2. **Sistema:** Valida el dominio autorizado, las credenciales y que la cuenta está activa.
+3. **Sistema:** Crea una sesión segura.
+4. **Sistema:** Muestra la pantalla de trabajo diario (CU-29).
+
+---
+
+### 4. Flujos alternativos
+
+#### FA-1 — Recuperar la contraseña
+
+**Se produce en:** paso 1 del flujo principal.  
+**Condición:** El usuario selecciona «He olvidado mi contraseña» e introduce su correo.
+
+1. **Usuario operativo:** Selecciona «He olvidado mi contraseña» e introduce su correo.
+2. **Sistema:** Envía un enlace temporal de recuperación, que caduca a la hora de enviarse (A-04), y responde de la misma forma exista o no la cuenta.
+3. **Usuario operativo:** Abre el enlace e introduce una nueva contraseña.
+4. **Sistema:** Guarda la contraseña, invalida el enlace y las sesiones anteriores, y registra el cambio.
+
+**Continuación:** el caso de uso finaliza y el usuario puede iniciar sesión desde el paso 1 del flujo principal.
+
+#### FA-2 — Doble factor opcional
+
+**Se produce en:** paso 2 del flujo principal.  
+**Condición:** El usuario tiene activado el doble factor.
+
+1. **Usuario operativo:** Tiene activado el doble factor.
+2. **Sistema:** Solicita el segundo factor antes de crear la sesión.
+
+**Continuación:** el caso de uso continúa en el paso 3 del flujo principal.
+
+---
+
+### 5. Flujos de excepción
+
+#### FE-1 — Credenciales incorrectas
+
+**Se produce en:** paso 2 del flujo principal.  
+**Condición:** El correo o la contraseña no son correctos.
+
+1. **Sistema:** Rechaza el acceso con un mensaje genérico que no revela qué dato falló.
+
+**Resultado:** El usuario puede volver a intentarlo desde el paso 1 del flujo principal.
+
+#### FE-2 — Cuenta no autorizada o desactivada
+
+**Se produce en:** paso 2 del flujo principal.  
+**Condición:** El dominio no está autorizado o la cuenta está desactivada.
+
+1. **Sistema:** Rechaza el acceso. No existe el autorregistro.
+
+**Resultado:** El caso de uso termina sin completar la operación y sin modificar datos.
+
+#### FE-3 — Demasiados intentos fallidos
+
+**Se produce en:** paso 2 del flujo principal.  
+**Condición:** El usuario supera el número de intentos fallidos permitido.
+
+1. **Usuario operativo:** Supera el número de intentos fallidos permitido.
+2. **Sistema:** Bloquea temporalmente el acceso y lo registra.
+
+**Resultado:** El acceso queda bloqueado temporalmente.
+
+#### FE-4 — Enlace caducado
+
+**Se produce en:** FA-1 (recuperación de contraseña).  
+**Condición:** El enlace de recuperación ha caducado o ya se usó.
+
+1. **Sistema:** Lo indica y permite solicitar un nuevo enlace.
+
+**Resultado:** El usuario puede solicitar un nuevo enlace desde el paso 1 de FA-1.
+
+---
+
+### 6. Postcondiciones
+
+- POST-1. El usuario tiene una sesión activa o ha cambiado su contraseña de forma segura.
+- POST-2. Los accesos fallidos y los cambios de contraseña quedan registrados.
+
+---
+
 ## CU-31 — Gestionar usuarios, roles y asignación de clientes
 
 ### 1. Identificación
