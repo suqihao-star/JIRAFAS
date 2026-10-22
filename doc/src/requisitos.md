@@ -39,7 +39,7 @@ Los requisitos de negocio describen los objetivos, necesidades o resultados que 
 | BR-07 | El sistema debe exponer una API documentada y segura para que sistemas externos consulten datos o envíen solicitudes bajo las mismas reglas de negocio de la aplicación. | Cliente / Especificación |
 | BR-08 | Registrar métricas de rendimiento del equipo para evaluar operaciones, sin que esto se convierta en un ranking de trabajadores ni en una herramienta de vigilancia. | Cliente / Especificación |
 | BR-09 | Una factura emitida no puede modificarse, borrarse ni reescribirse. Cualquier corrección exige una factura rectificativa vinculada a la original. Los borradores nunca emitidos sí podrán eliminarse de>
-| BR-10 | Cada factura tendrá un número único dentro de su serie. Ni los reintentos de envío ni las acciones simultáneas de varios usuarios generarán duplicados ni consumirán numeración nueva. | Cliente / Espe>
+| BR-10 | Cada factura tendrá un número único dentro de su serie. Ni los reintentos de envío ni las acciones simultáneas de varios usuarios generarán duplicados ni consumirán numeración nueva. | Cliente / Especificación
 | BR-11 | Los cambios en tarifas, catálogo de conceptos o plantillas de correo no alterarán ni reescribirán las facturas históricas ya emitidas. | Cliente / Especificación |
 | BR-12 | Todo cambio de rango de tarifa o excepciones económicas sensibles requieren validación y aprobación humana. En importes sensibles, el aprobador no puede ser quien realizo la solicitud.| Cliente / Especificación |
 | BR-13 | Una factura solo se considera “pagada” cuando existe un cobro detectado o validado. Una deuda marcada como incobrable, anulada o rectificada no equivale a "pagada" y requiere de aprobación administra>
