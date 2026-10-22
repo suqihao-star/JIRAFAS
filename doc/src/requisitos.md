@@ -17,8 +17,9 @@ El sistema incluye en su alcance:
   - Seguimiento del estado de cobro, conciliación de pagos e incidencias.
   - Envio automatico de notificaciones, alertas y documentos a los clientes.
   - Exposición de una API segura para el consumo de datos por parte de sistemas externos.
+    
 El sistema no incluye en su alcance:
-  -Procesamiento de los pagos.
+  - Procesamiento de los pagos.
   - Contabilidad en general(presentación de impuestos, nóminas, etc.)     
 
 ### 1.3. Actores y partes interesadas
