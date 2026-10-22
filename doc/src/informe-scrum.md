@@ -111,11 +111,11 @@ En Trello no aparecen los nombres completos sino unas siglas:
 
 | Fecha | Hora aprox | Duración | Participantes | Temas abordados |
 |---|---|---|---|---|
-| 08/10/2026 | 09:00 | 10 minutos | Todo el equipo menos Carlos “Emérito” López Lovera por examen en la misma hora | Planificación inicial del sprint 2 en la que se indicó la metodología a seguir en esa semana para subir los requisitos iniciales, y analizar e identificar los requisitos ampliados|
+| 08/10/2026 | 09:00 | 1h y 45 minutos | Todo el equipo menos Carlos “Emérito” López Lovera por examen en la misma hora | Planificación inicial del sprint 2 en la que se indicó la metodología a seguir en esa semana para subir los requisitos iniciales, y analizar e identificar los requisitos ampliados. Seguida de trabajo en la sesión practica. |
 | 17/10/2026 | 12:00 | 20 minutos | Todo el equipo | Reunión para presentar varios imprevistos con los requisitos ampliados e iniciales en la que se acordó actualizarlos y arreglarlos para que no hubiese problemas de contradicciones y duplicados a la hora de hacer los casos de uso y los diagramas UML de casos de uso. |
 | 18/10/2026 | 17:00 | 35 minutos | Todo el equipo | Presentación a todos los miembros de los nuevos requisitos actualizados y su posterior puesta en común. |
 | 19/10/2026 | 16:30 | 15 minutos | Todo el equipo | Planificación y reparto en subgrupos para la realización de los diagramas UML de Casos de Uso y la especificación |
-| 22/10/2026 | 8:45 | 1h y 45 minutos | Todo el equipo menos Pablo Ferreiro por examen en la misma hora | Puesta en común de los diagramas UML de Casos de Uso y realización de la especificación.|
+| 22/10/2026 | 08:45 | 1h y 45 minutos | Todo el equipo menos Pablo Ferreiro por examen en la misma hora | Puesta en común de los diagramas UML de Casos de Uso y realización de la especificación.|
 | 23/10/2026 | 19:00 |  45 minutos | Todo el equipo | Puesta en común de la especificación. |
 
 - Problemas encontrados:
