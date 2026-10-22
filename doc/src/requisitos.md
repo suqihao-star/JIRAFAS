@@ -183,10 +183,9 @@ un requisito.
 
 | ID | Suposición o decisión | Justificación | Requisitos afectados |
 |---|---|---|---|
-| A-01 | ... | ... | FR-... |
-| A-02 | Se ha de usar un dominio corportativo de TurbineH autorizado | Se habla de email de turbineh y luego de dominio corporativo autorizado | FR-06 |
-| A-03 | El rol lector pasa a llamarse Usuario Operativo | El cliente dijo en la amplaición de requisitos que no usaramos lector | FR-07 |
-| A-04 | Los enlaces temporales caducan a la hora de ser enviados | En la ampliación habla de enlaces temporales pero no determina el tiempo en el que estos funcionan, suponemos esta medida por seguridad | FR-37, NFR-17| 
+| A-01 | Se ha de usar un dominio corportativo de TurbineH autorizado | Se habla de email de turbineh y luego de dominio corporativo autorizado | FR-06 |
+| A-02 | El rol lector pasa a llamarse Usuario Operativo | El cliente dijo en la amplaición de requisitos que no usaramos lector | FR-07 |
+| A-03 | Los enlaces temporales caducan a la hora de ser enviados | En la ampliación habla de enlaces temporales pero no determina el tiempo en el que estos funcionan, suponemos esta medida por seguridad | FR-37, NFR-17| 
 
 ## 7. Dudas, ambigüedades y cuestiones pendientes
 
