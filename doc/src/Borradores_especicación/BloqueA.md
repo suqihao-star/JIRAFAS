@@ -117,77 +117,13 @@
 
 ---
 
-## CU-02 - Detectar cliente duplicado
+## CU-02 - Importar datos por CSV
 
 ### 1. Identificación
 
 | Campo | Contenido |
 |---|---|
 | Identificador | CU-02 |
-| Nombre | Detectar cliente duplicado |
-| Objetivo | Avisar al usuario cuando un cliente que se va a crear o importar puede ya existir, evitando duplicidades sin fusionar registros automáticamente. |
-| Actores participantes | Usuario operativo (a través de CU-01 o CU-03) |
-
-### 2. Precondiciones
-
-- PRE-1. Se está creando o importando un cliente (CU-01 o CU-03).
-
-### 3. Flujo principal
-
-1. Actor: El proceso o Usuario operativo (a través de CU-01 o CU-03) entrega al sistema el identificador fiscal del cliente.
-2. Sistema: El sistema normaliza el identificador (mayúsculas, sin espacios ni guiones) y lo compara con los clientes existentes.
-3. Sistema: El sistema no encuentra coincidencias y devuelve "sin duplicados" al caso de uso que lo invocó, el cual continúa su flujo.
-
-### 4. Flujos alternativos
-
-#### FA-1. Coincidencia encontrada
-
-**Se produce en:** paso 3 del flujo principal.  
-**Condición:** El sistema encuentra uno o varios clientes con el mismo identificador fiscal.
-
-1. En el paso 3, el sistema encuentra uno o varios clientes con el mismo identificador fiscal.
-2. El sistema avisa de la posible duplicidad y muestra un enlace a la ficha de cada coincidencia.
-3. El usuario decide: cancelar, corregir el identificador o confirmar que es un cliente distinto. El sistema nunca fusiona automáticamente.
-
-**Resultado:** El usuario gestiona la coincidencia sin fusionar registros automáticamente.
-
-#### FA-2. Detección dentro de una importación CSV
-
-**Se produce en:** paso 1 del flujo principal.  
-**Condición:** El caso de uso es invocado desde una importación masiva en CSV (CU-03).
-
-1. Cuando lo invoca CU-03, el sistema marca cada fila con posible duplicado en la previsualización.
-2. El usuario decide fila a fila si la importa como cliente nuevo, actualiza de forma explícita el cliente existente, la omite o la corrige. El sistema nunca fusiona ni actualiza por su cuenta.
-
-**Resultado:** Detección y decisión manual sobre duplicados fila por fila durante la importación.
-
-### 5. Flujos de excepción
-
-#### FE-1. Cliente sin identificador fiscal
-
-**Se produce en:** paso 1 del flujo principal.  
-**Condición:** El cliente no dispone de identificador fiscal (por ejemplo, identificador extranjero aún no disponible).
-
-1. El cliente no tiene identificador fiscal (p. ej. un identificador extranjero aún no disponible).
-2. El sistema no puede comprobar duplicados por ese campo y lo indica al usuario.
-3. El usuario puede continuar, asumiendo que la comprobación no se ha realizado.
-
-**Resultado:** El usuario continúa el registro con la advertencia de comprobación no realizada.
-
-### Postcondiciones
-
-- POST-1. El usuario conoce las posibles duplicidades antes de guardar.
-- POST-2. No se ha fusionado ni modificado ningún cliente existente.
-
----
-
-## CU-03 - Importar datos por CSV
-
-### 1. Identificación
-
-| Campo | Contenido |
-|---|---|
-| Identificador | CU-03 |
 | Nombre | Importar datos por CSV |
 | Objetivo | Cargar de forma masiva clientes (y opcionalmente facturas históricas) desde un archivo CSV, controlando errores antes de confirmar. |
 | Actores participantes | Usuario operativo |
@@ -201,12 +137,12 @@
 
 1. Actor: El Usuario operativo selecciona "Importar CSV" y sube el archivo.
 2. Sistema: El sistema valida la estructura (columnas y codificación) y analiza cada fila.
-3. Sistema: El sistema comprueba posibles duplicados por identificador fiscal invocando CU-02.
+3. Sistema: El sistema comprueba posibles duplicados por identificador fiscal y marca las coincidencias para revisión del usuario.
 4. Sistema: El sistema muestra una previsualización con filas válidas, filas con error (y su motivo) y posibles duplicados.
 5. Actor: El Usuario operativo corrige los errores o excluye las filas problemáticas.
 6. Sistema: El sistema indica el número exacto de registros que se van a crear o actualizar y solicita confirmación.
 7. Actor: El Usuario operativo confirma la operación.
-8. Sistema: El sistema crea los clientes nuevos y actualiza únicamente aquellos que el usuario marcó explícitamente como actualización de un cliente existente (CU-02, FA-2).
+8. Sistema: El sistema crea los clientes nuevos y actualiza únicamente aquellos que el usuario marcó explícitamente como actualización de un cliente existente.
 9. Sistema: El sistema muestra un resumen con registros creados, actualizados y rechazados, con sus motivos, y registra la operación.
 
 ### 4. Flujos alternativos
@@ -237,7 +173,7 @@
 **Condición:** Una o varias filas no incluyen identificador fiscal.
 
 1. En el paso 3, una fila no incluye identificador fiscal.
-2. El sistema no puede comprobar duplicados en esa fila (CU-02, FE-1), la marca como "datos fiscales incompletos" en la previsualización y permite importarla.
+2. El sistema no puede comprobar duplicados en esa fila y la marca como "datos fiscales incompletos" en la previsualización, permitiendo importarla.
 3. Esa fila no podrá facturarse hasta completar los datos.
 
 **Resultado:** Fila importada y marcada con datos fiscales incompletos.
@@ -284,13 +220,13 @@
 
 ---
 
-## CU-04 - Gestionar tareas del cliente
+## CU-03 - Gestionar tareas del cliente
 
 ### 1. Identificación
 
 | Campo | Contenido |
 |---|---|
-| Identificador | CU-04 |
+| Identificador | CU-03 |
 | Nombre | Gestionar tareas del cliente |
 | Objetivo | Registrar y seguir tareas pendientes asociadas a un cliente, de modo que no se pierdan cuando cambie su responsable. |
 | Actores participantes | Usuario operativo |
