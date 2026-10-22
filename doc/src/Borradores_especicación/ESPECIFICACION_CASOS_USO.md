@@ -1,10 +1,10 @@
 # Bloque A. Clientes y contactos
 
-## CU-01 - Gestionar cliente y contactos
+## CU-01 — Gestionar cliente y contactos
 
 ### 1. Identificación
 
-| Campo | Contenido |
+| Campo | Descripción |
 |---|---|
 | Identificador | CU-01 |
 | Nombre | Gestionar cliente y contactos |
@@ -18,14 +18,14 @@
 
 ### 3. Flujo principal
 
-1. Actor: El Usuario operativo selecciona "Añadir cliente" en el módulo de clientes.
-2. Sistema: El sistema muestra el formulario de alta, autocompletando los campos recurrentes (país, moneda, vencimiento, tarifa) cuando es posible.
-3. Actor: El Usuario operativo introduce los datos fiscales (nombre comercial, razón social, NIF o identificador fiscal, domicilio fiscal, país, moneda de trabajo) y la ficha comercial (fecha de inicio, plan o servicio, tarifa acordada, responsable interno, condiciones de pago y, si existe, documento firmado fuera de la plataforma).
-4. Sistema: El sistema valida el formato de los datos, comprueba posibles duplicados y, si el alta es a mitad de mes, muestra el cálculo del prorrateo de la primera factura antes de confirmar. En caso de no haber error, se guarda el cliente y sus contactos, se registra el alta y se confirma la operación. El sistema muestra el cliente creado.
+1. **Usuario operativo:** Selecciona "Añadir cliente" en el módulo de clientes.
+2. **Sistema:** Muestra el formulario de alta, autocompletando los campos recurrentes (país, moneda, vencimiento, tarifa) cuando es posible.
+3. **Usuario operativo:** Introduce los datos fiscales (nombre comercial, razón social, NIF o identificador fiscal, domicilio fiscal, país, moneda de trabajo) y la ficha comercial (fecha de inicio, plan o servicio, tarifa acordada, responsable interno, condiciones de pago y, si existe, documento firmado fuera de la plataforma).
+4. **Sistema:** Valida el formato de los datos, comprueba posibles duplicados y, si el alta es a mitad de mes, muestra el cálculo del prorrateo de la primera factura antes de confirmar. En caso de no haber error, se guarda el cliente y sus contactos, se registra el alta y se confirma la operación. El sistema muestra el cliente creado.
 
 ### 4. Flujos alternativos
 
-#### FA-1. Editar un cliente existente
+#### FA-1 — Editar un cliente existente
 
 **Se produce en:** paso 1 del flujo principal.  
 **Condición:** El usuario selecciona editar cliente.
@@ -37,7 +37,7 @@
 
 **Resultado:** Cliente existente editado.
 
-#### FA-2. Gestionar contactos
+#### FA-2 — Gestionar contactos
 
 **Se produce en:** paso 1 del flujo principal.  
 **Condición:** El usuario selecciona gestionar contactos.
@@ -48,7 +48,7 @@
 
 **Resultado:** Contactos modificados de los clientes.
 
-#### FA-3. Etiquetar y marcar como favorito
+#### FA-3 — Etiquetar y marcar como favorito
 
 **Se produce en:** paso 1 del flujo principal.  
 **Condición:** El usuario selecciona "añadir etiqueta" o marcar como favorito.
@@ -58,7 +58,7 @@
 
 **Resultado:** Clientes etiquetados y marcados en el sistema.
 
-#### FA-4. Excepción comercial explícita
+#### FA-4 — Excepción comercial explícita
 
 **Se produce en:** paso 3 del flujo principal.  
 **Condición:** El usuario selecciona una excepción comercial.
@@ -69,7 +69,7 @@
 
 **Resultado:** Clientes registrados con excepciones comerciales.
 
-#### FA-5. Datos fiscales aún no disponibles
+#### FA-5 — Datos fiscales aún no disponibles
 
 **Se produce en:** paso 3 del flujo principal.  
 **Condición:** El usuario no dispone todavía del identificador fiscal.
@@ -80,7 +80,7 @@
 
 ### 5. Flujos de excepción
 
-#### FE-1. Posible cliente duplicado
+#### FE-1 — Posible cliente duplicado
 
 **Se produce en:** paso 4 del flujo principal.  
 **Condición:** El sistema detecta datos duplicados en la introducción de datos.
@@ -89,7 +89,7 @@
 
 **Resultado:** El usuario decide entre modificar la actual o la existente.
 
-#### FE-2. Datos obligatorios o formato inválido
+#### FE-2 — Datos obligatorios o formato inválido
 
 **Se produce en:** paso 4 del flujo principal.  
 **Condición:** El sistema detecta datos malformateados en la introducción de datos.
@@ -98,7 +98,7 @@
 
 **Resultado:** El usuario puede corregir los datos antes de completar la ficha.
 
-#### FE-3. Cliente no asignado
+#### FE-3 — Cliente no asignado
 
 **Se produce en:** FA-1 o FA-2.  
 **Condición:** El usuario intenta acceder a un cliente que no tiene asignado.
@@ -108,7 +108,7 @@
 
 **Resultado:** Acceso denegado.
 
-### Postcondiciones
+### 6. Postcondiciones
 
 - POST-1. El cliente y sus contactos quedan registrados con su responsable interno y su clasificación.
 - POST-2. La línea temporal del cliente refleja el alta o la modificación.
@@ -117,13 +117,13 @@
 
 ---
 
-## CU-03 - Importar datos por CSV
+## CU-03 — Importar datos por CSV
 
 ### 1. Identificación
 
-| Campo | Contenido |
+| Campo | Descripción |
 |---|---|
-| Identificador | CU-02 |
+| Identificador | CU-03 |
 | Nombre | Importar datos por CSV |
 | Objetivo | Cargar de forma masiva clientes (y opcionalmente facturas históricas) desde un archivo CSV, controlando errores antes de confirmar. |
 | Actores participantes | Usuario operativo |
@@ -135,19 +135,19 @@
 
 ### 3. Flujo principal
 
-1. Actor: El Usuario operativo selecciona "Importar CSV" y sube el archivo.
-2. Sistema: El sistema valida la estructura (columnas y codificación) y analiza cada fila.
-3. Sistema: El sistema comprueba posibles duplicados por identificador fiscal y marca las coincidencias para revisión del usuario.
-4. Sistema: El sistema muestra una previsualización con filas válidas, filas con error (y su motivo) y posibles duplicados.
-5. Actor: El Usuario operativo corrige los errores o excluye las filas problemáticas.
-6. Sistema: El sistema indica el número exacto de registros que se van a crear o actualizar y solicita confirmación.
-7. Actor: El Usuario operativo confirma la operación.
-8. Sistema: El sistema crea los clientes nuevos y actualiza únicamente aquellos que el usuario marcó explícitamente como actualización de un cliente existente.
-9. Sistema: El sistema muestra un resumen con registros creados, actualizados y rechazados, con sus motivos, y registra la operación.
+1. **Usuario operativo:** Selecciona "Importar CSV" y sube el archivo.
+2. **Sistema:** Valida la estructura (columnas y codificación) y analiza cada fila.
+3. **Sistema:** Comprueba posibles duplicados por identificador fiscal y marca las coincidencias para revisión del usuario.
+4. **Sistema:** Muestra una previsualización con filas válidas, filas con error (y su motivo) y posibles duplicados.
+5. **Usuario operativo:** Corrige los errores o excluye las filas problemáticas.
+6. **Sistema:** Indica el número exacto de registros que se van a crear o actualizar y solicita confirmación.
+7. **Usuario operativo:** Confirma la operación.
+8. **Sistema:** Crea los clientes nuevos y actualiza únicamente aquellos que el usuario marcó explícitamente como actualización de un cliente existente.
+9. **Sistema:** Muestra un resumen con registros creados, actualizados y rechazados, con sus motivos, y registra la operación.
 
 ### 4. Flujos alternativos
 
-#### FA-1. Importar facturas históricas
+#### FA-1 — Importar facturas históricas
 
 **Se produce en:** paso 1 del flujo principal.  
 **Condición:** El usuario indica que el archivo CSV incluye facturas históricas.
@@ -157,7 +157,7 @@
 
 **Resultado:** Facturas históricas importadas y marcadas como migradas.
 
-#### FA-2. Cancelar antes de confirmar
+#### FA-2 — Cancelar antes de confirmar
 
 **Se produce en:** cualquier momento anterior al paso 7 del flujo principal.  
 **Condición:** El usuario decide cancelar el proceso de importación.
@@ -167,7 +167,7 @@
 
 **Resultado:** Importación cancelada sin alterar los datos existentes.
 
-#### FA-3. Filas sin identificador fiscal
+#### FA-3 — Filas sin identificador fiscal
 
 **Se produce en:** paso 3 del flujo principal.  
 **Condición:** Una o varias filas no incluyen identificador fiscal.
@@ -180,7 +180,7 @@
 
 ### 5. Flujos de excepción
 
-#### FE-1. Archivo inválido
+#### FE-1 — Archivo inválido
 
 **Se produce en:** paso 2 del flujo principal.  
 **Condición:** El archivo no es un CSV válido o faltan columnas obligatorias.
@@ -191,7 +191,7 @@
 
 **Resultado:** Carga rechazada hasta que se corrija la estructura del archivo.
 
-#### FE-2. Todas las filas rechazadas
+#### FE-2 — Todas las filas rechazadas
 
 **Se produce en:** paso 4 del flujo principal.  
 **Condición:** Ninguna fila del archivo resulta válida tras la comprobación.
@@ -201,7 +201,7 @@
 
 **Resultado:** Proceso de importación bloqueado hasta corregir los datos.
 
-#### FE-3. Fallo durante la importación
+#### FE-3 — Fallo durante la importación
 
 **Se produce en:** paso 8 del flujo principal.  
 **Condición:** Se produce un error técnico durante la persistencia de datos.
@@ -212,7 +212,7 @@
 
 **Resultado:** Transacción revertida completamente sin cambios en la base de datos.
 
-### Postcondiciones
+### 6. Postcondiciones
 
 - POST-1. Los clientes válidos quedan creados, y los marcados explícitamente como actualización quedan actualizados.
 - POST-2. La operación queda registrada en el registro de auditoría con su resumen y el usuario que la realizó.
@@ -220,13 +220,13 @@
 
 ---
 
-## CU-04 - Gestionar tareas del cliente
+## CU-04 — Gestionar tareas del cliente
 
 ### 1. Identificación
 
-| Campo | Contenido |
+| Campo | Descripción |
 |---|---|
-| Identificador | CU-03 |
+| Identificador | CU-04 |
 | Nombre | Gestionar tareas del cliente |
 | Objetivo | Registrar y seguir tareas pendientes asociadas a un cliente, de modo que no se pierdan cuando cambie su responsable. |
 | Actores participantes | Usuario operativo |
@@ -238,17 +238,17 @@
 
 ### 3. Flujo principal
 
-1. Actor: El Usuario operativo abre la ficha de un cliente asignado y accede a la sección de tareas.
-2. Sistema: El sistema muestra las tareas pendientes y completadas del cliente.
-3. Actor: El Usuario operativo selecciona "Añadir tarea".
-4. Actor: El Usuario operativo introduce la descripción de la tarea y, opcionalmente, una fecha prevista.
-5. Sistema: El sistema valida los datos.
-6. Sistema: El sistema guarda la tarea asociada al cliente (no al usuario) y la registra en la línea temporal del cliente.
-7. Sistema: El sistema muestra la tarea en la ficha y en la pantalla de trabajo diario del responsable interno del cliente.
+1. **Usuario operativo:** Abre la ficha de un cliente asignado y accede a la sección de tareas.
+2. **Sistema:** Muestra las tareas pendientes y completadas del cliente.
+3. **Usuario operativo:** Selecciona "Añadir tarea".
+4. **Usuario operativo:** Introduce la descripción de la tarea y, opcionalmente, una fecha prevista.
+5. **Sistema:** Valida los datos.
+6. **Sistema:** Guarda la tarea asociada al cliente (no al usuario) y la registra en la línea temporal del cliente.
+7. **Sistema:** Muestra la tarea en la ficha y en la pantalla de trabajo diario del responsable interno del cliente.
 
 ### 4. Flujos alternativos
 
-#### FA-1. Editar una tarea
+#### FA-1 — Editar una tarea
 
 **Se produce en:** paso 2 del flujo principal.  
 **Condición:** El usuario selecciona una tarea pendiente y elige editarla.
@@ -258,7 +258,7 @@
 
 **Resultado:** Tarea del cliente modificada y cambios registrados.
 
-#### FA-2. Completar una tarea
+#### FA-2 — Completar una tarea
 
 **Se produce en:** paso 2 del flujo principal.  
 **Condición:** El usuario marca una tarea como completada.
@@ -268,7 +268,7 @@
 
 **Resultado:** Tarea guardada como completada y retirada de la pantalla de trabajo diario.
 
-#### FA-3. Cambio de responsable del cliente
+#### FA-3 — Cambio de responsable del cliente
 
 **Se produce en:** cualquier momento de la gestión del cliente.  
 **Condición:** Un Administrador reasigna el cliente a un nuevo responsable interno.
@@ -280,7 +280,7 @@
 
 ### 5. Flujos de excepción
 
-#### FE-1. Datos inválidos
+#### FE-1 — Datos inválidos
 
 **Se produce en:** paso 5 del flujo principal.  
 **Condición:** La descripción está vacía o la fecha prevista no es válida.
@@ -291,7 +291,7 @@
 
 **Resultado:** El usuario corrige los datos antes de completar la tarea.
 
-#### FE-2. Cliente no asignado
+#### FE-2 — Cliente no asignado
 
 **Se produce en:** paso 1 del flujo principal.  
 **Condición:** El usuario intenta acceder a las tareas de un cliente que no tiene asignado.
@@ -301,7 +301,7 @@
 
 **Resultado:** Acceso denegado a las tareas del cliente.
 
-#### FE-3. Tarea modificada por otro usuario
+#### FE-3 — Tarea modificada por otro usuario
 
 **Se produce en:** FA-1 o FA-2.  
 **Condición:** Otro usuario ha modificado o completado la misma tarea de forma concurrente.
@@ -311,7 +311,7 @@
 
 **Resultado:** Se informa del conflicto y se previene la sobrescritura no deseada.
 
-### Postcondiciones
+### 6. Postcondiciones
 
 - POST-1. La tarea queda asociada al cliente con su estado (pendiente o completada).
 - POST-2. La línea temporal del cliente refleja la creación, edición o cierre de la tarea.
@@ -319,13 +319,13 @@
 
 # Bloque B. Suscripciones, tarifas y descuentos
 
-## CU-05 - Gestionar baja y pausa de suscripción
+## CU-05 — Gestionar baja y pausa de suscripción
 
 ### 1. Identificación
 
-| Campo | Contenido |
+| Campo | Descripción |
 |---|---|
-| Identificador | CU-01 |
+| Identificador | CU-05 |
 | Nombre | Gestionar baja y pausa de suscripción |
 | Objetivo | Permitir al usuario operativo gestionar la baja o pausa de una suscripción del cliente para dejarla en el estado correcto y evitar cobros o servicios inconsistentes. |
 | Actores participantes | Usuario operativo, Planificador del sistema |
@@ -337,15 +337,15 @@
 
 ### 3. Flujo principal
 
-1. Actor: El Usuario operativo accede a la suscripción del cliente y selecciona "Gestionar baja o pausa".
-2. Sistema: El sistema muestra el estado actual de la suscripción, las condiciones vigentes y las opciones disponibles.
-3. Actor: El Usuario operativo indica si la suscripción se pausa o se da de baja, con la fecha de efecto y, si procede, la causa.
-4. Sistema: El sistema valida la operación, comprueba que no exista una inconsistencia con la facturación y guarda el cambio.
-5. Sistema: El sistema actualiza el estado de la suscripción, registra la operación en la línea temporal y notifica al responsable interno del cliente cuando corresponda.
+1. **Usuario operativo:** Accede a la suscripción del cliente y selecciona "Gestionar baja o pausa".
+2. **Sistema:** Muestra el estado actual de la suscripción, las condiciones vigentes y las opciones disponibles.
+3. **Usuario operativo:** Indica si la suscripción se pausa o se da de baja, con la fecha de efecto y, si procede, la causa.
+4. **Sistema:** Valida la operación, comprueba que no exista una inconsistencia con la facturación y guarda el cambio.
+5. **Sistema:** Actualiza el estado de la suscripción, registra la operación en la línea temporal y notifica al responsable interno del cliente cuando corresponda.
 
 ### 4. Flujos alternativos
 
-#### FA-1. Pausar suscripción
+#### FA-1 — Pausar suscripción
 
 **Se produce en:** paso 3 del flujo principal.  
 **Condición:** El usuario selecciona pausar la suscripción en lugar de darla de baja.
@@ -356,20 +356,30 @@
 
 **Resultado:** Suscripción pausada y mantenida para reactivación posterior.
 
-#### FA-2. Dar de baja una suscripción
+#### FA-2 — Dar de baja una suscripción
 
 **Se produce en:** paso 3 del flujo principal.  
 **Condición:** El usuario confirma la baja definitiva.
 
 1. El usuario indica la fecha de baja efectiva y la causa del cierre.
 2. El sistema marca la suscripción como cancelada y calcula el cierre de servicios y facturación pendiente.
-3. El sistema registra el cierre y elimina cualquier tarea pendiente asociada que ya no proceda.
+3. El sistema registra el cierre, deja de generar nuevas mensualidades, mantiene activo el recobro de las facturas pendientes (CU-20) y conserva las tareas pendientes del cliente.
 
 **Resultado:** Suscripción dada de baja y cerrada correctamente.
 
+#### FA-3 — Llega la fecha prevista de reactivación
+
+**Se produce en:** después del paso 5 del flujo principal (suscripción en pausa).  
+**Condición:** Llega la fecha de reactivación indicada al pausar la suscripción.
+
+1. El Planificador del sistema detecta que ha llegado la fecha prevista de reactivación.
+2. El sistema avisa al responsable interno del cliente para que reactive la suscripción o prorrogue la pausa.
+
+**Resultado:** El responsable es avisado; la suscripción sigue en pausa hasta que se reactive o se prorrogue. 
+
 ### 5. Flujos de excepción
 
-#### FE-1. Fecha de baja o pausa inválida
+#### FE-1 — Fecha de baja o pausa inválida
 
 **Se produce en:** paso 4 del flujo principal.  
 **Condición:** La fecha indicada no es válida o cae en un periodo no permitido.
@@ -379,7 +389,7 @@
 
 **Resultado:** El usuario corrige la fecha antes de guardar la operación.
 
-#### FE-2. Suscripción no asignada
+#### FE-2 — Suscripción no asignada
 
 **Se produce en:** paso 1 del flujo principal.  
 **Condición:** El usuario intenta gestionar una suscripción que no tiene asignada.
@@ -389,7 +399,7 @@
 
 **Resultado:** Acceso denegado a la gestión de la suscripción.
 
-### Postcondiciones
+### 6. Postcondiciones
 
 - POST-1. La suscripción queda en el estado correcto (activa, en pausa o cancelada).
 - POST-2. La línea temporal del cliente refleja la operación realizada.
@@ -398,13 +408,13 @@
 
 ---
 
-## CU-06 - Revisar y aprobar rango de tarifa anual
+## CU-06 — Revisar y aprobar rango de tarifa anual
 
 ### 1. Identificación
 
-| Campo | Contenido |
+| Campo | Descripción |
 |---|---|
-| Identificador | CU-02 |
+| Identificador | CU-06 |
 | Nombre | Revisar y aprobar rango de tarifa anual |
 | Objetivo | Permitir al Administrador revisar y aprobar el rango de tarifa anual asociado a un cliente o servicio, evitando cambios no controlados en la facturación. |
 | Actores participantes | Administrador |
@@ -416,15 +426,15 @@
 
 ### 3. Flujo principal
 
-1. Actor: El Administrador accede a la revisión de tarifas anuales pendientes.
-2. Sistema: El sistema muestra el rango propuesto, su historial y el contexto del cliente o servicio.
-3. Actor: El Administrador revisa la información y decide aprobarla.
-4. Sistema: El sistema valida la decisión, guarda la aprobación y registra la operación.
-5. Sistema: El sistema aplica el rango aprobado a la facturación y deja constancia del cambio en la ficha del cliente.
+1. **Administrador:** Accede a la revisión de tarifas anuales pendientes.
+2. **Sistema:** Muestra el rango propuesto, su historial y el contexto del cliente o servicio.
+3. **Administrador:** Revisa la información y decide aprobarla.
+4. **Sistema:** Valida la decisión, guarda la aprobación y registra la operación.
+5. **Sistema:** Aplica el rango aprobado a la facturación y deja constancia del cambio en la ficha del cliente.
 
 ### 4. Flujos alternativos
 
-#### FA-1. Rechazar rango de tarifa anual
+#### FA-1 — Rechazar rango de tarifa anual
 
 **Se produce en:** paso 3 del flujo principal.  
 **Condición:** El Administrador decide rechazar el rango propuesto.
@@ -435,7 +445,7 @@
 
 **Resultado:** Rango no aprobado y no aplicado a la facturación vigente.
 
-#### FA-2. Revisión con valor límite
+#### FA-2 — Revisión con valor límite
 
 **Se produce en:** paso 2 del flujo principal.  
 **Condición:** El rango propuesto está próximo a un límite configurable.
@@ -447,7 +457,7 @@
 
 ### 5. Flujos de excepción
 
-#### FE-1. Rango sin información suficiente
+#### FE-1 — Rango sin información suficiente
 
 **Se produce en:** paso 2 del flujo principal.  
 **Condición:** La propuesta de tarifa anual no incluye datos necesarios para su aprobación.
@@ -457,7 +467,7 @@
 
 **Resultado:** El Administrador no puede aprobar un rango incompleto.
 
-#### FE-2. Cambio concurrente
+#### FE-2 — Cambio concurrente
 
 **Se produce en:** paso 4 del flujo principal.  
 **Condición:** Otro usuario ha actualizado el rango mientras se estaba revisando.
@@ -467,7 +477,7 @@
 
 **Resultado:** Se conserva la integridad de la información y se informa del conflicto.
 
-### Postcondiciones
+### 6. Postcondiciones
 
 - POST-1. El rango de tarifa anual queda aprobado o rechazado.
 - POST-2. La facturación utiliza el rango vigente correspondiente.
@@ -475,13 +485,13 @@
 
 ---
 
-## CU-07 - Solicitar descuento
+## CU-07 — Solicitar descuento
 
 ### 1. Identificación
 
-| Campo | Contenido |
+| Campo | Descripción |
 |---|---|
-| Identificador | CU-03 |
+| Identificador | CU-07 |
 | Nombre | Solicitar descuento |
 | Objetivo | Permitir al usuario operativo solicitar un descuento para un cliente o suscripción, dejando la petición registrada para revisión y aprobación. |
 | Actores participantes | Usuario operativo |
@@ -493,26 +503,26 @@
 
 ### 3. Flujo principal
 
-1. Actor: El Usuario operativo accede al cliente o la suscripción y selecciona "Solicitar descuento".
-2. Sistema: El sistema muestra el formulario de solicitud con los datos relevantes del cliente, el importe y la justificación.
-3. Actor: El Usuario operativo introduce el tipo de descuento, el porcentaje o importe, el motivo y la fecha de vigencia.
-4. Sistema: El sistema valida la información y registra la solicitud en estado "pendiente de aprobación".
-5. Sistema: El sistema muestra la solicitud en la lista de pendientes y la asocia al responsable de aprobación.
+1. **Usuario operativo:** Accede al cliente o la suscripción y selecciona "Solicitar descuento".
+2. **Sistema:** Muestra el formulario de solicitud con los datos relevantes del cliente, el importe y la justificación.
+3. **Usuario operativo:** Introduce el tipo de descuento, el porcentaje o importe, el motivo y la fecha de vigencia.
+4. **Sistema:** Valida la información y registra la solicitud en estado "pendiente de aprobación".
+5. **Sistema:** Muestra la solicitud en la lista de pendientes y la asocia al responsable de aprobación.
 
 ### 4. Flujos alternativos
 
-#### FA-1. Descuento con revisión especial
+#### FA-1 — Descuento con revisión especial
 
 **Se produce en:** paso 3 del flujo principal.  
 **Condición:** La solicitud supera el umbral configurable o requiere validación adicional.
 
 1. El usuario completa la solicitud con el descuento relevante.
 2. El sistema marca la solicitud como "requiere revisión especial".
-3. La solicitud se reenvía al responsable con nivel de aprobación superior.
+3. La solicitud queda pendiente de aprobación por el Administrador, que podrá escalarla al Superadministrador (CU-08, FA-3 y CU-09).
 
 **Resultado:** La petición queda en cola de revisión reforzada.
 
-#### FA-2. Solicitud anulada antes de confirmar
+#### FA-2 — Solicitud anulada antes de confirmar
 
 **Se produce en:** cualquier momento antes del paso 4 del flujo principal.  
 **Condición:** El usuario decide cancelar la solicitud.
@@ -524,7 +534,7 @@
 
 ### 5. Flujos de excepción
 
-#### FE-1. Datos incompletos
+#### FE-1 — Datos incompletos
 
 **Se produce en:** paso 4 del flujo principal.  
 **Condición:** La solicitud carece de información obligatoria o contiene un valor no válido.
@@ -534,7 +544,7 @@
 
 **Resultado:** La solicitud no se registra hasta completar la información.
 
-#### FE-2. Cliente no asignado
+#### FE-2 — Cliente no asignado
 
 **Se produce en:** paso 1 del flujo principal.  
 **Condición:** El usuario intenta solicitar un descuento para un cliente sin permisos sobre él.
@@ -544,7 +554,7 @@
 
 **Resultado:** Solicitud no autorizada.
 
-### Postcondiciones
+### 6. Postcondiciones
 
 - POST-1. La solicitud queda registrada con su estado inicial pendiente de aprobación.
 - POST-2. La línea temporal del cliente refleja la petición de descuento.
@@ -552,13 +562,13 @@
 
 ---
 
-## CU-08 - Aprobar descuento
+## CU-08 — Aprobar descuento
 
 ### 1. Identificación
 
-| Campo | Contenido |
+| Campo | Descripción |
 |---|---|
-| Identificador | CU-04 |
+| Identificador | CU-08 |
 | Nombre | Aprobar descuento |
 | Objetivo | Permitir al Administrador aprobar o rechazar una solicitud de descuento para que el beneficio se aplique o no en la facturación del cliente. |
 | Actores participantes | Administrador |
@@ -570,15 +580,15 @@
 
 ### 3. Flujo principal
 
-1. Actor: El Administrador accede a la bandeja de solicitudes de descuento pendientes.
-2. Sistema: El sistema muestra el detalle de la solicitud, el cliente, el importe y la justificación.
-3. Actor: El Administrador revisa la solicitud y decide aprobarla.
-4. Sistema: El sistema valida la decisión, aplica el descuento aprobado y registra la operación.
-5. Sistema: El sistema notifica al usuario operativo y actualiza la factura o la configuración de precios asociada.
+1. **Administrador:** Accede a la bandeja de solicitudes de descuento pendientes.
+2. **Sistema:** Muestra el detalle de la solicitud, el cliente, el importe y la justificación.
+3. **Administrador:** Revisa la solicitud y decide aprobarla.
+4. **Sistema:** Valida la decisión, aplica el descuento aprobado y registra la operación.
+5. **Sistema:** Notifica al usuario operativo y actualiza la factura o la configuración de precios asociada.
 
 ### 4. Flujos alternativos
 
-#### FA-1. Rechazar descuento
+#### FA-1 — Rechazar descuento
 
 **Se produce en:** paso 3 del flujo principal.  
 **Condición:** El Administrador decide rechazar la solicitud.
@@ -589,7 +599,7 @@
 
 **Resultado:** Descuento no concedido y solicitud rechazada.
 
-#### FA-2. Aplicación condicionada
+#### FA-2 — Aplicación condicionada
 
 **Se produce en:** paso 4 del flujo principal.  
 **Condición:** La aprobación requiere que se cumpla una condición adicional de negocio.
@@ -600,9 +610,20 @@
 
 **Resultado:** Descuento aprobado con condiciones de aplicación.
 
+#### FA-3 — Descuento por encima del umbral: escalado al Superadministrador
+
+**Se produce en:** paso 3 del flujo principal.  
+**Condición:** El descuento supera el umbral configurable.
+
+1. El sistema indica al Administrador que el descuento supera el umbral y que la decisión final corresponde al Superadministrador.
+2. El Administrador escala la solicitud y el sistema la marca como «escalada», pendiente de decisión.
+3. El caso de uso continúa en CU-09, «Escalar aprobación al Superadministrador».
+
+**Resultado:** Solicitud escalada y pendiente de la decisión final del Superadministrador.
+
 ### 5. Flujos de excepción
 
-#### FE-1. Solicitud ya resuelta
+#### FE-1 — Solicitud ya resuelta
 
 **Se produce en:** paso 2 del flujo principal.  
 **Condición:** La solicitud de descuento fue modificada o resuelta por otra persona antes de la revisión.
@@ -612,17 +633,17 @@
 
 **Resultado:** Se evita la doble resolución de la misma solicitud.
 
-#### FE-2. Descuento fuera de rango
+#### FE-2 — Descuento fuera de rango
 
 **Se produce en:** paso 4 del flujo principal.  
-**Condición:** El descuento solicitado supera el rango permitido por la política de la empresa.
+**Condición:** El descuento solicitado supera el máximo que puede conceder un Administrador.
 
 1. El sistema valida el importe o porcentaje solicitado.
-2. El sistema rechaza la aprobación y propone su escalado o revisión por un nivel superior.
+2. El sistema impide que el Administrador lo apruebe y lo remite al escalado descrito en FA-3.
 
-**Resultado:** Descuento no aprobado por limitación de política.
+**Resultado:** Descuento no aprobado por el Administrador; continúa por FA-3.
 
-### Postcondiciones
+### 6. Postcondiciones
 
 - POST-1. La solicitud queda aprobada o rechazada con su justificación.
 - POST-2. La facturación o la tarifa aplicable se actualiza según el resultado.
@@ -630,13 +651,13 @@
 
 ---
 
-## CU-09 - Escalar aprobación al Superadministrador
+## CU-09 — Escalar aprobación al Superadministrador
 
 ### 1. Identificación
 
-| Campo | Contenido |
+| Campo | Descripción |
 |---|---|
-| Identificador | CU-05 |
+| Identificador | CU-09 |
 | Nombre | Escalar aprobación al Superadministrador |
 | Objetivo | Permitir que una solicitud de descuento que excede el umbral configurado pase a revisión del Superadministrador para su aprobación final. |
 | Actores participantes | Superadministrador |
@@ -644,19 +665,19 @@
 ### 2. Precondiciones
 
 - PRE-1. El usuario está autenticado con rol de Superadministrador.
-- PRE-2. Existe una solicitud de descuento que supera el umbral configurado.
+- PRE-2. Existe una solicitud de descuento que supera el umbral configurado y ha sido escalada desde CU-08 (FA-3).
 
 ### 3. Flujo principal
 
-1. Actor: El Superadministrador accede a la solicitud escalada.
-2. Sistema: El sistema muestra la información completa de la solicitud, el importe solicitado y el motivo del escalado.
-3. Actor: El Superadministrador revisa la solicitud y decide aprobarla o rechazarla.
-4. Sistema: El sistema registra la decisión final y la aplica a la facturación o la deja sin efecto.
-5. Sistema: El sistema notifica a la persona que originó la solicitud y deja constancia del resultado en la auditoría.
+1. **Superadministrador:** Accede a la solicitud escalada.
+2. **Sistema:** Muestra la información completa de la solicitud, el importe solicitado y el motivo del escalado.
+3. **Superadministrador:** Revisa la solicitud y decide aprobarla o rechazarla.
+4. **Sistema:** Registra la decisión final y la aplica a la facturación o la deja sin efecto.
+5. **Sistema:** Notifica a la persona que originó la solicitud y deja constancia del resultado en la auditoría.
 
 ### 4. Flujos alternativos
 
-#### FA-1. Descuento escalado para revisión final
+#### FA-1 — Descuento escalado para revisión final
 
 **Se produce en:** paso 2 del flujo principal.  
 **Condición:** La solicitud requiere revisión final por elevación de nivel.
@@ -666,7 +687,7 @@
 
 **Resultado:** La solicitud queda resuelta con la autoridad máxima del proceso.
 
-#### FA-2. Escalado rechazado
+#### FA-2 — Escalado rechazado
 
 **Se produce en:** paso 3 del flujo principal.  
 **Condición:** El Superadministrador decide no aprobar el descuento.
@@ -678,7 +699,7 @@
 
 ### 5. Flujos de excepción
 
-#### FE-1. Solicitud ya resuelta
+#### FE-1 — Solicitud ya resuelta
 
 **Se produce en:** paso 1 del flujo principal.  
 **Condición:** La solicitud escalada ya ha sido resuelta por otra persona.
@@ -688,7 +709,7 @@
 
 **Resultado:** Se evita la doble aprobación o rechazo del mismo descuento.
 
-#### FE-2. Escalado sin autorización
+#### FE-2 — Escalado sin autorización
 
 **Se produce en:** paso 1 del flujo principal.  
 **Condición:** Un usuario sin permisos de Superadministrador intenta acceder a la solicitud escalada.
@@ -698,7 +719,7 @@
 
 **Resultado:** El caso de uso queda restringido al nivel de aprobación requerido.
 
-### Postcondiciones
+### 6. Postcondiciones
 
 - POST-1. La solicitud queda resuelta por el nivel de aprobación superior.
 - POST-2. El descuento queda aplicado o rechazado según la decisión final.
@@ -737,7 +758,7 @@
 5. **Sistema:** Muestra el borrador para revisión sin asignar todavía una numeración definitiva de factura emitida.
 6. **Usuario operativo:** Confirma que desea guardar el borrador.
 7. **Sistema:** Registra el borrador con estado «borrador» y permite continuar su edición mientras no se haya emitido.
-8. **Sistema:** Muestra el resumen guardado; el borrador queda disponible como precondición de la emisión manual (CU-12), sin relación «include» ni «extend» entre ambos casos.
+8. **Sistema:** Muestra el resumen guardado; el borrador queda disponible como precondición de la emisión manual (CU-12).
 
 ---
 
@@ -760,7 +781,7 @@
 **Condición:** Un Administrador autorizado decide modificar manualmente una cuantía.
 
 1. Un Administrador con permiso modifica el precio, importe o descuento permitido antes de emitir.
-2. El sistema recalcula las líneas y el total e identifica las modificaciones que puedan requerir aprobación posterior según FR-13.
+2. El sistema recalcula las líneas y el total e identifica las modificaciones que puedan requerir aprobación posterior.
 3. La cuantía queda guardada en el borrador, pero todavía no se considera una factura emitida.
 
 **Continuación:** El caso de uso continúa en el paso 4 del flujo principal para recalcular el borrador y sigue con su confirmación.
@@ -1178,7 +1199,7 @@
 | **Identificador** | CU-14 |
 | **Nombre** | Rectificar, anular o declarar incobrable una factura |
 | **Objetivo** | Gestionar las correcciones y decisiones excepcionales sobre una factura emitida sin borrar su histórico ni equiparar anulaciones o deudas incobrables a cobros. |
-| **Actores participantes** | Principal: Administrador. Otros participantes: ninguno en el diagrama. La aprobación adicional que exige la regla económica es un flujo interno (FA-3), no un actor ni un caso de uso aparte; quién aprueba queda pendiente (Q-12). |
+| **Actores participantes** | Principal: Administrador. Otros participantes: ninguno en el diagrama. La aprobación adicional que exige la regla económica es un flujo interno, no un actor ni un caso de uso aparte; la concede otro Administrador distinto de quien solicita la operación, o el Superadministrador. |
 
 ---
 
@@ -1784,7 +1805,7 @@
 ### 3. Flujo principal
 
 1. **Planificador del sistema:** Inicia la ejecución diaria.
-2. **Sistema:** Selecciona las facturas emitidas pendientes de cobro, excluyendo las pagadas, anuladas o con recordatorios suspendidos.
+2. **Sistema:** Selecciona las facturas emitidas pendientes de cobro, excluyendo las pagadas, anuladas, declaradas incobrables o canceladas administrativamente, o con recordatorios suspendidos.
 3. **Sistema:** Determina, para cada factura, el recordatorio que corresponde según su vencimiento, dando prioridad al vencimiento pactado sobre el general.
 4. **Sistema:** Comprueba que no se ha detectado un pago desde la última ejecución.
 5. **Sistema:** Solicita el envío de la comunicación correspondiente (recordatorio previo, de vencimiento o aviso de impago) mediante CU-18.
@@ -1910,7 +1931,7 @@
 **Se produce en:** después del paso 5 del flujo principal (llegada de la fecha de revisión).  
 **Condición:** Llega la fecha de revisión de la suspensión.
 
-1. **Sistema:** Avisa al responsable del cliente; la suspensión se mantiene hasta que se reanude o se prorrogue (A-13).
+1. **Sistema:** Avisa al responsable del cliente; la suspensión se mantiene hasta que se reanude o se prorrogue.
 
 **Continuación:** el caso de uso finaliza.
 
@@ -2316,7 +2337,7 @@
 
 1. El Usuario operativo abre una incidencia o elemento autorizado y escribe un comentario interno.
 2. Incluye una mención a otro usuario cuando corresponda.
-3. El sistema conserva el comentario sin enviarlo al cliente y genera la notificación interna prevista por FR-36.
+3. El sistema conserva el comentario sin enviarlo al cliente y genera la notificación interna prevista para las menciones.
 
 **Continuación:** El caso de uso continúa en el paso 8 del flujo principal tras guardar el comentario y generar la notificación de la mención.
 
@@ -2861,7 +2882,7 @@
 **Condición:** El usuario selecciona «He olvidado mi contraseña» e introduce su correo.
 
 1. **Usuario operativo:** Selecciona «He olvidado mi contraseña» e introduce su correo.
-2. **Sistema:** Envía un enlace temporal de recuperación, que caduca a la hora de enviarse (A-04), y responde de la misma forma exista o no la cuenta.
+2. **Sistema:** Envía un enlace temporal de recuperación, que caduca a la hora de enviarse, y responde de la misma forma exista o no la cuenta.
 3. **Usuario operativo:** Abre el enlace e introduce una nueva contraseña.
 4. **Sistema:** Guarda la contraseña, invalida el enlace y las sesiones anteriores, y registra el cambio.
 
@@ -2955,7 +2976,7 @@
 3. **Administrador:** Los introduce.
 4. **Sistema:** Valida que el dominio está autorizado, que el usuario no existe y que el rol puede concederse.
 5. **Sistema:** Envía la invitación por correo.
-6. **Usuario invitado:** Activa su cuenta y define su contraseña.
+6. **Sistema:** Activa la cuenta cuando la persona invitada abre la invitación y define su contraseña.
 7. **Administrador:** Asigna clientes al usuario.
 8. **Sistema:** Guarda la asignación y la registra.
 
@@ -3021,7 +3042,7 @@
 **Condición:** El Administrador intenta conceder o modificar el rol Superadministrador.
 
 1. **Administrador:** Intenta conceder o modificar el rol Superadministrador.
-2. **Sistema:** Lo impide (A-14).
+2. **Sistema:** Lo impide: un Administrador no puede conceder ni modificar el rol Superadministrador.
 
 **Resultado:** El caso de uso termina sin realizar la operación.
 
@@ -3092,7 +3113,7 @@
 **Se produce en:** paso 3 del flujo principal.  
 **Condición:** La acción tiene alto impacto económico.
 
-1. **Sistema:** Exige controles adicionales: una confirmación reforzada y la aprobación de otra persona distinta de quien la solicita (A-17).
+1. **Sistema:** Exige controles adicionales: una confirmación reforzada y la aprobación de otra persona distinta de quien la solicita. 
 
 **Continuación:** el caso de uso continúa en el paso 4 del flujo principal.
 
@@ -3123,7 +3144,7 @@
 **Se produce en:** paso 5 del flujo principal.  
 **Condición:** La ejecución falla.
 
-1. **Sistema:** Revierte la acción completa, no deja datos a medias y muestra el error (A-18).
+1. **Sistema:** Revierte la acción completa, no deja datos a medias y muestra el error.
 
 **Resultado:** Ningún elemento queda modificado; el Administrador puede reintentar desde el paso 1 del flujo principal.
 
@@ -3425,7 +3446,7 @@
 **Condición:** El Superadministrador activa o desactiva una función inteligente.
 
 1. **Superadministrador:** Activa o desactiva una función inteligente.
-2. **Sistema:** Lo guarda y mantiene el funcionamiento normal sin ella (BR-23). Las sugerencias con efecto económico siempre requieren confirmación humana (FR-39).
+2. **Sistema:** Lo guarda y mantiene el funcionamiento normal sin ella. Las sugerencias con efecto económico siempre requieren confirmación humana.
 
 **Continuación:** el caso de uso finaliza.
 
@@ -3511,7 +3532,7 @@
 **Condición:** El Sistema externo envía una solicitud (por ejemplo, de baja de un cliente).
 
 1. **Sistema externo:** Envía una solicitud (por ejemplo, de baja de un cliente).
-2. **Sistema:** La registra como pendiente de revisión humana y no modifica directamente los datos ni las recurrencias (BR-22).
+2. **Sistema:** La registra como pendiente de revisión humana y no modifica directamente los datos ni las recurrencias.
 
 **Continuación:** el caso de uso finaliza.
 
