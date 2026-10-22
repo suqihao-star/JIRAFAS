@@ -26,12 +26,12 @@ o tienen algún interés relevante en su funcionamiento.
 | Sistema externo | Consume la API documentada |
 ## 2. Requisitos de negocio
 
-Los requisitos de negocio describen los objetivos, necesidades o resultados que la organización pretende conseguir mediante el desarrollo del sistema. No describen todavía funcionalidades concretas del softwar>
+Los requisitos de negocio describen los objetivos, necesidades o resultados que la organización pretende conseguir mediante el desarrollo del sistema. No describen todavía funcionalidades concretas del software
 
 | ID | Requisito | Fuente |
 | :--- | :--- | :--- |
 | BR-01 | Reducir la carga administrativa que se ejercía en la facturación manual y el seguimiento de cobros. | Cliente / Especificación |
-| BR-02 | El modelo comercial se basa en facturación mensual sin permanencia. Se debe dar soporte a una facturación de precios variables y suscripciones recurrentes, evitando requerir cálculos manuales. | Clie>
+| BR-02 | El modelo comercial se basa en facturación mensual sin permanencia. Se debe dar soporte a una facturación de precios variables y suscripciones recurrentes, evitando requerir cálculos manuales. | Cliente
 | BR-03 | Gestionar los impagos de forma automática. | Cliente / Especificación |
 | BR-04 | Proporcionar a los administradores reportes de la salud financiera del negocio. | Cliente / Especificación |
 | BR-05 | 	Facilitar el cumplimiento de las obligaciones legales vigentes (ej. protección de datos), cuyas reglas concretas marca la gestoría. | Cliente / Especificación |
@@ -54,19 +54,19 @@ Los requisitos de negocio describen los objetivos, necesidades o resultados que 
 | BR-22 | Ningún sistema externo podrá saltarse las reglas de negocio de la aplicación ni modificar o eliminar recurrencias directamente. | Cliente / Especificación |
 | BR-23 | El sistema debe operar sin dependencia crítica del componente de Inteligencia Artificial (Brain). | Cliente / Especificación |
 | BR-24 | Cada factura conserva su importe en la moneda original en que se emitió. La conversión a la moneda base solo se usa para informes y no altera el total legal. | Cliente / Especificación |
-|BR- 25| Las funciones de IA son opcionales, no pueden saltarse permisos y toda sugerencia económica requiere >
+|BR- 25| Las funciones de IA son opcionales, no pueden saltarse permisos y toda sugerencia económica requiere autorización
 
 
 
 ## 3. Requisitos de usuario
 
-Los requisitos de usuario describen las necesidades, objetivos o servicios que los usuarios esperan obtener del sistema. Deben expresarse desde el punto de vista del usuario, evitando entrar todavía en detalle>
+Los requisitos de usuario describen las necesidades, objetivos o servicios que los usuarios esperan obtener del sistema. Deben expresarse desde el punto de vista del usuario, evitando entrar todavía en detalles
 | ID | Actor | Requisito | Fuente |
 | :--- | :--- | :--- | :--- |
 | UR-01 | Todos | 	El sistema contará con tres perfiles: Superadministrador (configuración profunda del sistema), Administrador (permisos amplios sobre la operación, configurables) y Usuario Operativo (trabaja sobre los clientes que tiene asignados).| Cliente / Especificación |
 | UR-02 | Usuario Operativo | Podrá descargar las facturas en PDF. | Cliente / Especificación |
 | UR-03 | Usuario Operativo | Podrá consultar la información básica de las facturas de sus clientes asignados y filtrarlas por estado, empresa y fecha. | Cliente / Especificación |
-| UR-04 | Administrador | Podrá interactuar con el dashboard financiero haciendo clic en métricas (ej. importes pendientes) para desplegar el detalle exacto que compone la cifra, y filtrar por empresa o fe>
+| UR-04 | Administrador | Podrá interactuar con el dashboard financiero haciendo clic en métricas (ej. importes pendientes) para desplegar el detalle exacto que compone la cifra, y filtrar por empresa o fecha
 | UR-05 | Administrador | Podrá proponer, generar y modificar datos o cuantías de facturas. | Cliente / Especificación |
 | UR-06 | Superadministrador / Administrador | Podrán invitar a nuevos usuarios, asignarles roles y desactivar cuentas, el administrador tiene que tener permiso. | Cliente / Especificación |
 | UR-07 | Todos | Podrán localizar rápidamente a cualquier cliente, usuario o factura mediante un buscador. | Cliente / Especificación |
