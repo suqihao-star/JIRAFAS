@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+title Bloque F. Administración, seguridad y sistema
+actor "Usuario operativo" as UO
+actor "Administrador" as ADMIN
+actor "Superadministrador" as SADMIN
+UO <|-- ADMIN
+ADMIN <|-- SADMIN
+rectangle "Sistema de facturación de Turbine" {
+  usecase "CU-30 Iniciar sesión y recuperar contraseña" as CU30
+  usecase "CU-31 Gestionar usuarios, roles y asignación de clientes" as CU31
+  usecase "CU-32 Ejecutar acción masiva" as CU32
+  usecase "CU-33 Consultar monitorización y métricas" as CU33
+  usecase "CU-34 Consultar registro de auditoría" as CU34
+  usecase "CU-35 Configurar facturación y tarifas" as CU35
+  usecase "CU-36 Configurar recordatorios y funciones inteligentes" as CU36
+  usecase "CU-37 Consultar datos y operar por API" as CU37
+}
+actor "Planificador del sistema" as PS
+actor "Sistema externo" as EXT
+UO -- CU30
+ADMIN -- CU31
+ADMIN -- CU32
+ADMIN -- CU33
+PS-- CU33
+SADMIN -- CU34
+SADMIN -- CU35
+SADMIN -- CU36
+EXT -- CU37
+legend bottom
+Herencia: el Administrador puede hacer todo lo del Usuario Operativo y el Superadministrador todo lo del Administrador. 
+Cada caso se asocia solo al rol más bajo que puede hacerlo. Los roles superiores lo heredan.
+endlegend
+@enduml

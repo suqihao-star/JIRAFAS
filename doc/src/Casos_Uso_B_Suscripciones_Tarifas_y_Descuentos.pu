@@ -1,0 +1,32 @@
+@startuml
+skinparam actorStyle awesome
+left to right direction
+title Bloque B. Suscripciones, tarifas y descuentos
+actor "Usuario operativo" as UO
+actor "Administrador" as ADMIN
+actor "Superadministrador" as SADMIN
+UO <|-- ADMIN
+ADMIN <|-- SADMIN
+rectangle "Sistema de facturación de Turbine" {
+  usecase "CU-01 Gestionar baja y pausa de suscripción" as CU01
+  usecase "CU-02 Revisar y aprobar rango de tarifa anual" as CU02
+  usecase "CU-03 Solicitar descuento" as CU03
+  usecase "CU-04 Aprobar descuento" as CU04
+  usecase "CU-05 Escalar aprobación al Superadministrador" as CU05
+}
+actor "Planificador del sistema" as PS
+UO -- CU01
+PS -- CU01
+ADMIN -- CU02
+UO -- CU03
+ADMIN -- CU04
+SADMIN -- CU05
+CU05 ..> CU04 : <<extend>>
+note on link
+El descuento supera el umbral configurable
+end note
+legend bottom
+El Administrador puede hacer todo lo del Usuario Operativo y el Superadministrador todo lo del Administrador. 
+Cada caso se asocia solo al rol más bajo que puede hacerlo. Los roles superiores lo heredan.
+endlegend
+@enduml
