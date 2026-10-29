@@ -23,7 +23,8 @@ Descripción de cómo se ha organizado el equipo durante la entrega.
  
 - Fecha de inicio: 29/10/26
 - Fecha de finalización: 
-- Objetivo del Sprint: 
+- Objetivo del Sprint:
+   - Revisar la entrega 1 y empezar con el diagrama entidad relacion
 - Tareas planificadas: 
 - Tareas completadas: 
 - Reuniones realizadas: 
