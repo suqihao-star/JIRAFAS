@@ -24,8 +24,9 @@ Descripción de cómo se ha organizado el equipo durante la entrega.
 - Fecha de inicio: 29/10/26
 - Fecha de finalización: 
 - Objetivo del Sprint:
-   - Revisar la entrega 1 y empezar con el diagrama entidad relacion
-- Tareas planificadas: 
+   - Revisar la entrega 1 y empezar con el diagrama Entidad - Relación.
+- Tareas planificadas:
+   - Entidad relacion: separar las entidades, atributos, claves primarias, claves foraneas, relaciones, cardinalidades. Ponerlos en común y realizar los diagramas Entidad-Relacion.
 - Tareas completadas: 
 - Reuniones realizadas: 
 - Problemas encontrados: 
