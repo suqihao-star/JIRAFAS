@@ -1,0 +1,350 @@
+@startuml
+
+enum RolUsuario {
+  SUPERADMINISTRADOR
+  ADMINISTRADOR
+  USUARIO_OPERATIVO
+}
+
+enum EstadoFactura {
+  BORRADOR
+  APROBADA
+  EMITIDA
+  ENVIADA
+  VENCIDA
+  PAGADA
+  PARCIALMENTE_CONCILIADA
+  ANULADA
+  RECTIFICADA
+}
+
+enum TipoFactura {
+  RECURRENTE
+  PUNTUAL
+}
+
+enum EstadoSuscripcion {
+  ACTIVA
+  PAUSADA
+  BAJA
+  PENDIENTE_ACTIVACION
+}
+
+enum EstadoIncidencia {
+  ABIERTA
+  EN_PROCESO
+  RESUELTA
+  CERRADA
+}
+
+enum PrioridadIncidencia {
+  BAJA
+  MEDIA
+  ALTA
+  CRITICA
+}
+
+enum EstadoAprobacion {
+  PENDIENTE
+  APROBADO
+  RECHAZADO
+}
+
+enum TipoSolicitudAprobacion {
+  DESCUENTO_EXTRAORDINARIO
+  CAMBIO_TARIFA
+  FACTURA_RETENIDA
+  ANULACION_RECTIFICATIVA
+}
+
+enum TipoExcepcionComercial {
+  PRIMER_MES_GRATUITO
+  SIN_PRORRATEO
+  INICIO_FUTURO
+}
+
+enum PasarelaPago {
+  STRIPE
+  REVOLUT
+  OTRO
+}
+
+enum CanalComunicacion {
+  EMAIL
+  WHATSAPP
+  SISTEMA
+}
+
+class Usuario {
+  - idUsuario: String
+  - nombre: String
+  - emailCorporativo: String
+  - contrasenaHash: String
+  - rol: RolUsuario
+  - activo: Boolean
+  + iniciarSesion()
+  + recuperarContrasena()
+}
+
+class Cliente {
+  - idCliente: String
+  - nombreComercial: String
+  - razonSocial: String
+  - nifCif: String
+  - domicilioFiscal: String
+  - pais: String
+  - monedaTrabajo: String
+  - fechaInicio: Date
+  - fechaBaja: Date
+  - esFavorito: Boolean
+  - estadoSuscripcion: EstadoSuscripcion
+  - facturacionAnualVerificada: Decimal
+  + registrarBaja()
+  + pausarSuscripcion()
+  + actualizarPlanTarifa()
+  + anonimizar()
+}
+
+class Contacto {
+  - idContacto: String
+  - nombre: String
+  - email: String
+  - activo: Boolean
+  - esContactoFacturacion: Boolean
+}
+
+class Suscripcion {
+  - idSuscripcion: String
+  - fechaInicio: Date
+  - fechaFinPrevista: Date
+  - importeMensual: Decimal
+  - fechaPausaInicio: Date
+  - fechaPausaReactivacion: Date
+  - motivoPausa: String
+  + calcularProrrateo(): Decimal
+}
+
+class PlanTarifa {
+  - idPlan: String
+  - nombrePlan: String
+  - importeBase: Decimal
+  - rangoFacturacionMin: Decimal
+  - rangoFacturacionMax: Decimal
+  - fechaVigor: Date
+}
+
+class Factura {
+  - idFactura: String
+  - numeroFactura: String
+  - serie: String
+  - fechaEmision: Date
+  - fechaVencimiento: Date
+  - tipo: TipoFactura
+  - estado: EstadoFactura
+  - baseImponible: Decimal
+  - totalImpuestos: Decimal
+  - totalFactura: Decimal
+  - importePendiente: Decimal
+  - retenidaParaRevision: Boolean
+  - esMigrada: Boolean
+  - documentoId: String
+  - hashDocumento: String
+  + calcularTotales()
+  + emitir()
+  + anular()
+}
+
+class FacturaRectificativa {
+  - motivoRectificacion: String
+}
+
+class LineaFactura {
+  - idLinea: String
+  - concepto: String
+  - cantidad: Integer
+  - precioUnitario: Decimal
+  - porcentajeDescuento: Decimal
+  - subtotal: Decimal
+}
+
+class Impuesto {
+  - idImpuesto: String
+  - nombre: String
+  - porcentaje: Decimal
+  - activo: Boolean
+}
+
+class Cobro {
+  - idCobro: String
+  - referenciaPago: String
+  - pasarelaPago: PasarelaPago
+  - fechaCobro: Date
+  - importe: Decimal
+  - moneda: String
+  - concepto: String
+}
+
+class Conciliacion {
+  - idConciliacion: String
+  - fechaConciliacion: Date
+  - importeConciliado: Decimal
+  - esAutomatica: Boolean
+  - motivoReversion: String
+}
+
+class SolicitudAprobacion {
+  - idSolicitud: String
+  - tipoSolicitud: TipoSolicitudAprobacion
+  - motivo: String
+  - porcentajeDescuento: Decimal
+  - importePropuesto: Decimal
+  - estado: EstadoAprobacion
+  - fechaSolicitud: Date
+  - fechaResolucion: Date
+  + aprobar()
+  + rechazar()
+}
+
+class ExcepcionComercial {
+  - idExcepcion: String
+  - tipo: TipoExcepcionComercial
+  - fechaInicio: Date
+  - observacion: String
+}
+
+class Incidencia {
+  - idIncidencia: String
+  - titulo: String
+  - descripcion: String
+  - estado: EstadoIncidencia
+  - prioridad: PrioridadIncidencia
+  - fechaCreacion: Date
+}
+
+class ComentarioInterno {
+  - idComentario: String
+  - contenido: String
+  - fecha: Date
+}
+
+class Notificacion {
+  - idNotificacion: String
+  - titulo: String
+  - mensaje: String
+  - fecha: Date
+  - leida: Boolean
+  - resuelta: Boolean
+  - canal: CanalComunicacion
+}
+
+class PlantillaComunicacion {
+  - idPlantilla: String
+  - nombre: String
+  - asunto: String
+  - cuerpoHtml: String
+  - tipoEvento: String
+  - idioma: String
+}
+
+class RegistroEnvio {
+  - idRegistro: String
+  - canal: CanalComunicacion
+  - destinatario: String
+  - fechaEnvio: Date
+  - exitoso: Boolean
+  - motivoError: String
+}
+
+class Tarea {
+  - idTarea: String
+  - titulo: String
+  - fechaVencimiento: Date
+  - completada: Boolean
+}
+
+class Etiqueta {
+  - idEtiqueta: String
+  - nombre: String
+  - color: String
+}
+
+class CentroCoste {
+  - idCentroCoste: String
+  - codigo: String
+  - nombre: String
+}
+
+class ObjetivoFacturacion {
+  - idObjetivo: String
+  - periodo: String
+  - importeObjetivo: Decimal
+  - fechaModificacion: Date
+}
+
+class ReglaAlerta {
+  - idRegla: String
+  - nombre: String
+  - diasVencimientoMax: Integer
+  - importePendienteMax: Decimal
+  - activa: Boolean
+}
+
+class RegistroAuditoria {
+  - idAuditoria: String
+  - accion: String
+  - entidad: String
+  - idEntidad: String
+  - fecha: Date
+  - detalles: String
+}
+
+class EventoLineaTemporal {
+  - idEvento: String
+  - tipoEvento: String
+  - descripcion: String
+  - fecha: Date
+}
+
+' Relaciones
+Usuario "1" -- "0..*" Cliente : gestiona
+Usuario "1" -- "0..*" SolicitudAprobacion : solicita
+Usuario "1" -- "0..*" SolicitudAprobacion : aprueba
+Usuario "1" -- "0..*" Incidencia : asignadaA
+Usuario "1" -- "0..*" ComentarioInterno : escribe
+Usuario "1" -- "0..*" Notificacion : recibe
+Usuario "1" -- "0..*" RegistroAuditoria : ejecuta
+Usuario "1" -- "0..*" ObjetivoFacturacion : modifica
+
+Cliente "1" -- "1..*" Contacto : posee
+Contacto "0..*" -- "1..*" Cliente : pertenece
+Cliente "1" -- "0..1" Suscripcion : contratada
+Cliente "1" -- "0..*" Factura : perteneceA
+Cliente "1" -- "0..*" Tarea : tiene
+Cliente "1" -- "0..*" ExcepcionComercial : aplica
+Cliente "1" -- "0..*" EventoLineaTemporal : genera
+Cliente "0..*" -- "0..*" Etiqueta : clasificadoCon
+Cliente "0..*" -- "0..1" CentroCoste : asignadoA
+
+PlanTarifa "1" -- "0..*" Suscripcion : define
+Factura "1" -- "1..*" LineaFactura : contiene
+LineaFactura "0..*" -- "1" Impuesto : aplica
+Factura <|-- FacturaRectificativa
+FacturaRectificativa "0..1" -- "1" Factura : facturaOriginal
+
+Factura "1" -- "0..*" Conciliacion : se_concilia_con
+Cobro "1" -- "0..*" Conciliacion : genera
+Conciliacion "0..1" -- "1" Usuario : revertidaPor
+
+Factura "1" -- "0..*" SolicitudAprobacion : requiere
+Cliente "1" -- "0..*" SolicitudAprobacion : requiere
+
+Factura "1" -- "0..*" RegistroEnvio : documentadoEn
+PlantillaComunicacion "1" -- "0..*" RegistroEnvio : utiliza
+
+Incidencia "1" -- "0..*" ComentarioInterno : contiene
+Incidencia "0..1" -- "0..1" Factura : asociadaA
+ComentarioInterno "0..*" -- "0..*" Usuario : menciona
+
+ReglaAlerta "1" -- "0..*" Notificacion : dispara
+
+@enduml
