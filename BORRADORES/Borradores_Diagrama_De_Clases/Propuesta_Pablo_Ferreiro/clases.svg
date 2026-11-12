@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1580px" preserveAspectRatio="none" style="width:4629px;height:1580px;" version="1.1" viewBox="0 0 4629 1580" width="4629px" zoomAndPan="magnify"><defs><filter height="300%" id="f102na6wvs8bvf" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[46b2e972ff240811129306cc525c2952]
+class RolUsuario--><rect codeLine="2" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="92.9457" id="RolUsuario" style="stroke:#A80036;stroke-width:1.5;" width="138" x="25" y="51.95"/><ellipse cx="58.9" cy="67.95" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M61.8688,74.45 L54.5563,74.45 L54.5563,61.7781 L61.8688,61.7781 L61.8688,63.6531 L56.6031,63.6531 L56.6031,66.9188 L61.5563,66.9188 L61.5563,68.7781 L56.6031,68.7781 L56.6031,72.575 L61.8688,72.575 L61.8688,74.45 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="64" x="77.1" y="72.606">RolUsuario</text><line style="stroke:#A80036;stroke-width:1.5;" x1="26" x2="162" y1="83.95" y2="83.95"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="126" x="31" y="99.7089">SUPERADMINISTRADOR</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="91" x="31" y="114.6908">ADMINISTRADOR</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="116" x="31" y="129.6727">USUARIO_OPERATIVO</text><line style="stroke:#A80036;stroke-width:1.5;" x1="26" x2="162" y1="136.8957" y2="136.8957"/><!--MD5=[f5870c28c0871f2025ec305152f04924]
+class EstadoFactura--><rect codeLine="8" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="182.837" id="EstadoFactura" style="stroke:#A80036;stroke-width:1.5;" width="163" x="198.5" y="7"/><ellipse cx="235.55" cy="23" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M238.5188,29.5 L231.2063,29.5 L231.2063,16.8281 L238.5188,16.8281 L238.5188,18.7031 L233.2531,18.7031 L233.2531,21.9688 L238.2063,21.9688 L238.2063,23.8281 L233.2531,23.8281 L233.2531,27.625 L238.5188,27.625 L238.5188,29.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="254.45" y="27.656">EstadoFactura</text><line style="stroke:#A80036;stroke-width:1.5;" x1="199.5" x2="360.5" y1="39" y2="39"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="61" x="204.5" y="54.7589">BORRADOR</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="59" x="204.5" y="69.7408">APROBADA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="44" x="204.5" y="84.7227">EMITIDA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="46" x="204.5" y="99.7046">ENVIADA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="46" x="204.5" y="114.6865">VENCIDA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="45" x="204.5" y="129.6684">PAGADA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="151" x="204.5" y="144.6502">PARCIALMENTE_CONCILIADA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="51" x="204.5" y="159.6321">ANULADA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="68" x="204.5" y="174.614">RECTIFICADA</text><line style="stroke:#A80036;stroke-width:1.5;" x1="199.5" x2="360.5" y1="181.837" y2="181.837"/><!--MD5=[7a1970f1cca955e94675f5513abc39d7]
+class TipoFactura--><rect codeLine="20" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="77.9638" id="TipoFactura" style="stroke:#A80036;stroke-width:1.5;" width="101" x="396.5" y="59.44"/><ellipse cx="411.5" cy="75.44" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M414.4688,81.94 L407.1563,81.94 L407.1563,69.2681 L414.4688,69.2681 L414.4688,71.1431 L409.2031,71.1431 L409.2031,74.4088 L414.1563,74.4088 L414.1563,76.2681 L409.2031,76.2681 L409.2031,80.065 L414.4688,80.065 L414.4688,81.94 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="69" x="425.5" y="80.096">TipoFactura</text><line style="stroke:#A80036;stroke-width:1.5;" x1="397.5" x2="496.5" y1="91.44" y2="91.44"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="69" x="402.5" y="107.1989">RECURRENTE</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="51" x="402.5" y="122.1808">PUNTUAL</text><line style="stroke:#A80036;stroke-width:1.5;" x1="397.5" x2="496.5" y1="129.4038" y2="129.4038"/><!--MD5=[cd7d36d7ef46057518d3a003c1023ce1]
+class EstadoSuscripcion--><rect codeLine="25" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="107.9276" id="EstadoSuscripcion" style="stroke:#A80036;stroke-width:1.5;" width="141" x="532.5" y="44.46"/><ellipse cx="548.4" cy="60.46" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M551.3688,66.96 L544.0563,66.96 L544.0563,54.2881 L551.3688,54.2881 L551.3688,56.1631 L546.1031,56.1631 L546.1031,59.4288 L551.0563,59.4288 L551.0563,61.2881 L546.1031,61.2881 L546.1031,65.085 L551.3688,65.085 L551.3688,66.96 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="107" x="562.6" y="65.116">EstadoSuscripcion</text><line style="stroke:#A80036;stroke-width:1.5;" x1="533.5" x2="672.5" y1="76.46" y2="76.46"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="38" x="538.5" y="92.2189">ACTIVA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="51" x="538.5" y="107.2008">PAUSADA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="24" x="538.5" y="122.1827">BAJA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="129" x="538.5" y="137.1646">PENDIENTE_ACTIVACION</text><line style="stroke:#A80036;stroke-width:1.5;" x1="533.5" x2="672.5" y1="144.3876" y2="144.3876"/><!--MD5=[d49081bd229d6c99f90929097ea9c9fc]
+class EstadoIncidencia--><rect codeLine="32" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="107.9276" id="EstadoIncidencia" style="stroke:#A80036;stroke-width:1.5;" width="130" x="29" y="390.46"/><ellipse cx="44" cy="406.46" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M46.9688,412.96 L39.6563,412.96 L39.6563,400.2881 L46.9688,400.2881 L46.9688,402.1631 L41.7031,402.1631 L41.7031,405.4288 L46.6563,405.4288 L46.6563,407.2881 L41.7031,407.2881 L41.7031,411.085 L46.9688,411.085 L46.9688,412.96 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="98" x="58" y="411.116">EstadoIncidencia</text><line style="stroke:#A80036;stroke-width:1.5;" x1="30" x2="158" y1="422.46" y2="422.46"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="44" x="35" y="438.2189">ABIERTA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="71" x="35" y="453.2008">EN_PROCESO</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="54" x="35" y="468.1827">RESUELTA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="49" x="35" y="483.1646">CERRADA</text><line style="stroke:#A80036;stroke-width:1.5;" x1="30" x2="158" y1="490.3876" y2="490.3876"/><!--MD5=[f41859793ea47669b0cb838830a5a925]
+class PrioridadIncidencia--><rect codeLine="39" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="107.9276" id="PrioridadIncidencia" style="stroke:#A80036;stroke-width:1.5;" width="144" x="194" y="390.46"/><ellipse cx="209" cy="406.46" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M211.9688,412.96 L204.6563,412.96 L204.6563,400.2881 L211.9688,400.2881 L211.9688,402.1631 L206.7031,402.1631 L206.7031,405.4288 L211.6563,405.4288 L211.6563,407.2881 L206.7031,407.2881 L206.7031,411.085 L211.9688,411.085 L211.9688,412.96 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="112" x="223" y="411.116">PrioridadIncidencia</text><line style="stroke:#A80036;stroke-width:1.5;" x1="195" x2="337" y1="422.46" y2="422.46"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="24" x="200" y="438.2189">BAJA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="34" x="200" y="453.2008">MEDIA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="27" x="200" y="468.1827">ALTA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="200" y="483.1646">CRITICA</text><line style="stroke:#A80036;stroke-width:1.5;" x1="195" x2="337" y1="490.3876" y2="490.3876"/><!--MD5=[989a396a90f04484ccf27da297d02c7f]
+class EstadoAprobacion--><rect codeLine="46" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="92.9457" id="EstadoAprobacion" style="stroke:#A80036;stroke-width:1.5;" width="140" x="373" y="397.95"/><ellipse cx="388" cy="413.95" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M390.9688,420.45 L383.6563,420.45 L383.6563,407.7781 L390.9688,407.7781 L390.9688,409.6531 L385.7031,409.6531 L385.7031,412.9188 L390.6563,412.9188 L390.6563,414.7781 L385.7031,414.7781 L385.7031,418.575 L390.9688,418.575 L390.9688,420.45 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="108" x="402" y="418.606">EstadoAprobacion</text><line style="stroke:#A80036;stroke-width:1.5;" x1="374" x2="512" y1="429.95" y2="429.95"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="59" x="379" y="445.7089">PENDIENTE</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="61" x="379" y="460.6908">APROBADO</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="66" x="379" y="475.6727">RECHAZADO</text><line style="stroke:#A80036;stroke-width:1.5;" x1="374" x2="512" y1="482.8957" y2="482.8957"/><!--MD5=[6bc516c1fd1d79560da92da7f401bad2]
+class TipoSolicitudAprobacion--><rect codeLine="52" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="107.9276" id="TipoSolicitudAprobacion" style="stroke:#A80036;stroke-width:1.5;" width="177" x="547.5" y="390.46"/><ellipse cx="562.95" cy="406.46" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M565.9188,412.96 L558.6063,412.96 L558.6063,400.2881 L565.9188,400.2881 L565.9188,402.1631 L560.6531,402.1631 L560.6531,405.4288 L565.6063,405.4288 L565.6063,407.2881 L560.6531,407.2881 L560.6531,411.085 L565.9188,411.085 L565.9188,412.96 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="144" x="577.05" y="411.116">TipoSolicitudAprobacion</text><line style="stroke:#A80036;stroke-width:1.5;" x1="548.5" x2="723.5" y1="422.46" y2="422.46"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="165" x="553.5" y="438.2189">DESCUENTO_EXTRAORDINARIO</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="85" x="553.5" y="453.2008">CAMBIO_TARIFA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="106" x="553.5" y="468.1827">FACTURA_RETENIDA</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="145" x="553.5" y="483.1646">ANULACION_RECTIFICATIVA</text><line style="stroke:#A80036;stroke-width:1.5;" x1="548.5" x2="723.5" y1="490.3876" y2="490.3876"/><!--MD5=[f67e4cb976a77e6a0a81d7f1ca0991bc]
+class TipoExcepcionComercial--><rect codeLine="59" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="92.9457" id="TipoExcepcionComercial" style="stroke:#A80036;stroke-width:1.5;" width="174" x="7" y="818.95"/><ellipse cx="22" cy="834.95" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M24.9688,841.45 L17.6563,841.45 L17.6563,828.7781 L24.9688,828.7781 L24.9688,830.6531 L19.7031,830.6531 L19.7031,833.9188 L24.6563,833.9188 L24.6563,835.7781 L19.7031,835.7781 L19.7031,839.575 L24.9688,839.575 L24.9688,841.45 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="142" x="36" y="839.606">TipoExcepcionComercial</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="180" y1="850.95" y2="850.95"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="130" x="13" y="866.7089">PRIMER_MES_GRATUITO</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="89" x="13" y="881.6908">SIN_PRORRATEO</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="83" x="13" y="896.6727">INICIO_FUTURO</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="180" y1="903.8957" y2="903.8957"/><!--MD5=[eb34024d89b780fad2ef46887c22cb0d]
+class PasarelaPago--><rect codeLine="65" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="92.9457" id="PasarelaPago" style="stroke:#A80036;stroke-width:1.5;" width="112" x="216" y="818.95"/><ellipse cx="231" cy="834.95" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M233.9688,841.45 L226.6563,841.45 L226.6563,828.7781 L233.9688,828.7781 L233.9688,830.6531 L228.7031,830.6531 L228.7031,833.9188 L233.6563,833.9188 L233.6563,835.7781 L228.7031,835.7781 L228.7031,839.575 L233.9688,839.575 L233.9688,841.45 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="80" x="245" y="839.606">PasarelaPago</text><line style="stroke:#A80036;stroke-width:1.5;" x1="217" x2="327" y1="850.95" y2="850.95"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="37" x="222" y="866.7089">STRIPE</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="50" x="222" y="881.6908">REVOLUT</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="32" x="222" y="896.6727">OTRO</text><line style="stroke:#A80036;stroke-width:1.5;" x1="217" x2="327" y1="903.8957" y2="903.8957"/><!--MD5=[ff4dc541c95f1d18904e66a4a3139d03]
+class CanalComunicacion--><rect codeLine="71" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="92.9457" id="CanalComunicacion" style="stroke:#A80036;stroke-width:1.5;" width="145" x="363.5" y="818.95"/><ellipse cx="378.5" cy="834.95" fill="#EB937F" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M381.4688,841.45 L374.1563,841.45 L374.1563,828.7781 L381.4688,828.7781 L381.4688,830.6531 L376.2031,830.6531 L376.2031,833.9188 L381.1563,833.9188 L381.1563,835.7781 L376.2031,835.7781 L376.2031,839.575 L381.4688,839.575 L381.4688,841.45 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="113" x="392.5" y="839.606">CanalComunicacion</text><line style="stroke:#A80036;stroke-width:1.5;" x1="364.5" x2="507.5" y1="850.95" y2="850.95"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="32" x="369.5" y="866.7089">EMAIL</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="60" x="369.5" y="881.6908">WHATSAPP</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="47" x="369.5" y="896.6727">SISTEMA</text><line style="stroke:#A80036;stroke-width:1.5;" x1="364.5" x2="507.5" y1="903.8957" y2="903.8957"/><!--MD5=[35a64b983c79880384a2fd9b61f0c24b]
+class Usuario--><rect codeLine="77" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="167.8551" id="Usuario" style="stroke:#A80036;stroke-width:1.5;" width="161" x="3549.5" y="14.92"/><ellipse cx="3602.75" cy="30.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M3602.8594,26.2013 Q3601.9375,26.2013 3601.2031,26.5138 Q3600.4844,26.8263 3599.9844,27.42 Q3599.4844,27.9981 3599.2031,28.8731 Q3598.9375,29.7481 3598.9375,30.8419 Q3598.9375,32.2794 3599.375,33.3263 Q3599.8281,34.3731 3600.6719,34.92 Q3601.5313,35.4669 3602.8438,35.4669 Q3603.625,35.4669 3604.3125,35.3419 Q3605.0156,35.2013 3606.0156,34.8888 L3606.0156,36.7638 Q3605.1563,37.0919 3604.3906,37.2169 Q3603.6406,37.3419 3602.625,37.3419 Q3600.7031,37.3419 3599.3906,36.545 Q3598.0938,35.7325 3597.4375,34.2638 Q3596.7813,32.7794 3596.7813,30.8106 Q3596.7813,29.3888 3597.1719,28.2169 Q3597.5781,27.0294 3598.3594,26.1544 Q3599.1406,25.2794 3600.2813,24.8106 Q3601.4219,24.3263 3602.8906,24.3263 Q3603.8438,24.3263 3604.7344,24.5294 Q3605.6406,24.7169 3606.5781,25.1856 L3605.75,26.9669 Q3604.9688,26.5919 3604.3125,26.4044 Q3603.6563,26.2013 3602.8594,26.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="46" x="3623.25" y="35.576">Usuario</text><line style="stroke:#A80036;stroke-width:1.5;" x1="3550.5" x2="3709.5" y1="46.92" y2="46.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3557.5" y="54.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="3569.5" y="62.6789">idUsuario: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3557.5" y="69.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="83" x="3569.5" y="77.6608">nombre: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3557.5" y="84.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="135" x="3569.5" y="92.6427">emailCorporativo: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3557.5" y="99.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="130" x="3569.5" y="107.6246">contrasenaHash: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3557.5" y="114.8476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="81" x="3569.5" y="122.6065">rol: RolUsuario</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3557.5" y="129.8294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="84" x="3569.5" y="137.5884">activo: Boolean</text><line style="stroke:#A80036;stroke-width:1.5;" x1="3550.5" x2="3709.5" y1="144.8113" y2="144.8113"/><ellipse cx="3560.5" cy="155.8113" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="79" x="3569.5" y="160.5702">iniciarSesion()</text><ellipse cx="3560.5" cy="170.7932" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="128" x="3569.5" y="175.5521">recuperarContrasena()</text><!--MD5=[20a748d5ee336a9a91751b0a3d4f0beb]
+class Cliente--><rect codeLine="88" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="287.7102" id="Cliente" style="stroke:#A80036;stroke-width:1.5;" width="235" x="1926.5" y="300.92"/><ellipse cx="2020.25" cy="316.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M2020.3594,312.2013 Q2019.4375,312.2013 2018.7031,312.5138 Q2017.9844,312.8263 2017.4844,313.42 Q2016.9844,313.9981 2016.7031,314.8731 Q2016.4375,315.7481 2016.4375,316.8419 Q2016.4375,318.2794 2016.875,319.3263 Q2017.3281,320.3731 2018.1719,320.92 Q2019.0313,321.4669 2020.3438,321.4669 Q2021.125,321.4669 2021.8125,321.3419 Q2022.5156,321.2013 2023.5156,320.8888 L2023.5156,322.7638 Q2022.6563,323.0919 2021.8906,323.2169 Q2021.1406,323.3419 2020.125,323.3419 Q2018.2031,323.3419 2016.8906,322.545 Q2015.5938,321.7325 2014.9375,320.2638 Q2014.2813,318.7794 2014.2813,316.8106 Q2014.2813,315.3888 2014.6719,314.2169 Q2015.0781,313.0294 2015.8594,312.1544 Q2016.6406,311.2794 2017.7813,310.8106 Q2018.9219,310.3263 2020.3906,310.3263 Q2021.3438,310.3263 2022.2344,310.5294 Q2023.1406,310.7169 2024.0781,311.1856 L2023.25,312.9669 Q2022.4688,312.5919 2021.8125,312.4044 Q2021.1563,312.2013 2020.3594,312.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="39" x="2040.75" y="321.576">Cliente</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1927.5" x2="2160.5" y1="332.92" y2="332.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1934.5" y="340.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="1946.5" y="348.6789">idCliente: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1934.5" y="355.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="139" x="1946.5" y="363.6608">nombreComercial: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1934.5" y="370.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="104" x="1946.5" y="378.6427">razonSocial: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1934.5" y="385.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="67" x="1946.5" y="393.6246">nifCif: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1934.5" y="400.8476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="120" x="1946.5" y="408.6065">domicilioFiscal: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1934.5" y="415.8294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="62" x="1946.5" y="423.5884">pais: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1934.5" y="430.8113"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="128" x="1946.5" y="438.5702">monedaTrabajo: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1934.5" y="445.7932"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="1946.5" y="453.5521">fechaInicio: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1934.5" y="460.7751"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="1946.5" y="468.534">fechaBaja: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1934.5" y="475.757"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="109" x="1946.5" y="483.5159">esFavorito: Boolean</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1934.5" y="490.7389"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="209" x="1946.5" y="498.4978">estadoSuscripcion: EstadoSuscripcion</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1934.5" y="505.7208"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="201" x="1946.5" y="513.4797">facturacionAnualVerificada: Decimal</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1927.5" x2="2160.5" y1="520.7027" y2="520.7027"/><ellipse cx="1937.5" cy="531.7027" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="81" x="1946.5" y="536.4616">registrarBaja()</text><ellipse cx="1937.5" cy="546.6845" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="111" x="1946.5" y="551.4435">pausarSuscripcion()</text><ellipse cx="1937.5" cy="561.6664" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="120" x="1946.5" y="566.4253">actualizarPlanTarifa()</text><ellipse cx="1937.5" cy="576.6483" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="71" x="1946.5" y="581.4072">anonimizar()</text><!--MD5=[01da5049b90ccc3cbf20aa1a959f5ad7]
+class Contacto--><rect codeLine="107" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="122.9094" id="Contacto" style="stroke:#A80036;stroke-width:1.5;" width="204" x="908" y="804.42"/><ellipse cx="979.75" cy="820.42" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M979.8594,815.7013 Q978.9375,815.7013 978.2031,816.0138 Q977.4844,816.3263 976.9844,816.92 Q976.4844,817.4981 976.2031,818.3731 Q975.9375,819.2481 975.9375,820.3419 Q975.9375,821.7794 976.375,822.8263 Q976.8281,823.8731 977.6719,824.42 Q978.5313,824.9669 979.8438,824.9669 Q980.625,824.9669 981.3125,824.8419 Q982.0156,824.7013 983.0156,824.3888 L983.0156,826.2638 Q982.1563,826.5919 981.3906,826.7169 Q980.6406,826.8419 979.625,826.8419 Q977.7031,826.8419 976.3906,826.045 Q975.0938,825.2325 974.4375,823.7638 Q973.7813,822.2794 973.7813,820.3106 Q973.7813,818.8888 974.1719,817.7169 Q974.5781,816.5294 975.3594,815.6544 Q976.1406,814.7794 977.2813,814.3106 Q978.4219,813.8263 979.8906,813.8263 Q980.8438,813.8263 981.7344,814.0294 Q982.6406,814.2169 983.5781,814.6856 L982.75,816.4669 Q981.9688,816.0919 981.3125,815.9044 Q980.6563,815.7013 979.8594,815.7013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="52" x="1000.25" y="825.076">Contacto</text><line style="stroke:#A80036;stroke-width:1.5;" x1="909" x2="1111" y1="836.42" y2="836.42"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="916" y="844.42"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="98" x="928" y="852.1789">idContacto: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="916" y="859.4019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="83" x="928" y="867.1608">nombre: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="916" y="874.3838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="70" x="928" y="882.1427">email: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="916" y="889.3657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="84" x="928" y="897.1246">activo: Boolean</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="916" y="904.3476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="178" x="928" y="912.1065">esContactoFacturacion: Boolean</text><line style="stroke:#A80036;stroke-width:1.5;" x1="909" x2="1111" y1="919.3294" y2="919.3294"/><!--MD5=[baab8c86db3d938f4be53c15b4529e35]
+class Suscripcion--><rect codeLine="115" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="167.8551" id="Suscripcion" style="stroke:#A80036;stroke-width:1.5;" width="193" x="1195.5" y="781.92"/><ellipse cx="1254.25" cy="797.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M1254.3594,793.2013 Q1253.4375,793.2013 1252.7031,793.5138 Q1251.9844,793.8263 1251.4844,794.42 Q1250.9844,794.9981 1250.7031,795.8731 Q1250.4375,796.7481 1250.4375,797.8419 Q1250.4375,799.2794 1250.875,800.3263 Q1251.3281,801.3731 1252.1719,801.92 Q1253.0313,802.4669 1254.3438,802.4669 Q1255.125,802.4669 1255.8125,802.3419 Q1256.5156,802.2013 1257.5156,801.8888 L1257.5156,803.7638 Q1256.6563,804.0919 1255.8906,804.2169 Q1255.1406,804.3419 1254.125,804.3419 Q1252.2031,804.3419 1250.8906,803.545 Q1249.5938,802.7325 1248.9375,801.2638 Q1248.2813,799.7794 1248.2813,797.8106 Q1248.2813,796.3888 1248.6719,795.2169 Q1249.0781,794.0294 1249.8594,793.1544 Q1250.6406,792.2794 1251.7813,791.8106 Q1252.9219,791.3263 1254.3906,791.3263 Q1255.3438,791.3263 1256.2344,791.5294 Q1257.1406,791.7169 1258.0781,792.1856 L1257.25,793.9669 Q1256.4688,793.5919 1255.8125,793.4044 Q1255.1563,793.2013 1254.3594,793.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="67" x="1274.75" y="802.576">Suscripcion</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1196.5" x2="1387.5" y1="813.92" y2="813.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1203.5" y="821.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="113" x="1215.5" y="829.6789">idSuscripcion: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1203.5" y="836.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="1215.5" y="844.6608">fechaInicio: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1203.5" y="851.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="124" x="1215.5" y="859.6427">fechaFinPrevista: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1203.5" y="866.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="142" x="1215.5" y="874.6246">importeMensual: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1203.5" y="881.8476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="126" x="1215.5" y="889.6065">fechaPausaInicio: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1203.5" y="896.8294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="167" x="1215.5" y="904.5884">fechaPausaReactivacion: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1203.5" y="911.8113"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="111" x="1215.5" y="919.5702">motivoPausa: String</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1196.5" x2="1387.5" y1="926.7932" y2="926.7932"/><ellipse cx="1206.5" cy="937.7932" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="157" x="1215.5" y="942.5521">calcularProrrateo(): Decimal</text><!--MD5=[f98ef4451a97245d6bf9dfd83960e169]
+class PlanTarifa--><rect codeLine="126" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="137.8913" id="PlanTarifa" style="stroke:#A80036;stroke-width:1.5;" width="198" x="1184" y="375.92"/><ellipse cx="1249.75" cy="391.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M1249.8594,387.2013 Q1248.9375,387.2013 1248.2031,387.5138 Q1247.4844,387.8263 1246.9844,388.42 Q1246.4844,388.9981 1246.2031,389.8731 Q1245.9375,390.7481 1245.9375,391.8419 Q1245.9375,393.2794 1246.375,394.3263 Q1246.8281,395.3731 1247.6719,395.92 Q1248.5313,396.4669 1249.8438,396.4669 Q1250.625,396.4669 1251.3125,396.3419 Q1252.0156,396.2013 1253.0156,395.8888 L1253.0156,397.7638 Q1252.1563,398.0919 1251.3906,398.2169 Q1250.6406,398.3419 1249.625,398.3419 Q1247.7031,398.3419 1246.3906,397.545 Q1245.0938,396.7325 1244.4375,395.2638 Q1243.7813,393.7794 1243.7813,391.8106 Q1243.7813,390.3888 1244.1719,389.2169 Q1244.5781,388.0294 1245.3594,387.1544 Q1246.1406,386.2794 1247.2813,385.8106 Q1248.4219,385.3263 1249.8906,385.3263 Q1250.8438,385.3263 1251.7344,385.5294 Q1252.6406,385.7169 1253.5781,386.1856 L1252.75,387.9669 Q1251.9688,387.5919 1251.3125,387.4044 Q1250.6563,387.2013 1249.8594,387.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="58" x="1270.25" y="396.576">PlanTarifa</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1185" x2="1381" y1="407.92" y2="407.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1192" y="415.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="1204" y="423.6789">idPlan: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1192" y="430.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="107" x="1204" y="438.6608">nombrePlan: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1192" y="445.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="122" x="1204" y="453.6427">importeBase: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1192" y="460.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="169" x="1204" y="468.6246">rangoFacturacionMin: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1192" y="475.8476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="172" x="1204" y="483.6065">rangoFacturacionMax: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1192" y="490.8294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="1204" y="498.5884">fechaVigor: Date</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1185" x2="1381" y1="505.8113" y2="505.8113"/><!--MD5=[a926c88f85ce99385ed3fd3448dac0f5]
+class Factura--><rect codeLine="135" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="317.674" id="Factura" style="stroke:#A80036;stroke-width:1.5;" width="196" x="2894" y="706.92"/><ellipse cx="2966.75" cy="722.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M2966.8594,718.2013 Q2965.9375,718.2013 2965.2031,718.5138 Q2964.4844,718.8263 2963.9844,719.42 Q2963.4844,719.9981 2963.2031,720.8731 Q2962.9375,721.7481 2962.9375,722.8419 Q2962.9375,724.2794 2963.375,725.3263 Q2963.8281,726.3731 2964.6719,726.92 Q2965.5313,727.4669 2966.8438,727.4669 Q2967.625,727.4669 2968.3125,727.3419 Q2969.0156,727.2013 2970.0156,726.8888 L2970.0156,728.7638 Q2969.1563,729.0919 2968.3906,729.2169 Q2967.6406,729.3419 2966.625,729.3419 Q2964.7031,729.3419 2963.3906,728.545 Q2962.0938,727.7325 2961.4375,726.2638 Q2960.7813,724.7794 2960.7813,722.8106 Q2960.7813,721.3888 2961.1719,720.2169 Q2961.5781,719.0294 2962.3594,718.1544 Q2963.1406,717.2794 2964.2813,716.8106 Q2965.4219,716.3263 2966.8906,716.3263 Q2967.8438,716.3263 2968.7344,716.5294 Q2969.6406,716.7169 2970.5781,717.1856 L2969.75,718.9669 Q2968.9688,718.5919 2968.3125,718.4044 Q2967.6563,718.2013 2966.8594,718.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="42" x="2987.25" y="727.576">Factura</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2895" x2="3089" y1="738.92" y2="738.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="746.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="91" x="2914" y="754.6789">idFactura: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="761.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="125" x="2914" y="769.6608">numeroFactura: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="776.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="67" x="2914" y="784.6427">serie: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="791.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="106" x="2914" y="799.6246">fechaEmision: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="806.8476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="2914" y="814.6065">fechaVencimiento: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="821.8294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="93" x="2914" y="829.5884">tipo: TipoFactura</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="836.8113"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="123" x="2914" y="844.5702">estado: EstadoFactura</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="851.7932"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="133" x="2914" y="859.5521">baseImponible: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="866.7751"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="134" x="2914" y="874.534">totalImpuestos: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="881.757"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="118" x="2914" y="889.5159">totalFactura: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="896.7389"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="151" x="2914" y="904.4978">importePendiente: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="911.7208"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="170" x="2914" y="919.4797">retenidaParaRevision: Boolean</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="926.7027"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="110" x="2914" y="934.4616">esMigrada: Boolean</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="941.6845"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="112" x="2914" y="949.4435">documentoId: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2902" y="956.6664"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="130" x="2914" y="964.4253">hashDocumento: String</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2895" x2="3089" y1="971.6483" y2="971.6483"/><ellipse cx="2905" cy="982.6483" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="93" x="2914" y="987.4072">calcularTotales()</text><ellipse cx="2905" cy="997.6302" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="41" x="2914" y="1002.3891">emitir()</text><ellipse cx="2905" cy="1012.6121" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="44" x="2914" y="1017.371">anular()</text><!--MD5=[1e324d8c850f23488638701fbb94892e]
+class FacturaRectificativa--><rect codeLine="156" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="62.9819" id="FacturaRectificativa" style="stroke:#A80036;stroke-width:1.5;" width="173" x="2934.5" y="1210.42"/><ellipse cx="2963.9" cy="1226.42" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M2964.0094,1221.7013 Q2963.0875,1221.7013 2962.3531,1222.0138 Q2961.6344,1222.3263 2961.1344,1222.92 Q2960.6344,1223.4981 2960.3531,1224.3731 Q2960.0875,1225.2481 2960.0875,1226.3419 Q2960.0875,1227.7794 2960.525,1228.8263 Q2960.9781,1229.8731 2961.8219,1230.42 Q2962.6813,1230.9669 2963.9938,1230.9669 Q2964.775,1230.9669 2965.4625,1230.8419 Q2966.1656,1230.7013 2967.1656,1230.3888 L2967.1656,1232.2638 Q2966.3063,1232.5919 2965.5406,1232.7169 Q2964.7906,1232.8419 2963.775,1232.8419 Q2961.8531,1232.8419 2960.5406,1232.045 Q2959.2438,1231.2325 2958.5875,1229.7638 Q2957.9313,1228.2794 2957.9313,1226.3106 Q2957.9313,1224.8888 2958.3219,1223.7169 Q2958.7281,1222.5294 2959.5094,1221.6544 Q2960.2906,1220.7794 2961.4313,1220.3106 Q2962.5719,1219.8263 2964.0406,1219.8263 Q2964.9938,1219.8263 2965.8844,1220.0294 Q2966.7906,1220.2169 2967.7281,1220.6856 L2966.9,1222.4669 Q2966.1188,1222.0919 2965.4625,1221.9044 Q2964.8063,1221.7013 2964.0094,1221.7013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="109" x="2981.1" y="1231.076">FacturaRectificativa</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2935.5" x2="3106.5" y1="1242.42" y2="1242.42"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2942.5" y="1250.42"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="147" x="2954.5" y="1258.1789">motivoRectificacion: String</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2935.5" x2="3106.5" y1="1265.4019" y2="1265.4019"/><!--MD5=[beeeb134941fbf91048e084c8df4f55f]
+class LineaFactura--><rect codeLine="160" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="137.8913" id="LineaFactura" style="stroke:#A80036;stroke-width:1.5;" width="196" x="2655" y="1172.92"/><ellipse cx="2712.75" cy="1188.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M2712.8594,1184.2013 Q2711.9375,1184.2013 2711.2031,1184.5138 Q2710.4844,1184.8263 2709.9844,1185.42 Q2709.4844,1185.9981 2709.2031,1186.8731 Q2708.9375,1187.7481 2708.9375,1188.8419 Q2708.9375,1190.2794 2709.375,1191.3263 Q2709.8281,1192.3731 2710.6719,1192.92 Q2711.5313,1193.4669 2712.8438,1193.4669 Q2713.625,1193.4669 2714.3125,1193.3419 Q2715.0156,1193.2013 2716.0156,1192.8888 L2716.0156,1194.7638 Q2715.1563,1195.0919 2714.3906,1195.2169 Q2713.6406,1195.3419 2712.625,1195.3419 Q2710.7031,1195.3419 2709.3906,1194.545 Q2708.0938,1193.7325 2707.4375,1192.2638 Q2706.7813,1190.7794 2706.7813,1188.8106 Q2706.7813,1187.3888 2707.1719,1186.2169 Q2707.5781,1185.0294 2708.3594,1184.1544 Q2709.1406,1183.2794 2710.2813,1182.8106 Q2711.4219,1182.3263 2712.8906,1182.3263 Q2713.8438,1182.3263 2714.7344,1182.5294 Q2715.6406,1182.7169 2716.5781,1183.1856 L2715.75,1184.9669 Q2714.9688,1184.5919 2714.3125,1184.4044 Q2713.6563,1184.2013 2712.8594,1184.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="72" x="2733.25" y="1193.576">LineaFactura</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2656" x2="2850" y1="1204.92" y2="1204.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2663" y="1212.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="79" x="2675" y="1220.6789">idLinea: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2663" y="1227.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="90" x="2675" y="1235.6608">concepto: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2663" y="1242.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="94" x="2675" y="1250.6427">cantidad: Integer</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2663" y="1257.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="130" x="2675" y="1265.6246">precioUnitario: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2663" y="1272.8476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="170" x="2675" y="1280.6065">porcentajeDescuento: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2663" y="1287.8294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="96" x="2675" y="1295.5884">subtotal: Decimal</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2656" x2="2850" y1="1302.8113" y2="1302.8113"/><!--MD5=[75a24480085c0c38bc912cc75ff08c21]
+class Impuesto--><rect codeLine="169" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="107.9276" id="Impuesto" style="stroke:#A80036;stroke-width:1.5;" width="137" x="2684.5" y="1458.92"/><ellipse cx="2721.55" cy="1474.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M2721.6594,1470.2013 Q2720.7375,1470.2013 2720.0031,1470.5138 Q2719.2844,1470.8263 2718.7844,1471.42 Q2718.2844,1471.9981 2718.0031,1472.8731 Q2717.7375,1473.7481 2717.7375,1474.8419 Q2717.7375,1476.2794 2718.175,1477.3263 Q2718.6281,1478.3731 2719.4719,1478.92 Q2720.3313,1479.4669 2721.6438,1479.4669 Q2722.425,1479.4669 2723.1125,1479.3419 Q2723.8156,1479.2013 2724.8156,1478.8888 L2724.8156,1480.7638 Q2723.9563,1481.0919 2723.1906,1481.2169 Q2722.4406,1481.3419 2721.425,1481.3419 Q2719.5031,1481.3419 2718.1906,1480.545 Q2716.8938,1479.7325 2716.2375,1478.2638 Q2715.5813,1476.7794 2715.5813,1474.8106 Q2715.5813,1473.3888 2715.9719,1472.2169 Q2716.3781,1471.0294 2717.1594,1470.1544 Q2717.9406,1469.2794 2719.0813,1468.8106 Q2720.2219,1468.3263 2721.6906,1468.3263 Q2722.6438,1468.3263 2723.5344,1468.5294 Q2724.4406,1468.7169 2725.3781,1469.1856 L2724.55,1470.9669 Q2723.7688,1470.5919 2723.1125,1470.4044 Q2722.4563,1470.2013 2721.6594,1470.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="56" x="2740.45" y="1479.576">Impuesto</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2685.5" x2="2820.5" y1="1490.92" y2="1490.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2692.5" y="1498.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="101" x="2704.5" y="1506.6789">idImpuesto: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2692.5" y="1513.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="83" x="2704.5" y="1521.6608">nombre: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2692.5" y="1528.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="111" x="2704.5" y="1536.6427">porcentaje: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2692.5" y="1543.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="84" x="2704.5" y="1551.6246">activo: Boolean</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2685.5" x2="2820.5" y1="1558.8476" y2="1558.8476"/><!--MD5=[547a29146fbd11e2b4ffab393eb870f5]
+class Cobro--><rect codeLine="176" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="152.8732" id="Cobro" style="stroke:#A80036;stroke-width:1.5;" width="186" x="568" y="789.42"/><ellipse cx="638.25" cy="805.42" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M638.3594,800.7013 Q637.4375,800.7013 636.7031,801.0138 Q635.9844,801.3263 635.4844,801.92 Q634.9844,802.4981 634.7031,803.3731 Q634.4375,804.2481 634.4375,805.3419 Q634.4375,806.7794 634.875,807.8263 Q635.3281,808.8731 636.1719,809.42 Q637.0313,809.9669 638.3438,809.9669 Q639.125,809.9669 639.8125,809.8419 Q640.5156,809.7013 641.5156,809.3888 L641.5156,811.2638 Q640.6563,811.5919 639.8906,811.7169 Q639.1406,811.8419 638.125,811.8419 Q636.2031,811.8419 634.8906,811.045 Q633.5938,810.2325 632.9375,808.7638 Q632.2813,807.2794 632.2813,805.3106 Q632.2813,803.8888 632.6719,802.7169 Q633.0781,801.5294 633.8594,800.6544 Q634.6406,799.7794 635.7813,799.3106 Q636.9219,798.8263 638.3906,798.8263 Q639.3438,798.8263 640.2344,799.0294 Q641.1406,799.2169 642.0781,799.6856 L641.25,801.4669 Q640.4688,801.0919 639.8125,800.9044 Q639.1563,800.7013 638.3594,800.7013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="37" x="658.75" y="810.076">Cobro</text><line style="stroke:#A80036;stroke-width:1.5;" x1="569" x2="753" y1="821.42" y2="821.42"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="576" y="829.42"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="82" x="588" y="837.1789">idCobro: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="576" y="844.4019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="125" x="588" y="852.1608">referenciaPago: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="576" y="859.3838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="160" x="588" y="867.1427">pasarelaPago: PasarelaPago</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="576" y="874.3657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="96" x="588" y="882.1246">fechaCobro: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="576" y="889.3476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="95" x="588" y="897.1065">importe: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="576" y="904.3294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="85" x="588" y="912.0884">moneda: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="576" y="919.3113"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="90" x="588" y="927.0702">concepto: String</text><line style="stroke:#A80036;stroke-width:1.5;" x1="569" x2="753" y1="934.2932" y2="934.2932"/><!--MD5=[72eb697058f6b2fa6cd22f40fb2814ad]
+class Conciliacion--><rect codeLine="186" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="122.9094" id="Conciliacion" style="stroke:#A80036;stroke-width:1.5;" width="178" x="742" y="1180.42"/><ellipse cx="792.25" cy="1196.42" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M792.3594,1191.7013 Q791.4375,1191.7013 790.7031,1192.0138 Q789.9844,1192.3263 789.4844,1192.92 Q788.9844,1193.4981 788.7031,1194.3731 Q788.4375,1195.2481 788.4375,1196.3419 Q788.4375,1197.7794 788.875,1198.8263 Q789.3281,1199.8731 790.1719,1200.42 Q791.0313,1200.9669 792.3438,1200.9669 Q793.125,1200.9669 793.8125,1200.8419 Q794.5156,1200.7013 795.5156,1200.3888 L795.5156,1202.2638 Q794.6563,1202.5919 793.8906,1202.7169 Q793.1406,1202.8419 792.125,1202.8419 Q790.2031,1202.8419 788.8906,1202.045 Q787.5938,1201.2325 786.9375,1199.7638 Q786.2813,1198.2794 786.2813,1196.3106 Q786.2813,1194.8888 786.6719,1193.7169 Q787.0781,1192.5294 787.8594,1191.6544 Q788.6406,1190.7794 789.7813,1190.3106 Q790.9219,1189.8263 792.3906,1189.8263 Q793.3438,1189.8263 794.2344,1190.0294 Q795.1406,1190.2169 796.0781,1190.6856 L795.25,1192.4669 Q794.4688,1192.0919 793.8125,1191.9044 Q793.1563,1191.7013 792.3594,1191.7013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="69" x="812.75" y="1201.076">Conciliacion</text><line style="stroke:#A80036;stroke-width:1.5;" x1="743" x2="919" y1="1212.42" y2="1212.42"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="750" y="1220.42"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="115" x="762" y="1228.1789">idConciliacion: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="750" y="1235.4019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="129" x="762" y="1243.1608">fechaConciliacion: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="750" y="1250.3838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="152" x="762" y="1258.1427">importeConciliado: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="750" y="1265.3657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="127" x="762" y="1273.1246">esAutomatica: Boolean</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="750" y="1280.3476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="762" y="1288.1065">motivoReversion: String</text><line style="stroke:#A80036;stroke-width:1.5;" x1="743" x2="919" y1="1295.3294" y2="1295.3294"/><!--MD5=[26eb5debe1c1ab58578ea1f94e672a36]
+class SolicitudAprobacion--><rect codeLine="194" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="197.8189" id="SolicitudAprobacion" style="stroke:#A80036;stroke-width:1.5;" width="234" x="3191" y="1142.92"/><ellipse cx="3245.25" cy="1158.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M3245.3594,1154.2013 Q3244.4375,1154.2013 3243.7031,1154.5138 Q3242.9844,1154.8263 3242.4844,1155.42 Q3241.9844,1155.9981 3241.7031,1156.8731 Q3241.4375,1157.7481 3241.4375,1158.8419 Q3241.4375,1160.2794 3241.875,1161.3263 Q3242.3281,1162.3731 3243.1719,1162.92 Q3244.0313,1163.4669 3245.3438,1163.4669 Q3246.125,1163.4669 3246.8125,1163.3419 Q3247.5156,1163.2013 3248.5156,1162.8888 L3248.5156,1164.7638 Q3247.6563,1165.0919 3246.8906,1165.2169 Q3246.1406,1165.3419 3245.125,1165.3419 Q3243.2031,1165.3419 3241.8906,1164.545 Q3240.5938,1163.7325 3239.9375,1162.2638 Q3239.2813,1160.7794 3239.2813,1158.8106 Q3239.2813,1157.3888 3239.6719,1156.2169 Q3240.0781,1155.0294 3240.8594,1154.1544 Q3241.6406,1153.2794 3242.7813,1152.8106 Q3243.9219,1152.3263 3245.3906,1152.3263 Q3246.3438,1152.3263 3247.2344,1152.5294 Q3248.1406,1152.7169 3249.0781,1153.1856 L3248.25,1154.9669 Q3247.4688,1154.5919 3246.8125,1154.4044 Q3246.1563,1154.2013 3245.3594,1154.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="117" x="3265.75" y="1163.576">SolicitudAprobacion</text><line style="stroke:#A80036;stroke-width:1.5;" x1="3192" x2="3424" y1="1174.92" y2="1174.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3199" y="1182.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="96" x="3211" y="1190.6789">idSolicitud: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3199" y="1197.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="208" x="3211" y="1205.6608">tipoSolicitud: TipoSolicitudAprobacion</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3199" y="1212.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="3211" y="1220.6427">motivo: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3199" y="1227.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="170" x="3211" y="1235.6246">porcentajeDescuento: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3199" y="1242.8476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="152" x="3211" y="1250.6065">importePropuesto: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3199" y="1257.8294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="144" x="3211" y="1265.5884">estado: EstadoAprobacion</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3199" y="1272.8113"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="110" x="3211" y="1280.5702">fechaSolicitud: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3199" y="1287.7932"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="123" x="3211" y="1295.5521">fechaResolucion: Date</text><line style="stroke:#A80036;stroke-width:1.5;" x1="3192" x2="3424" y1="1302.7751" y2="1302.7751"/><ellipse cx="3202" cy="1313.7751" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="53" x="3211" y="1318.534">aprobar()</text><ellipse cx="3202" cy="1328.757" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="58" x="3211" y="1333.5159">rechazar()</text><!--MD5=[85dc71517e78eac1123752d3f99deb82]
+class ExcepcionComercial--><rect codeLine="207" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="107.9276" id="ExcepcionComercial" style="stroke:#A80036;stroke-width:1.5;" width="188" x="1472" y="811.92"/><ellipse cx="1505.45" cy="827.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M1505.5594,823.2013 Q1504.6375,823.2013 1503.9031,823.5138 Q1503.1844,823.8263 1502.6844,824.42 Q1502.1844,824.9981 1501.9031,825.8731 Q1501.6375,826.7481 1501.6375,827.8419 Q1501.6375,829.2794 1502.075,830.3263 Q1502.5281,831.3731 1503.3719,831.92 Q1504.2313,832.4669 1505.5438,832.4669 Q1506.325,832.4669 1507.0125,832.3419 Q1507.7156,832.2013 1508.7156,831.8888 L1508.7156,833.7638 Q1507.8563,834.0919 1507.0906,834.2169 Q1506.3406,834.3419 1505.325,834.3419 Q1503.4031,834.3419 1502.0906,833.545 Q1500.7938,832.7325 1500.1375,831.2638 Q1499.4813,829.7794 1499.4813,827.8106 Q1499.4813,826.3888 1499.8719,825.2169 Q1500.2781,824.0294 1501.0594,823.1544 Q1501.8406,822.2794 1502.9813,821.8106 Q1504.1219,821.3263 1505.5906,821.3263 Q1506.5438,821.3263 1507.4344,821.5294 Q1508.3406,821.7169 1509.2781,822.1856 L1508.45,823.9669 Q1507.6688,823.5919 1507.0125,823.4044 Q1506.3563,823.2013 1505.5594,823.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="115" x="1523.55" y="832.576">ExcepcionComercial</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1473" x2="1659" y1="843.92" y2="843.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1480" y="851.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="104" x="1492" y="859.6789">idExcepcion: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1480" y="866.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="162" x="1492" y="874.6608">tipo: TipoExcepcionComercial</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1480" y="881.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="1492" y="889.6427">fechaInicio: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1480" y="896.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="107" x="1492" y="904.6246">observacion: String</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1473" x2="1659" y1="911.8476" y2="911.8476"/><!--MD5=[7d60b85d002f7850c34c5698b92f8c8e]
+class Incidencia--><rect codeLine="214" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="137.8913" id="Incidencia" style="stroke:#A80036;stroke-width:1.5;" width="190" x="3440" y="375.92"/><ellipse cx="3501.75" cy="391.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M3501.8594,387.2013 Q3500.9375,387.2013 3500.2031,387.5138 Q3499.4844,387.8263 3498.9844,388.42 Q3498.4844,388.9981 3498.2031,389.8731 Q3497.9375,390.7481 3497.9375,391.8419 Q3497.9375,393.2794 3498.375,394.3263 Q3498.8281,395.3731 3499.6719,395.92 Q3500.5313,396.4669 3501.8438,396.4669 Q3502.625,396.4669 3503.3125,396.3419 Q3504.0156,396.2013 3505.0156,395.8888 L3505.0156,397.7638 Q3504.1563,398.0919 3503.3906,398.2169 Q3502.6406,398.3419 3501.625,398.3419 Q3499.7031,398.3419 3498.3906,397.545 Q3497.0938,396.7325 3496.4375,395.2638 Q3495.7813,393.7794 3495.7813,391.8106 Q3495.7813,390.3888 3496.1719,389.2169 Q3496.5781,388.0294 3497.3594,387.1544 Q3498.1406,386.2794 3499.2813,385.8106 Q3500.4219,385.3263 3501.8906,385.3263 Q3502.8438,385.3263 3503.7344,385.5294 Q3504.6406,385.7169 3505.5781,386.1856 L3504.75,387.9669 Q3503.9688,387.5919 3503.3125,387.4044 Q3502.6563,387.2013 3501.8594,387.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="58" x="3522.25" y="396.576">Incidencia</text><line style="stroke:#A80036;stroke-width:1.5;" x1="3441" x2="3629" y1="407.92" y2="407.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3448" y="415.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="105" x="3460" y="423.6789">idIncidencia: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3448" y="430.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="67" x="3460" y="438.6608">titulo: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3448" y="445.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="3460" y="453.6427">descripcion: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3448" y="460.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="137" x="3460" y="468.6246">estado: EstadoIncidencia</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3448" y="475.8476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="164" x="3460" y="483.6065">prioridad: PrioridadIncidencia</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3448" y="490.8294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="112" x="3460" y="498.5884">fechaCreacion: Date</text><line style="stroke:#A80036;stroke-width:1.5;" x1="3441" x2="3629" y1="505.8113" y2="505.8113"/><!--MD5=[2b22f06f21fd8c2263a5a92f30f4af09]
+class ComentarioInterno--><rect codeLine="223" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="92.9457" id="ComentarioInterno" style="stroke:#A80036;stroke-width:1.5;" width="142" x="3653" y="819.42"/><ellipse cx="3668" cy="835.42" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M3668.1094,830.7013 Q3667.1875,830.7013 3666.4531,831.0138 Q3665.7344,831.3263 3665.2344,831.92 Q3664.7344,832.4981 3664.4531,833.3731 Q3664.1875,834.2481 3664.1875,835.3419 Q3664.1875,836.7794 3664.625,837.8263 Q3665.0781,838.8731 3665.9219,839.42 Q3666.7813,839.9669 3668.0938,839.9669 Q3668.875,839.9669 3669.5625,839.8419 Q3670.2656,839.7013 3671.2656,839.3888 L3671.2656,841.2638 Q3670.4063,841.5919 3669.6406,841.7169 Q3668.8906,841.8419 3667.875,841.8419 Q3665.9531,841.8419 3664.6406,841.045 Q3663.3438,840.2325 3662.6875,838.7638 Q3662.0313,837.2794 3662.0313,835.3106 Q3662.0313,833.8888 3662.4219,832.7169 Q3662.8281,831.5294 3663.6094,830.6544 Q3664.3906,829.7794 3665.5313,829.3106 Q3666.6719,828.8263 3668.1406,828.8263 Q3669.0938,828.8263 3669.9844,829.0294 Q3670.8906,829.2169 3671.8281,829.6856 L3671,831.4669 Q3670.2188,831.0919 3669.5625,830.9044 Q3668.9063,830.7013 3668.1094,830.7013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="110" x="3682" y="840.076">ComentarioInterno</text><line style="stroke:#A80036;stroke-width:1.5;" x1="3654" x2="3794" y1="851.42" y2="851.42"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3661" y="859.42"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="114" x="3673" y="867.1789">idComentario: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3661" y="874.4019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="94" x="3673" y="882.1608">contenido: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3661" y="889.3838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="63" x="3673" y="897.1427">fecha: Date</text><line style="stroke:#A80036;stroke-width:1.5;" x1="3654" x2="3794" y1="904.3657" y2="904.3657"/><!--MD5=[d331226d1317b3fc678f52fa8b08f650]
+class Notificacion--><rect codeLine="229" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="152.8732" id="Notificacion" style="stroke:#A80036;stroke-width:1.5;" width="171" x="4429.5" y="368.42"/><ellipse cx="4476.75" cy="384.42" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M4476.8594,379.7013 Q4475.9375,379.7013 4475.2031,380.0138 Q4474.4844,380.3263 4473.9844,380.92 Q4473.4844,381.4981 4473.2031,382.3731 Q4472.9375,383.2481 4472.9375,384.3419 Q4472.9375,385.7794 4473.375,386.8263 Q4473.8281,387.8731 4474.6719,388.42 Q4475.5313,388.9669 4476.8438,388.9669 Q4477.625,388.9669 4478.3125,388.8419 Q4479.0156,388.7013 4480.0156,388.3888 L4480.0156,390.2638 Q4479.1563,390.5919 4478.3906,390.7169 Q4477.6406,390.8419 4476.625,390.8419 Q4474.7031,390.8419 4473.3906,390.045 Q4472.0938,389.2325 4471.4375,387.7638 Q4470.7813,386.2794 4470.7813,384.3106 Q4470.7813,382.8888 4471.1719,381.7169 Q4471.5781,380.5294 4472.3594,379.6544 Q4473.1406,378.7794 4474.2813,378.3106 Q4475.4219,377.8263 4476.8906,377.8263 Q4477.8438,377.8263 4478.7344,378.0294 Q4479.6406,378.2169 4480.5781,378.6856 L4479.75,380.4669 Q4478.9688,380.0919 4478.3125,379.9044 Q4477.6563,379.7013 4476.8594,379.7013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="68" x="4497.25" y="389.076">Notificacion</text><line style="stroke:#A80036;stroke-width:1.5;" x1="4430.5" x2="4599.5" y1="400.42" y2="400.42"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4437.5" y="408.42"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="114" x="4449.5" y="416.1789">idNotificacion: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4437.5" y="423.4019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="67" x="4449.5" y="431.1608">titulo: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4437.5" y="438.3838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="4449.5" y="446.1427">mensaje: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4437.5" y="453.3657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="63" x="4449.5" y="461.1246">fecha: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4437.5" y="468.3476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="78" x="4449.5" y="476.1065">leida: Boolean</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4437.5" y="483.3294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="97" x="4449.5" y="491.0884">resuelta: Boolean</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4437.5" y="498.3113"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="145" x="4449.5" y="506.0702">canal: CanalComunicacion</text><line style="stroke:#A80036;stroke-width:1.5;" x1="4430.5" x2="4599.5" y1="513.2932" y2="513.2932"/><!--MD5=[8e151ab153f5c5c444813db2b1dc88dc]
+class PlantillaComunicacion--><rect codeLine="239" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="137.8913" id="PlantillaComunicacion" style="stroke:#A80036;stroke-width:1.5;" width="157" x="2413.5" y="796.92"/><ellipse cx="2428.5" cy="812.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M2428.6094,808.2013 Q2427.6875,808.2013 2426.9531,808.5138 Q2426.2344,808.8263 2425.7344,809.42 Q2425.2344,809.9981 2424.9531,810.8731 Q2424.6875,811.7481 2424.6875,812.8419 Q2424.6875,814.2794 2425.125,815.3263 Q2425.5781,816.3731 2426.4219,816.92 Q2427.2813,817.4669 2428.5938,817.4669 Q2429.375,817.4669 2430.0625,817.3419 Q2430.7656,817.2013 2431.7656,816.8888 L2431.7656,818.7638 Q2430.9063,819.0919 2430.1406,819.2169 Q2429.3906,819.3419 2428.375,819.3419 Q2426.4531,819.3419 2425.1406,818.545 Q2423.8438,817.7325 2423.1875,816.2638 Q2422.5313,814.7794 2422.5313,812.8106 Q2422.5313,811.3888 2422.9219,810.2169 Q2423.3281,809.0294 2424.1094,808.1544 Q2424.8906,807.2794 2426.0313,806.8106 Q2427.1719,806.3263 2428.6406,806.3263 Q2429.5938,806.3263 2430.4844,806.5294 Q2431.3906,806.7169 2432.3281,807.1856 L2431.5,808.9669 Q2430.7188,808.5919 2430.0625,808.4044 Q2429.4063,808.2013 2428.6094,808.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="125" x="2442.5" y="817.576">PlantillaComunicacion</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2414.5" x2="2569.5" y1="828.92" y2="828.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2421.5" y="836.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="93" x="2433.5" y="844.6789">idPlantilla: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2421.5" y="851.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="83" x="2433.5" y="859.6608">nombre: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2421.5" y="866.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="2433.5" y="874.6427">asunto: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2421.5" y="881.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="104" x="2433.5" y="889.6246">cuerpoHtml: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2421.5" y="896.8476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="97" x="2433.5" y="904.6065">tipoEvento: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2421.5" y="911.8294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="77" x="2433.5" y="919.5884">idioma: String</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2414.5" x2="2569.5" y1="926.8113" y2="926.8113"/><!--MD5=[8a46ca1cdd7ef2c7a4bb662d2aec6b26]
+class RegistroEnvio--><rect codeLine="248" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="137.8913" id="RegistroEnvio" style="stroke:#A80036;stroke-width:1.5;" width="171" x="2400.5" y="1172.92"/><ellipse cx="2442.5" cy="1188.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M2442.6094,1184.2013 Q2441.6875,1184.2013 2440.9531,1184.5138 Q2440.2344,1184.8263 2439.7344,1185.42 Q2439.2344,1185.9981 2438.9531,1186.8731 Q2438.6875,1187.7481 2438.6875,1188.8419 Q2438.6875,1190.2794 2439.125,1191.3263 Q2439.5781,1192.3731 2440.4219,1192.92 Q2441.2813,1193.4669 2442.5938,1193.4669 Q2443.375,1193.4669 2444.0625,1193.3419 Q2444.7656,1193.2013 2445.7656,1192.8888 L2445.7656,1194.7638 Q2444.9063,1195.0919 2444.1406,1195.2169 Q2443.3906,1195.3419 2442.375,1195.3419 Q2440.4531,1195.3419 2439.1406,1194.545 Q2437.8438,1193.7325 2437.1875,1192.2638 Q2436.5313,1190.7794 2436.5313,1188.8106 Q2436.5313,1187.3888 2436.9219,1186.2169 Q2437.3281,1185.0294 2438.1094,1184.1544 Q2438.8906,1183.2794 2440.0313,1182.8106 Q2441.1719,1182.3263 2442.6406,1182.3263 Q2443.5938,1182.3263 2444.4844,1182.5294 Q2445.3906,1182.7169 2446.3281,1183.1856 L2445.5,1184.9669 Q2444.7188,1184.5919 2444.0625,1184.4044 Q2443.4063,1184.2013 2442.6094,1184.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="79" x="2462.5" y="1193.576">RegistroEnvio</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2401.5" x2="2570.5" y1="1204.92" y2="1204.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2408.5" y="1212.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="95" x="2420.5" y="1220.6789">idRegistro: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2408.5" y="1227.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="145" x="2420.5" y="1235.6608">canal: CanalComunicacion</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2408.5" y="1242.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="106" x="2420.5" y="1250.6427">destinatario: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2408.5" y="1257.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="2420.5" y="1265.6246">fechaEnvio: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2408.5" y="1272.8476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="91" x="2420.5" y="1280.6065">exitoso: Boolean</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2408.5" y="1287.8294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="105" x="2420.5" y="1295.5884">motivoError: String</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2401.5" x2="2570.5" y1="1302.8113" y2="1302.8113"/><!--MD5=[8b66b7342ebffb5468f9dad95977a8e0]
+class Tarea--><rect codeLine="257" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="107.9276" id="Tarea" style="stroke:#A80036;stroke-width:1.5;" width="158" x="1743" y="811.92"/><ellipse cx="1800.75" cy="827.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M1800.8594,823.2013 Q1799.9375,823.2013 1799.2031,823.5138 Q1798.4844,823.8263 1797.9844,824.42 Q1797.4844,824.9981 1797.2031,825.8731 Q1796.9375,826.7481 1796.9375,827.8419 Q1796.9375,829.2794 1797.375,830.3263 Q1797.8281,831.3731 1798.6719,831.92 Q1799.5313,832.4669 1800.8438,832.4669 Q1801.625,832.4669 1802.3125,832.3419 Q1803.0156,832.2013 1804.0156,831.8888 L1804.0156,833.7638 Q1803.1563,834.0919 1802.3906,834.2169 Q1801.6406,834.3419 1800.625,834.3419 Q1798.7031,834.3419 1797.3906,833.545 Q1796.0938,832.7325 1795.4375,831.2638 Q1794.7813,829.7794 1794.7813,827.8106 Q1794.7813,826.3888 1795.1719,825.2169 Q1795.5781,824.0294 1796.3594,823.1544 Q1797.1406,822.2794 1798.2813,821.8106 Q1799.4219,821.3263 1800.8906,821.3263 Q1801.8438,821.3263 1802.7344,821.5294 Q1803.6406,821.7169 1804.5781,822.1856 L1803.75,823.9669 Q1802.9688,823.5919 1802.3125,823.4044 Q1801.6563,823.2013 1800.8594,823.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="34" x="1821.25" y="832.576">Tarea</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1744" x2="1900" y1="843.92" y2="843.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1751" y="851.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="82" x="1763" y="859.6789">idTarea: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1751" y="866.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="67" x="1763" y="874.6608">titulo: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1751" y="881.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="1763" y="889.6427">fechaVencimiento: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1751" y="896.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="117" x="1763" y="904.6246">completada: Boolean</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1744" x2="1900" y1="911.8476" y2="911.8476"/><!--MD5=[16a66afcfe3eba7e0d44fa04b14fdc7a]
+class Etiqueta--><rect codeLine="264" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="92.9457" id="Etiqueta" style="stroke:#A80036;stroke-width:1.5;" width="120" x="1984" y="819.42"/><ellipse cx="2017.9" cy="835.42" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M2018.0094,830.7013 Q2017.0875,830.7013 2016.3531,831.0138 Q2015.6344,831.3263 2015.1344,831.92 Q2014.6344,832.4981 2014.3531,833.3731 Q2014.0875,834.2481 2014.0875,835.3419 Q2014.0875,836.7794 2014.525,837.8263 Q2014.9781,838.8731 2015.8219,839.42 Q2016.6813,839.9669 2017.9938,839.9669 Q2018.775,839.9669 2019.4625,839.8419 Q2020.1656,839.7013 2021.1656,839.3888 L2021.1656,841.2638 Q2020.3063,841.5919 2019.5406,841.7169 Q2018.7906,841.8419 2017.775,841.8419 Q2015.8531,841.8419 2014.5406,841.045 Q2013.2438,840.2325 2012.5875,838.7638 Q2011.9313,837.2794 2011.9313,835.3106 Q2011.9313,833.8888 2012.3219,832.7169 Q2012.7281,831.5294 2013.5094,830.6544 Q2014.2906,829.7794 2015.4313,829.3106 Q2016.5719,828.8263 2018.0406,828.8263 Q2018.9938,828.8263 2019.8844,829.0294 Q2020.7906,829.2169 2021.7281,829.6856 L2020.9,831.4669 Q2020.1188,831.0919 2019.4625,830.9044 Q2018.8063,830.7013 2018.0094,830.7013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="46" x="2036.1" y="840.076">Etiqueta</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1985" x2="2103" y1="851.42" y2="851.42"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1992" y="859.42"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="94" x="2004" y="867.1789">idEtiqueta: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1992" y="874.4019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="83" x="2004" y="882.1608">nombre: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1992" y="889.3838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="67" x="2004" y="897.1427">color: String</text><line style="stroke:#A80036;stroke-width:1.5;" x1="1985" x2="2103" y1="904.3657" y2="904.3657"/><!--MD5=[faa06ec74f785285cba03698beea33b8]
+class CentroCoste--><rect codeLine="270" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="92.9457" id="CentroCoste" style="stroke:#A80036;stroke-width:1.5;" width="143" x="2187.5" y="819.42"/><ellipse cx="2219.6" cy="835.42" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M2219.7094,830.7013 Q2218.7875,830.7013 2218.0531,831.0138 Q2217.3344,831.3263 2216.8344,831.92 Q2216.3344,832.4981 2216.0531,833.3731 Q2215.7875,834.2481 2215.7875,835.3419 Q2215.7875,836.7794 2216.225,837.8263 Q2216.6781,838.8731 2217.5219,839.42 Q2218.3813,839.9669 2219.6938,839.9669 Q2220.475,839.9669 2221.1625,839.8419 Q2221.8656,839.7013 2222.8656,839.3888 L2222.8656,841.2638 Q2222.0063,841.5919 2221.2406,841.7169 Q2220.4906,841.8419 2219.475,841.8419 Q2217.5531,841.8419 2216.2406,841.045 Q2214.9438,840.2325 2214.2875,838.7638 Q2213.6313,837.2794 2213.6313,835.3106 Q2213.6313,833.8888 2214.0219,832.7169 Q2214.4281,831.5294 2215.2094,830.6544 Q2215.9906,829.7794 2217.1313,829.3106 Q2218.2719,828.8263 2219.7406,828.8263 Q2220.6938,828.8263 2221.5844,829.0294 Q2222.4906,829.2169 2223.4281,829.6856 L2222.6,831.4669 Q2221.8188,831.0919 2221.1625,830.9044 Q2220.5063,830.7013 2219.7094,830.7013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="73" x="2237.4" y="840.076">CentroCoste</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2188.5" x2="2329.5" y1="851.42" y2="851.42"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2195.5" y="859.42"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="117" x="2207.5" y="867.1789">idCentroCoste: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2195.5" y="874.4019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="76" x="2207.5" y="882.1608">codigo: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2195.5" y="889.3838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="83" x="2207.5" y="897.1427">nombre: String</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2188.5" x2="2329.5" y1="904.3657" y2="904.3657"/><!--MD5=[e6b52e4ae72b153253de240a8af14f5b]
+class ObjetivoFacturacion--><rect codeLine="276" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="107.9276" id="ObjetivoFacturacion" style="stroke:#A80036;stroke-width:1.5;" width="167" x="3961.5" y="390.92"/><ellipse cx="3985.5" cy="406.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M3985.6094,402.2013 Q3984.6875,402.2013 3983.9531,402.5138 Q3983.2344,402.8263 3982.7344,403.42 Q3982.2344,403.9981 3981.9531,404.8731 Q3981.6875,405.7481 3981.6875,406.8419 Q3981.6875,408.2794 3982.125,409.3263 Q3982.5781,410.3731 3983.4219,410.92 Q3984.2813,411.4669 3985.5938,411.4669 Q3986.375,411.4669 3987.0625,411.3419 Q3987.7656,411.2013 3988.7656,410.8888 L3988.7656,412.7638 Q3987.9063,413.0919 3987.1406,413.2169 Q3986.3906,413.3419 3985.375,413.3419 Q3983.4531,413.3419 3982.1406,412.545 Q3980.8438,411.7325 3980.1875,410.2638 Q3979.5313,408.7794 3979.5313,406.8106 Q3979.5313,405.3888 3979.9219,404.2169 Q3980.3281,403.0294 3981.1094,402.1544 Q3981.8906,401.2794 3983.0313,400.8106 Q3984.1719,400.3263 3985.6406,400.3263 Q3986.5938,400.3263 3987.4844,400.5294 Q3988.3906,400.7169 3989.3281,401.1856 L3988.5,402.9669 Q3987.7188,402.5919 3987.0625,402.4044 Q3986.4063,402.2013 3985.6094,402.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="115" x="4001.5" y="411.576">ObjetivoFacturacion</text><line style="stroke:#A80036;stroke-width:1.5;" x1="3962.5" x2="4127.5" y1="422.92" y2="422.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3969.5" y="430.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="95" x="3981.5" y="438.6789">idObjetivo: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3969.5" y="445.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="82" x="3981.5" y="453.6608">periodo: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3969.5" y="460.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="141" x="3981.5" y="468.6427">importeObjetivo: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3969.5" y="475.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="133" x="3981.5" y="483.6246">fechaModificacion: Date</text><line style="stroke:#A80036;stroke-width:1.5;" x1="3962.5" x2="4127.5" y1="490.8476" y2="490.8476"/><!--MD5=[dc646167d91304cd09155e6ec6e0cecf]
+class ReglaAlerta--><rect codeLine="283" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="122.9094" id="ReglaAlerta" style="stroke:#A80036;stroke-width:1.5;" width="200" x="4415" y="37.42"/><ellipse cx="4477.75" cy="53.42" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M4477.8594,48.7013 Q4476.9375,48.7013 4476.2031,49.0138 Q4475.4844,49.3263 4474.9844,49.92 Q4474.4844,50.4981 4474.2031,51.3731 Q4473.9375,52.2481 4473.9375,53.3419 Q4473.9375,54.7794 4474.375,55.8263 Q4474.8281,56.8731 4475.6719,57.42 Q4476.5313,57.9669 4477.8438,57.9669 Q4478.625,57.9669 4479.3125,57.8419 Q4480.0156,57.7013 4481.0156,57.3888 L4481.0156,59.2638 Q4480.1563,59.5919 4479.3906,59.7169 Q4478.6406,59.8419 4477.625,59.8419 Q4475.7031,59.8419 4474.3906,59.045 Q4473.0938,58.2325 4472.4375,56.7638 Q4471.7813,55.2794 4471.7813,53.3106 Q4471.7813,51.8888 4472.1719,50.7169 Q4472.5781,49.5294 4473.3594,48.6544 Q4474.1406,47.7794 4475.2813,47.3106 Q4476.4219,46.8263 4477.8906,46.8263 Q4478.8438,46.8263 4479.7344,47.0294 Q4480.6406,47.2169 4481.5781,47.6856 L4480.75,49.4669 Q4479.9688,49.0919 4479.3125,48.9044 Q4478.6563,48.7013 4477.8594,48.7013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="66" x="4498.25" y="58.076">ReglaAlerta</text><line style="stroke:#A80036;stroke-width:1.5;" x1="4416" x2="4614" y1="69.42" y2="69.42"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4423" y="77.42"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="80" x="4435" y="85.1789">idRegla: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4423" y="92.4019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="83" x="4435" y="100.1608">nombre: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4423" y="107.3838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="161" x="4435" y="115.1427">diasVencimientoMax: Integer</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4423" y="122.3657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="174" x="4435" y="130.1246">importePendienteMax: Decimal</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4423" y="137.3476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="84" x="4435" y="145.1065">activa: Boolean</text><line style="stroke:#A80036;stroke-width:1.5;" x1="4416" x2="4614" y1="152.3294" y2="152.3294"/><!--MD5=[54b589f767769d28076e38294b32b82d]
+class RegistroAuditoria--><rect codeLine="291" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="137.8913" id="RegistroAuditoria" style="stroke:#A80036;stroke-width:1.5;" width="134" x="4212" y="375.92"/><ellipse cx="4227" cy="391.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M4227.1094,387.2013 Q4226.1875,387.2013 4225.4531,387.5138 Q4224.7344,387.8263 4224.2344,388.42 Q4223.7344,388.9981 4223.4531,389.8731 Q4223.1875,390.7481 4223.1875,391.8419 Q4223.1875,393.2794 4223.625,394.3263 Q4224.0781,395.3731 4224.9219,395.92 Q4225.7813,396.4669 4227.0938,396.4669 Q4227.875,396.4669 4228.5625,396.3419 Q4229.2656,396.2013 4230.2656,395.8888 L4230.2656,397.7638 Q4229.4063,398.0919 4228.6406,398.2169 Q4227.8906,398.3419 4226.875,398.3419 Q4224.9531,398.3419 4223.6406,397.545 Q4222.3438,396.7325 4221.6875,395.2638 Q4221.0313,393.7794 4221.0313,391.8106 Q4221.0313,390.3888 4221.4219,389.2169 Q4221.8281,388.0294 4222.6094,387.1544 Q4223.3906,386.2794 4224.5313,385.8106 Q4225.6719,385.3263 4227.1406,385.3263 Q4228.0938,385.3263 4228.9844,385.5294 Q4229.8906,385.7169 4230.8281,386.1856 L4230,387.9669 Q4229.2188,387.5919 4228.5625,387.4044 Q4227.9063,387.2013 4227.1094,387.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="102" x="4241" y="396.576">RegistroAuditoria</text><line style="stroke:#A80036;stroke-width:1.5;" x1="4213" x2="4345" y1="407.92" y2="407.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4220" y="415.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="99" x="4232" y="423.6789">idAuditoria: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4220" y="430.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="75" x="4232" y="438.6608">accion: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4220" y="445.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="81" x="4232" y="453.6427">entidad: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4220" y="460.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="90" x="4232" y="468.6246">idEntidad: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4220" y="475.8476"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="63" x="4232" y="483.6065">fecha: Date</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4220" y="490.8294"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="83" x="4232" y="498.5884">detalles: String</text><line style="stroke:#A80036;stroke-width:1.5;" x1="4213" x2="4345" y1="505.8113" y2="505.8113"/><!--MD5=[d35430da439695e14b435aa65b50b698]
+class EventoLineaTemporal--><rect codeLine="300" fill="#FEFECE" filter="url(#f102na6wvs8bvf)" height="107.9276" id="EventoLineaTemporal" style="stroke:#A80036;stroke-width:1.5;" width="157" x="2653.5" y="811.92"/><ellipse cx="2668.5" cy="827.92" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M2668.6094,823.2013 Q2667.6875,823.2013 2666.9531,823.5138 Q2666.2344,823.8263 2665.7344,824.42 Q2665.2344,824.9981 2664.9531,825.8731 Q2664.6875,826.7481 2664.6875,827.8419 Q2664.6875,829.2794 2665.125,830.3263 Q2665.5781,831.3731 2666.4219,831.92 Q2667.2813,832.4669 2668.5938,832.4669 Q2669.375,832.4669 2670.0625,832.3419 Q2670.7656,832.2013 2671.7656,831.8888 L2671.7656,833.7638 Q2670.9063,834.0919 2670.1406,834.2169 Q2669.3906,834.3419 2668.375,834.3419 Q2666.4531,834.3419 2665.1406,833.545 Q2663.8438,832.7325 2663.1875,831.2638 Q2662.5313,829.7794 2662.5313,827.8106 Q2662.5313,826.3888 2662.9219,825.2169 Q2663.3281,824.0294 2664.1094,823.1544 Q2664.8906,822.2794 2666.0313,821.8106 Q2667.1719,821.3263 2668.6406,821.3263 Q2669.5938,821.3263 2670.4844,821.5294 Q2671.3906,821.7169 2672.3281,822.1856 L2671.5,823.9669 Q2670.7188,823.5919 2670.0625,823.4044 Q2669.4063,823.2013 2668.6094,823.2013 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="125" x="2682.5" y="832.576">EventoLineaTemporal</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2654.5" x2="2809.5" y1="843.92" y2="843.92"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2661.5" y="851.92"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="86" x="2673.5" y="859.6789">idEvento: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2661.5" y="866.9019"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="97" x="2673.5" y="874.6608">tipoEvento: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2661.5" y="881.8838"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="103" x="2673.5" y="889.6427">descripcion: String</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2661.5" y="896.8657"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="63" x="2673.5" y="904.6246">fecha: Date</text><line style="stroke:#A80036;stroke-width:1.5;" x1="2654.5" x2="2809.5" y1="911.8476" y2="911.8476"/><!--MD5=[6166c5acb79d34ea0af5ea02e2df580c]
+link Usuario to Cliente--><path codeLine="308" d="M3549.72,116.83 C3289.49,173.28 2468.43,351.36 2161.39,417.96 " fill="none" id="Usuario-Cliente" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="2980.05" y="246.817">gestiona</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="3534.4729" y="133.3686">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="2168.9087" y="405.898">0..*</text><!--MD5=[e775331f2f3a0366c3aa2be07ff3459d]
+link Usuario to SolicitudAprobacion--><path codeLine="309" d="M3549.62,113.45 C3481.73,129.76 3387.7,163.7 3337,231.92 C3228.41,378.02 3295.03,456.28 3283,637.92 C3271.22,815.9 3286.19,1023.84 3297.53,1143.03 " fill="none" id="Usuario-SolicitudAprobacion" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="41" x="3284" y="652.817">solicita</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="3534.6252" y="110.9623">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="3275.8348" y="1131.0705">0..*</text><!--MD5=[e775331f2f3a0366c3aa2be07ff3459d]
+link Usuario to SolicitudAprobacion--><path codeLine="310" d="M3549.71,139.75 C3497.09,170.74 3431.97,218.77 3398,280.92 C3377.51,318.4 3332.43,906.86 3315.03,1143.24 " fill="none" id="Usuario-SolicitudAprobacion-1" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="51" x="3356.23" y="652.817">aprueba</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="3534.4619" y="139.8714">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="3294.1576" y="1130.7769">0..*</text><!--MD5=[3a04bc2032e4ea2c673acae95fa6a07b]
+link Usuario to Incidencia--><path codeLine="311" d="M3607.25,181.82 C3590.83,241.25 3568.95,320.48 3553.59,376.12 " fill="none" id="Usuario-Incidencia" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="63" x="3592.01" y="246.817">asignadaA</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="3591.2266" y="204.4383">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="3534.5832" y="364.1263">0..*</text><!--MD5=[a7d988556117ae5dc99aec9748a6bac2]
+link Usuario to ComentarioInterno--><path codeLine="312" d="M3652.62,181.8 C3656.74,198.32 3660.75,215.62 3664,231.92 C3668.3,253.5 3668.45,259.07 3671,280.92 C3694.42,481.47 3713.38,721.83 3720.72,819.68 " fill="none" id="Usuario-ComentarioInterno" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="45" x="3704.42" y="449.817">escribe</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="3652.1925" y="204.4114">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="3691.59" y="807.8921">0..*</text><!--MD5=[ce7a5ab4408e3b08f593e5f42ff580cf]
+link ComentarioInterno to Usuario--><path codeLine="345" d="M3737.28,819.52 C3764.5,719.84 3819.12,473.65 3758,280.92 C3746.75,245.45 3725.8,210.93 3704.05,181.69 " fill="none" id="ComentarioInterno-Usuario" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="59" x="3786.84" y="449.817">menciona</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="3717.8028" y="807.7279">0..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="3706.0672" y="204.2636">0..*</text><!--MD5=[efe0a202fc5768b7fbce07490ce519ff]
+link Usuario to Notificacion--><path codeLine="313" d="M3710.31,101.58 C3856.47,109.01 4170.86,141.37 4388,280.92 C4422.04,302.8 4450.77,337.02 4472.25,368.43 " fill="none" id="Usuario-Notificacion" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="38" x="4334.79" y="246.817">recibe</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="3718.432" y="97.411">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="4446.8102" y="356.6054">0..*</text><!--MD5=[23d71e1f73b631e5bdd43d32b28be098]
+link Usuario to RegistroAuditoria--><path codeLine="314" d="M3710.4,109.87 C3823.09,127.94 4029.88,173.93 4170,280.92 C4202.67,305.86 4228.81,343.53 4247.29,376.32 " fill="none" id="Usuario-RegistroAuditoria" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="44" x="4120.31" y="246.817">ejecuta</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="3718.5397" y="127.68">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="4222.4673" y="364.3494">0..*</text><!--MD5=[bdb1dcb03ada2102f189fdd7a4dfff03]
+link Usuario to ObjetivoFacturacion--><path codeLine="315" d="M3710.27,135.7 C3758.29,159.43 3819.08,193.16 3867,231.92 C3924.28,278.25 3976.86,345.06 4009.79,391.14 " fill="none" id="Usuario-ObjetivoFacturacion" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="51" x="3885.04" y="246.817">modifica</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="3718.3841" y="138.2484">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="3983.1498" y="378.9468">0..*</text><!--MD5=[0d7bda71e13c46f39fe6efa88567b126]
+link Cliente to Contacto--><path codeLine="317" d="M1926.65,479.91 C1802.41,515.54 1600.15,571 1423,607.92 C1338.45,625.54 1311.81,607.42 1231,637.92 C1149.4,668.71 1084.02,748.42 1046.12,804.53 " fill="none" id="Cliente-Contacto" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="39" x="1232" y="652.817">posee</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="1911.5304" y="478.6203">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="1029.4666" y="792.5234">1..*</text><!--MD5=[e0249ec18bbd003a88cdc6de66388a51]
+link Contacto to Cliente--><path codeLine="318" d="M1042.94,804.58 C1068.07,764.78 1106.44,714.85 1154,686.92 C1220.92,647.63 1250.44,674.58 1326,656.92 C1440.91,630.07 1754.18,534.86 1926.5,481.8 " fill="none" id="Contacto-Cliente" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="63" x="1400.69" y="652.817">pertenece</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="1025.8792" y="792.5798">0..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="1898.332" y="480.547">1..*</text><!--MD5=[469aa87170fee8092c49a9381401cc7b]
+link Cliente to Suscripcion--><path codeLine="319" d="M1926.74,471.59 C1795.86,505.08 1582.48,572.84 1430,686.92 C1395.62,712.64 1365.31,749.03 1341.91,782.17 " fill="none" id="Cliente-Suscripcion" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="64" x="1489.86" y="652.817">contratada</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="1911.6264" y="469.7413">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="1325.8386" y="770.028">0..1</text><!--MD5=[244872798c3a9c365a3b3085ca3d43ba]
+link Cliente to Factura--><path codeLine="320" d="M2161.18,457.95 C2327.42,480.43 2635.52,539.86 2852,686.92 C2866.93,697.06 2881.02,709.29 2894.08,722.53 " fill="none" id="Cliente-Factura" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="71" x="2795.31" y="652.817">perteneceA</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="2169.4557" y="455.5226">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="2866.1546" y="708.3105">0..*</text><!--MD5=[30ff237ab3ce45df8dd2a25647281dfc]
+link Cliente to Tarea--><path codeLine="321" d="M1968.53,587.86 C1927.55,665.2 1879.35,756.17 1849.74,812.06 " fill="none" id="Cliente-Tarea" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="31" x="1940.66" y="652.817">tiene</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="1946.4763" y="610.4796">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="1832.2347" y="800.2424">0..*</text><!--MD5=[e9d85453a63ef67fa99f4d6deb4c93eb]
+link Cliente to ExcepcionComercial--><path codeLine="322" d="M1926.86,515.08 C1857.22,559.49 1769.43,620.96 1701,686.92 C1661.7,724.8 1624.73,774.8 1599.46,812.08 " fill="none" id="Cliente-ExcepcionComercial" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="34" x="1753.05" y="652.817">aplica</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="1911.3775" y="516.3475">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="1582.7591" y="800.2652">0..*</text><!--MD5=[156ccd246cff3719753bda7020ab09f8]
+link Cliente to EventoLineaTemporal--><path codeLine="323" d="M2161.33,473.98 C2284.08,508.42 2477.3,575.94 2612,686.92 C2653.48,721.1 2686.37,773.25 2707.15,812.19 " fill="none" id="Cliente-EventoLineaTemporal" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="44" x="2573.44" y="652.817">genera</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="2169.6259" y="492.991">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="2682.0314" y="800.0042">0..*</text><!--MD5=[ade953f0fdc47b383d8b4ba11a8f578d]
+link Cliente to Etiqueta--><path codeLine="324" d="M2044,587.86 C2044,668.76 2044,764.57 2044,819.55 " fill="none" id="Cliente-Etiqueta" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="87" x="2045" y="652.817">clasificadoCon</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="2022.0938" y="610.4796">0..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="2022.4063" y="807.7627">0..*</text><!--MD5=[4f1844542b2d44ce89a072d315057a01]
+link Cliente to CentroCoste--><path codeLine="325" d="M2117.09,587.86 C2158.6,668.76 2207.77,764.57 2235.98,819.55 " fill="none" id="Cliente-CentroCoste" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="64" x="2152.5" y="652.817">asignadoA</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="2109.1165" y="610.4796">0..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="2210.7174" y="807.7627">0..1</text><!--MD5=[e2815012636ceb65a025bb56bfbcce78]
+link PlanTarifa to Suscripcion--><path codeLine="327" d="M1281.7,512.68 C1281.04,549.64 1280.32,596.31 1280,637.92 C1279.93,646.36 1279.76,648.48 1280,656.92 C1281.19,698.22 1283.72,744.08 1286.15,782.17 " fill="none" id="PlanTarifa-Suscripcion" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="40" x="1281" y="652.817">define</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="1272.6" y="535.6815">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="1264.5898" y="770.028">0..*</text><!--MD5=[c065ea60d0873565193dccb3ff79896f]
+link Factura to LineaFactura--><path codeLine="328" d="M2894.1,1019.62 C2859.94,1073.08 2823.34,1130.35 2795.98,1173.16 " fill="none" id="Factura-LineaFactura" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="2859.19" y="1088.817">contiene</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="2879.0197" y="1046.4834">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="2779.7933" y="1161.1709">1..*</text><!--MD5=[2584cd12440e24c5d2e6fbd3ce9b82e4]
+link LineaFactura to Impuesto--><path codeLine="329" d="M2753,1309.61 C2753,1355.82 2753,1416.33 2753,1459 " fill="none" id="LineaFactura-Impuesto" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="34" x="2754" y="1404.817">aplica</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="2728.625" y="1332.5809">0..*</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="2745.5078" y="1447.1739">1</text><!--MD5=[237a357bc26a082449445a63bbb7c56e]
+reverse link Factura to FacturaRectificativa--><path codeLine="330" d="M3023.17,1045.17 C3024.28,1054.88 3025.23,1064.51 3026,1073.92 C3026.68,1082.34 3026.14,1084.48 3026,1092.92 C3025.31,1133.65 3023.55,1180.69 3022.31,1210.48 " fill="none" id="Factura-backto-FacturaRectificativa" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="3016.23,1046.06,3020.72,1025.36,3030.12,1044.35,3016.23,1046.06" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[539b84f1c619effc913b3cbb861b963f]
+link FacturaRectificativa to Factura--><path codeLine="331" d="M2994.58,1210.49 C2971.65,1182.36 2940.13,1137.96 2927,1092.92 C2920.47,1070.53 2920.07,1046.89 2923.4,1023.65 " fill="none" id="FacturaRectificativa-Factura" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="89" x="2928" y="1088.817">facturaOriginal</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="2966.6131" y="1198.7315">0..1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="2904.0078" y="1046.2846">1</text><!--MD5=[264947b4a2855bd086a68f1efec2147d]
+link Factura to Conciliacion--><path codeLine="333" d="M2894.08,1012.8 C2881.16,1024.83 2867.11,1035.56 2852,1043.92 C2743.25,1104.07 2694.85,1044.94 2574,1073.92 C2550.88,1079.46 2547.17,1087.62 2524,1092.92 C2213.57,1163.98 1222.81,1220.08 919.86,1235.92 " fill="none" id="Factura-Conciliacion" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="93" x="2575" y="1088.817">se_concilia_con</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="2878.9981" y="1020.7653">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="927.9539" y="1227.7933">0..*</text><!--MD5=[33ee9f035c739e0ee89bb18c8dfbb4a6]
+link Cobro to Conciliacion--><path codeLine="334" d="M692.37,941.27 C711.19,985.59 735.9,1042.71 759,1092.92 C772.34,1121.91 787.79,1153.77 800.95,1180.43 " fill="none" id="Cobro-Conciliacion" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="44" x="760" y="1088.817">genera</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="695.9954" y="963.8123">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="775.8186" y="1168.4106">0..*</text><!--MD5=[09199b2b2615aa6eb8c9086aec62c3e6]
+link Conciliacion to Usuario--><path codeLine="335" d="M824.71,1180.67 C815.98,1076.98 807.25,858.39 866,686.92 C936.72,480.51 953.01,389.96 1142,280.92 C1354.89,158.1 3146.47,110.38 3549.65,101.15 " fill="none" id="Conciliacion-Usuario" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="76" x="882.46" y="652.817">revertidaPor</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="802.6228" y="1168.6813">0..1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="3534.396" y="97.4717">1</text><!--MD5=[ea851838413559378ac96da78517e5d3]
+link Factura to SolicitudAprobacion--><path codeLine="337" d="M3055.3,1023.88 C3068.97,1048.43 3084.87,1072.42 3103,1092.92 C3119.17,1111.2 3128.95,1108.99 3149,1122.92 C3162.81,1132.52 3177.16,1142.74 3191.34,1153.01 " fill="none" id="Factura-SolicitudAprobacion" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="3104" y="1088.817">requiere</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="3058.5781" y="1046.5541">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="3162.83" y="1143.3921">0..*</text><!--MD5=[81ae465585c9d4fed83f7ec1da5eb99c]
+link Cliente to SolicitudAprobacion--><path codeLine="338" d="M2161.42,455.8 C2413.54,480.48 2994.86,551.03 3131,686.92 C3246.08,801.79 3156.85,890.6 3211,1043.92 C3222.72,1077.1 3238.63,1111.96 3254.18,1142.95 " fill="none" id="Cliente-SolicitudAprobacion" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="3212" y="870.817">requiere</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="2169.728" y="453.0837">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="3228.8949" y="1130.9839">0..*</text><!--MD5=[a9b5a5cb76c41fe495f8a9dddd545289]
+link Factura to RegistroEnvio--><path codeLine="340" d="M2894.33,1008.67 C2881.22,1021.84 2867.06,1033.96 2852,1043.92 C2809.74,1071.89 2790.19,1058.24 2742,1073.92 C2683.68,1092.9 2665.13,1090.61 2613,1122.92 C2590.53,1136.84 2568.5,1155.08 2549.27,1173.02 " fill="none" id="Factura-RegistroEnvio" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="99" x="2743" y="1088.817">documentadoEn</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="2878.9519" y="1016.7273">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="2535.4293" y="1161.0147">0..*</text><!--MD5=[4b5e2412de7054297807e77eea78a66f]
+link PlantillaComunicacion to RegistroEnvio--><path codeLine="341" d="M2487.56,933.79 C2485.03,978.82 2482.46,1039.4 2483,1092.92 C2483.27,1119.17 2483.8,1148.05 2484.35,1173.24 " fill="none" id="PlantillaComunicacion-RegistroEnvio" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="35" x="2484" y="1088.817">utiliza</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="2477.0863" y="956.8396">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="2463.003" y="1161.2602">0..*</text><!--MD5=[94acdc5ee49026499cc2b309fdfa2d05]
+link Incidencia to ComentarioInterno--><path codeLine="343" d="M3565.37,512.74 C3604.24,598.91 3670.51,745.85 3703.74,819.52 " fill="none" id="Incidencia-ComentarioInterno" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="3630.5" y="652.817">contiene</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="3570.1256" y="535.7677">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="3678.9173" y="807.7279">0..*</text><!--MD5=[3926c4656b0766973eeb0a9b7de0feb9]
+link Incidencia to Factura--><path codeLine="344" d="M3519.91,512.88 C3505.37,561.2 3478.24,623.44 3430,656.92 C3323.91,730.55 3255.06,626.38 3141,686.92 C3122.52,696.73 3105.4,709.88 3089.85,724.6 " fill="none" id="Incidencia-Factura" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="61" x="3450.42" y="652.817">asociadaA</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="3488.9331" y="535.969">0..1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="3085.4983" y="694.9022">0..1</text><!--MD5=[00caf1131f1e0f88959ac744b11a2d0a]
+link ReglaAlerta to Notificacion--><path codeLine="347" d="M4515,159.34 C4515,217.47 4515,305.86 4515,368.59 " fill="none" id="ReglaAlerta-Notificacion" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="45" x="4516" y="246.817">dispara</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="4506.2938" y="181.7422">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="4493.9688" y="356.7819">0..*</text><!--MD5=[8875cac3b4e86cad1fe0c8f92e93a028]
+link RolUsuario to EstadoFactura--><!--MD5=[fa788e70a77e10b571fab67ed72494a2]
+link EstadoFactura to TipoFactura--><!--MD5=[b11696dc611516fa89ccc9005e5e4fa5]
+link TipoFactura to EstadoSuscripcion--><!--MD5=[223f7ae052c7a20f8089435fa9d3e6e5]
+link RolUsuario to EstadoIncidencia--><!--MD5=[b2ec4b54f821095d07493931da10c4ef]
+link EstadoIncidencia to PrioridadIncidencia--><!--MD5=[a14631b9e9ec9bd523b24240056993dc]
+link PrioridadIncidencia to EstadoAprobacion--><!--MD5=[1305f01b9ca8ef771056380a9a500378]
+link EstadoAprobacion to TipoSolicitudAprobacion--><!--MD5=[7a20a265cf89bbf13429b182310d1b2b]
+link EstadoIncidencia to TipoExcepcionComercial--><!--MD5=[011e81d1a32bce22181cca6d874cb64b]
+link TipoExcepcionComercial to PasarelaPago--><!--MD5=[6ac33259b60bb527c9bbaf38f3a2b7e6]
+link PasarelaPago to CanalComunicacion--><!--MD5=[2faf682450821074db854d82c55e50df]
+@startuml
+
+enum RolUsuario {
+  SUPERADMINISTRADOR
+  ADMINISTRADOR
+  USUARIO_OPERATIVO
+}
+
+enum EstadoFactura {
+  BORRADOR
+  APROBADA
+  EMITIDA
+  ENVIADA
+  VENCIDA
+  PAGADA
+  PARCIALMENTE_CONCILIADA
+  ANULADA
+  RECTIFICADA
+}
+
+enum TipoFactura {
+  RECURRENTE
+  PUNTUAL
+}
+
+enum EstadoSuscripcion {
+  ACTIVA
+  PAUSADA
+  BAJA
+  PENDIENTE_ACTIVACION
+}
+
+enum EstadoIncidencia {
+  ABIERTA
+  EN_PROCESO
+  RESUELTA
+  CERRADA
+}
+
+enum PrioridadIncidencia {
+  BAJA
+  MEDIA
+  ALTA
+  CRITICA
+}
+
+enum EstadoAprobacion {
+  PENDIENTE
+  APROBADO
+  RECHAZADO
+}
+
+enum TipoSolicitudAprobacion {
+  DESCUENTO_EXTRAORDINARIO
+  CAMBIO_TARIFA
+  FACTURA_RETENIDA
+  ANULACION_RECTIFICATIVA
+}
+
+enum TipoExcepcionComercial {
+  PRIMER_MES_GRATUITO
+  SIN_PRORRATEO
+  INICIO_FUTURO
+}
+
+enum PasarelaPago {
+  STRIPE
+  REVOLUT
+  OTRO
+}
+
+enum CanalComunicacion {
+  EMAIL
+  WHATSAPP
+  SISTEMA
+}
+
+class Usuario {
+  - idUsuario: String
+  - nombre: String
+  - emailCorporativo: String
+  - contrasenaHash: String
+  - rol: RolUsuario
+  - activo: Boolean
+  + iniciarSesion()
+  + recuperarContrasena()
+}
+
+class Cliente {
+  - idCliente: String
+  - nombreComercial: String
+  - razonSocial: String
+  - nifCif: String
+  - domicilioFiscal: String
+  - pais: String
+  - monedaTrabajo: String
+  - fechaInicio: Date
+  - fechaBaja: Date
+  - esFavorito: Boolean
+  - estadoSuscripcion: EstadoSuscripcion
+  - facturacionAnualVerificada: Decimal
+  + registrarBaja()
+  + pausarSuscripcion()
+  + actualizarPlanTarifa()
+  + anonimizar()
+}
+
+class Contacto {
+  - idContacto: String
+  - nombre: String
+  - email: String
+  - activo: Boolean
+  - esContactoFacturacion: Boolean
+}
+
+class Suscripcion {
+  - idSuscripcion: String
+  - fechaInicio: Date
+  - fechaFinPrevista: Date
+  - importeMensual: Decimal
+  - fechaPausaInicio: Date
+  - fechaPausaReactivacion: Date
+  - motivoPausa: String
+  + calcularProrrateo(): Decimal
+}
+
+class PlanTarifa {
+  - idPlan: String
+  - nombrePlan: String
+  - importeBase: Decimal
+  - rangoFacturacionMin: Decimal
+  - rangoFacturacionMax: Decimal
+  - fechaVigor: Date
+}
+
+class Factura {
+  - idFactura: String
+  - numeroFactura: String
+  - serie: String
+  - fechaEmision: Date
+  - fechaVencimiento: Date
+  - tipo: TipoFactura
+  - estado: EstadoFactura
+  - baseImponible: Decimal
+  - totalImpuestos: Decimal
+  - totalFactura: Decimal
+  - importePendiente: Decimal
+  - retenidaParaRevision: Boolean
+  - esMigrada: Boolean
+  - documentoId: String
+  - hashDocumento: String
+  + calcularTotales()
+  + emitir()
+  + anular()
+}
+
+class FacturaRectificativa {
+  - motivoRectificacion: String
+}
+
+class LineaFactura {
+  - idLinea: String
+  - concepto: String
+  - cantidad: Integer
+  - precioUnitario: Decimal
+  - porcentajeDescuento: Decimal
+  - subtotal: Decimal
+}
+
+class Impuesto {
+  - idImpuesto: String
+  - nombre: String
+  - porcentaje: Decimal
+  - activo: Boolean
+}
+
+class Cobro {
+  - idCobro: String
+  - referenciaPago: String
+  - pasarelaPago: PasarelaPago
+  - fechaCobro: Date
+  - importe: Decimal
+  - moneda: String
+  - concepto: String
+}
+
+class Conciliacion {
+  - idConciliacion: String
+  - fechaConciliacion: Date
+  - importeConciliado: Decimal
+  - esAutomatica: Boolean
+  - motivoReversion: String
+}
+
+class SolicitudAprobacion {
+  - idSolicitud: String
+  - tipoSolicitud: TipoSolicitudAprobacion
+  - motivo: String
+  - porcentajeDescuento: Decimal
+  - importePropuesto: Decimal
+  - estado: EstadoAprobacion
+  - fechaSolicitud: Date
+  - fechaResolucion: Date
+  + aprobar()
+  + rechazar()
+}
+
+class ExcepcionComercial {
+  - idExcepcion: String
+  - tipo: TipoExcepcionComercial
+  - fechaInicio: Date
+  - observacion: String
+}
+
+class Incidencia {
+  - idIncidencia: String
+  - titulo: String
+  - descripcion: String
+  - estado: EstadoIncidencia
+  - prioridad: PrioridadIncidencia
+  - fechaCreacion: Date
+}
+
+class ComentarioInterno {
+  - idComentario: String
+  - contenido: String
+  - fecha: Date
+}
+
+class Notificacion {
+  - idNotificacion: String
+  - titulo: String
+  - mensaje: String
+  - fecha: Date
+  - leida: Boolean
+  - resuelta: Boolean
+  - canal: CanalComunicacion
+}
+
+class PlantillaComunicacion {
+  - idPlantilla: String
+  - nombre: String
+  - asunto: String
+  - cuerpoHtml: String
+  - tipoEvento: String
+  - idioma: String
+}
+
+class RegistroEnvio {
+  - idRegistro: String
+  - canal: CanalComunicacion
+  - destinatario: String
+  - fechaEnvio: Date
+  - exitoso: Boolean
+  - motivoError: String
+}
+
+class Tarea {
+  - idTarea: String
+  - titulo: String
+  - fechaVencimiento: Date
+  - completada: Boolean
+}
+
+class Etiqueta {
+  - idEtiqueta: String
+  - nombre: String
+  - color: String
+}
+
+class CentroCoste {
+  - idCentroCoste: String
+  - codigo: String
+  - nombre: String
+}
+
+class ObjetivoFacturacion {
+  - idObjetivo: String
+  - periodo: String
+  - importeObjetivo: Decimal
+  - fechaModificacion: Date
+}
+
+class ReglaAlerta {
+  - idRegla: String
+  - nombre: String
+  - diasVencimientoMax: Integer
+  - importePendienteMax: Decimal
+  - activa: Boolean
+}
+
+class RegistroAuditoria {
+  - idAuditoria: String
+  - accion: String
+  - entidad: String
+  - idEntidad: String
+  - fecha: Date
+  - detalles: String
+}
+
+class EventoLineaTemporal {
+  - idEvento: String
+  - tipoEvento: String
+  - descripcion: String
+  - fecha: Date
+}
+
+' Relaciones
+Usuario "1" - - "0..*" Cliente : gestiona
+Usuario "1" - - "0..*" SolicitudAprobacion : solicita
+Usuario "1" - - "0..*" SolicitudAprobacion : aprueba
+Usuario "1" - - "0..*" Incidencia : asignadaA
+Usuario "1" - - "0..*" ComentarioInterno : escribe
+Usuario "1" - - "0..*" Notificacion : recibe
+Usuario "1" - - "0..*" RegistroAuditoria : ejecuta
+Usuario "1" - - "0..*" ObjetivoFacturacion : modifica
+
+Cliente "1" - - "1..*" Contacto : posee
+Contacto "0..*" - - "1..*" Cliente : pertenece
+Cliente "1" - - "0..1" Suscripcion : contratada
+Cliente "1" - - "0..*" Factura : perteneceA
+Cliente "1" - - "0..*" Tarea : tiene
+Cliente "1" - - "0..*" ExcepcionComercial : aplica
+Cliente "1" - - "0..*" EventoLineaTemporal : genera
+Cliente "0..*" - - "0..*" Etiqueta : clasificadoCon
+Cliente "0..*" - - "0..1" CentroCoste : asignadoA
+
+PlanTarifa "1" - - "0..*" Suscripcion : define
+Factura "1" - - "1..*" LineaFactura : contiene
+LineaFactura "0..*" - - "1" Impuesto : aplica
+Factura <|- - FacturaRectificativa
+FacturaRectificativa "0..1" - - "1" Factura : facturaOriginal
+
+Factura "1" - - "0..*" Conciliacion : se_concilia_con
+Cobro "1" - - "0..*" Conciliacion : genera
+Conciliacion "0..1" - - "1" Usuario : revertidaPor
+
+Factura "1" - - "0..*" SolicitudAprobacion : requiere
+Cliente "1" - - "0..*" SolicitudAprobacion : requiere
+
+Factura "1" - - "0..*" RegistroEnvio : documentadoEn
+PlantillaComunicacion "1" - - "0..*" RegistroEnvio : utiliza
+
+Incidencia "1" - - "0..*" ComentarioInterno : contiene
+Incidencia "0..1" - - "0..1" Factura : asociadaA
+ComentarioInterno "0..*" - - "0..*" Usuario : menciona
+
+ReglaAlerta "1" - - "0..*" Notificacion : dispara
+
+@enduml
+
+@startuml
+
+enum RolUsuario {
+  SUPERADMINISTRADOR
+  ADMINISTRADOR
+  USUARIO_OPERATIVO
+}
+
+enum EstadoFactura {
+  BORRADOR
+  APROBADA
+  EMITIDA
+  ENVIADA
+  VENCIDA
+  PAGADA
+  PARCIALMENTE_CONCILIADA
+  ANULADA
+  RECTIFICADA
+}
+
+enum TipoFactura {
+  RECURRENTE
+  PUNTUAL
+}
+
+enum EstadoSuscripcion {
+  ACTIVA
+  PAUSADA
+  BAJA
+  PENDIENTE_ACTIVACION
+}
+
+enum EstadoIncidencia {
+  ABIERTA
+  EN_PROCESO
+  RESUELTA
+  CERRADA
+}
+
+enum PrioridadIncidencia {
+  BAJA
+  MEDIA
+  ALTA
+  CRITICA
+}
+
+enum EstadoAprobacion {
+  PENDIENTE
+  APROBADO
+  RECHAZADO
+}
+
+enum TipoSolicitudAprobacion {
+  DESCUENTO_EXTRAORDINARIO
+  CAMBIO_TARIFA
+  FACTURA_RETENIDA
+  ANULACION_RECTIFICATIVA
+}
+
+enum TipoExcepcionComercial {
+  PRIMER_MES_GRATUITO
+  SIN_PRORRATEO
+  INICIO_FUTURO
+}
+
+enum PasarelaPago {
+  STRIPE
+  REVOLUT
+  OTRO
+}
+
+enum CanalComunicacion {
+  EMAIL
+  WHATSAPP
+  SISTEMA
+}
+
+class Usuario {
+  - idUsuario: String
+  - nombre: String
+  - emailCorporativo: String
+  - contrasenaHash: String
+  - rol: RolUsuario
+  - activo: Boolean
+  + iniciarSesion()
+  + recuperarContrasena()
+}
+
+class Cliente {
+  - idCliente: String
+  - nombreComercial: String
+  - razonSocial: String
+  - nifCif: String
+  - domicilioFiscal: String
+  - pais: String
+  - monedaTrabajo: String
+  - fechaInicio: Date
+  - fechaBaja: Date
+  - esFavorito: Boolean
+  - estadoSuscripcion: EstadoSuscripcion
+  - facturacionAnualVerificada: Decimal
+  + registrarBaja()
+  + pausarSuscripcion()
+  + actualizarPlanTarifa()
+  + anonimizar()
+}
+
+class Contacto {
+  - idContacto: String
+  - nombre: String
+  - email: String
+  - activo: Boolean
+  - esContactoFacturacion: Boolean
+}
+
+class Suscripcion {
+  - idSuscripcion: String
+  - fechaInicio: Date
+  - fechaFinPrevista: Date
+  - importeMensual: Decimal
+  - fechaPausaInicio: Date
+  - fechaPausaReactivacion: Date
+  - motivoPausa: String
+  + calcularProrrateo(): Decimal
+}
+
+class PlanTarifa {
+  - idPlan: String
+  - nombrePlan: String
+  - importeBase: Decimal
+  - rangoFacturacionMin: Decimal
+  - rangoFacturacionMax: Decimal
+  - fechaVigor: Date
+}
+
+class Factura {
+  - idFactura: String
+  - numeroFactura: String
+  - serie: String
+  - fechaEmision: Date
+  - fechaVencimiento: Date
+  - tipo: TipoFactura
+  - estado: EstadoFactura
+  - baseImponible: Decimal
+  - totalImpuestos: Decimal
+  - totalFactura: Decimal
+  - importePendiente: Decimal
+  - retenidaParaRevision: Boolean
+  - esMigrada: Boolean
+  - documentoId: String
+  - hashDocumento: String
+  + calcularTotales()
+  + emitir()
+  + anular()
+}
+
+class FacturaRectificativa {
+  - motivoRectificacion: String
+}
+
+class LineaFactura {
+  - idLinea: String
+  - concepto: String
+  - cantidad: Integer
+  - precioUnitario: Decimal
+  - porcentajeDescuento: Decimal
+  - subtotal: Decimal
+}
+
+class Impuesto {
+  - idImpuesto: String
+  - nombre: String
+  - porcentaje: Decimal
+  - activo: Boolean
+}
+
+class Cobro {
+  - idCobro: String
+  - referenciaPago: String
+  - pasarelaPago: PasarelaPago
+  - fechaCobro: Date
+  - importe: Decimal
+  - moneda: String
+  - concepto: String
+}
+
+class Conciliacion {
+  - idConciliacion: String
+  - fechaConciliacion: Date
+  - importeConciliado: Decimal
+  - esAutomatica: Boolean
+  - motivoReversion: String
+}
+
+class SolicitudAprobacion {
+  - idSolicitud: String
+  - tipoSolicitud: TipoSolicitudAprobacion
+  - motivo: String
+  - porcentajeDescuento: Decimal
+  - importePropuesto: Decimal
+  - estado: EstadoAprobacion
+  - fechaSolicitud: Date
+  - fechaResolucion: Date
+  + aprobar()
+  + rechazar()
+}
+
+class ExcepcionComercial {
+  - idExcepcion: String
+  - tipo: TipoExcepcionComercial
+  - fechaInicio: Date
+  - observacion: String
+}
+
+class Incidencia {
+  - idIncidencia: String
+  - titulo: String
+  - descripcion: String
+  - estado: EstadoIncidencia
+  - prioridad: PrioridadIncidencia
+  - fechaCreacion: Date
+}
+
+class ComentarioInterno {
+  - idComentario: String
+  - contenido: String
+  - fecha: Date
+}
+
+class Notificacion {
+  - idNotificacion: String
+  - titulo: String
+  - mensaje: String
+  - fecha: Date
+  - leida: Boolean
+  - resuelta: Boolean
+  - canal: CanalComunicacion
+}
+
+class PlantillaComunicacion {
+  - idPlantilla: String
+  - nombre: String
+  - asunto: String
+  - cuerpoHtml: String
+  - tipoEvento: String
+  - idioma: String
+}
+
+class RegistroEnvio {
+  - idRegistro: String
+  - canal: CanalComunicacion
+  - destinatario: String
+  - fechaEnvio: Date
+  - exitoso: Boolean
+  - motivoError: String
+}
+
+class Tarea {
+  - idTarea: String
+  - titulo: String
+  - fechaVencimiento: Date
+  - completada: Boolean
+}
+
+class Etiqueta {
+  - idEtiqueta: String
+  - nombre: String
+  - color: String
+}
+
+class CentroCoste {
+  - idCentroCoste: String
+  - codigo: String
+  - nombre: String
+}
+
+class ObjetivoFacturacion {
+  - idObjetivo: String
+  - periodo: String
+  - importeObjetivo: Decimal
+  - fechaModificacion: Date
+}
+
+class ReglaAlerta {
+  - idRegla: String
+  - nombre: String
+  - diasVencimientoMax: Integer
+  - importePendienteMax: Decimal
+  - activa: Boolean
+}
+
+class RegistroAuditoria {
+  - idAuditoria: String
+  - accion: String
+  - entidad: String
+  - idEntidad: String
+  - fecha: Date
+  - detalles: String
+}
+
+class EventoLineaTemporal {
+  - idEvento: String
+  - tipoEvento: String
+  - descripcion: String
+  - fecha: Date
+}
+
+Usuario "1" - - "0..*" Cliente : gestiona
+Usuario "1" - - "0..*" SolicitudAprobacion : solicita
+Usuario "1" - - "0..*" SolicitudAprobacion : aprueba
+Usuario "1" - - "0..*" Incidencia : asignadaA
+Usuario "1" - - "0..*" ComentarioInterno : escribe
+Usuario "1" - - "0..*" Notificacion : recibe
+Usuario "1" - - "0..*" RegistroAuditoria : ejecuta
+Usuario "1" - - "0..*" ObjetivoFacturacion : modifica
+
+Cliente "1" - - "1..*" Contacto : posee
+Contacto "0..*" - - "1..*" Cliente : pertenece
+Cliente "1" - - "0..1" Suscripcion : contratada
+Cliente "1" - - "0..*" Factura : perteneceA
+Cliente "1" - - "0..*" Tarea : tiene
+Cliente "1" - - "0..*" ExcepcionComercial : aplica
+Cliente "1" - - "0..*" EventoLineaTemporal : genera
+Cliente "0..*" - - "0..*" Etiqueta : clasificadoCon
+Cliente "0..*" - - "0..1" CentroCoste : asignadoA
+
+PlanTarifa "1" - - "0..*" Suscripcion : define
+Factura "1" - - "1..*" LineaFactura : contiene
+LineaFactura "0..*" - - "1" Impuesto : aplica
+Factura <|- - FacturaRectificativa
+FacturaRectificativa "0..1" - - "1" Factura : facturaOriginal
+
+Factura "1" - - "0..*" Conciliacion : se_concilia_con
+Cobro "1" - - "0..*" Conciliacion : genera
+Conciliacion "0..1" - - "1" Usuario : revertidaPor
+
+Factura "1" - - "0..*" SolicitudAprobacion : requiere
+Cliente "1" - - "0..*" SolicitudAprobacion : requiere
+
+Factura "1" - - "0..*" RegistroEnvio : documentadoEn
+PlantillaComunicacion "1" - - "0..*" RegistroEnvio : utiliza
+
+Incidencia "1" - - "0..*" ComentarioInterno : contiene
+Incidencia "0..1" - - "0..1" Factura : asociadaA
+ComentarioInterno "0..*" - - "0..*" Usuario : menciona
+
+ReglaAlerta "1" - - "0..*" Notificacion : dispara
+
+@enduml
+
+PlantUML version 1.2021.00(Sun Jan 10 11:25:05 CET 2021)
+(MIT source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: es
+Country: ES
+--></g></svg>
