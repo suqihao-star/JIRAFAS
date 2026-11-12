@@ -1,0 +1,95 @@
+@startuml bloque_E
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 60
+hide empty members
+title Diagrama de clases - Bloque E - Seguimiento, consulta e informes\n(CU-23 a CU-29)
+
+package "Bloque E - Seguimiento, consulta e informes" {
+
+  class Notificacion {
+    - categoria : String
+    - mensaje : String
+    - fecha : FechaHora
+    - leida : Boolean
+    + marcarLeida() : void
+  }
+
+  class ReglaAlerta {
+    - tipo : String
+    - umbral : Decimal
+    - activa : Boolean
+    + evaluar() : Boolean
+  }
+
+  class Incidencia {
+    - tipo : String
+    - descripcion : String
+    - estado : String
+    - fechaCreacion : FechaHora
+    - adjuntos : List<String>
+    + resolver() : void
+  }
+
+  class Comentario {
+    - texto : String
+    - fecha : FechaHora
+  }
+  note bottom of Comentario
+    Siempre interno: nunca se envía
+    al cliente (BR-20)
+  end note
+
+  class Informe {
+    - filtros : String
+    - formato : String
+    - fechaGeneracion : FechaHora
+    - fechaCaducidad : FechaHora
+    + generar() : void
+    + exportar() : String
+    + regenerar() : void
+  }
+
+  class ObjetivoFacturacion {
+    - periodo : String
+    - valor : Decimal
+    + modificar(valor : Decimal) : void
+  }
+
+  class CentroCoste {
+    - nombre : String
+    - tipo : String
+    - activo : Boolean
+  }
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F4F4 {
+  abstract class Usuario
+}
+package "Bloque A - Clientes y contactos (referencia)" #F4F4F4 {
+  class Cliente
+}
+package "Bloque C - Facturación (referencia)" #F4F4F4 {
+  class Factura
+}
+
+' ---- Relaciones del bloque ----
+Usuario "1" -- "0..*" Notificacion : recibe >
+ReglaAlerta "0..1" -- "0..*" Notificacion : genera >
+Cliente "1" -- "0..*" Incidencia
+Factura "0..1" -- "0..*" Incidencia
+Incidencia "0..*" --> "1" Usuario : responsable
+Incidencia "1" *-- "0..*" Comentario
+Comentario "0..*" --> "1" Usuario : autor
+Comentario "0..*" --> "0..*" Usuario : menciona
+Comentario "0..1" -- "0..*" Notificacion : genera >
+Usuario "1" -- "0..*" Informe : solicita >
+Factura "0..*" --> "0..1" CentroCoste
+Cliente "0..*" --> "0..1" CentroCoste
+
+legend bottom
+Las clases de los paquetes "(referencia)" pertenecen a otros bloques;
+su detalle completo está en su propio diagrama y en el diagrama general.
+endlegend
+@enduml

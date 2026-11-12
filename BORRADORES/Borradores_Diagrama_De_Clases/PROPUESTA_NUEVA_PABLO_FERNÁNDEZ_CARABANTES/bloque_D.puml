@@ -1,0 +1,97 @@
+@startuml bloque_D
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 60
+hide empty members
+title Diagrama de clases - Bloque D - Cobros y comunicaciones\n(CU-16 a CU-22)
+
+package "Bloque D - Cobros y comunicaciones" {
+
+  interface SistemaPagos {
+    + consultarPagos(desde : FechaHora) : List<MovimientoCobro>
+  }
+
+  interface CanalEnvio {
+    + enviar(c : Comunicacion) : Boolean
+  }
+
+  class MovimientoCobro {
+    - idExterno : String
+    - importe : Decimal
+    - fecha : FechaHora
+    - moneda : String
+    - referencia : String
+    - estado : String
+    + esDuplicado() : Boolean
+  }
+
+  class Conciliacion {
+    - importeAsignado : Decimal
+    - tipo : String
+    - fecha : FechaHora
+    - revertida : Boolean
+    - motivoReversion : String
+    + revertir(motivo : String) : void
+  }
+
+  class Comunicacion {
+    - tipo : String
+    - canal : String
+    - idioma : String
+    - estado : String
+    - fechaEnvio : FechaHora
+    - intentos : Integer
+    + enviar() : void
+    + reenviar() : void
+  }
+  note bottom of Comunicacion
+    tipo: FACTURA, RECORDATORIO, AVISO_IMPAGO
+    estado: EN_COLA, ENVIADA, ENTREGADA, REBOTADA
+  end note
+
+  class PlantillaComunicacion {
+    - tipo : String
+    - idioma : String
+    - version : Integer
+    - asunto : String
+    - contenido : String
+    + previsualizar() : String
+  }
+
+  class SuspensionRecordatorios {
+    - motivo : String
+    - fechaRevision : Fecha
+    - activa : Boolean
+    + reanudar() : void
+  }
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F4F4 {
+  abstract class Usuario
+}
+package "Bloque A - Clientes y contactos (referencia)" #F4F4F4 {
+  class Contacto
+}
+package "Bloque C - Facturación (referencia)" #F4F4F4 {
+  class Factura
+}
+
+' ---- Relaciones del bloque ----
+SistemaPagos ..> MovimientoCobro : notifica
+MovimientoCobro "1" -- "0..*" Conciliacion
+Factura "1" -- "0..*" Conciliacion
+Conciliacion "0..*" --> "0..1" Usuario : realizadaPor
+Conciliacion "0..*" --> "0..1" Usuario : revertidaPor
+MovimientoCobro "0..*" --> "0..1" Usuario : asignadoA
+Factura "0..1" -- "0..*" Comunicacion
+Comunicacion "0..*" --> "1" Contacto : destinatario
+Comunicacion "0..*" --> "1" PlantillaComunicacion : usa
+Comunicacion ..> CanalEnvio : se envía por
+Factura "1" -- "0..*" SuspensionRecordatorios
+
+legend bottom
+Las clases de los paquetes "(referencia)" pertenecen a otros bloques;
+su detalle completo está en su propio diagrama y en el diagrama general.
+endlegend
+@enduml

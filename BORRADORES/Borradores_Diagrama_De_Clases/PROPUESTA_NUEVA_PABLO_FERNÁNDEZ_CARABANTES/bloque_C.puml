@@ -1,0 +1,95 @@
+@startuml bloque_C
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 60
+hide empty members
+title Diagrama de clases - Bloque C - Facturación\n(CU-10 a CU-15)
+
+package "Bloque C - Facturación" {
+
+  class Factura {
+    - numero : String
+    - tipo : String
+    - estado : String
+    - fechaEmision : Fecha
+    - fechaVencimiento : Fecha
+    - periodoFacturado : String
+    - moneda : String
+    - baseImponible : Decimal
+    - total : Decimal
+    - saldoPendiente : Decimal
+    - retenida : Boolean
+    - motivoRetencion : String
+    - rutaPDF : String
+    + calcularTotales() : void
+    + validarDatosFiscales() : Boolean
+    + emitir() : void
+    + generarPDF() : void
+    + anular(motivo : String) : void
+  }
+  note right of Factura
+    estado: BORRADOR, APROBADA, EMITIDA, ENVIADA,
+    VENCIDA, PAGADA, PARCIALMENTE_CONCILIADA,
+    ANULADA, RECTIFICADA (FR-19)
+    Emitida = inmutable (BR-09)
+  end note
+
+  class FacturaRectificativa {
+    - motivoRectificacion : String
+  }
+
+  class LineaFactura {
+    - concepto : String
+    - cantidad : Decimal
+    - precioUnitario : Decimal
+    - importe : Decimal
+    + calcularImporte() : Decimal
+  }
+
+  class FiltroGuardado {
+    - nombre : String
+    - criterios : String
+    + aplicar() : void
+  }
+
+  class OperacionExcepcional {
+    - tipo : String
+    - motivo : String
+    - estado : String
+    + aprobar() : void
+    + ejecutar() : void
+  }
+  note bottom of OperacionExcepcional
+    tipo: RECTIFICACION, ANULACION,
+    INCOBRABLE, CANCELACION (CU-14)
+  end note
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F4F4 {
+  class Administrador
+  class Impuesto
+  class SerieFacturacion
+  abstract class Usuario
+}
+package "Bloque A - Clientes y contactos (referencia)" #F4F4F4 {
+  class Cliente
+}
+
+' ---- Relaciones del bloque ----
+Factura <|-- FacturaRectificativa
+Cliente "1" -- "0..*" Factura
+Factura "1" *-- "1..*" LineaFactura
+LineaFactura "0..*" --> "1" Impuesto
+SerieFacturacion "1" -- "0..*" Factura : numera >
+FacturaRectificativa "0..*" --> "1" Factura : rectificaA
+Factura "1" -- "0..*" OperacionExcepcional
+OperacionExcepcional "0..*" --> "1" Administrador : solicitante
+OperacionExcepcional "0..*" --> "0..1" Administrador : aprobador
+Usuario "1" *-- "0..*" FiltroGuardado
+
+legend bottom
+Las clases de los paquetes "(referencia)" pertenecen a otros bloques;
+su detalle completo está en su propio diagrama y en el diagrama general.
+endlegend
+@enduml

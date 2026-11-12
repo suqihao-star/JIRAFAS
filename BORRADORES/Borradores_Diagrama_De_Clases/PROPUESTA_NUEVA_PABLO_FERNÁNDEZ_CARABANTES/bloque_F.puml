@@ -1,0 +1,154 @@
+@startuml bloque_F
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 60
+hide empty members
+title Diagrama de clases - Bloque F - Administración, seguridad y sistema\n(CU-30 a CU-37)
+
+package "Bloque F - Administración, seguridad y sistema" {
+
+  abstract class Usuario {
+    - id : Long
+    - nombre : String
+    - correoCorporativo : String
+    - hashContrasena : String
+    - estado : String
+    - dobleFactorActivo : Boolean
+    - intentosFallidos : Integer
+    - preferenciasNotificacion : String
+    + iniciarSesion(correo : String, contrasena : String) : Boolean
+    + recuperarContrasena(correo : String) : void
+    + cerrarSesion() : void
+  }
+  note right of Usuario
+    estado: INVITADO, ACTIVO, BLOQUEADO, DESACTIVADO
+    (CU-30, CU-31, CU-32)
+  end note
+
+  class UsuarioOperativo {
+    + emitirFactura(f : Factura) : void
+    + solicitarDescuento(c : Cliente) : SolicitudDescuento
+    + conciliarPago(m : MovimientoCobro, f : Factura) : Conciliacion
+  }
+
+  class Administrador {
+    - puedeGestionarUsuarios : Boolean
+    + invitarUsuario(correo : String, rol : String) : Usuario
+    + cambiarRol(u : Usuario, rol : String) : void
+    + aprobarDescuento(s : SolicitudDescuento) : void
+    + aprobarFacturaRetenida(f : Factura) : void
+  }
+
+  class Superadministrador {
+    + resolverEscalado(s : SolicitudDescuento) : void
+    + modificarConfiguracion(c : ConfiguracionSistema) : void
+    + consultarAuditoria() : List<EventoAuditoria>
+  }
+
+  class EventoAuditoria {
+    - fechaHora : FechaHora
+    - accion : String
+    - entidad : String
+    - idEntidad : Long
+    - valoresAnteriores : String
+    - valoresNuevos : String
+  }
+  note bottom of EventoAuditoria
+    Inmutable. También alimenta la
+    línea temporal del cliente (CU-01)
+  end note
+
+  class AccionMasiva {
+    - tipo : String
+    - numeroElementos : Integer
+    - altoImpacto : Boolean
+    - estado : String
+    + mostrarAlcance() : Integer
+    + confirmar() : void
+    + revertir() : void
+  }
+
+  class EjecucionTarea {
+    - tipo : String
+    - inicio : FechaHora
+    - fin : FechaHora
+    - estado : String
+    - resumen : String
+    - errores : String
+  }
+  note bottom of EjecucionTarea
+    tipo: GENERACION_RECURRENTE, RECORDATORIOS,
+    CONSULTA_PAGOS, RESUMEN_DIARIO, COPIA_SEGURIDAD
+    (ejecutadas por el Planificador; CU-34)
+  end note
+
+  class ConfiguracionSistema {
+    - datosEmisor : String
+    - umbralDescuento : Decimal
+    - umbralImporteAlto : Decimal
+    - vencimientoGeneralDias : Integer
+    - diasRecordatorioPrevio : Integer = 3
+    - diasRecordatorioVencimiento : Integer = 5
+    - frecuenciaAvisoImpagoDias : Integer = 2
+    - funcionesInteligentesActivas : Boolean
+    + validar() : Boolean
+  }
+
+  class SerieFacturacion {
+    - codigo : String
+    - prefijo : String
+    - ultimoNumero : Integer
+    + asignarSiguienteNumero() : String
+  }
+
+  class Impuesto {
+    - nombre : String
+    - porcentaje : Decimal
+  }
+
+  class RangoTarifa {
+    - facturacionMinima : Decimal
+    - facturacionMaxima : Decimal
+    - precio : Decimal
+    - fechaEfecto : Fecha
+  }
+
+  class SolicitudExterna {
+    - sistemaOrigen : String
+    - tipo : String
+    - datos : String
+    - estado : String
+    - fecha : FechaHora
+    + marcarPendienteRevision() : void
+  }
+  note bottom of SolicitudExterna
+    Del Sistema externo vía API (CU-37).
+    Nunca modifica datos directamente (BR-21)
+  end note
+}
+
+package "Bloque A - Clientes y contactos (referencia)" #F4F4F4 {
+  class Cliente
+}
+package "Bloque C - Facturación (referencia)" #F4F4F4 {
+  class Factura
+}
+
+' ---- Relaciones del bloque ----
+Usuario <|-- UsuarioOperativo
+UsuarioOperativo <|-- Administrador
+Administrador <|-- Superadministrador
+EventoAuditoria "0..*" --> "0..1" Usuario : autor
+Administrador "1" -- "0..*" AccionMasiva : ejecuta >
+ConfiguracionSistema "1" *-- "1..*" SerieFacturacion
+ConfiguracionSistema "1" *-- "1..*" Impuesto
+ConfiguracionSistema "1" *-- "1..*" RangoTarifa
+SolicitudExterna "0..*" --> "1" Cliente : sobre
+Factura "0..*" --> "0..1" Administrador : aprobadaPor
+
+legend bottom
+Las clases de los paquetes "(referencia)" pertenecen a otros bloques;
+su detalle completo está en su propio diagrama y en el diagrama general.
+endlegend
+@enduml

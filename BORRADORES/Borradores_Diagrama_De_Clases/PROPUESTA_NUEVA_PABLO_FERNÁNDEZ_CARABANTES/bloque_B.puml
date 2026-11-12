@@ -1,0 +1,85 @@
+@startuml bloque_B
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 60
+hide empty members
+title Diagrama de clases - Bloque B - Suscripciones, tarifas y descuentos\n(CU-05 a CU-09)
+
+package "Bloque B - Suscripciones, tarifas y descuentos" {
+
+  class Suscripcion {
+    - plan : String
+    - precioVigente : Decimal
+    - fechaInicio : Fecha
+    - estado : String
+    - motivoPausa : String
+    - fechaReactivacionPrevista : Fecha
+    - fechaBaja : Fecha
+    + pausar(motivo : String, reactivacion : Fecha) : void
+    + reactivar() : void
+    + darDeBaja(fecha : Fecha) : void
+    + esFacturable(periodo : String) : Boolean
+  }
+  note right of Suscripcion
+    estado: PENDIENTE_ACTIVACION, ACTIVA,
+    EN_PAUSA, CANCELADA
+  end note
+
+  class RevisionTarifaAnual {
+    - facturacionAnualVerificada : Decimal
+    - precioNuevo : Decimal
+    - estado : String
+    - motivoRechazo : String
+    + aprobar() : void
+    + rechazar(motivo : String) : void
+  }
+
+  class SolicitudDescuento {
+    - tipo : String
+    - valor : Decimal
+    - motivo : String
+    - fechaVigencia : Fecha
+    - estado : String
+    - motivoDecision : String
+    + superaUmbral() : Boolean
+    + aprobar() : void
+    + rechazar(motivo : String) : void
+    + escalar() : void
+  }
+  note right of SolicitudDescuento
+    Aprobador distinto del solicitante
+    en importes sensibles (BR-12)
+  end note
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F4F4 {
+  class Administrador
+  class RangoTarifa
+  class UsuarioOperativo
+}
+package "Bloque A - Clientes y contactos (referencia)" #F4F4F4 {
+  class Cliente
+  class ExcepcionComercial
+}
+package "Bloque C - Facturación (referencia)" #F4F4F4 {
+  class Factura
+}
+
+' ---- Relaciones del bloque ----
+Cliente "1" *-- "0..*" Suscripcion
+Cliente "1" -- "0..*" RevisionTarifaAnual
+RevisionTarifaAnual "0..*" --> "0..1" RangoTarifa : rangoPropuesto
+RevisionTarifaAnual "0..*" --> "0..1" Administrador : aprobadaPor
+ExcepcionComercial "0..1" -- "0..1" SolicitudDescuento : se aprueba mediante >
+SolicitudDescuento "0..*" --> "1" Cliente : para
+SolicitudDescuento "0..*" --> "1" UsuarioOperativo : solicitante
+SolicitudDescuento "0..*" --> "0..1" Administrador : aprobador
+Suscripcion "0..1" -- "0..*" Factura : genera >
+Factura "0..*" --> "0..1" SolicitudDescuento : descuentoAplicado
+
+legend bottom
+Las clases de los paquetes "(referencia)" pertenecen a otros bloques;
+su detalle completo está en su propio diagrama y en el diagrama general.
+endlegend
+@enduml

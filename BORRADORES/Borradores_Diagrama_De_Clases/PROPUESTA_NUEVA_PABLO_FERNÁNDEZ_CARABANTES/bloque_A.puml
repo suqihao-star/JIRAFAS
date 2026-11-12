@@ -1,0 +1,108 @@
+@startuml bloque_A
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 60
+hide empty members
+title Diagrama de clases - Bloque A - Clientes y contactos\n(CU-01, CU-03, CU-04)
+
+package "Bloque A - Clientes y contactos" {
+
+  class Cliente {
+    - id : Long
+    - nombreComercial : String
+    - razonSocial : String
+    - identificadorFiscal : String
+    - domicilioFiscal : String
+    - pais : String
+    - moneda : String
+    - sector : String
+    - idioma : String
+    - estado : String
+    - datosFiscalesIncompletos : Boolean
+    - planServicio : String
+    - tarifaAcordada : Decimal
+    - condicionesPago : String
+    - vencimientoPactadoDias : Integer
+    - etiquetas : List<String>
+    + darDeAlta() : void
+    + editar() : void
+    + comprobarDuplicado() : Boolean
+    + darDeBaja(fecha : Fecha) : void
+  }
+  note right of Cliente
+    estado: ACTIVO, PENDIENTE_ACTIVACION, BAJA
+    Incluye los datos de la ficha comercial (FR-24)
+  end note
+
+  class Contacto {
+    - nombre : String
+    - correo : String
+    - idioma : String
+    - consentimientoWhatsApp : Boolean
+    - activo : Boolean
+    + anonimizar() : void
+  }
+
+  class ClienteContacto {
+    - tipo : String
+  }
+  note bottom of ClienteContacto
+    tipo: CONTRATACION, FACTURACION, IMPAGOS (FR-04)
+  end note
+
+  class Tarea {
+    - descripcion : String
+    - fechaPrevista : Fecha
+    - estado : String
+    + completar() : void
+  }
+
+  class ExcepcionComercial {
+    - tipo : String
+    - fechaInicioFutura : Fecha
+    - aprobada : Boolean
+  }
+
+  class ImportacionCSV {
+    - nombreArchivo : String
+    - fecha : FechaHora
+    - estado : String
+    - creados : Integer
+    - actualizados : Integer
+    - rechazados : Integer
+    + validar() : Boolean
+    + previsualizar() : List<FilaImportacion>
+    + confirmar() : void
+    + revertir() : void
+  }
+
+  class FilaImportacion {
+    - numeroFila : Integer
+    - estado : String
+    - motivoError : String
+  }
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F4F4 {
+  abstract class Usuario
+  class UsuarioOperativo
+}
+
+' ---- Relaciones del bloque ----
+Cliente "0..*" --> "1" UsuarioOperativo : responsableInterno
+Cliente "1..*" -- "0..*" Contacto
+(Cliente, Contacto) .. ClienteContacto
+Cliente "1" *-- "0..*" Tarea
+Tarea "0..*" --> "0..1" Usuario : completadaPor
+Usuario "0..*" -- "0..*" Cliente : favoritos >
+Cliente "1" *-- "0..*" ExcepcionComercial
+UsuarioOperativo "1" -- "0..*" ImportacionCSV : realiza >
+ImportacionCSV "1" *-- "1..*" FilaImportacion
+ImportacionCSV "0..1" -- "0..*" Cliente : crea/actualiza >
+
+legend bottom
+Las clases de los paquetes "(referencia)" pertenecen a otros bloques;
+su detalle completo está en su propio diagrama y en el diagrama general.
+endlegend
+@enduml
