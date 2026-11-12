@@ -1,0 +1,47 @@
+@startuml 00_vista_general
+skinparam dpi 110
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  ArrowColor #3B4456
+  HeaderBackgroundColor #E6ECF7
+  StereotypeFontColor #5A6476
+}
+skinparam enum {
+  BackgroundColor #F6EEDC
+  BorderColor #8A6A2A
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+}
+hide empty members
+title Vista general del modelo de dominio
+left to right direction
+
+Usuario "1" --> "*" Cliente : responsable interno
+Usuario "*" -- "*" Cliente : asignado a
+Cliente "*" -- "*" Contacto
+Cliente "1" *-- "1..*" Suscripcion
+Suscripcion "*" --> "1" RangoTarifa
+TablaTarifas "1" *-- "1..*" RangoTarifa
+Cliente "1" --> "*" Factura
+Suscripcion "1" --> "*" Factura : genera
+Factura "1" *-- "1..*" LineaFactura
+Factura "*" --> "1" Serie
+MovimientoCobro "1" --> "*" Conciliacion
+Conciliacion "*" --> "1" Factura
+Factura "1" --> "*" Comunicacion
+Comunicacion "*" --> "1" VersionPlantilla
+Cliente "1" --> "*" Incidencia
+SolicitudAprobacion "*" --> "1" Usuario : solicitante
+Usuario "1" --> "*" Notificacion
+RegistroAuditoria "*" --> "0..1" Usuario
+@enduml

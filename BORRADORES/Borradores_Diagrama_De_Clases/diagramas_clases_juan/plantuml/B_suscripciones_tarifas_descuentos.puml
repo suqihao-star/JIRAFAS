@@ -1,0 +1,150 @@
+@startuml B_suscripciones_tarifas_descuentos
+skinparam dpi 110
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  ArrowColor #3B4456
+  HeaderBackgroundColor #E6ECF7
+  StereotypeFontColor #5A6476
+}
+skinparam enum {
+  BackgroundColor #F6EEDC
+  BorderColor #8A6A2A
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+}
+hide empty members
+title Bloque B. Suscripciones, tarifas y descuentos
+class Suscripcion {
+  - id : Long
+  - planServicio : String
+  - fechaInicio : Date
+  - precioAcordado : BigDecimal
+  - estado : EstadoSuscripcion
+  - fechaBaja : Date
+  - motivoBaja : String
+  + estaFacturable(periodo) : boolean
+  + darDeBaja(fecha, motivo) : void
+  + pausar(motivo, inicio, reactivacion) : void
+  + reactivar() : void
+}
+enum EstadoSuscripcion {
+  PENDIENTE_ACTIVACION
+  ACTIVA
+  PAUSADA
+  BAJA
+}
+class Pausa {
+  - motivo : String
+  - fechaInicio : Date
+  - fechaReactivacionPrevista : Date
+  - fechaFin : Date
+}
+class TablaTarifas {
+  - version : int
+  - fechaEfecto : Date
+  - vigente : boolean
+  + rangoPara(facturacionAnual) : RangoTarifa
+  + validarRangos() : boolean
+}
+class RangoTarifa {
+  - facturacionMinima : BigDecimal
+  - facturacionMaxima : BigDecimal
+  - precioMensual : BigDecimal
+}
+class ReglaProrrateo <<service>> {
+  + calcular(precio, fechaAlta) : BigDecimal
+}
+abstract class SolicitudAprobacion {
+  - id : Long
+  - fechaSolicitud : DateTime
+  - motivo : String
+  - estado : EstadoAprobacion
+  - nivelRequerido : NivelAprobacion
+  - motivoPendiente : String
+  - fechaResolucion : DateTime
+  - motivoResolucion : String
+  - version : int
+  + aprobar(usuario) : void
+  + rechazar(usuario, motivo) : void
+  + escalar() : void
+  + pedirInformacion(texto) : void
+  # validarSeparacionFunciones(usuario) : boolean
+}
+enum EstadoAprobacion {
+  PENDIENTE
+  ESCALADA
+  INFO_SOLICITADA
+  APROBADA
+  RECHAZADA
+}
+enum NivelAprobacion {
+  ADMINISTRADOR
+  SUPERADMINISTRADOR
+}
+class SolicitudDescuento {
+  - tipo : TipoDescuento
+  - valor : BigDecimal
+  - vigenciaDesde : Date
+  - vigenciaHasta : Date
+  + superaUmbral(umbral) : boolean
+}
+enum TipoDescuento {
+  PORCENTAJE
+  IMPORTE_FIJO
+}
+class RevisionTarifa {
+  - facturacionAnualVerificada : BigDecimal
+  - precioAnterior : BigDecimal
+  - precioNuevo : BigDecimal
+}
+class AprobacionFactura {
+  - causa : CausaRetencion
+}
+class AprobacionExcepcion {
+}
+class OperacionExcepcional {
+  - tipo : TipoOperacion
+  - importe : BigDecimal
+}
+
+' Clases detalladas en otros bloques
+class Cliente #F1F2F4 ##9AA4B5
+class ExcepcionComercial #F1F2F4 ##9AA4B5
+class Usuario #F1F2F4 ##9AA4B5
+
+Cliente "1" *-- "1..*" Suscripcion
+Suscripcion --> EstadoSuscripcion
+Suscripcion "1" *-- "*" Pausa
+Suscripcion "*" --> "1" RangoTarifa : tarifa aplicada
+TablaTarifas "1" *-- "1..*" RangoTarifa
+Suscripcion ..> ReglaProrrateo
+SolicitudAprobacion <|-- SolicitudDescuento
+SolicitudAprobacion <|-- RevisionTarifa
+SolicitudAprobacion <|-- AprobacionFactura
+SolicitudAprobacion <|-- AprobacionExcepcion
+SolicitudAprobacion <|-- OperacionExcepcional
+SolicitudAprobacion --> EstadoAprobacion
+SolicitudAprobacion --> NivelAprobacion
+SolicitudAprobacion "*" --> "1" Usuario : solicitante
+SolicitudAprobacion "*" --> "0..1" Usuario : aprobador
+SolicitudDescuento --> TipoDescuento
+SolicitudDescuento "*" --> "1" Suscripcion
+RevisionTarifa "*" --> "1" Suscripcion
+RevisionTarifa "*" --> "1" RangoTarifa : rango propuesto
+AprobacionExcepcion "0..1" --> "1" ExcepcionComercial
+
+legend bottom right
+  Clases en gris: detalladas en otro bloque
+  Cubre: FR-09, FR-10, FR-11, FR-16, FR-17, FR-18, BR-12, BR-14, BR-15, CU-05, CU-06, CU-07, CU-08, CU-09
+endlegend
+@enduml

@@ -1,0 +1,158 @@
+@startuml C_facturacion
+skinparam dpi 110
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  ArrowColor #3B4456
+  HeaderBackgroundColor #E6ECF7
+  StereotypeFontColor #5A6476
+}
+skinparam enum {
+  BackgroundColor #F6EEDC
+  BorderColor #8A6A2A
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+}
+hide empty members
+title Bloque C. Facturación
+class Factura {
+  - id : Long
+  - numero : String
+  - tipo : TipoFactura
+  - estado : EstadoFactura
+  - fechaEmision : Date
+  - fechaVencimiento : Date
+  - periodoFacturado : String
+  - moneda : String
+  - baseImponible : BigDecimal
+  - totalImpuestos : BigDecimal
+  - total : BigDecimal
+  - importePendiente : BigDecimal
+  - claveIdempotencia : String
+  - migrada : boolean
+  - motivoIncobrable : String
+  - version : int
+  + calcularTotales() : void
+  + validarDatosFiscales() : List
+  + requiereAprobacion() : boolean
+  + emitir() : void
+  + estaBloqueada() : boolean
+  + rectificar(motivo) : Factura
+  + anular(motivo) : void
+  + declararIncobrable(motivo) : void
+}
+enum TipoFactura {
+  PUNTUAL
+  RECURRENTE
+  RECTIFICATIVA
+}
+enum EstadoFactura {
+  BORRADOR
+  APROBADA
+  EMITIDA
+  ENVIADA
+  VENCIDA
+  PARCIALMENTE_CONCILIADA
+  PAGADA
+  ANULADA
+  RECTIFICADA
+  INCOBRABLE
+}
+class LineaFactura {
+  - orden : int
+  - concepto : String
+  - cantidad : BigDecimal
+  - precioUnitario : BigDecimal
+  - descuento : BigDecimal
+  - importeImpuesto : BigDecimal
+  - subtotal : BigDecimal
+  + calcularSubtotal() : BigDecimal
+}
+class Impuesto {
+  - nombre : String
+  - porcentaje : BigDecimal
+  - activo : boolean
+}
+class Serie {
+  - codigo : String
+  - prefijo : String
+  - siguienteNumero : long
+  - activa : boolean
+  + reservarNumero() : String
+}
+class DocumentoPDF {
+  - rutaAlmacen : String
+  - hashSHA256 : String
+  - fechaGeneracion : DateTime
+  + generarEnlaceTemporal() : String
+}
+class DatosFiscalesFactura {
+  - razonSocialCliente : String
+  - idFiscalCliente : String
+  - domicilioCliente : String
+  - paisCliente : String
+  - razonSocialEmisor : String
+  - idFiscalEmisor : String
+  - domicilioEmisor : String
+}
+class DatosEmisor {
+  - razonSocial : String
+  - identificadorFiscal : String
+  - domicilioFiscal : String
+  - fechaEfecto : Date
+}
+class SuspensionRecordatorios {
+  - motivo : String
+  - fechaRevision : Date
+  - activa : boolean
+  - fechaReanudacion : DateTime
+  + reanudar() : void
+}
+class EjecucionGeneracion {
+  - periodo : String
+  - emitidas : int
+  - pendientes : int
+  - fallidas : int
+  + reanudar() : void
+}
+
+' Clases detalladas en otros bloques
+class AprobacionFactura #F1F2F4 ##9AA4B5
+class Cliente #F1F2F4 ##9AA4B5
+class EjecucionTarea #F1F2F4 ##9AA4B5
+class OperacionExcepcional #F1F2F4 ##9AA4B5
+class SolicitudDescuento #F1F2F4 ##9AA4B5
+class Suscripcion #F1F2F4 ##9AA4B5
+
+Factura --> TipoFactura
+Factura --> EstadoFactura
+Factura "*" --> "1" Cliente
+Factura "*" --> "0..1" Suscripcion : generada desde
+Factura "*" --> "1" Serie
+Factura "1" *-- "1..*" LineaFactura
+LineaFactura "*" --> "1" Impuesto
+Factura "1" *-- "0..1" DocumentoPDF
+Factura "1" *-- "0..1" DatosFiscalesFactura : copia al emitir
+DatosFiscalesFactura ..> DatosEmisor
+Factura "0..1" --> "0..1" Factura : rectifica a
+Factura "1" *-- "*" SuspensionRecordatorios
+Factura "*" --> "0..1" SolicitudDescuento : descuento aplicado
+AprobacionFactura "*" --> "1" Factura
+OperacionExcepcional "*" --> "1" Factura
+EjecucionTarea <|-- EjecucionGeneracion
+EjecucionGeneracion "0..1" --> "*" Factura : emite
+
+legend bottom right
+  Clases en gris: detalladas en otro bloque
+  Cubre: FR-01, FR-02, FR-11, FR-12, FR-13, FR-14, FR-19, FR-20, FR-45, FR-46, BR-09, BR-10, BR-11, CU-10, CU-11, CU-12, CU-13, CU-14, CU-21
+endlegend
+@enduml

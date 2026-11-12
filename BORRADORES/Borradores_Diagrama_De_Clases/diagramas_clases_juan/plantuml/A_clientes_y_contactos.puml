@@ -1,0 +1,147 @@
+@startuml A_clientes_y_contactos
+skinparam dpi 110
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  ArrowColor #3B4456
+  HeaderBackgroundColor #E6ECF7
+  StereotypeFontColor #5A6476
+}
+skinparam enum {
+  BackgroundColor #F6EEDC
+  BorderColor #8A6A2A
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+}
+hide empty members
+title Bloque A. Clientes y contactos
+class Cliente {
+  - id : Long
+  - nombreComercial : String
+  - razonSocial : String
+  - identificadorFiscal : String
+  - domicilioFiscal : String
+  - pais : String
+  - moneda : String
+  - idioma : String
+  - sector : String
+  - estado : EstadoCliente
+  - diasVencimientoPactado : int
+  - condicionesPago : String
+  - refDocumentoFirmado : String
+  - version : int
+  + datosFiscalesCompletos() : boolean
+  + camposFiscalesPendientes() : List
+  + cambiarResponsable(usuario) : void
+  + saldoPendiente() : BigDecimal
+}
+enum EstadoCliente {
+  PENDIENTE_ACTIVACION
+  ACTIVO
+  BAJA
+}
+class Contacto {
+  - id : Long
+  - nombre : String
+  - email : String
+  - telefono : String
+  - idioma : String
+  - consentimientoWhatsApp : boolean
+  - activo : boolean
+  - anonimizado : boolean
+  + desactivar() : void
+  + anonimizar() : void
+}
+class ContactoCliente {
+  - tipo : TipoContacto
+  - activo : boolean
+}
+enum TipoContacto {
+  CONTRATACION
+  FACTURACION
+  IMPAGOS
+}
+class Etiqueta {
+  - nombre : String
+}
+class Favorito {
+  - fecha : DateTime
+}
+class Tarea {
+  - descripcion : String
+  - fechaPrevista : Date
+  - completada : boolean
+  - fechaCompletada : DateTime
+  - version : int
+  + completar(usuario) : void
+}
+class EventoLineaTemporal {
+  - fecha : DateTime
+  - tipo : TipoEvento
+  - descripcion : String
+}
+class ExcepcionComercial {
+  - tipo : TipoExcepcion
+  - fechaEfecto : Date
+  - motivo : String
+  + tieneEfectoEconomico() : boolean
+}
+enum TipoExcepcion {
+  PRIMER_MES_GRATIS
+  SIN_PRORRATEO
+  INICIO_FUTURO
+}
+class ImportacionCSV {
+  - nombreArchivo : String
+  - fecha : DateTime
+  - incluyeHistoricas : boolean
+  - creados : int
+  - actualizados : int
+  - rechazados : int
+  - estado : EstadoImportacion
+  + previsualizar() : void
+  + confirmar() : void
+}
+class FilaImportacion {
+  - numeroFila : int
+  - resultado : ResultadoFila
+  - motivo : String
+  - posibleDuplicado : boolean
+  - marcadaActualizacion : boolean
+}
+
+' Clases detalladas en otros bloques
+class Usuario #F1F2F4 ##9AA4B5
+
+Cliente --> EstadoCliente
+Cliente "1" *-- "*" ContactoCliente
+ContactoCliente "*" --> "1" Contacto
+ContactoCliente --> TipoContacto
+Cliente "*" --> "*" Etiqueta
+Cliente "*" --> "1" Usuario : responsable interno
+Usuario "1" *-- "*" Favorito
+Favorito "*" --> "1" Cliente
+Cliente "1" *-- "*" Tarea
+Tarea "*" --> "0..1" Usuario : completada por
+Cliente "1" *-- "*" EventoLineaTemporal
+EventoLineaTemporal "*" --> "0..1" Usuario : autor
+Cliente "1" *-- "*" ExcepcionComercial
+ExcepcionComercial --> TipoExcepcion
+ImportacionCSV "1" *-- "*" FilaImportacion
+ImportacionCSV "*" --> "1" Usuario : realizada por
+FilaImportacion "*" --> "0..1" Cliente : crea o actualiza
+
+legend bottom right
+  Clases en gris: detalladas en otro bloque
+  Cubre: FR-03, FR-04, FR-08, FR-27, FR-32, FR-33, FR-43, FR-44, FR-47, NFR-18, CU-01, CU-03, CU-04
+endlegend
+@enduml

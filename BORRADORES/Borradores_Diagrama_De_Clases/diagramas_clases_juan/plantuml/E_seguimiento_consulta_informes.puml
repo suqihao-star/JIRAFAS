@@ -1,0 +1,138 @@
+@startuml E_seguimiento_consulta_informes
+skinparam dpi 110
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  ArrowColor #3B4456
+  HeaderBackgroundColor #E6ECF7
+  StereotypeFontColor #5A6476
+}
+skinparam enum {
+  BackgroundColor #F6EEDC
+  BorderColor #8A6A2A
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+}
+hide empty members
+title Bloque E. Seguimiento, consulta e informes
+class Notificacion {
+  - id : Long
+  - categoria : CategoriaNotificacion
+  - mensaje : String
+  - tipoReferencia : String
+  - idReferencia : Long
+  - requiereAccion : boolean
+  - leida : boolean
+  - resuelta : boolean
+  - fecha : DateTime
+  + marcarLeida() : void
+  + marcarResuelta(usuario) : void
+}
+enum CategoriaNotificacion {
+  PAGO
+  VENCIMIENTO
+  INCIDENCIA
+  APROBACION
+  TAREA
+  MENCION
+  ALERTA
+}
+class PreferenciaNotificacion {
+  - categoria : CategoriaNotificacion
+  - enAplicacion : boolean
+  - porEmail : boolean
+  - enResumenDiario : boolean
+}
+class ReglaAlerta {
+  - tipo : TipoReglaAlerta
+  - umbral : BigDecimal
+  - activa : boolean
+  + evaluar() : List
+}
+enum TipoReglaAlerta {
+  DIAS_VENCIDA
+  IMPORTE_PENDIENTE_CLIENTE
+}
+class Informe {
+  - id : Long
+  - filtros : String
+  - formato : FormatoInforme
+  - estado : EstadoInforme
+  - fechaGeneracion : DateTime
+  - fechaCaducidad : DateTime
+  - rutaArchivo : String
+  + regenerar() : Informe
+  + estaCaducado() : boolean
+}
+class FiltroGuardado {
+  - nombre : String
+  - ambito : String
+  - criterios : String
+}
+class CentroCoste {
+  - nombre : String
+  - tipo : TipoCategoria
+  - activo : boolean
+}
+class ObjetivoFacturacion {
+  - periodo : String
+  - importe : BigDecimal
+  - moneda : String
+}
+class CambioObjetivo {
+  - valorAnterior : BigDecimal
+  - valorNuevo : BigDecimal
+  - fecha : DateTime
+}
+class Dashboard <<service>> {
+  + calcularIndicadores(filtro) : List
+  + desglosar(indicador) : List
+}
+class Indicador {
+  - nombre : String
+  - valor : BigDecimal
+  - moneda : String
+}
+class TipoCambio {
+  - monedaOrigen : String
+  - monedaBase : String
+  - tasa : BigDecimal
+  - fecha : Date
+}
+
+' Clases detalladas en otros bloques
+class Cliente #F1F2F4 ##9AA4B5
+class Factura #F1F2F4 ##9AA4B5
+class Usuario #F1F2F4 ##9AA4B5
+
+Notificacion "*" --> "1" Usuario : destinatario
+Notificacion --> CategoriaNotificacion
+Usuario "1" *-- "*" PreferenciaNotificacion
+ReglaAlerta --> TipoReglaAlerta
+ReglaAlerta "*" --> "1" Usuario : creada por
+ReglaAlerta "1" --> "*" Notificacion : genera
+Informe "*" --> "1" Usuario : solicitado por
+Usuario "1" *-- "*" FiltroGuardado
+ObjetivoFacturacion "1" *-- "*" CambioObjetivo
+CambioObjetivo "*" --> "1" Usuario : autor
+Cliente "*" --> "0..1" CentroCoste
+Factura "*" --> "0..1" CentroCoste
+Dashboard ..> Indicador
+Dashboard ..> ObjetivoFacturacion
+Dashboard ..> TipoCambio
+Indicador "*" --> "*" Factura : se compone de
+
+legend bottom right
+  Clases en gris: detalladas en otro bloque
+  Cubre: FR-24, FR-25, FR-28, FR-29, FR-37, FR-40, FR-41, FR-42, FR-50, RB-02, CU-15, CU-23, CU-24, CU-26, CU-27, CU-28, CU-29
+endlegend
+@enduml

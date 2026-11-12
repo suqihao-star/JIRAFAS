@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1125.2083px" preserveAspectRatio="none" style="width:1558px;height:1125px;background:#FFFFFF;" version="1.1" viewBox="0 0 1558 1125" width="1558.3333px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="30.8681" id="_title" style="stroke:none;stroke-width:1.1458333333333333;" width="355.2083" x="593.5417" y="5.7292"/><text fill="#000000" font-family="Helvetica" font-size="16.0417" font-weight="bold" lengthAdjust="spacing" textLength="343.75" x="599.2708" y="26.9987">Bloque E. Seguimiento, consulta e informes</text><!--MD5=[d331226d1317b3fc678f52fa8b08f650]
+class Notificacion--><g id="elem_Notificacion"><rect codeLine="26" fill="#FFFFFF" height="235.7149" id="Notificacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="234.8958" x="8.0208" y="391.8056"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="234.8958" x="8.0208" y="391.8056"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="234.8958" x="8.0208" y="423.316"/><rect codeLine="26" fill="none" height="235.7149" id="Notificacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="234.8958" x="8.0208" y="391.8056"/><ellipse cx="81.9271" cy="408.9931" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M84.0218,413.8629 Q83.5563,414.0957 83.0371,414.221 Q82.5179,414.3463 81.9629,414.3463 Q79.9219,414.3463 78.8477,413.0214 Q77.7913,411.6787 77.7913,409.1543 Q77.7913,406.6119 78.8477,405.2871 Q79.9219,403.9443 81.9629,403.9443 Q82.5179,403.9443 83.0371,404.0696 Q83.5742,404.177 84.0218,404.4277 L84.0218,406.6298 Q83.5205,406.1643 83.0371,405.9495 Q82.5537,405.7168 82.0524,405.7168 Q80.9603,405.7168 80.4053,406.594 Q79.8503,407.4534 79.8503,409.1543 Q79.8503,410.8372 80.4053,411.6966 Q80.9603,412.5559 82.0524,412.5559 Q82.5537,412.5559 83.0371,412.3411 Q83.5205,412.1263 84.0218,411.6608 L84.0218,413.8629 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="77.9167" x="103.6979" y="413.995">Notificacion</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="9.1667" x2="241.7708" y1="426.1806" y2="426.1806"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="60.7292" x="14.8958" y="444.0843">-id : Long</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="221.1458" x="14.8958" y="460.7212">-categoria : CategoriaNotificacion</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="111.1458" x="14.8958" y="477.3582">-mensaje : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="151.25" x="14.8958" y="493.9952">-tipoReferencia : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="131.7708" x="14.8958" y="510.6321">-idReferencia : Long</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="168.4375" x="14.8958" y="527.2691">-requiereAccion : boolean</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="99.6875" x="14.8958" y="543.906">-leida : boolean</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="121.4583" x="14.8958" y="560.543">-resuelta : boolean</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="118.0208" x="14.8958" y="577.18">-fecha : DateTime</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="9.1667" x2="241.7708" y1="585.08" y2="585.08"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="139.7917" x="14.8958" y="602.9836">+marcarLeida() : void</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="208.5417" x="14.8958" y="619.6206">+marcarResuelta(usuario) : void</text></g><!--MD5=[873a3e0009d7b1cba1b9e56e30076a95]
+class CategoriaNotificacion--><g id="elem_CategoriaNotificacion"><rect codeLine="39" fill="#FFFFFF" height="160.0004" id="CategoriaNotificacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="176.4583" x="37.2396" y="703.4723"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="176.4583" x="37.2396" y="703.4723"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="176.4583" x="37.2396" y="734.9827"/><rect codeLine="39" fill="none" height="160.0004" id="CategoriaNotificacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="176.4583" x="37.2396" y="703.4723"/><ellipse cx="53.2813" cy="720.6598" fill="#EB937F" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M56.0742,725.816 L49.8258,725.816 L49.8258,715.79 L56.0742,715.79 L56.0742,717.5446 L51.8132,717.5446 L51.8132,719.693 L55.6624,719.693 L55.6624,721.4476 L51.8132,721.4476 L51.8132,724.0615 L56.0742,724.0615 L56.0742,725.816 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="142.0833" x="68.1771" y="725.6616">CategoriaNotificacion</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="38.3854" x2="212.5521" y1="737.8473" y2="737.8473"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="38.9583" x="44.1146" y="755.7509">PAGO</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="95.1042" x="44.1146" y="772.3879">VENCIMIENTO</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="79.0625" x="44.1146" y="789.0249">INCIDENCIA</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="90.5208" x="44.1146" y="805.6618">APROBACION</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="44.6875" x="44.1146" y="822.2988">TAREA</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="65.3125" x="44.1146" y="838.9358">MENCION</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="52.7083" x="44.1146" y="855.5727">ALERTA</text></g><!--MD5=[ac5ae3ddca516caa63272ac009e5f849]
+class PreferenciaNotificacion--><g id="elem_PreferenciaNotificacion"><rect codeLine="48" fill="#FFFFFF" height="110.0895" id="PreferenciaNotificacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="234.8958" x="481.25" y="922.3265"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="234.8958" x="481.25" y="922.3265"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="234.8958" x="481.25" y="953.8369"/><rect codeLine="48" fill="none" height="110.0895" id="PreferenciaNotificacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="234.8958" x="481.25" y="922.3265"/><ellipse cx="517.9167" cy="939.514" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M520.0114,944.3837 Q519.5459,944.6165 519.0267,944.7418 Q518.5075,944.8671 517.9525,944.8671 Q515.9115,944.8671 514.8372,943.5423 Q513.7809,942.1995 513.7809,939.6751 Q513.7809,937.1328 514.8372,935.8079 Q515.9115,934.4651 517.9525,934.4651 Q518.5075,934.4651 519.0267,934.5905 Q519.5638,934.6979 520.0114,934.9485 L520.0114,937.1507 Q519.5101,936.6852 519.0267,936.4703 Q518.5433,936.2376 518.042,936.2376 Q516.9499,936.2376 516.3949,937.1149 Q515.8398,937.9742 515.8398,939.6751 Q515.8398,941.358 516.3949,942.2174 Q516.9499,943.0768 518.042,943.0768 Q518.5433,943.0768 519.0267,942.8619 Q519.5101,942.6471 520.0114,942.1816 L520.0114,944.3837 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="154.6875" x="537.3958" y="944.5158">PreferenciaNotificacion</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="482.3958" x2="715" y1="956.7015" y2="956.7015"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="221.1458" x="488.125" y="974.6051">-categoria : CategoriaNotificacion</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="152.3958" x="488.125" y="991.2421">-enAplicacion : boolean</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="126.0417" x="488.125" y="1007.879">-porEmail : boolean</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="184.4792" x="488.125" y="1024.516">-enResumenDiario : boolean</text></g><!--MD5=[dc646167d91304cd09155e6ec6e0cecf]
+class ReglaAlerta--><g id="elem_ReglaAlerta"><rect codeLine="54" fill="#FFFFFF" height="119.2562" id="ReglaAlerta" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="159.2708" x="319.6875" y="197.014"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="159.2708" x="319.6875" y="197.014"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="159.2708" x="319.6875" y="228.5244"/><rect codeLine="54" fill="none" height="119.2562" id="ReglaAlerta" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="159.2708" x="319.6875" y="197.014"/><ellipse cx="357.901" cy="214.2015" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M359.9958,219.0712 Q359.5303,219.304 359.0111,219.4293 Q358.4919,219.5546 357.9368,219.5546 Q355.8958,219.5546 354.8216,218.2298 Q353.7653,216.887 353.7653,214.3626 Q353.7653,211.8203 354.8216,210.4954 Q355.8958,209.1526 357.9368,209.1526 Q358.4919,209.1526 359.0111,209.278 Q359.5482,209.3854 359.9958,209.636 L359.9958,211.8382 Q359.4945,211.3727 359.0111,211.1578 Q358.5277,210.9251 358.0264,210.9251 Q356.9342,210.9251 356.3792,211.8024 Q355.8242,212.6617 355.8242,214.3626 Q355.8242,216.0455 356.3792,216.9049 Q356.9342,217.7643 358.0264,217.7643 Q358.5277,217.7643 359.0111,217.5494 Q359.4945,217.3346 359.9958,216.8691 L359.9958,219.0712 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="75.625" x="377.724" y="219.2033">ReglaAlerta</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="320.8333" x2="477.8125" y1="231.389" y2="231.389"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="145.5208" x="326.5625" y="249.2926">-tipo : TipoReglaAlerta</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="137.5" x="326.5625" y="265.9296">-umbral : BigDecimal</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="108.8542" x="326.5625" y="282.5665">-activa : boolean</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="320.8333" x2="477.8125" y1="290.4665" y2="290.4665"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="100.8333" x="326.5625" y="308.3702">+evaluar() : List</text></g><!--MD5=[86139501fb4775b0f75084cb60d67981]
+class TipoReglaAlerta--><g id="elem_TipoReglaAlerta"><rect codeLine="60" fill="#FFFFFF" height="76.8156" id="TipoReglaAlerta" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="221.1458" x="288.75" y="471.441"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="221.1458" x="288.75" y="471.441"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="221.1458" x="288.75" y="502.9515"/><rect codeLine="60" fill="none" height="76.8156" id="TipoReglaAlerta" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="221.1458" x="288.75" y="471.441"/><ellipse cx="342.6042" cy="488.6285" fill="#EB937F" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M345.3971,493.7848 L339.1488,493.7848 L339.1488,483.7587 L345.3971,483.7587 L345.3971,485.5133 L341.1361,485.5133 L341.1361,487.6617 L344.9854,487.6617 L344.9854,489.4163 L341.1361,489.4163 L341.1361,492.0302 L345.3971,492.0302 L345.3971,493.7848 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="104.2708" x="364.375" y="493.6304">TipoReglaAlerta</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="289.8958" x2="508.75" y1="505.816" y2="505.816"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="98.5417" x="295.625" y="523.7197">DIAS_VENCIDA</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="207.3958" x="295.625" y="540.3566">IMPORTE_PENDIENTE_CLIENTE</text></g><!--MD5=[df1837eb2b2a8a561ce45404d2e859f6]
+class Informe--><g id="elem_Informe"><rect codeLine="64" fill="#FFFFFF" height="202.441" id="Informe" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="207.3958" x="721.875" y="408.4202"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="207.3958" x="721.875" y="408.4202"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="207.3958" x="721.875" y="439.9306"/><rect codeLine="64" fill="none" height="202.441" id="Informe" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="207.3958" x="721.875" y="408.4202"/><ellipse cx="795.7813" cy="425.6077" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M797.876,430.4775 Q797.4105,430.7102 796.8913,430.8356 Q796.3721,430.9609 795.8171,430.9609 Q793.776,430.9609 792.7018,429.636 Q791.6455,428.2933 791.6455,425.7688 Q791.6455,423.2265 792.7018,421.9017 Q793.776,420.5589 795.8171,420.5589 Q796.3721,420.5589 796.8913,420.6842 Q797.4284,420.7916 797.876,421.0423 L797.876,423.2444 Q797.3747,422.7789 796.8913,422.5641 Q796.4079,422.3313 795.9066,422.3313 Q794.8145,422.3313 794.2594,423.2086 Q793.7044,424.068 793.7044,425.7688 Q793.7044,427.4518 794.2594,428.3112 Q794.8145,429.1705 795.9066,429.1705 Q796.4079,429.1705 796.8913,428.9557 Q797.3747,428.7408 797.876,428.2753 L797.876,430.4775 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="50.4167" x="817.5521" y="430.6095">Informe</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="723.0208" x2="928.125" y1="442.7952" y2="442.7952"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="60.7292" x="728.75" y="460.6989">-id : Long</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="92.8125" x="728.75" y="477.3358">-filtros : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="174.1667" x="728.75" y="493.9728">-formato : FormatoInforme</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="154.6875" x="728.75" y="510.6097">-estado : EstadoInforme</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="193.6458" x="728.75" y="527.2467">-fechaGeneracion : DateTime</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="187.9167" x="728.75" y="543.8837">-fechaCaducidad : DateTime</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="132.9167" x="728.75" y="560.5206">-rutaArchivo : String</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="723.0208" x2="928.125" y1="568.4206" y2="568.4206"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="144.375" x="728.75" y="586.3243">+regenerar() : Informe</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="174.1667" x="728.75" y="602.9612">+estaCaducado() : boolean</text></g><!--MD5=[2197cfac38c66149bededd00f62a5605]
+class FiltroGuardado--><g id="elem_FiltroGuardado"><rect codeLine="75" fill="#FFFFFF" height="93.4526" id="FiltroGuardado" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="131.7708" x="761.9792" y="930.3473"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="131.7708" x="761.9792" y="930.3473"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="131.7708" x="761.9792" y="961.8577"/><rect codeLine="75" fill="none" height="93.4526" id="FiltroGuardado" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="131.7708" x="761.9792" y="930.3473"/><ellipse cx="778.0208" cy="947.5348" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M780.1156,952.4046 Q779.6501,952.6373 779.1309,952.7627 Q778.6117,952.888 778.0566,952.888 Q776.0156,952.888 774.9414,951.5631 Q773.8851,950.2203 773.8851,947.6959 Q773.8851,945.1536 774.9414,943.8287 Q776.0156,942.486 778.0566,942.486 Q778.6117,942.486 779.1309,942.6113 Q779.668,942.7187 780.1156,942.9694 L780.1156,945.1715 Q779.6143,944.706 779.1309,944.4912 Q778.6475,944.2584 778.1462,944.2584 Q777.054,944.2584 776.499,945.1357 Q775.944,945.9951 775.944,947.6959 Q775.944,949.3789 776.499,950.2382 Q777.054,951.0976 778.1462,951.0976 Q778.6475,951.0976 779.1309,950.8828 Q779.6143,950.6679 780.1156,950.2024 L780.1156,952.4046 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="97.3958" x="792.9167" y="952.5366">FiltroGuardado</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="763.125" x2="892.6042" y1="964.7223" y2="964.7223"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="106.5625" x="768.8542" y="982.6259">-nombre : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="100.8333" x="768.8542" y="999.2629">-ambito : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="110" x="768.8542" y="1015.8999">-criterios : String</text></g><!--MD5=[faa06ec74f785285cba03698beea33b8]
+class CentroCoste--><g id="elem_CentroCoste"><rect codeLine="80" fill="#FFFFFF" height="93.4526" id="CentroCoste" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="147.8125" x="1291.3542" y="736.7015"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="147.8125" x="1291.3542" y="736.7015"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="147.8125" x="1291.3542" y="768.2119"/><rect codeLine="80" fill="none" height="93.4526" id="CentroCoste" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="147.8125" x="1291.3542" y="736.7015"/><ellipse cx="1321.3177" cy="753.889" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1323.4124,758.7587 Q1322.9469,758.9915 1322.4277,759.1168 Q1321.9085,759.2421 1321.3535,759.2421 Q1319.3125,759.2421 1318.2383,757.9173 Q1317.182,756.5745 1317.182,754.0501 Q1317.182,751.5078 1318.2383,750.1829 Q1319.3125,748.8401 1321.3535,748.8401 Q1321.9085,748.8401 1322.4277,748.9655 Q1322.9648,749.0729 1323.4124,749.3235 L1323.4124,751.5257 Q1322.9111,751.0602 1322.4277,750.8453 Q1321.9443,750.6126 1321.443,750.6126 Q1320.3509,750.6126 1319.7959,751.4899 Q1319.2409,752.3492 1319.2409,754.0501 Q1319.2409,755.733 1319.7959,756.5924 Q1320.3509,757.4518 1321.443,757.4518 Q1321.9443,757.4518 1322.4277,757.2369 Q1322.9111,757.0221 1323.4124,756.5566 L1323.4124,758.7587 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="82.5" x="1339.3073" y="758.8908">CentroCoste</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="1292.5" x2="1438.0208" y1="771.0765" y2="771.0765"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="106.5625" x="1298.2292" y="788.9801">-nombre : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="134.0625" x="1298.2292" y="805.6171">-tipo : TipoCategoria</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="108.8542" x="1298.2292" y="822.254">-activo : boolean</text></g><!--MD5=[e6b52e4ae72b153253de240a8af14f5b]
+class ObjetivoFacturacion--><g id="elem_ObjetivoFacturacion"><rect codeLine="85" fill="#FFFFFF" height="93.4526" id="ObjetivoFacturacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="166.1458" x="987.7083" y="209.6181"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="166.1458" x="987.7083" y="209.6181"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="166.1458" x="987.7083" y="241.1285"/><rect codeLine="85" fill="none" height="93.4526" id="ObjetivoFacturacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="166.1458" x="987.7083" y="209.6181"/><ellipse cx="1003.75" cy="226.8056" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1005.8447,231.6754 Q1005.3792,231.9082 1004.86,232.0335 Q1004.3408,232.1588 1003.7858,232.1588 Q1001.7448,232.1588 1000.6706,230.8339 Q999.6143,229.4912 999.6143,226.9668 Q999.6143,224.4244 1000.6706,223.0996 Q1001.7448,221.7568 1003.7858,221.7568 Q1004.3408,221.7568 1004.86,221.8821 Q1005.3971,221.9895 1005.8447,222.2402 L1005.8447,224.4423 Q1005.3434,223.9768 1004.86,223.762 Q1004.3766,223.5293 1003.8753,223.5293 Q1002.7832,223.5293 1002.2282,224.4065 Q1001.6732,225.2659 1001.6732,226.9668 Q1001.6732,228.6497 1002.2282,229.5091 Q1002.7832,230.3684 1003.8753,230.3684 Q1004.3766,230.3684 1004.86,230.1536 Q1005.3434,229.9388 1005.8447,229.4733 L1005.8447,231.6754 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="131.7708" x="1018.6458" y="231.8075">ObjetivoFacturacion</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="988.8542" x2="1152.7083" y1="243.9931" y2="243.9931"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="105.4167" x="994.5833" y="261.8968">-periodo : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="142.0833" x="994.5833" y="278.5337">-importe : BigDecimal</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="108.8542" x="994.5833" y="295.1707">-moneda : String</text></g><!--MD5=[600d04c61ccec932d3db698cdfad48eb]
+class CambioObjetivo--><g id="elem_CambioObjetivo"><rect codeLine="90" fill="#FFFFFF" height="93.4526" id="CambioObjetivo" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="191.3542" x="975.1042" y="462.8473"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="191.3542" x="975.1042" y="462.8473"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="191.3542" x="975.1042" y="494.3577"/><rect codeLine="90" fill="none" height="93.4526" id="CambioObjetivo" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="191.3542" x="975.1042" y="462.8473"/><ellipse cx="1014.8646" cy="480.0348" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1016.9593,484.9046 Q1016.4938,485.1373 1015.9746,485.2627 Q1015.4554,485.388 1014.9004,485.388 Q1012.8594,485.388 1011.7852,484.0631 Q1010.7288,482.7203 1010.7288,480.1959 Q1010.7288,477.6536 1011.7852,476.3287 Q1012.8594,474.986 1014.9004,474.986 Q1015.4554,474.986 1015.9746,475.1113 Q1016.5117,475.2187 1016.9593,475.4694 L1016.9593,477.6715 Q1016.458,477.206 1015.9746,476.9912 Q1015.4912,476.7584 1014.9899,476.7584 Q1013.8978,476.7584 1013.3428,477.6357 Q1012.7878,478.4951 1012.7878,480.1959 Q1012.7878,481.8789 1013.3428,482.7382 Q1013.8978,483.5976 1014.9899,483.5976 Q1015.4912,483.5976 1015.9746,483.3828 Q1016.458,483.1679 1016.9593,482.7024 L1016.9593,484.9046 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="104.2708" x="1035.0312" y="485.0366">CambioObjetivo</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="976.25" x2="1165.3125" y1="497.2223" y2="497.2223"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="177.6042" x="981.9792" y="515.1259">-valorAnterior : BigDecimal</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="167.2917" x="981.9792" y="531.7629">-valorNuevo : BigDecimal</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="118.0208" x="981.9792" y="548.3999">-fecha : DateTime</text></g><!--MD5=[055ae584e8f48d8fc3c3de49aadf0637]
+class Dashboard--><g id="elem_Dashboard"><rect codeLine="95" fill="#FFFFFF" height="87.1729" id="Dashboard" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="223.4375" x="1157.2917" y="51.4931"/><rect fill="#E6ECF7" height="44.7323" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="223.4375" x="1157.2917" y="51.4931"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="223.4375" x="1157.2917" y="93.3608"/><rect codeLine="95" fill="none" height="87.1729" id="Dashboard" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="223.4375" x="1157.2917" y="51.4931"/><ellipse cx="1228.9063" cy="73.8593" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1231.001,78.729 Q1230.5355,78.9618 1230.0163,79.0871 Q1229.4971,79.2124 1228.9421,79.2124 Q1226.901,79.2124 1225.8268,77.8876 Q1224.7705,76.5448 1224.7705,74.0204 Q1224.7705,71.4781 1225.8268,70.1532 Q1226.901,68.8104 1228.9421,68.8104 Q1229.4971,68.8104 1230.0163,68.9358 Q1230.5534,69.0432 1231.001,69.2938 L1231.001,71.496 Q1230.4997,71.0305 1230.0163,70.8156 Q1229.5329,70.5829 1229.0316,70.5829 Q1227.9395,70.5829 1227.3844,71.4602 Q1226.8294,72.3195 1226.8294,74.0204 Q1226.8294,75.7033 1227.3844,76.5627 Q1227.9395,77.4221 1229.0316,77.4221 Q1229.5329,77.4221 1230.0163,77.2072 Q1230.4997,76.9924 1231.001,76.5269 L1231.001,78.729 Z " fill="#000000"/><text fill="#5A6476" font-family="Helvetica" font-size="13.75" font-style="italic" lengthAdjust="spacing" textLength="64.1667" x="1254.1146" y="70.5426">«service»</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="71.0417" x="1250.6771" y="87.1796">Dashboard</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="1158.4375" x2="1379.5833" y1="96.2254" y2="96.2254"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="209.6875" x="1164.1667" y="114.129">+calcularIndicadores(filtro) : List</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="175.3125" x="1164.1667" y="130.766">+desglosar(indicador) : List</text></g><!--MD5=[b28cdf1f1778e8031c2663a4ce3a1b6d]
+class Indicador--><g id="elem_Indicador"><rect codeLine="99" fill="#FFFFFF" height="93.4526" id="Indicador" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="138.6458" x="1199.6875" y="209.6181"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="138.6458" x="1199.6875" y="209.6181"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="138.6458" x="1199.6875" y="241.1285"/><rect codeLine="99" fill="none" height="93.4526" id="Indicador" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="138.6458" x="1199.6875" y="209.6181"/><ellipse cx="1235.3229" cy="226.8056" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1237.4176,231.6754 Q1236.9521,231.9082 1236.4329,232.0335 Q1235.9137,232.1588 1235.3587,232.1588 Q1233.3177,232.1588 1232.2435,230.8339 Q1231.1872,229.4912 1231.1872,226.9668 Q1231.1872,224.4244 1232.2435,223.0996 Q1233.3177,221.7568 1235.3587,221.7568 Q1235.9137,221.7568 1236.4329,221.8821 Q1236.9701,221.9895 1237.4176,222.2402 L1237.4176,224.4423 Q1236.9163,223.9768 1236.4329,223.762 Q1235.9495,223.5293 1235.4482,223.5293 Q1234.3561,223.5293 1233.8011,224.4065 Q1233.2461,225.2659 1233.2461,226.9668 Q1233.2461,228.6497 1233.8011,229.5091 Q1234.3561,230.3684 1235.4482,230.3684 Q1235.9495,230.3684 1236.4329,230.1536 Q1236.9163,229.9388 1237.4176,229.4733 L1237.4176,231.6754 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="60.7292" x="1254.5729" y="231.8075">Indicador</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="1200.8333" x2="1337.1875" y1="243.9931" y2="243.9931"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="106.5625" x="1206.5625" y="261.8968">-nombre : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="124.8958" x="1206.5625" y="278.5337">-valor : BigDecimal</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="108.8542" x="1206.5625" y="295.1707">-moneda : String</text></g><!--MD5=[3ffbd5f06ecdb241239d02868c200bcb]
+class TipoCambio--><g id="elem_TipoCambio"><rect codeLine="104" fill="#FFFFFF" height="110.0895" id="TipoCambio" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="166.1458" x="1384.1667" y="201.5973"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="166.1458" x="1384.1667" y="201.5973"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="166.1458" x="1384.1667" y="233.1077"/><rect codeLine="104" fill="none" height="110.0895" id="TipoCambio" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="166.1458" x="1384.1667" y="201.5973"/><ellipse cx="1423.9271" cy="218.7848" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1426.0218,223.6546 Q1425.5563,223.8873 1425.0371,224.0127 Q1424.5179,224.138 1423.9629,224.138 Q1421.9219,224.138 1420.8477,222.8131 Q1419.7913,221.4703 1419.7913,218.9459 Q1419.7913,216.4036 1420.8477,215.0787 Q1421.9219,213.736 1423.9629,213.736 Q1424.5179,213.736 1425.0371,213.8613 Q1425.5742,213.9687 1426.0218,214.2194 L1426.0218,216.4215 Q1425.5205,215.956 1425.0371,215.7412 Q1424.5537,215.5084 1424.0524,215.5084 Q1422.9603,215.5084 1422.4053,216.3857 Q1421.8503,217.2451 1421.8503,218.9459 Q1421.8503,220.6289 1422.4053,221.4882 Q1422.9603,222.3476 1424.0524,222.3476 Q1424.5537,222.3476 1425.0371,222.1328 Q1425.5205,221.9179 1426.0218,221.4524 L1426.0218,223.6546 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="79.0625" x="1444.0937" y="223.7866">TipoCambio</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="1385.3125" x2="1549.1667" y1="235.9723" y2="235.9723"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="152.3958" x="1391.0417" y="253.8759">-monedaOrigen : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="140.9375" x="1391.0417" y="270.5129">-monedaBase : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="119.1667" x="1391.0417" y="287.1499">-tasa : BigDecimal</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="84.7917" x="1391.0417" y="303.7868">-fecha : Date</text></g><!--MD5=[20a748d5ee336a9a91751b0a3d4f0beb]
+class Cliente--><g id="elem_Cliente"><rect codeLine="112" fill="#F1F2F4" height="34.375" id="Cliente" rx="2.8646" ry="2.8646" style="stroke:#9AA4B5;stroke-width:0.5729166666666666;" width="80.2083" x="1357.2396" y="492.639"/><ellipse cx="1373.2813" cy="509.8265" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1375.376,514.6962 Q1374.9105,514.929 1374.3913,515.0543 Q1373.8721,515.1796 1373.3171,515.1796 Q1371.276,515.1796 1370.2018,513.8548 Q1369.1455,512.512 1369.1455,509.9876 Q1369.1455,507.4453 1370.2018,506.1204 Q1371.276,504.7776 1373.3171,504.7776 Q1373.8721,504.7776 1374.3913,504.903 Q1374.9284,505.0104 1375.376,505.261 L1375.376,507.4632 Q1374.8747,506.9977 1374.3913,506.7828 Q1373.9079,506.5501 1373.4066,506.5501 Q1372.3145,506.5501 1371.7594,507.4274 Q1371.2044,508.2867 1371.2044,509.9876 Q1371.2044,511.6705 1371.7594,512.5299 Q1372.3145,513.3893 1373.4066,513.3893 Q1373.9079,513.3893 1374.3913,513.1744 Q1374.8747,512.9596 1375.376,512.4941 L1375.376,514.6962 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="45.8333" x="1388.1771" y="514.8283">Cliente</text></g><!--MD5=[a926c88f85ce99385ed3fd3448dac0f5]
+class Factura--><g id="elem_Factura"><rect codeLine="113" fill="#F1F2F4" height="34.375" id="Factura" rx="2.8646" ry="2.8646" style="stroke:#9AA4B5;stroke-width:0.5729166666666666;" width="84.7917" x="1226.6146" y="492.639"/><ellipse cx="1242.6563" cy="509.8265" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1244.751,514.6962 Q1244.2855,514.929 1243.7663,515.0543 Q1243.2471,515.1796 1242.6921,515.1796 Q1240.651,515.1796 1239.5768,513.8548 Q1238.5205,512.512 1238.5205,509.9876 Q1238.5205,507.4453 1239.5768,506.1204 Q1240.651,504.7776 1242.6921,504.7776 Q1243.2471,504.7776 1243.7663,504.903 Q1244.3034,505.0104 1244.751,505.261 L1244.751,507.4632 Q1244.2497,506.9977 1243.7663,506.7828 Q1243.2829,506.5501 1242.7816,506.5501 Q1241.6895,506.5501 1241.1344,507.4274 Q1240.5794,508.2867 1240.5794,509.9876 Q1240.5794,511.6705 1241.1344,512.5299 Q1241.6895,513.3893 1242.7816,513.3893 Q1243.2829,513.3893 1243.7663,513.1744 Q1244.2497,512.9596 1244.751,512.4941 L1244.751,514.6962 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="50.4167" x="1257.5521" y="514.8283">Factura</text></g><!--MD5=[35a64b983c79880384a2fd9b61f0c24b]
+class Usuario--><g id="elem_Usuario"><rect codeLine="114" fill="#F1F2F4" height="34.375" id="Usuario" rx="2.8646" ry="2.8646" style="stroke:#9AA4B5;stroke-width:0.5729166666666666;" width="84.7917" x="670.8854" y="766.4931"/><ellipse cx="686.9271" cy="783.6806" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M689.0218,788.5504 Q688.5563,788.7832 688.0371,788.9085 Q687.5179,789.0338 686.9629,789.0338 Q684.9219,789.0338 683.8477,787.7089 Q682.7913,786.3662 682.7913,783.8418 Q682.7913,781.2994 683.8477,779.9746 Q684.9219,778.6318 686.9629,778.6318 Q687.5179,778.6318 688.0371,778.7571 Q688.5742,778.8645 689.0218,779.1152 L689.0218,781.3173 Q688.5205,780.8518 688.0371,780.637 Q687.5537,780.4043 687.0524,780.4043 Q685.9603,780.4043 685.4053,781.2815 Q684.8503,782.1409 684.8503,783.8418 Q684.8503,785.5247 685.4053,786.3841 Q685.9603,787.2434 687.0524,787.2434 Q687.5537,787.2434 688.0371,787.0286 Q688.5205,786.8138 689.0218,786.3483 L689.0218,788.5504 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="50.4167" x="701.8229" y="788.6825">Usuario</text></g><!--MD5=[53ee8317c459996f75cdf58376d0f227]
+link Notificacion to Usuario--><g id="link_Notificacion_Usuario"><path codeLine="116" d="M243.1115,609.3306 C256.3917,620.4337 265.2604,627.8473 265.2604,627.8473 C265.2604,627.8473 549.2208,725.8962 665.0073,765.8629 " fill="none" id="Notificacion-to-Usuario" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="670.725,767.8452,662.4671,760.1535,665.3081,765.9796,659.4821,768.8206,670.725,767.8452" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="76.7708" x="399.3229" y="670.9593">destinatario</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="252.0033" y="613.3614">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="656.0536" y="760.4858">1</text></g><!--MD5=[76d35429edaaf3b19fcdb00c85877263]
+link Notificacion to CategoriaNotificacion--><g id="link_Notificacion_CategoriaNotificacion"><path codeLine="117" d="M125.4687,628.1108 C125.4687,651.3369 125.4687,675.2962 125.4687,697.2275 " fill="none" id="Notificacion-to-CategoriaNotificacion" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="125.4687,703.3462,130.0521,693.0337,125.4687,697.6171,120.8854,693.0337,125.4687,703.3462" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[45bc9b540ad6997936b70a6f09c48a67]
+reverse link Usuario to PreferenciaNotificacion--><g id="link_Usuario_PreferenciaNotificacion"><path codeLine="118" d="M695.6927,814.1942 C678.551,842.8285 652.0823,887.0348 631.1135,922.04 " fill="none" id="Usuario-backto-PreferenciaNotificacion" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="703.5073,801.1431,696.042,804.6845,696.4396,812.9376,703.905,809.3963,703.5073,801.1431" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="693.4336" y="823.3256">1</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="628.6758" y="909.6634">*</text></g><!--MD5=[0c4866108861472ccce4537e93b563e5]
+link ReglaAlerta to TipoReglaAlerta--><g id="link_ReglaAlerta_TipoReglaAlerta"><path codeLine="119" d="M399.3229,316.2608 C399.3229,361.8077 399.3229,424.015 399.3229,465.2192 " fill="none" id="ReglaAlerta-to-TipoReglaAlerta" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="399.3229,471.1431,403.9063,460.8306,399.3229,465.414,394.7396,460.8306,399.3229,471.1431" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[0f617cca91d35272d3bc333477724287]
+link ReglaAlerta to Usuario--><g id="link_ReglaAlerta_Usuario"><path codeLine="120" d="M457.6229,316.5473 C493.3385,352.5608 532.2396,391.8056 532.2396,391.8056 C532.2396,391.8056 625.0521,627.8473 625.0521,627.8473 C625.0521,627.8473 676.6146,718.2535 700.9063,760.8442 " fill="none" id="ReglaAlerta-to-Usuario" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="704.0115,766.2754,702.8944,755.0457,701.1778,761.2961,694.9274,759.5795,704.0115,766.2754" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="71.0417" x="626.1979" y="515.1259">creada por</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="457.7772" y="338.6088">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="693.6561" y="753.9739">1</text></g><!--MD5=[00caf1131f1e0f88959ac744b11a2d0a]
+link ReglaAlerta to Notificacion--><g id="link_ReglaAlerta_Notificacion"><path codeLine="121" d="M335.4656,316.2608 C309.249,340.2775 277.9906,368.9233 247.6948,396.6869 " fill="none" id="ReglaAlerta-to-Notificacion" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="243.2375,400.766,253.9403,397.1875,247.4649,396.8992,247.7532,390.4238,243.2375,400.766" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="45.8333" x="304.2188" y="359.2926">genera</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="320.7707" y="338.7102">1</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="252.1386" y="389.4804">*</text></g><!--MD5=[67abbbb839a21e428b405483dad7a6f1]
+link Informe to Usuario--><g id="link_Informe_Usuario"><path codeLine="122" d="M784.0823,611.3244 C761.6125,665.6598 735.774,728.1306 722.3906,760.5004 " fill="none" id="Informe-to-Usuario" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="720.0417,766.1837,728.1978,758.3842,722.2173,760.8837,719.7178,754.9032,720.0417,766.1837" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="87.0833" x="764.8438" y="670.9593">solicitado por</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="773.6271" y="633.4105">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="715.7491" y="754.1625">1</text></g><!--MD5=[4d418b91b9fa2d0d7ff4d72bc169cf16]
+reverse link Usuario to FiltroGuardado--><g id="link_Usuario_FiltroGuardado"><path codeLine="123" d="M730.7094,813.9306 C749.2146,844.8223 778.7083,894.0817 800.3531,930.2327 " fill="none" id="Usuario-backto-FiltroGuardado" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="723.0552,801.1431,722.6575,809.3963,730.1229,812.9376,730.5205,804.6845,723.0552,801.1431" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="719.7011" y="823.3256">1</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="787.9653" y="917.7921">*</text></g><!--MD5=[7c3371fd72a71e4e16a19b71707f8a72]
+reverse link ObjetivoFacturacion to CambioObjetivo--><g id="link_ObjetivoFacturacion_CambioObjetivo"><path codeLine="124" d="M1070.7813,318.7702 C1070.7813,363.0796 1070.7813,422.1015 1070.7813,462.5265 " fill="none" id="ObjetivoFacturacion-backto-CambioObjetivo" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="1070.7813,303.7712,1066.1979,310.6462,1070.7813,317.5212,1075.3646,310.6462,1070.7813,303.7712" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="1064.6134" y="325.6276">1</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="1063.3154" y="450.3915">*</text></g><!--MD5=[9f686f2c6aaf725ed4bbc4ebcc8cc6a3]
+link CambioObjetivo to Usuario--><g id="link_CambioObjetivo_Usuario"><path codeLine="125" d="M1024.0198,556.8285 C990.6417,589.5765 951.6146,627.8473 951.6146,627.8473 C951.6146,627.8473 807.1479,721.6108 743.1646,763.1358 " fill="none" id="CambioObjetivo-to-Usuario" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="738.3406,766.2754,749.4869,764.5101,743.1476,763.1583,744.4994,756.819,738.3406,766.2754" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="34.375" x="908.0729" y="670.9593">autor</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="1009.4581" y="578.6585">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="741.0732" y="753.9739">1</text></g><!--MD5=[4f1844542b2d44ce89a072d315057a01]
+link Cliente to CentroCoste--><g id="link_Cliente_CentroCoste"><path codeLine="126" d="M1395.4302,527.1515 C1390.7896,566.4192 1378.7698,668.1577 1371.3792,730.7202 " fill="none" id="Cliente-to-CentroCoste" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="1370.6802,736.6556,1376.4387,726.9502,1371.3506,730.9658,1367.335,725.8777,1370.6802,736.6556" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="1386.6489" y="549.6073">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="21.7708" x="1347.9358" y="724.2273">0..1</text></g><!--MD5=[835415a9561d939caa7858659b29c325]
+link Factura to CentroCoste--><g id="link_Factura_CentroCoste"><path codeLine="127" d="M1274.7396,527.1515 C1288.6844,566.4994 1324.8698,668.5702 1347.0302,731.0983 " fill="none" id="Factura-to-CentroCoste" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="1349.001,736.6556,1349.8748,725.4044,1347.0866,731.2558,1341.2351,728.4675,1349.001,736.6556" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="1268.681" y="549.6073">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="21.7708" x="1322.395" y="724.2273">0..1</text></g><!--MD5=[5fa28fd71d738a0c1b81cf7c4980b3cd]
+link Dashboard to Indicador--><g id="link_Dashboard_Indicador"><path codeLine="128" d="M1269.0104,138.8629 C1269.0104,158.7431 1269.0104,182.565 1269.0104,203.4765 " fill="none" id="Dashboard-to-Indicador" style="stroke:#3B4456;stroke-width:1.1458333333333333;stroke-dasharray:7.0,7.0;"/><polygon fill="#3B4456" points="1269.0104,209.2973,1273.5938,198.9848,1269.0104,203.5681,1264.4271,198.9848,1269.0104,209.2973" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[d1b5d5ba6ba1a6eea811da7c6c95aba9]
+link Dashboard to ObjetivoFacturacion--><g id="link_Dashboard_ObjetivoFacturacion"><path codeLine="129" d="M1215.8896,138.8629 C1190.2,159.5108 1159.2052,184.4098 1132.4729,205.8827 " fill="none" id="Dashboard-to-ObjetivoFacturacion" style="stroke:#3B4456;stroke-width:1.1458333333333333;stroke-dasharray:7.0,7.0;"/><polygon fill="#3B4456" points="1127.8781,209.5837,1138.7902,206.706,1132.3471,205.9988,1133.0542,199.5557,1127.8781,209.5837" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[605d133a3521c3aa701170f17c00abf6]
+link Dashboard to TipoCambio--><g id="link_Dashboard_TipoCambio"><path codeLine="130" d="M1322.1313,138.8629 C1344.6927,156.99 1371.3448,178.4056 1395.6135,197.8962 " fill="none" id="Dashboard-to-TipoCambio" style="stroke:#3B4456;stroke-width:1.1458333333333333;stroke-dasharray:7.0,7.0;"/><polygon fill="#3B4456" points="1400.1167,201.5171,1394.9629,191.4775,1395.6557,197.9222,1389.211,198.615,1400.1167,201.5171" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[a92f8bfb279778e1e8051dd0d7d62811]
+link Indicador to Factura--><g id="link_Indicador_Factura"><path codeLine="131" d="M1269.0104,303.7712 C1269.0104,357.7629 1269.0104,445.0869 1269.0104,486.0733 " fill="none" id="Indicador-to-Factura" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="1269.0104,492.2494,1273.5938,481.9369,1269.0104,486.5202,1264.4271,481.9369,1269.0104,492.2494" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="98.5417" x="1270.1563" y="359.2926">se compone de</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="1261.609" y="325.6276">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="1260.8678" y="480.1985">*</text></g><rect fill="#DDDDDD" height="50.2779" id="_legend" rx="8.5938" ry="8.5938" style="stroke:#000000;stroke-width:1.1458333333333333;" width="1027.8125" x="500.7292" y="1053.041"/><text fill="#000000" font-family="Helvetica" font-size="16.0417" lengthAdjust="spacing" textLength="304.7917" x="506.4583" y="1074.3105">Clases en gris: detalladas en otro bloque</text><text fill="#000000" font-family="Helvetica" font-size="16.0417" lengthAdjust="spacing" textLength="1016.3542" x="506.4583" y="1093.7203">Cubre: FR-24, FR-25, FR-28, FR-29, FR-37, FR-40, FR-41, FR-42, FR-50, RB-02, CU-15, CU-23, CU-24, CU-26, CU-27, CU-28, CU-29</text><!--MD5=[5bca331d710414bad34cc455a4b61454]
+@startuml E_seguimiento_consulta_informes
+skinparam dpi 110
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  ArrowColor #3B4456
+  HeaderBackgroundColor #E6ECF7
+  StereotypeFontColor #5A6476
+}
+skinparam enum {
+  BackgroundColor #F6EEDC
+  BorderColor #8A6A2A
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+}
+hide empty members
+title Bloque E. Seguimiento, consulta e informes
+class Notificacion {
+  - id : Long
+  - categoria : CategoriaNotificacion
+  - mensaje : String
+  - tipoReferencia : String
+  - idReferencia : Long
+  - requiereAccion : boolean
+  - leida : boolean
+  - resuelta : boolean
+  - fecha : DateTime
+  + marcarLeida() : void
+  + marcarResuelta(usuario) : void
+}
+enum CategoriaNotificacion {
+  PAGO
+  VENCIMIENTO
+  INCIDENCIA
+  APROBACION
+  TAREA
+  MENCION
+  ALERTA
+}
+class PreferenciaNotificacion {
+  - categoria : CategoriaNotificacion
+  - enAplicacion : boolean
+  - porEmail : boolean
+  - enResumenDiario : boolean
+}
+class ReglaAlerta {
+  - tipo : TipoReglaAlerta
+  - umbral : BigDecimal
+  - activa : boolean
+  + evaluar() : List
+}
+enum TipoReglaAlerta {
+  DIAS_VENCIDA
+  IMPORTE_PENDIENTE_CLIENTE
+}
+class Informe {
+  - id : Long
+  - filtros : String
+  - formato : FormatoInforme
+  - estado : EstadoInforme
+  - fechaGeneracion : DateTime
+  - fechaCaducidad : DateTime
+  - rutaArchivo : String
+  + regenerar() : Informe
+  + estaCaducado() : boolean
+}
+class FiltroGuardado {
+  - nombre : String
+  - ambito : String
+  - criterios : String
+}
+class CentroCoste {
+  - nombre : String
+  - tipo : TipoCategoria
+  - activo : boolean
+}
+class ObjetivoFacturacion {
+  - periodo : String
+  - importe : BigDecimal
+  - moneda : String
+}
+class CambioObjetivo {
+  - valorAnterior : BigDecimal
+  - valorNuevo : BigDecimal
+  - fecha : DateTime
+}
+class Dashboard <<service>> {
+  + calcularIndicadores(filtro) : List
+  + desglosar(indicador) : List
+}
+class Indicador {
+  - nombre : String
+  - valor : BigDecimal
+  - moneda : String
+}
+class TipoCambio {
+  - monedaOrigen : String
+  - monedaBase : String
+  - tasa : BigDecimal
+  - fecha : Date
+}
+
+' Clases detalladas en otros bloques
+class Cliente #F1F2F4 ##9AA4B5
+class Factura #F1F2F4 ##9AA4B5
+class Usuario #F1F2F4 ##9AA4B5
+
+Notificacion "*" - -> "1" Usuario : destinatario
+Notificacion - -> CategoriaNotificacion
+Usuario "1" *- - "*" PreferenciaNotificacion
+ReglaAlerta - -> TipoReglaAlerta
+ReglaAlerta "*" - -> "1" Usuario : creada por
+ReglaAlerta "1" - -> "*" Notificacion : genera
+Informe "*" - -> "1" Usuario : solicitado por
+Usuario "1" *- - "*" FiltroGuardado
+ObjetivoFacturacion "1" *- - "*" CambioObjetivo
+CambioObjetivo "*" - -> "1" Usuario : autor
+Cliente "*" - -> "0..1" CentroCoste
+Factura "*" - -> "0..1" CentroCoste
+Dashboard ..> Indicador
+Dashboard ..> ObjetivoFacturacion
+Dashboard ..> TipoCambio
+Indicador "*" - -> "*" Factura : se compone de
+
+legend bottom right
+  Clases en gris: detalladas en otro bloque
+  Cubre: FR-24, FR-25, FR-28, FR-29, FR-37, FR-40, FR-41, FR-42, FR-50, RB-02, CU-15, CU-23, CU-24, CU-26, CU-27, CU-28, CU-29
+endlegend
+@enduml
+
+@startuml E_seguimiento_consulta_informes
+skinparam dpi 110
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  ArrowColor #3B4456
+  HeaderBackgroundColor #E6ECF7
+  StereotypeFontColor #5A6476
+}
+skinparam enum {
+  BackgroundColor #F6EEDC
+  BorderColor #8A6A2A
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+}
+hide empty members
+title Bloque E. Seguimiento, consulta e informes
+class Notificacion {
+  - id : Long
+  - categoria : CategoriaNotificacion
+  - mensaje : String
+  - tipoReferencia : String
+  - idReferencia : Long
+  - requiereAccion : boolean
+  - leida : boolean
+  - resuelta : boolean
+  - fecha : DateTime
+  + marcarLeida() : void
+  + marcarResuelta(usuario) : void
+}
+enum CategoriaNotificacion {
+  PAGO
+  VENCIMIENTO
+  INCIDENCIA
+  APROBACION
+  TAREA
+  MENCION
+  ALERTA
+}
+class PreferenciaNotificacion {
+  - categoria : CategoriaNotificacion
+  - enAplicacion : boolean
+  - porEmail : boolean
+  - enResumenDiario : boolean
+}
+class ReglaAlerta {
+  - tipo : TipoReglaAlerta
+  - umbral : BigDecimal
+  - activa : boolean
+  + evaluar() : List
+}
+enum TipoReglaAlerta {
+  DIAS_VENCIDA
+  IMPORTE_PENDIENTE_CLIENTE
+}
+class Informe {
+  - id : Long
+  - filtros : String
+  - formato : FormatoInforme
+  - estado : EstadoInforme
+  - fechaGeneracion : DateTime
+  - fechaCaducidad : DateTime
+  - rutaArchivo : String
+  + regenerar() : Informe
+  + estaCaducado() : boolean
+}
+class FiltroGuardado {
+  - nombre : String
+  - ambito : String
+  - criterios : String
+}
+class CentroCoste {
+  - nombre : String
+  - tipo : TipoCategoria
+  - activo : boolean
+}
+class ObjetivoFacturacion {
+  - periodo : String
+  - importe : BigDecimal
+  - moneda : String
+}
+class CambioObjetivo {
+  - valorAnterior : BigDecimal
+  - valorNuevo : BigDecimal
+  - fecha : DateTime
+}
+class Dashboard <<service>> {
+  + calcularIndicadores(filtro) : List
+  + desglosar(indicador) : List
+}
+class Indicador {
+  - nombre : String
+  - valor : BigDecimal
+  - moneda : String
+}
+class TipoCambio {
+  - monedaOrigen : String
+  - monedaBase : String
+  - tasa : BigDecimal
+  - fecha : Date
+}
+
+class Cliente #F1F2F4 ##9AA4B5
+class Factura #F1F2F4 ##9AA4B5
+class Usuario #F1F2F4 ##9AA4B5
+
+Notificacion "*" - -> "1" Usuario : destinatario
+Notificacion - -> CategoriaNotificacion
+Usuario "1" *- - "*" PreferenciaNotificacion
+ReglaAlerta - -> TipoReglaAlerta
+ReglaAlerta "*" - -> "1" Usuario : creada por
+ReglaAlerta "1" - -> "*" Notificacion : genera
+Informe "*" - -> "1" Usuario : solicitado por
+Usuario "1" *- - "*" FiltroGuardado
+ObjetivoFacturacion "1" *- - "*" CambioObjetivo
+CambioObjetivo "*" - -> "1" Usuario : autor
+Cliente "*" - -> "0..1" CentroCoste
+Factura "*" - -> "0..1" CentroCoste
+Dashboard ..> Indicador
+Dashboard ..> ObjetivoFacturacion
+Dashboard ..> TipoCambio
+Indicador "*" - -> "*" Factura : se compone de
+
+legend bottom right
+  Clases en gris: detalladas en otro bloque
+  Cubre: FR-24, FR-25, FR-28, FR-29, FR-37, FR-40, FR-41, FR-42, FR-50, RB-02, CU-15, CU-23, CU-24, CU-26, CU-27, CU-28, CU-29
+endlegend
+@enduml
+
+PlantUML version 1.2022.12(Sun Oct 23 20:12:26 CEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

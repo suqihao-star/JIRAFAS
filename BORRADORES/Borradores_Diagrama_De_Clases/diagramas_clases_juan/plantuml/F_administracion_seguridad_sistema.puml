@@ -1,0 +1,204 @@
+@startuml F_administracion_seguridad_sistema
+skinparam dpi 110
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  ArrowColor #3B4456
+  HeaderBackgroundColor #E6ECF7
+  StereotypeFontColor #5A6476
+}
+skinparam enum {
+  BackgroundColor #F6EEDC
+  BorderColor #8A6A2A
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+}
+hide empty members
+title Bloque F. Administración, seguridad y sistema
+class Usuario {
+  - id : Long
+  - email : String
+  - nombre : String
+  - hashContrasena : String
+  - activo : boolean
+  - dobleFactorActivo : boolean
+  - intentosFallidos : int
+  - bloqueadoHasta : DateTime
+  - fechaAlta : DateTime
+  + iniciarSesion(email, contrasena) : Sesion
+  + cambiarRol(nuevoRol) : void
+  + desactivar() : void
+  + tienePermiso(codigo) : boolean
+  + puedeAcceder(cliente) : boolean
+}
+enum Rol {
+  SUPERADMINISTRADOR
+  ADMINISTRADOR
+  USUARIO_OPERATIVO
+}
+class Permiso {
+  - codigo : String
+  - descripcion : String
+}
+class Sesion {
+  - tokenHash : String
+  - inicio : DateTime
+  - expiracion : DateTime
+  - invalidada : boolean
+  + estaVigente() : boolean
+  + invalidar() : void
+}
+class EnlaceTemporal {
+  - tokenHash : String
+  - tipo : TipoEnlace
+  - expiracion : DateTime
+  - usado : boolean
+  + esValido() : boolean
+  + consumir() : void
+}
+enum TipoEnlace {
+  INVITACION
+  RECUPERACION_CONTRASENA
+}
+class DominioAutorizado {
+  - dominio : String
+  + admite(email) : boolean
+}
+class AsignacionCliente {
+  - desde : DateTime
+  - hasta : DateTime
+}
+class IntentoAcceso {
+  - fecha : DateTime
+  - exito : boolean
+  - ip : String
+}
+class RegistroAuditoria {
+  - id : Long
+  - fecha : DateTime
+  - accion : String
+  - tipoEntidad : String
+  - idEntidad : Long
+  - valorAnterior : String
+  - valorNuevo : String
+  - idError : String
+}
+class ConfiguracionFacturacion {
+  - umbralDescuentoSuperadmin : BigDecimal
+  - umbralFacturaImporteAlto : BigDecimal
+  - diasVencimientoHabitualMax : int
+  - diasConservacionInformes : int
+  - fechaEfecto : Date
+}
+class FuncionInteligente {
+  - codigo : String
+  - activa : boolean
+  - requiereConfirmacion : boolean
+}
+class AccionMasiva {
+  - tipo : TipoAccionMasiva
+  - numeroElementos : int
+  - altoImpacto : boolean
+  - estado : EstadoAccion
+  - fecha : DateTime
+  + confirmar() : void
+  + ejecutar() : void
+}
+class EjecucionTarea {
+  - tipo : TipoTarea
+  - inicio : DateTime
+  - fin : DateTime
+  - estado : EstadoEjecucion
+  - procesados : int
+  - errores : int
+}
+class ErrorTecnico {
+  - idError : String
+  - origen : String
+  - mensaje : String
+  - fecha : DateTime
+}
+class CopiaSeguridad {
+  - fecha : DateTime
+  - correcta : boolean
+  - restauracionVerificada : boolean
+}
+class MetricaAgregada {
+  - nombre : String
+  - valor : BigDecimal
+  - periodo : String
+}
+class Planificador <<service>> {
+  + generarMensualidades() : void
+  + ejecutarRecordatorios() : void
+  + consultarPagos() : void
+  + evaluarAlertas() : void
+  + enviarResumenDiario() : void
+}
+class ClienteAPI {
+  - nombre : String
+  - hashCredencial : String
+  - activo : boolean
+  - expiracion : DateTime
+}
+class PeticionAPI {
+  - fecha : DateTime
+  - endpoint : String
+  - codigoRespuesta : int
+}
+class SolicitudExterna {
+  - tipo : TipoSolicitudExterna
+  - datos : String
+  - estado : EstadoAprobacion
+}
+
+' Clases detalladas en otros bloques
+class Cliente #F1F2F4 ##9AA4B5
+class ConfiguracionRecordatorios #F1F2F4 ##9AA4B5
+class DatosEmisor #F1F2F4 ##9AA4B5
+class Impuesto #F1F2F4 ##9AA4B5
+class Serie #F1F2F4 ##9AA4B5
+class SolicitudAprobacion #F1F2F4 ##9AA4B5
+class TablaTarifas #F1F2F4 ##9AA4B5
+
+Usuario "*" --> "1" Rol
+Rol "*" --> "*" Permiso : por defecto
+Usuario "*" --> "*" Permiso : adicionales
+Usuario "1" *-- "*" Sesion
+Usuario "1" *-- "*" EnlaceTemporal
+EnlaceTemporal --> TipoEnlace
+Usuario "1" *-- "*" IntentoAcceso
+Usuario ..> DominioAutorizado : valida email
+Usuario "1" -- "*" AsignacionCliente
+AsignacionCliente "*" -- "1" Cliente
+AsignacionCliente "*" --> "1" Usuario : asignada por
+RegistroAuditoria "*" --> "0..1" Usuario : actor
+RegistroAuditoria "*" --> "0..1" ClienteAPI : actor
+ConfiguracionFacturacion "1" --> "*" Serie
+ConfiguracionFacturacion "1" --> "*" Impuesto
+ConfiguracionFacturacion "1" --> "1" TablaTarifas : vigente
+ConfiguracionFacturacion "1" --> "1" DatosEmisor
+ConfiguracionFacturacion "1" --> "1" ConfiguracionRecordatorios
+AccionMasiva "*" --> "1" Usuario : solicitante
+AccionMasiva "0..1" --> "0..1" SolicitudAprobacion : si alto impacto
+Planificador ..> EjecucionTarea : registra
+EjecucionTarea "1" --> "*" ErrorTecnico
+ClienteAPI "*" --> "*" Permiso
+ClienteAPI "1" *-- "*" PeticionAPI
+ClienteAPI "1" --> "*" SolicitudExterna
+SolicitudExterna "*" --> "1" Cliente
+
+legend bottom right
+  Clases en gris: detalladas en otro bloque
+  Cubre: FR-06, FR-07, NFR-07, NFR-08, CU-30, CU-31, FR-31, FR-38, FR-39, FR-48, FR-49, NFR-09, NFR-14, BR-21, BR-22, CU-32, CU-33, CU-34, CU-35, CU-36, CU-37
+endlegend
+@enduml

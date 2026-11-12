@@ -1,0 +1,216 @@
+@startuml D_cobros_y_comunicaciones
+skinparam dpi 110
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  ArrowColor #3B4456
+  HeaderBackgroundColor #E6ECF7
+  StereotypeFontColor #5A6476
+}
+skinparam enum {
+  BackgroundColor #F6EEDC
+  BorderColor #8A6A2A
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+}
+hide empty members
+title Bloque D. Cobros y comunicaciones
+class MovimientoCobro {
+  - id : Long
+  - idEventoExterno : String
+  - importe : BigDecimal
+  - moneda : String
+  - fecha : Date
+  - concepto : String
+  - referencia : String
+  - estado : EstadoMovimiento
+  - fechaRegistro : DateTime
+  + importeSinConciliar() : BigDecimal
+}
+enum EstadoMovimiento {
+  PENDIENTE_CONCILIACION
+  CONCILIADO_PARCIAL
+  CONCILIADO
+  CON_DIFERENCIA
+}
+class FuentePago {
+  - nombre : String
+  - activa : boolean
+  - ultimaConsulta : DateTime
+}
+interface ConectorPagos {
+  + consultarMovimientos(desde) : List
+  + procesarNotificacion(payload) : MovimientoCobro
+}
+class ConectorStripe {
+}
+class ConectorRevolut {
+}
+class Conciliacion {
+  - id : Long
+  - importeAplicado : BigDecimal
+  - fecha : DateTime
+  - tipo : TipoConciliacion
+  - reglaAplicada : String
+  - revertida : boolean
+  - fechaReversion : DateTime
+  - motivoReversion : String
+  + revertir(usuario, motivo) : void
+}
+enum TipoConciliacion {
+  AUTOMATICA
+  MANUAL
+}
+class DiferenciaCobro {
+  - importe : BigDecimal
+  - tipo : TipoDiferencia
+  - revisada : boolean
+}
+class MotorConciliacion <<service>> {
+  + buscarCoincidencia(movimiento) : Factura
+  + conciliarAutomatico(movimiento) : Conciliacion
+}
+class Plantilla {
+  - id : Long
+  - tipo : TipoComunicacion
+  - idioma : String
+  + versionVigente() : VersionPlantilla
+}
+class VersionPlantilla {
+  - numero : int
+  - asunto : String
+  - cuerpo : String
+  - fecha : DateTime
+  + variablesUsadas() : List
+  + validarVariables() : List
+  + renderizar(datos) : String
+}
+enum TipoComunicacion {
+  FACTURA
+  RECORDATORIO_PREVIO
+  RECORDATORIO_VENCIMIENTO
+  AVISO_IMPAGO
+  DISPUTA_RESUELTA
+}
+class Comunicacion {
+  - id : Long
+  - tipo : TipoComunicacion
+  - estado : EstadoComunicacion
+  - fechaSolicitud : DateTime
+  + reenviar(contacto) : IntentoEnvio
+}
+class IntentoEnvio {
+  - numeroIntento : int
+  - canal : Canal
+  - destinatario : String
+  - fecha : DateTime
+  - resultado : ResultadoEnvio
+  - detalleError : String
+}
+enum Canal {
+  EMAIL
+  WHATSAPP_SIMULADO
+}
+enum ResultadoEnvio {
+  EN_COLA
+  ENVIADO
+  ENTREGADO
+  REBOTADO
+  FALLIDO
+}
+interface CanalEnvio {
+  + enviar(mensaje) : ResultadoEnvio
+}
+class ProveedorCorreo {
+}
+class SimuladorWhatsApp {
+}
+class ConfiguracionRecordatorios {
+  - diasRecordatorioPrevio : int
+  - diasVencimientoGeneral : int
+  - frecuenciaAvisoImpago : int
+  - fechaEfecto : Date
+  + validarCoherencia() : boolean
+}
+class Incidencia {
+  - id : Long
+  - tipo : TipoIncidencia
+  - descripcion : String
+  - estado : EstadoIncidencia
+  - prioridad : Prioridad
+  - fechaApertura : DateTime
+  - fechaCierre : DateTime
+  + cerrar(comentario) : void
+}
+class Comentario {
+  - texto : String
+  - fecha : DateTime
+  - interno : boolean
+}
+class Adjunto {
+  - nombre : String
+  - tipoMime : String
+  - tamano : long
+  - rutaAlmacen : String
+}
+class Mencion {
+}
+
+' Clases detalladas en otros bloques
+class Cliente #F1F2F4 ##9AA4B5
+class Contacto #F1F2F4 ##9AA4B5
+class Factura #F1F2F4 ##9AA4B5
+class Usuario #F1F2F4 ##9AA4B5
+
+MovimientoCobro --> EstadoMovimiento
+MovimientoCobro "*" --> "1" FuentePago
+FuentePago ..> ConectorPagos : usa
+ConectorPagos <|.. ConectorStripe
+ConectorPagos <|.. ConectorRevolut
+MovimientoCobro "1" --> "*" Conciliacion
+Conciliacion "*" --> "1" Factura
+Conciliacion --> TipoConciliacion
+Conciliacion "*" --> "0..1" Usuario : realizada por
+Conciliacion "*" --> "0..1" Usuario : revertida por
+MovimientoCobro "*" --> "0..1" Usuario : asignado a revisar
+DiferenciaCobro "*" --> "1" Factura
+DiferenciaCobro "*" --> "1" MovimientoCobro
+MotorConciliacion ..> MovimientoCobro
+MotorConciliacion ..> Conciliacion
+Plantilla "1" *-- "1..*" VersionPlantilla
+Plantilla --> TipoComunicacion
+VersionPlantilla "*" --> "1" Usuario : autor
+Comunicacion "*" --> "1" VersionPlantilla : plantilla usada
+Comunicacion "*" --> "1" Cliente
+Comunicacion "*" --> "0..1" Factura
+Comunicacion "1" *-- "1..*" IntentoEnvio
+IntentoEnvio "*" --> "0..1" Contacto : destinatario
+IntentoEnvio --> Canal
+IntentoEnvio --> ResultadoEnvio
+Comunicacion ..> CanalEnvio
+CanalEnvio <|.. ProveedorCorreo
+CanalEnvio <|.. SimuladorWhatsApp
+Incidencia "*" --> "1" Cliente
+Incidencia "*" --> "0..1" Factura
+Incidencia "0..1" --> "0..1" Comunicacion : rebote de
+Incidencia "*" --> "1" Usuario : responsable
+Incidencia "1" *-- "*" Comentario
+Incidencia "1" *-- "*" Adjunto
+Comentario "*" --> "1" Usuario : autor
+Comentario "1" *-- "*" Mencion
+Mencion "*" --> "1" Usuario : mencionado
+
+legend bottom right
+  Clases en gris: detalladas en otro bloque
+  Cubre: FR-15, FR-21, FR-22, BR-06, BR-13, CU-16, CU-17, FR-05, FR-23, FR-26, FR-34, FR-35, FR-36, FR-46, BR-20, CU-18, CU-19, CU-20, CU-22, CU-25
+endlegend
+@enduml

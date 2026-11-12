@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1121.7708px" preserveAspectRatio="none" style="width:1926px;height:1121px;background:#FFFFFF;" version="1.1" viewBox="0 0 1926 1121" width="1926.1458px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="30.8681" id="_title" style="stroke:none;stroke-width:1.1458333333333333;" width="372.3958" x="769.1406" y="5.7292"/><text fill="#000000" font-family="Helvetica" font-size="16.0417" font-weight="bold" lengthAdjust="spacing" textLength="360.9375" x="774.8698" y="26.9987">Bloque B. Suscripciones, tarifas y descuentos</text><!--MD5=[baab8c86db3d938f4be53c15b4529e35]
+class Suscripcion--><g id="elem_Suscripcion"><rect codeLine="26" fill="#FFFFFF" height="235.7149" id="Suscripcion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="288.75" x="602.1354" y="607.2223"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="288.75" x="602.1354" y="607.2223"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="288.75" x="602.1354" y="638.7327"/><rect codeLine="26" fill="none" height="235.7149" id="Suscripcion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="288.75" x="602.1354" y="607.2223"/><ellipse cx="703.5417" cy="624.4098" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M705.6364,629.2796 Q705.1709,629.5123 704.6517,629.6377 Q704.1325,629.763 703.5775,629.763 Q701.5365,629.763 700.4622,628.4381 Q699.4059,627.0953 699.4059,624.5709 Q699.4059,622.0286 700.4622,620.7037 Q701.5365,619.361 703.5775,619.361 Q704.1325,619.361 704.6517,619.4863 Q705.1888,619.5937 705.6364,619.8444 L705.6364,622.0465 Q705.1351,621.581 704.6517,621.3662 Q704.1683,621.1334 703.667,621.1334 Q702.5749,621.1334 702.0199,622.0107 Q701.4648,622.8701 701.4648,624.5709 Q701.4648,626.2539 702.0199,627.1132 Q702.5749,627.9726 703.667,627.9726 Q704.1683,627.9726 704.6517,627.7578 Q705.1351,627.5429 705.6364,627.0774 L705.6364,629.2796 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="76.7708" x="725.3125" y="629.4116">Suscripcion</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="603.2813" x2="889.7396" y1="641.5973" y2="641.5973"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="60.7292" x="609.0104" y="659.5009">-id : Long</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="137.5" x="609.0104" y="676.1379">-planServicio : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="119.1667" x="609.0104" y="692.7749">-fechaInicio : Date</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="195.9375" x="609.0104" y="709.4118">-precioAcordado : BigDecimal</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="181.0417" x="609.0104" y="726.0488">-estado : EstadoSuscripcion</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="113.4375" x="609.0104" y="742.6858">-fechaBaja : Date</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="129.4792" x="609.0104" y="759.3227">-motivoBaja : String</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="603.2813" x2="889.7396" y1="767.2227" y2="767.2227"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="226.875" x="609.0104" y="785.1263">+estaFacturable(periodo) : boolean</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="213.125" x="609.0104" y="801.7633">+darDeBaja(fecha, motivo) : void</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="275" x="609.0104" y="818.4003">+pausar(motivo, inicio, reactivacion) : void</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="115.7292" x="609.0104" y="835.0372">+reactivar() : void</text></g><!--MD5=[cd7d36d7ef46057518d3a003c1023ce1]
+class EstadoSuscripcion--><g id="elem_EstadoSuscripcion"><rect codeLine="39" fill="#FFFFFF" height="110.0895" id="EstadoSuscripcion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="181.0417" x="759.1146" y="918.889"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="181.0417" x="759.1146" y="918.889"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="181.0417" x="759.1146" y="950.3994"/><rect codeLine="39" fill="none" height="110.0895" id="EstadoSuscripcion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="181.0417" x="759.1146" y="918.889"/><ellipse cx="787.0156" cy="936.0765" fill="#EB937F" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M789.8086,941.2327 L783.5602,941.2327 L783.5602,931.2067 L789.8086,931.2067 L789.8086,932.9612 L785.5475,932.9612 L785.5475,935.1097 L789.3968,935.1097 L789.3968,936.8642 L785.5475,936.8642 L785.5475,939.4781 L789.8086,939.4781 L789.8086,941.2327 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="120.3125" x="804.5469" y="941.0783">EstadoSuscripcion</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="760.2604" x2="939.0104" y1="953.264" y2="953.264"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="167.2917" x="765.9896" y="971.1676">PENDIENTE_ACTIVACION</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="50.4167" x="765.9896" y="987.8046">ACTIVA</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="66.4583" x="765.9896" y="1004.4415">PAUSADA</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="35.5208" x="765.9896" y="1021.0785">BAJA</text></g><!--MD5=[c42aaf7b77432e3674a4fe6168cf8bb6]
+class Pausa--><g id="elem_Pausa"><rect codeLine="45" fill="#FFFFFF" height="110.0895" id="Pausa" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="237.1875" x="150.1042" y="918.889"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="237.1875" x="150.1042" y="918.889"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="237.1875" x="150.1042" y="950.3994"/><rect codeLine="45" fill="none" height="110.0895" id="Pausa" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="237.1875" x="150.1042" y="918.889"/><ellipse cx="244.0625" cy="936.0765" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M246.1572,940.9462 Q245.6917,941.179 245.1725,941.3043 Q244.6533,941.4296 244.0983,941.4296 Q242.0573,941.4296 240.9831,940.1048 Q239.9268,938.762 239.9268,936.2376 Q239.9268,933.6953 240.9831,932.3704 Q242.0573,931.0276 244.0983,931.0276 Q244.6533,931.0276 245.1725,931.153 Q245.7096,931.2604 246.1572,931.511 L246.1572,933.7132 Q245.6559,933.2477 245.1725,933.0328 Q244.6891,932.8001 244.1878,932.8001 Q243.0957,932.8001 242.5407,933.6774 Q241.9857,934.5367 241.9857,936.2376 Q241.9857,937.9205 242.5407,938.7799 Q243.0957,939.6393 244.1878,939.6393 Q244.6891,939.6393 245.1725,939.4244 Q245.6559,939.2096 246.1572,938.7441 L246.1572,940.9462 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="40.1042" x="265.8333" y="941.0783">Pausa</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="151.25" x2="386.1458" y1="953.264" y2="953.264"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="100.8333" x="156.9792" y="971.1676">-motivo : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="119.1667" x="156.9792" y="987.8046">-fechaInicio : Date</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="223.4375" x="156.9792" y="1004.4415">-fechaReactivacionPrevista : Date</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="104.2708" x="156.9792" y="1021.0785">-fechaFin : Date</text></g><!--MD5=[1371226ad8b2e4d5a2b562395fdbb48e]
+class TablaTarifas--><g id="elem_TablaTarifas"><rect codeLine="51" fill="#FFFFFF" height="135.8931" id="TablaTarifas" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="302.5" x="936.7187" y="657.066"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="302.5" x="936.7187" y="657.066"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="302.5" x="936.7187" y="688.5765"/><rect codeLine="51" fill="none" height="135.8931" id="TablaTarifas" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="302.5" x="936.7187" y="657.066"/><ellipse cx="1042.1354" cy="674.2535" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1044.2301,679.1233 Q1043.7646,679.3561 1043.2454,679.4814 Q1042.7262,679.6067 1042.1712,679.6067 Q1040.1302,679.6067 1039.056,678.2819 Q1037.9997,676.9391 1037.9997,674.4147 Q1037.9997,671.8724 1039.056,670.5475 Q1040.1302,669.2047 1042.1712,669.2047 Q1042.7262,669.2047 1043.2454,669.33 Q1043.7826,669.4375 1044.2301,669.6881 L1044.2301,671.8903 Q1043.7288,671.4248 1043.2454,671.2099 Q1042.762,670.9772 1042.2607,670.9772 Q1041.1686,670.9772 1040.6136,671.8545 Q1040.0586,672.7138 1040.0586,674.4147 Q1040.0586,676.0976 1040.6136,676.957 Q1041.1686,677.8164 1042.2607,677.8164 Q1042.762,677.8164 1043.2454,677.6015 Q1043.7288,677.3867 1044.2301,676.9212 L1044.2301,679.1233 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="82.5" x="1063.9063" y="679.2554">TablaTarifas</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="937.8646" x2="1238.0729" y1="691.441" y2="691.441"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="81.3542" x="943.5937" y="709.3447">-version : int</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="126.0417" x="943.5937" y="725.9816">-fechaEfecto : Date</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="116.875" x="943.5937" y="742.6186">-vigente : boolean</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="937.8646" x2="1238.0729" y1="750.5186" y2="750.5186"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="288.75" x="943.5937" y="768.4222">+rangoPara(facturacionAnual) : RangoTarifa</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="173.0208" x="943.5937" y="785.0592">+validarRangos() : boolean</text></g><!--MD5=[8d430d375e325ee2d810e6077f92f610]
+class RangoTarifa--><g id="elem_RangoTarifa"><rect codeLine="58" fill="#FFFFFF" height="93.4526" id="RangoTarifa" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="232.6042" x="985.4167" y="926.9098"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="232.6042" x="985.4167" y="926.9098"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="232.6042" x="985.4167" y="958.4202"/><rect codeLine="58" fill="none" height="93.4526" id="RangoTarifa" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="232.6042" x="985.4167" y="926.9098"/><ellipse cx="1057.0313" cy="944.0973" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1059.126,948.9671 Q1058.6605,949.1998 1058.1413,949.3252 Q1057.6221,949.4505 1057.0671,949.4505 Q1055.026,949.4505 1053.9518,948.1256 Q1052.8955,946.7828 1052.8955,944.2584 Q1052.8955,941.7161 1053.9518,940.3912 Q1055.026,939.0485 1057.0671,939.0485 Q1057.6221,939.0485 1058.1413,939.1738 Q1058.6784,939.2812 1059.126,939.5319 L1059.126,941.734 Q1058.6247,941.2685 1058.1413,941.0537 Q1057.6579,940.8209 1057.1566,940.8209 Q1056.0645,940.8209 1055.5094,941.6982 Q1054.9544,942.5576 1054.9544,944.2584 Q1054.9544,945.9414 1055.5094,946.8007 Q1056.0645,947.6601 1057.1566,947.6601 Q1057.6579,947.6601 1058.1413,947.4453 Q1058.6247,947.2304 1059.126,946.7649 L1059.126,948.9671 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="80.2083" x="1078.8021" y="949.0991">RangoTarifa</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="986.5625" x2="1216.875" y1="961.2848" y2="961.2848"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="214.2708" x="992.2917" y="979.1884">-facturacionMinima : BigDecimal</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="218.8542" x="992.2917" y="995.8254">-facturacionMaxima : BigDecimal</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="187.9167" x="992.2917" y="1012.4624">-precioMensual : BigDecimal</text></g><!--MD5=[7e2d239eb0cfa65e9f5b08574a6b19db]
+class ReglaProrrateo--><g id="elem_ReglaProrrateo"><rect codeLine="63" fill="#FFFFFF" height="70.5359" id="ReglaProrrateo" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="279.5833" x="433.6979" y="938.3681"/><rect fill="#E6ECF7" height="44.7323" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="279.5833" x="433.6979" y="938.3681"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="279.5833" x="433.6979" y="980.2358"/><rect codeLine="63" fill="none" height="70.5359" id="ReglaProrrateo" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="279.5833" x="433.6979" y="938.3681"/><ellipse cx="519.0625" cy="960.7343" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M521.1572,965.604 Q520.6917,965.8368 520.1725,965.9621 Q519.6533,966.0874 519.0983,966.0874 Q517.0573,966.0874 515.9831,964.7626 Q514.9268,963.4198 514.9268,960.8954 Q514.9268,958.3531 515.9831,957.0282 Q517.0573,955.6854 519.0983,955.6854 Q519.6533,955.6854 520.1725,955.8108 Q520.7096,955.9182 521.1572,956.1688 L521.1572,958.371 Q520.6559,957.9055 520.1725,957.6906 Q519.6891,957.4579 519.1878,957.4579 Q518.0957,957.4579 517.5407,958.3352 Q516.9857,959.1945 516.9857,960.8954 Q516.9857,962.5783 517.5407,963.4377 Q518.0957,964.2971 519.1878,964.2971 Q519.6891,964.2971 520.1725,964.0822 Q520.6559,963.8674 521.1572,963.4019 L521.1572,965.604 Z " fill="#000000"/><text fill="#5A6476" font-family="Helvetica" font-size="13.75" font-style="italic" lengthAdjust="spacing" textLength="64.1667" x="558.5938" y="957.4176">«service»</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="99.6875" x="540.8333" y="974.0546">ReglaProrrateo</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="434.8438" x2="712.1354" y1="983.1004" y2="983.1004"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="265.8333" x="440.5729" y="1001.004">+calcular(precio, fechaAlta) : BigDecimal</text></g><!--MD5=[26eb5debe1c1ab58578ea1f94e672a36]
+class SolicitudAprobacion--><g id="elem_SolicitudAprobacion"><rect codeLine="66" fill="#FFFFFF" height="285.6258" id="SolicitudAprobacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="327.7083" x="1032.9688" y="51.4931"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="327.7083" x="1032.9688" y="51.4931"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="327.7083" x="1032.9688" y="83.0035"/><rect codeLine="66" fill="none" height="285.6258" id="SolicitudAprobacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="327.7083" x="1032.9688" y="51.4931"/><ellipse cx="1126.9271" cy="68.6806" fill="#A9DCDF" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1126.4795,65.3326 L1125.5485,69.4326 L1127.4284,69.4326 L1126.4795,65.3326 Z M1125.2799,63.5244 L1127.6969,63.5244 L1130.4004,73.5504 L1128.4131,73.5504 L1127.8044,71.0797 L1125.1546,71.0797 L1124.5459,73.5504 L1122.5586,73.5504 L1125.2799,63.5244 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" font-style="italic" lengthAdjust="spacing" textLength="130.625" x="1148.6979" y="73.6825">SolicitudAprobacion</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="1034.1146" x2="1359.5313" y1="85.8681" y2="85.8681"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="60.7292" x="1039.8438" y="103.7718">-id : Long</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="174.1667" x="1039.8438" y="120.4087">-fechaSolicitud : DateTime</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="100.8333" x="1039.8438" y="137.0457">-motivo : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="178.75" x="1039.8438" y="153.6827">-estado : EstadoAprobacion</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="222.2917" x="1039.8438" y="170.3196">-nivelRequerido : NivelAprobacion</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="166.1458" x="1039.8438" y="186.9566">-motivoPendiente : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="189.0625" x="1039.8438" y="203.5935">-fechaResolucion : DateTime</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="171.875" x="1039.8438" y="220.2305">-motivoResolucion : String</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="81.3542" x="1039.8438" y="236.8675">-version : int</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="1034.1146" x2="1359.5313" y1="244.7675" y2="244.7675"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="155.8333" x="1039.8438" y="262.6711">+aprobar(usuario) : void</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="215.4167" x="1039.8438" y="279.3081">+rechazar(usuario, motivo) : void</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="104.2708" x="1039.8438" y="295.945">+escalar() : void</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="200.5208" x="1039.8438" y="312.582">+pedirInformacion(texto) : void</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="313.9583" x="1039.8438" y="329.219">#validarSeparacionFunciones(usuario) : boolean</text></g><!--MD5=[989a396a90f04484ccf27da297d02c7f]
+class EstadoAprobacion--><g id="elem_EstadoAprobacion"><rect codeLine="82" fill="#FFFFFF" height="126.7265" id="EstadoAprobacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="152.3958" x="8.0208" y="417.014"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="152.3958" x="8.0208" y="417.014"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="152.3958" x="8.0208" y="448.5244"/><rect codeLine="82" fill="none" height="126.7265" id="EstadoAprobacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="152.3958" x="8.0208" y="417.014"/><ellipse cx="24.0625" cy="434.2015" fill="#EB937F" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M26.8555,439.3577 L20.6071,439.3577 L20.6071,429.3317 L26.8555,429.3317 L26.8555,431.0862 L22.5944,431.0862 L22.5944,433.2347 L26.4437,433.2347 L26.4437,434.9892 L22.5944,434.9892 L22.5944,437.6031 L26.8555,437.6031 L26.8555,439.3577 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="118.0208" x="38.9583" y="439.2033">EstadoAprobacion</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="9.1667" x2="159.2708" y1="451.389" y2="451.389"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="76.7708" x="14.8958" y="469.2926">PENDIENTE</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="73.3333" x="14.8958" y="485.9296">ESCALADA</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="120.3125" x="14.8958" y="502.5665">INFO_SOLICITADA</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="75.625" x="14.8958" y="519.2035">APROBADA</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="84.7917" x="14.8958" y="535.8405">RECHAZADA</text></g><!--MD5=[f713e0249ea2b4bdb725c8e659a5ea51]
+class NivelAprobacion--><g id="elem_NivelAprobacion"><rect codeLine="89" fill="#FFFFFF" height="76.8156" id="NivelAprobacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="175.3125" x="206.25" y="442.2223"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="175.3125" x="206.25" y="442.2223"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="175.3125" x="206.25" y="473.7327"/><rect codeLine="89" fill="none" height="76.8156" id="NivelAprobacion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="175.3125" x="206.25" y="442.2223"/><ellipse cx="237.2448" cy="459.4098" fill="#EB937F" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M240.0378,464.566 L233.7894,464.566 L233.7894,454.54 L240.0378,454.54 L240.0378,456.2946 L235.7767,456.2946 L235.7767,458.443 L239.626,458.443 L239.626,460.1976 L235.7767,460.1976 L235.7767,462.8115 L240.0378,462.8115 L240.0378,464.566 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="107.7083" x="255.4635" y="464.4116">NivelAprobacion</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="207.3958" x2="380.4167" y1="476.5973" y2="476.5973"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="115.7292" x="213.125" y="494.5009">ADMINISTRADOR</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="161.5625" x="213.125" y="511.1379">SUPERADMINISTRADOR</text></g><!--MD5=[153bf835c0f48b9e20d304731d6e5538]
+class SolicitudDescuento--><g id="elem_SolicitudDescuento"><rect codeLine="93" fill="#FFFFFF" height="135.8931" id="SolicitudDescuento" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="232.6042" x="427.3958" y="412.4306"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="232.6042" x="427.3958" y="412.4306"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="232.6042" x="427.3958" y="443.941"/><rect codeLine="93" fill="none" height="135.8931" id="SolicitudDescuento" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="232.6042" x="427.3958" y="412.4306"/><ellipse cx="476.0937" cy="429.6181" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M478.1885,434.4879 Q477.723,434.7207 477.2038,434.846 Q476.6846,434.9713 476.1296,434.9713 Q474.0885,434.9713 473.0143,433.6464 Q471.958,432.3037 471.958,429.7793 Q471.958,427.2369 473.0143,425.9121 Q474.0885,424.5693 476.1296,424.5693 Q476.6846,424.5693 477.2038,424.6946 Q477.7409,424.802 478.1885,425.0527 L478.1885,427.2548 Q477.6872,426.7893 477.2038,426.5745 Q476.7204,426.3418 476.2191,426.3418 Q475.127,426.3418 474.5719,427.219 Q474.0169,428.0784 474.0169,429.7793 Q474.0169,431.4622 474.5719,432.3216 Q475.127,433.1809 476.2191,433.1809 Q476.7204,433.1809 477.2038,432.9661 Q477.6872,432.7513 478.1885,432.2858 L478.1885,434.4879 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="126.0417" x="497.8646" y="434.62">SolicitudDescuento</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="428.5417" x2="658.8542" y1="446.8056" y2="446.8056"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="139.7917" x="434.2708" y="464.7093">-tipo : TipoDescuento</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="124.8958" x="434.2708" y="481.3462">-valor : BigDecimal</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="144.375" x="434.2708" y="497.9832">-vigenciaDesde : Date</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="140.9375" x="434.2708" y="514.6202">-vigenciaHasta : Date</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="428.5417" x2="658.8542" y1="522.5201" y2="522.5201"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="218.8542" x="434.2708" y="540.4238">+superaUmbral(umbral) : boolean</text></g><!--MD5=[cfbb36fac482109b6134d9e1e68cb7f6]
+class TipoDescuento--><g id="elem_TipoDescuento"><rect codeLine="100" fill="#FFFFFF" height="76.8156" id="TipoDescuento" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="132.9167" x="423.3854" y="686.8577"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="132.9167" x="423.3854" y="686.8577"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="132.9167" x="423.3854" y="718.3681"/><rect codeLine="100" fill="none" height="76.8156" id="TipoDescuento" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="132.9167" x="423.3854" y="686.8577"/><ellipse cx="439.4271" cy="704.0452" fill="#EB937F" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M442.2201,709.2015 L435.9717,709.2015 L435.9717,699.1754 L442.2201,699.1754 L442.2201,700.93 L437.959,700.93 L437.959,703.0784 L441.8083,703.0784 L441.8083,704.833 L437.959,704.833 L437.959,707.4469 L442.2201,707.4469 L442.2201,709.2015 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="98.5417" x="454.3229" y="709.047">TipoDescuento</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="424.5313" x2="555.1563" y1="721.2327" y2="721.2327"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="91.6667" x="430.2604" y="739.1364">PORCENTAJE</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="97.3958" x="430.2604" y="755.7733">IMPORTE_FIJO</text></g><!--MD5=[d17f08bf1a640a265e4110029d771f16]
+class RevisionTarifa--><g id="elem_RevisionTarifa"><rect codeLine="104" fill="#FFFFFF" height="93.4526" id="RevisionTarifa" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="283.0208" x="1055.3125" y="433.6285"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="283.0208" x="1055.3125" y="433.6285"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="283.0208" x="1055.3125" y="465.139"/><rect codeLine="104" fill="none" height="93.4526" id="RevisionTarifa" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="283.0208" x="1055.3125" y="433.6285"/><ellipse cx="1145.2604" cy="450.816" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1147.3551,455.6858 Q1146.8896,455.9186 1146.3704,456.0439 Q1145.8512,456.1692 1145.2962,456.1692 Q1143.2552,456.1692 1142.181,454.8444 Q1141.1247,453.5016 1141.1247,450.9772 Q1141.1247,448.4349 1142.181,447.11 Q1143.2552,445.7672 1145.2962,445.7672 Q1145.8512,445.7672 1146.3704,445.8925 Q1146.9076,446 1147.3551,446.2506 L1147.3551,448.4528 Q1146.8538,447.9873 1146.3704,447.7724 Q1145.887,447.5397 1145.3857,447.5397 Q1144.2936,447.5397 1143.7386,448.417 Q1143.1836,449.2763 1143.1836,450.9772 Q1143.1836,452.6601 1143.7386,453.5195 Q1144.2936,454.3789 1145.3857,454.3789 Q1145.887,454.3789 1146.3704,454.164 Q1146.8538,453.9492 1147.3551,453.4837 L1147.3551,455.6858 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="93.9583" x="1167.0313" y="455.8179">RevisionTarifa</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="1056.4583" x2="1337.1875" y1="468.0035" y2="468.0035"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="269.2708" x="1062.1875" y="485.9072">-facturacionAnualVerificada : BigDecimal</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="185.625" x="1062.1875" y="502.5441">-precioAnterior : BigDecimal</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="175.3125" x="1062.1875" y="519.1811">-precioNuevo : BigDecimal</text></g><!--MD5=[d06f3b97b0f193e5cc953f93bf087eb8]
+class AprobacionFactura--><g id="elem_AprobacionFactura"><rect codeLine="109" fill="#FFFFFF" height="60.1786" id="AprobacionFactura" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="176.4583" x="832.4479" y="450.2431"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="176.4583" x="832.4479" y="450.2431"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="176.4583" x="832.4479" y="481.7535"/><rect codeLine="109" fill="none" height="60.1786" id="AprobacionFactura" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="176.4583" x="832.4479" y="450.2431"/><ellipse cx="856.224" cy="467.4306" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M858.3187,472.3004 Q857.8532,472.5332 857.334,472.6585 Q856.8148,472.7838 856.2598,472.7838 Q854.2188,472.7838 853.1445,471.4589 Q852.0882,470.1162 852.0882,467.5918 Q852.0882,465.0494 853.1445,463.7246 Q854.2188,462.3818 856.2598,462.3818 Q856.8148,462.3818 857.334,462.5071 Q857.8711,462.6145 858.3187,462.8652 L858.3187,465.0673 Q857.8174,464.6018 857.334,464.387 Q856.8506,464.1543 856.3493,464.1543 Q855.2572,464.1543 854.7021,465.0315 Q854.1471,465.8909 854.1471,467.5918 Q854.1471,469.2747 854.7021,470.1341 Q855.2572,470.9934 856.3493,470.9934 Q856.8506,470.9934 857.334,470.7786 Q857.8174,470.5638 858.3187,470.0983 L858.3187,472.3004 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="124.8958" x="872.8385" y="472.4325">AprobacionFactura</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="833.5938" x2="1007.7604" y1="484.6181" y2="484.6181"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="162.7083" x="839.3229" y="502.5218">-causa : CausaRetencion</text></g><!--MD5=[9465f86545c7dc199df5e5f1fa986e5e]
+class AprobacionExcepcion--><g id="elem_AprobacionExcepcion"><rect codeLine="112" fill="#FFFFFF" height="34.375" id="AprobacionExcepcion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="176.4583" x="1742.2396" y="463.4202"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="176.4583" x="1742.2396" y="463.4202"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="176.4583" x="1742.2396" y="494.9306"/><rect codeLine="112" fill="none" height="34.375" id="AprobacionExcepcion" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="176.4583" x="1742.2396" y="463.4202"/><ellipse cx="1758.2813" cy="480.6077" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1760.376,485.4775 Q1759.9105,485.7102 1759.3913,485.8356 Q1758.8721,485.9609 1758.3171,485.9609 Q1756.276,485.9609 1755.2018,484.636 Q1754.1455,483.2933 1754.1455,480.7688 Q1754.1455,478.2265 1755.2018,476.9017 Q1756.276,475.5589 1758.3171,475.5589 Q1758.8721,475.5589 1759.3913,475.6842 Q1759.9284,475.7916 1760.376,476.0423 L1760.376,478.2444 Q1759.8747,477.7789 1759.3913,477.5641 Q1758.9079,477.3313 1758.4066,477.3313 Q1757.3145,477.3313 1756.7594,478.2086 Q1756.2044,479.068 1756.2044,480.7688 Q1756.2044,482.4518 1756.7594,483.3112 Q1757.3145,484.1705 1758.4066,484.1705 Q1758.9079,484.1705 1759.3913,483.9557 Q1759.8747,483.7408 1760.376,483.2753 L1760.376,485.4775 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="142.0833" x="1773.1771" y="485.6095">AprobacionExcepcion</text></g><!--MD5=[a3f71d11ea3e5163a25bd5dd75497268]
+class OperacionExcepcional--><g id="elem_OperacionExcepcional"><rect codeLine="114" fill="#FFFFFF" height="76.8156" id="OperacionExcepcional" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="181.0417" x="1384.7396" y="442.2223"/><rect fill="#E6ECF7" height="34.375" rx="2.8646" ry="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="181.0417" x="1384.7396" y="442.2223"/><rect fill="#E6ECF7" height="2.8646" style="stroke:#E6ECF7;stroke-width:0.5729166666666666;" width="181.0417" x="1384.7396" y="473.7327"/><rect codeLine="114" fill="none" height="76.8156" id="OperacionExcepcional" rx="2.8646" ry="2.8646" style="stroke:#2C4F94;stroke-width:0.5729166666666666;" width="181.0417" x="1384.7396" y="442.2223"/><ellipse cx="1400.7813" cy="459.4098" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1402.876,464.2796 Q1402.4105,464.5123 1401.8913,464.6377 Q1401.3721,464.763 1400.8171,464.763 Q1398.776,464.763 1397.7018,463.4381 Q1396.6455,462.0953 1396.6455,459.5709 Q1396.6455,457.0286 1397.7018,455.7037 Q1398.776,454.361 1400.8171,454.361 Q1401.3721,454.361 1401.8913,454.4863 Q1402.4284,454.5937 1402.876,454.8444 L1402.876,457.0465 Q1402.3747,456.581 1401.8913,456.3662 Q1401.4079,456.1334 1400.9066,456.1334 Q1399.8145,456.1334 1399.2594,457.0107 Q1398.7044,457.8701 1398.7044,459.5709 Q1398.7044,461.2539 1399.2594,462.1132 Q1399.8145,462.9726 1400.9066,462.9726 Q1401.4079,462.9726 1401.8913,462.7578 Q1402.3747,462.5429 1402.876,462.0774 L1402.876,464.2796 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="146.6667" x="1415.6771" y="464.4116">OperacionExcepcional</text><line style="stroke:#2C4F94;stroke-width:0.5729166666666666;" x1="1385.8854" x2="1564.6354" y1="476.5973" y2="476.5973"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="137.5" x="1391.6146" y="494.5009">-tipo : TipoOperacion</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="142.0833" x="1391.6146" y="511.1379">-importe : BigDecimal</text></g><!--MD5=[20a748d5ee336a9a91751b0a3d4f0beb]
+class Cliente--><g id="elem_Cliente"><rect codeLine="120" fill="#F1F2F4" height="34.375" id="Cliente" rx="2.8646" ry="2.8646" style="stroke:#9AA4B5;stroke-width:0.5729166666666666;" width="80.2083" x="706.4063" y="463.4202"/><ellipse cx="722.4479" cy="480.6077" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M724.5426,485.4775 Q724.0771,485.7102 723.5579,485.8356 Q723.0387,485.9609 722.4837,485.9609 Q720.4427,485.9609 719.3685,484.636 Q718.3122,483.2933 718.3122,480.7688 Q718.3122,478.2265 719.3685,476.9017 Q720.4427,475.5589 722.4837,475.5589 Q723.0387,475.5589 723.5579,475.6842 Q724.0951,475.7916 724.5426,476.0423 L724.5426,478.2444 Q724.0413,477.7789 723.5579,477.5641 Q723.0745,477.3313 722.5732,477.3313 Q721.4811,477.3313 720.9261,478.2086 Q720.3711,479.068 720.3711,480.7688 Q720.3711,482.4518 720.9261,483.3112 Q721.4811,484.1705 722.5732,484.1705 Q723.0745,484.1705 723.5579,483.9557 Q724.0413,483.7408 724.5426,483.2753 L724.5426,485.4775 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="45.8333" x="737.3438" y="485.6095">Cliente</text></g><!--MD5=[85dc71517e78eac1123752d3f99deb82]
+class ExcepcionComercial--><g id="elem_ExcepcionComercial"><rect codeLine="121" fill="#F1F2F4" height="34.375" id="ExcepcionComercial" rx="2.8646" ry="2.8646" style="stroke:#9AA4B5;stroke-width:0.5729166666666666;" width="169.5833" x="1745.6771" y="708.0556"/><ellipse cx="1761.7187" cy="725.2431" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1763.8135,730.1129 Q1763.348,730.3457 1762.8288,730.471 Q1762.3096,730.5963 1761.7546,730.5963 Q1759.7135,730.5963 1758.6393,729.2714 Q1757.583,727.9287 1757.583,725.4043 Q1757.583,722.8619 1758.6393,721.5371 Q1759.7135,720.1943 1761.7546,720.1943 Q1762.3096,720.1943 1762.8288,720.3196 Q1763.3659,720.427 1763.8135,720.6777 L1763.8135,722.8798 Q1763.3122,722.4143 1762.8288,722.1995 Q1762.3454,721.9668 1761.8441,721.9668 Q1760.752,721.9668 1760.1969,722.844 Q1759.6419,723.7034 1759.6419,725.4043 Q1759.6419,727.0872 1760.1969,727.9466 Q1760.752,728.8059 1761.8441,728.8059 Q1762.3454,728.8059 1762.8288,728.5911 Q1763.3122,728.3763 1763.8135,727.9108 L1763.8135,730.1129 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="135.2083" x="1776.6146" y="730.245">ExcepcionComercial</text></g><!--MD5=[35a64b983c79880384a2fd9b61f0c24b]
+class Usuario--><g id="elem_Usuario"><rect codeLine="122" fill="#F1F2F4" height="34.375" id="Usuario" rx="2.8646" ry="2.8646" style="stroke:#9AA4B5;stroke-width:0.5729166666666666;" width="84.7917" x="1611.6146" y="463.4202"/><ellipse cx="1627.6563" cy="480.6077" fill="#ADD1B2" rx="11.4583" ry="11.4583" style="stroke:#181818;stroke-width:1.1458333333333333;"/><path d="M1629.751,485.4775 Q1629.2855,485.7102 1628.7663,485.8356 Q1628.2471,485.9609 1627.6921,485.9609 Q1625.651,485.9609 1624.5768,484.636 Q1623.5205,483.2933 1623.5205,480.7688 Q1623.5205,478.2265 1624.5768,476.9017 Q1625.651,475.5589 1627.6921,475.5589 Q1628.2471,475.5589 1628.7663,475.6842 Q1629.3034,475.7916 1629.751,476.0423 L1629.751,478.2444 Q1629.2497,477.7789 1628.7663,477.5641 Q1628.2829,477.3313 1627.7816,477.3313 Q1626.6895,477.3313 1626.1344,478.2086 Q1625.5794,479.068 1625.5794,480.7688 Q1625.5794,482.4518 1626.1344,483.3112 Q1626.6895,484.1705 1627.7816,484.1705 Q1628.2829,484.1705 1628.7663,483.9557 Q1629.2497,483.7408 1629.751,483.2753 L1629.751,485.4775 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="50.4167" x="1642.5521" y="485.6095">Usuario</text></g><!--MD5=[d5ccbd4bd6b575f8c3a8c81d74596f22]
+reverse link Cliente to Suscripcion--><g id="link_Cliente_Suscripcion"><path codeLine="124" d="M746.5104,513.2525 C746.5104,537.4754 746.5104,572.5608 746.5104,607.1765 " fill="none" id="Cliente-backto-Suscripcion" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="746.5104,498.0358,741.9271,504.9108,746.5104,511.7858,751.0938,504.9108,746.5104,498.0358" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="739.7965" y="520.2065">1</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="19.4792" x="726.2856" y="594.8368">1..*</text></g><!--MD5=[8a88dc8beb1dfa86092f04cb20b824e8]
+link Suscripcion to EstadoSuscripcion--><g id="link_Suscripcion_EstadoSuscripcion"><path codeLine="125" d="M795.5062,843.4358 C805.6583,867.6931 815.9479,892.2827 824.7938,913.4004 " fill="none" id="Suscripcion-to-EstadoSuscripcion" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="827.0052,918.6942,827.2572,907.4118,824.7959,913.4081,818.7996,910.9468,827.0052,918.6942" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[723bd316b9d03ae572d16374c6ca77cd]
+reverse link Suscripcion to Pausa--><g id="link_Suscripcion_Pausa"><path codeLine="126" d="M589.7031,835.9306 C583.1146,840.5483 579.2188,843.264 579.2188,843.264 C579.2188,843.264 475.0854,886.691 387.4177,923.2431 " fill="none" id="Suscripcion-backto-Pausa" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="602.124,827.2567,593.8632,827.4355,590.851,835.1296,599.1118,834.9508,602.124,827.2567" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="587.4217" y="830.2911">1</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="396.3886" y="916.232">*</text></g><!--MD5=[0861cfda4e399885b6965bd42c23609b]
+link Suscripcion to RangoTarifa--><g id="link_Suscripcion_RangoTarifa"><path codeLine="127" d="M890.8969,827.2567 C904.7615,836.9504 913.8021,843.264 913.8021,843.264 C913.8021,843.264 977.0521,886.84 1030.1615,923.4379 " fill="none" id="Suscripcion-to-RangoTarifa" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="1034.9396,926.7265,1029.0227,917.1168,1030.2133,923.4884,1023.8417,924.6789,1034.9396,926.7265" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="92.8125" x="980.2604" y="886.3759">tarifa aplicada</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="899.9049" y="830.2911">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="1016.8051" y="914.2736">1</text></g><!--MD5=[42ae5b9acd9d75fd6f80680d3f19d457]
+reverse link TablaTarifas to RangoTarifa--><g id="link_TablaTarifas_RangoTarifa"><path codeLine="128" d="M1092.575,808.9462 C1094.7635,848.1337 1097.2958,893.5087 1099.1406,926.5546 " fill="none" id="TablaTarifas-backto-RangoTarifa" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="1091.7271,793.7067,1087.5283,800.823,1092.4823,807.4359,1096.6811,800.3196,1091.7271,793.7067" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="1086.0957" y="815.4502">1</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="19.4792" x="1077.5444" y="914.4137">1..*</text></g><!--MD5=[becf12eb2f9f9d05b740ab06fd3bbba0]
+link Suscripcion to ReglaProrrateo--><g id="link_Suscripcion_ReglaProrrateo"><path codeLine="129" d="M664.3083,843.4358 C641.5865,875.7942 618.4635,908.714 601.2302,933.2348 " fill="none" id="Suscripcion-to-ReglaProrrateo" style="stroke:#3B4456;stroke-width:1.1458333333333333;stroke-dasharray:7.0,7.0;"/><polygon fill="#3B4456" points="597.8729,938.0244,607.5525,932.2226,601.1672,933.337,600.0527,926.9517,597.8729,938.0244" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[c689ea5c984591fbfd443b0c93698e5d]
+reverse link SolicitudAprobacion to SolicitudDescuento--><g id="link_SolicitudAprobacion_SolicitudDescuento"><path codeLine="130" d="M1011.2208,273.8077 C864.2333,335.9806 683.4896,412.4306 683.4896,412.4306 C683.4896,412.4306 674.0594,416.9567 660.0917,423.6483 " fill="none" id="SolicitudAprobacion-backto-SolicitudDescuento" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="none" points="1008.4021,266.2796,1032.6365,264.7442,1014.6583,281.0608,1008.4021,266.2796" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[1bf1dfbfb63c6216bc1652d9559995bc]
+reverse link SolicitudAprobacion to RevisionTarifa--><g id="link_SolicitudAprobacion_RevisionTarifa"><path codeLine="131" d="M1196.8229,360.1806 C1196.8229,386.9931 1196.8229,412.6942 1196.8229,433.3306 " fill="none" id="SolicitudAprobacion-backto-RevisionTarifa" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="none" points="1188.8021,359.8827,1196.8229,336.966,1204.8438,359.8827,1188.8021,359.8827" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[5990e8e117f7130368bcb63fa8699e71]
+reverse link SolicitudAprobacion to AprobacionFactura--><g id="link_SolicitudAprobacion_AprobacionFactura"><path codeLine="132" d="M1043.0979,353.489 C1007.05,390.5796 972.4573,426.1806 949.2885,450.014 " fill="none" id="SolicitudAprobacion-backto-AprobacionFactura" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="none" points="1037.426,347.8056,1059.151,336.966,1048.9302,358.989,1037.426,347.8056" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[4ddc195bd4fbe963baa209d97bf2b0a0]
+reverse link SolicitudAprobacion to AprobacionExcepcion--><g id="link_SolicitudAprobacion_AprobacionExcepcion"><path codeLine="133" d="M1382.7802,259.2212 C1523.1906,307.4837 1691.8229,365.4515 1691.8229,365.4515 C1691.8229,365.4515 1772.6844,431.9442 1810.8979,463.3744 " fill="none" id="SolicitudAprobacion-backto-AprobacionExcepcion" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="none" points="1380.0302,266.7494,1360.9635,251.716,1385.2437,251.5785,1380.0302,266.7494" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[1b7a7161a691fa8b3224185b25e629c0]
+reverse link SolicitudAprobacion to OperacionExcepcional--><g id="link_SolicitudAprobacion_OperacionExcepcional"><path codeLine="134" d="M1351.6938,353.3515 C1384.2927,386.615 1415.7229,418.6983 1438.7312,442.1765 " fill="none" id="SolicitudAprobacion-backto-OperacionExcepcional" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="none" points="1345.9417,358.9431,1335.6292,336.966,1357.4,347.714,1345.9417,358.9431" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[9d65379fc3aab10e2b093e02e1971d5b]
+link SolicitudAprobacion to EstadoAprobacion--><g id="link_SolicitudAprobacion_EstadoAprobacion"><path codeLine="135" d="M1032.774,230.4265 C745.7656,291.8775 182.7604,412.4306 182.7604,412.4306 C182.7604,412.4306 176,417.0254 166.0313,423.8087 " fill="none" id="SolicitudAprobacion-to-EstadoAprobacion" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="160.8865,427.3035,171.9923,425.3,165.6256,424.0842,166.8414,417.7174,160.8865,427.3035" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[1950863c8235c76df25d6efdb7d53b38]
+link SolicitudAprobacion to NivelAprobacion--><g id="link_SolicitudAprobacion_NivelAprobacion"><path codeLine="136" d="M1032.5333,240.2806 C800.2844,303.8858 403.9063,412.4306 403.9063,412.4306 C403.9063,412.4306 383.3615,424.9546 360.0323,439.1629 " fill="none" id="SolicitudAprobacion-to-NivelAprobacion" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="355.0135,442.2223,366.2056,440.7754,359.9074,439.2434,361.4394,432.9453,355.0135,442.2223" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[e7ecd5eb3c71059366a39dcce78eaed8]
+link SolicitudAprobacion to Usuario--><g id="link_SolicitudAprobacion_Usuario"><path codeLine="137" d="M1360.9406,288.715 C1444.2083,336.1067 1527.9688,383.7848 1527.9688,383.7848 C1527.9688,383.7848 1588.6979,412.4306 1588.6979,412.4306 C1588.6979,412.4306 1614.7771,439.1973 1633.9812,458.9056 " fill="none" id="SolicitudAprobacion-to-Usuario" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="1638.1979,463.2369,1634.2961,452.6477,1634.2045,459.1289,1627.7233,459.0372,1638.1979,463.2369" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="66.4583" x="1529.1146" y="379.9176">solicitante</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="1370.1038" y="290.7343">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="1625.3481" y="450.9484">1</text></g><!--MD5=[e7ecd5eb3c71059366a39dcce78eaed8]
+link SolicitudAprobacion to Usuario--><g id="link_SolicitudAprobacion_Usuario"><path codeLine="138" d="M1360.8031,263.8962 C1473.7708,311.139 1603.5938,365.4515 1603.5938,365.4515 C1603.5938,365.4515 1629.7302,424.565 1644.374,457.6567 " fill="none" id="SolicitudAprobacion-to-Usuario-1" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="1646.7917,463.1223,1646.7982,451.8371,1644.4679,457.8856,1638.4194,455.5552,1646.7917,463.1223" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="67.6042" x="1611.6146" y="379.9176">aprobador</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="1369.9588" y="264.5582">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="21.7708" x="1648.1896" y="450.7902">0..1</text></g><!--MD5=[a7c86ee01662184624cf30c548fa26f9]
+link SolicitudDescuento to TipoDescuento--><g id="link_SolicitudDescuento_TipoDescuento"><path codeLine="139" d="M528.7677,548.9337 C519.4063,591.089 507.6042,644.1983 499.4573,680.8192 " fill="none" id="SolicitudDescuento-to-TipoDescuento" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="498.1854,686.5483,504.9023,677.4798,499.4317,680.9564,495.9552,675.4858,498.1854,686.5483" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/></g><!--MD5=[95c69b5d9e6768e3f9299406afd21ae7]
+link SolicitudDescuento to Suscripcion--><g id="link_SolicitudDescuento_Suscripcion"><path codeLine="140" d="M599.924,548.9337 C613.8688,565.5942 629.2344,583.9619 644.6229,602.3525 " fill="none" id="SolicitudDescuento-to-Suscripcion" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="648.5417,607.0275,645.441,596.1767,644.8659,602.6329,638.4097,602.0579,648.5417,607.0275" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="598.8227" y="570.6623">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="635.0924" y="594.6765">1</text></g><!--MD5=[26e8de7c7a3c261a59d31d51a636f43b]
+link RevisionTarifa to Suscripcion--><g id="link_RevisionTarifa_Suscripcion"><path codeLine="141" d="M1093.0448,527.7587 C1012.275,563.566 913.8021,607.2223 913.8021,607.2223 C913.8021,607.2223 906.8813,612.0577 895.8583,619.7577 " fill="none" id="RevisionTarifa-to-Suscripcion" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="890.8969,623.2296,901.9731,621.068,895.5896,619.943,896.7146,613.5596,890.8969,623.2296" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="1069.7524" y="549.6116">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="899.87" y="613.8311">1</text></g><!--MD5=[66908c291542f8b030eff79cd3a33db2]
+link RevisionTarifa to RangoTarifa--><g id="link_RevisionTarifa_RangoTarifa"><path codeLine="142" d="M1220.7708,527.7587 C1239.4135,563.566 1262.1354,607.2223 1262.1354,607.2223 C1262.1354,607.2223 1262.1354,843.264 1262.1354,843.264 C1262.1354,843.264 1208.7969,886.3129 1163.6281,922.7733 " fill="none" id="RevisionTarifa-to-RangoTarifa" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="1158.724,926.7265,1169.6244,923.8048,1163.1784,923.1236,1163.8597,916.6777,1158.724,926.7265" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="106.5625" x="1263.2813" y="730.5426">rango propuesto</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="6.875" x="1217.0365" y="549.6116">*</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="1162.6386" y="914.2736">1</text></g><!--MD5=[ade6c3e32edb726304d644915eed9b62]
+link AprobacionExcepcion to ExcepcionComercial--><g id="link_AprobacionExcepcion_ExcepcionComercial"><path codeLine="143" d="M1830.4687,498.0358 C1830.4687,540.3629 1830.4687,653.9723 1830.4687,702.0858 " fill="none" id="AprobacionExcepcion-to-ExcepcionComercial" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><polygon fill="#3B4456" points="1830.4687,707.8952,1835.0521,697.5827,1830.4687,702.166,1825.8854,697.5827,1830.4687,707.8952" style="stroke:#3B4456;stroke-width:1.1458333333333333;"/><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="21.7708" x="1804.9561" y="520.2065">0..1</text><text fill="#000000" font-family="Helvetica" font-size="13.75" lengthAdjust="spacing" textLength="5.7292" x="1823.6475" y="695.6155">1</text></g><rect fill="#DDDDDD" height="50.2779" id="_legend" rx="8.5938" ry="8.5938" style="stroke:#000000;stroke-width:1.1458333333333333;" width="830.7292" x="1066.1979" y="1049.6035"/><text fill="#000000" font-family="Helvetica" font-size="16.0417" lengthAdjust="spacing" textLength="304.7917" x="1071.9271" y="1070.873">Clases en gris: detalladas en otro bloque</text><text fill="#000000" font-family="Helvetica" font-size="16.0417" lengthAdjust="spacing" textLength="819.2708" x="1071.9271" y="1090.2828">Cubre: FR-09, FR-10, FR-11, FR-16, FR-17, FR-18, BR-12, BR-14, BR-15, CU-05, CU-06, CU-07, CU-08, CU-09</text><!--MD5=[714476ebf540e05c7877e39b66b8289d]
+@startuml B_suscripciones_tarifas_descuentos
+skinparam dpi 110
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  ArrowColor #3B4456
+  HeaderBackgroundColor #E6ECF7
+  StereotypeFontColor #5A6476
+}
+skinparam enum {
+  BackgroundColor #F6EEDC
+  BorderColor #8A6A2A
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+}
+hide empty members
+title Bloque B. Suscripciones, tarifas y descuentos
+class Suscripcion {
+  - id : Long
+  - planServicio : String
+  - fechaInicio : Date
+  - precioAcordado : BigDecimal
+  - estado : EstadoSuscripcion
+  - fechaBaja : Date
+  - motivoBaja : String
+  + estaFacturable(periodo) : boolean
+  + darDeBaja(fecha, motivo) : void
+  + pausar(motivo, inicio, reactivacion) : void
+  + reactivar() : void
+}
+enum EstadoSuscripcion {
+  PENDIENTE_ACTIVACION
+  ACTIVA
+  PAUSADA
+  BAJA
+}
+class Pausa {
+  - motivo : String
+  - fechaInicio : Date
+  - fechaReactivacionPrevista : Date
+  - fechaFin : Date
+}
+class TablaTarifas {
+  - version : int
+  - fechaEfecto : Date
+  - vigente : boolean
+  + rangoPara(facturacionAnual) : RangoTarifa
+  + validarRangos() : boolean
+}
+class RangoTarifa {
+  - facturacionMinima : BigDecimal
+  - facturacionMaxima : BigDecimal
+  - precioMensual : BigDecimal
+}
+class ReglaProrrateo <<service>> {
+  + calcular(precio, fechaAlta) : BigDecimal
+}
+abstract class SolicitudAprobacion {
+  - id : Long
+  - fechaSolicitud : DateTime
+  - motivo : String
+  - estado : EstadoAprobacion
+  - nivelRequerido : NivelAprobacion
+  - motivoPendiente : String
+  - fechaResolucion : DateTime
+  - motivoResolucion : String
+  - version : int
+  + aprobar(usuario) : void
+  + rechazar(usuario, motivo) : void
+  + escalar() : void
+  + pedirInformacion(texto) : void
+  # validarSeparacionFunciones(usuario) : boolean
+}
+enum EstadoAprobacion {
+  PENDIENTE
+  ESCALADA
+  INFO_SOLICITADA
+  APROBADA
+  RECHAZADA
+}
+enum NivelAprobacion {
+  ADMINISTRADOR
+  SUPERADMINISTRADOR
+}
+class SolicitudDescuento {
+  - tipo : TipoDescuento
+  - valor : BigDecimal
+  - vigenciaDesde : Date
+  - vigenciaHasta : Date
+  + superaUmbral(umbral) : boolean
+}
+enum TipoDescuento {
+  PORCENTAJE
+  IMPORTE_FIJO
+}
+class RevisionTarifa {
+  - facturacionAnualVerificada : BigDecimal
+  - precioAnterior : BigDecimal
+  - precioNuevo : BigDecimal
+}
+class AprobacionFactura {
+  - causa : CausaRetencion
+}
+class AprobacionExcepcion {
+}
+class OperacionExcepcional {
+  - tipo : TipoOperacion
+  - importe : BigDecimal
+}
+
+' Clases detalladas en otros bloques
+class Cliente #F1F2F4 ##9AA4B5
+class ExcepcionComercial #F1F2F4 ##9AA4B5
+class Usuario #F1F2F4 ##9AA4B5
+
+Cliente "1" *- - "1..*" Suscripcion
+Suscripcion - -> EstadoSuscripcion
+Suscripcion "1" *- - "*" Pausa
+Suscripcion "*" - -> "1" RangoTarifa : tarifa aplicada
+TablaTarifas "1" *- - "1..*" RangoTarifa
+Suscripcion ..> ReglaProrrateo
+SolicitudAprobacion <|- - SolicitudDescuento
+SolicitudAprobacion <|- - RevisionTarifa
+SolicitudAprobacion <|- - AprobacionFactura
+SolicitudAprobacion <|- - AprobacionExcepcion
+SolicitudAprobacion <|- - OperacionExcepcional
+SolicitudAprobacion - -> EstadoAprobacion
+SolicitudAprobacion - -> NivelAprobacion
+SolicitudAprobacion "*" - -> "1" Usuario : solicitante
+SolicitudAprobacion "*" - -> "0..1" Usuario : aprobador
+SolicitudDescuento - -> TipoDescuento
+SolicitudDescuento "*" - -> "1" Suscripcion
+RevisionTarifa "*" - -> "1" Suscripcion
+RevisionTarifa "*" - -> "1" RangoTarifa : rango propuesto
+AprobacionExcepcion "0..1" - -> "1" ExcepcionComercial
+
+legend bottom right
+  Clases en gris: detalladas en otro bloque
+  Cubre: FR-09, FR-10, FR-11, FR-16, FR-17, FR-18, BR-12, BR-14, BR-15, CU-05, CU-06, CU-07, CU-08, CU-09
+endlegend
+@enduml
+
+@startuml B_suscripciones_tarifas_descuentos
+skinparam dpi 110
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam linetype polyline
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  ArrowColor #3B4456
+  HeaderBackgroundColor #E6ECF7
+  StereotypeFontColor #5A6476
+}
+skinparam enum {
+  BackgroundColor #F6EEDC
+  BorderColor #8A6A2A
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+}
+hide empty members
+title Bloque B. Suscripciones, tarifas y descuentos
+class Suscripcion {
+  - id : Long
+  - planServicio : String
+  - fechaInicio : Date
+  - precioAcordado : BigDecimal
+  - estado : EstadoSuscripcion
+  - fechaBaja : Date
+  - motivoBaja : String
+  + estaFacturable(periodo) : boolean
+  + darDeBaja(fecha, motivo) : void
+  + pausar(motivo, inicio, reactivacion) : void
+  + reactivar() : void
+}
+enum EstadoSuscripcion {
+  PENDIENTE_ACTIVACION
+  ACTIVA
+  PAUSADA
+  BAJA
+}
+class Pausa {
+  - motivo : String
+  - fechaInicio : Date
+  - fechaReactivacionPrevista : Date
+  - fechaFin : Date
+}
+class TablaTarifas {
+  - version : int
+  - fechaEfecto : Date
+  - vigente : boolean
+  + rangoPara(facturacionAnual) : RangoTarifa
+  + validarRangos() : boolean
+}
+class RangoTarifa {
+  - facturacionMinima : BigDecimal
+  - facturacionMaxima : BigDecimal
+  - precioMensual : BigDecimal
+}
+class ReglaProrrateo <<service>> {
+  + calcular(precio, fechaAlta) : BigDecimal
+}
+abstract class SolicitudAprobacion {
+  - id : Long
+  - fechaSolicitud : DateTime
+  - motivo : String
+  - estado : EstadoAprobacion
+  - nivelRequerido : NivelAprobacion
+  - motivoPendiente : String
+  - fechaResolucion : DateTime
+  - motivoResolucion : String
+  - version : int
+  + aprobar(usuario) : void
+  + rechazar(usuario, motivo) : void
+  + escalar() : void
+  + pedirInformacion(texto) : void
+  # validarSeparacionFunciones(usuario) : boolean
+}
+enum EstadoAprobacion {
+  PENDIENTE
+  ESCALADA
+  INFO_SOLICITADA
+  APROBADA
+  RECHAZADA
+}
+enum NivelAprobacion {
+  ADMINISTRADOR
+  SUPERADMINISTRADOR
+}
+class SolicitudDescuento {
+  - tipo : TipoDescuento
+  - valor : BigDecimal
+  - vigenciaDesde : Date
+  - vigenciaHasta : Date
+  + superaUmbral(umbral) : boolean
+}
+enum TipoDescuento {
+  PORCENTAJE
+  IMPORTE_FIJO
+}
+class RevisionTarifa {
+  - facturacionAnualVerificada : BigDecimal
+  - precioAnterior : BigDecimal
+  - precioNuevo : BigDecimal
+}
+class AprobacionFactura {
+  - causa : CausaRetencion
+}
+class AprobacionExcepcion {
+}
+class OperacionExcepcional {
+  - tipo : TipoOperacion
+  - importe : BigDecimal
+}
+
+class Cliente #F1F2F4 ##9AA4B5
+class ExcepcionComercial #F1F2F4 ##9AA4B5
+class Usuario #F1F2F4 ##9AA4B5
+
+Cliente "1" *- - "1..*" Suscripcion
+Suscripcion - -> EstadoSuscripcion
+Suscripcion "1" *- - "*" Pausa
+Suscripcion "*" - -> "1" RangoTarifa : tarifa aplicada
+TablaTarifas "1" *- - "1..*" RangoTarifa
+Suscripcion ..> ReglaProrrateo
+SolicitudAprobacion <|- - SolicitudDescuento
+SolicitudAprobacion <|- - RevisionTarifa
+SolicitudAprobacion <|- - AprobacionFactura
+SolicitudAprobacion <|- - AprobacionExcepcion
+SolicitudAprobacion <|- - OperacionExcepcional
+SolicitudAprobacion - -> EstadoAprobacion
+SolicitudAprobacion - -> NivelAprobacion
+SolicitudAprobacion "*" - -> "1" Usuario : solicitante
+SolicitudAprobacion "*" - -> "0..1" Usuario : aprobador
+SolicitudDescuento - -> TipoDescuento
+SolicitudDescuento "*" - -> "1" Suscripcion
+RevisionTarifa "*" - -> "1" Suscripcion
+RevisionTarifa "*" - -> "1" RangoTarifa : rango propuesto
+AprobacionExcepcion "0..1" - -> "1" ExcepcionComercial
+
+legend bottom right
+  Clases en gris: detalladas en otro bloque
+  Cubre: FR-09, FR-10, FR-11, FR-16, FR-17, FR-18, BR-12, BR-14, BR-15, CU-05, CU-06, CU-07, CU-08, CU-09
+endlegend
+@enduml
+
+PlantUML version 1.2022.12(Sun Oct 23 20:12:26 CEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
