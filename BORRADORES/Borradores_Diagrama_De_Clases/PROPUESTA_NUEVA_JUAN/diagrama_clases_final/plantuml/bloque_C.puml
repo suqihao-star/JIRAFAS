@@ -1,0 +1,193 @@
+@startuml bloque_C
+skinparam backgroundColor #FFFFFF
+skinparam linetype polyline
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4456
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  HeaderBackgroundColor #E6ECF7
+}
+skinparam enum {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A2A
+}
+skinparam interface {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9AA4B5
+  FontColor #3B4456
+}
+hide empty members
+title Bloque C - Facturación\n(CU-10 a CU-15)
+
+package "Bloque C - Facturación" {
+  class Factura {
+    - id : Long
+    - numero : String [0..1]
+    - tipo : TipoFactura
+    - estado : EstadoFactura
+    - fechaEmision : Fecha [0..1]
+    - fechaVencimiento : Fecha
+    - periodoFacturado : String [0..1]
+    - moneda : String
+    - baseImponible : Decimal
+    - totalImpuestos : Decimal
+    - total : Decimal
+    - importePendiente : Decimal
+    - migrada : Boolean
+    - rutaPDF : String [0..1]
+    - hashPDF : String [0..1]
+    - claveIdempotencia : String
+    - version : Integer
+    + calcularTotales() : void
+    + validarDatosFiscales() : List<String>
+    + detectarCausaRetencion() : CausaRetencion [0..1]
+    + emitir() : void
+    + generarPDF() : void
+    + estaBloqueada() : Boolean
+    + registrarCobro(importe : Decimal) : void
+  }
+  note right of Factura
+    Emitida = inmutable; se corrige con rectificativa (BR-09).
+    El número se asigna solo al emitir; un reintento no consume número (BR-10).
+    ANULADA, INCOBRABLE o CANCELADA nunca equivalen a PAGADA (BR-13).
+    Se bloquea al cerrarse su periodo fiscal (FR-14).
+  end note
+  class FacturaRectificativa {
+    - motivoRectificacion : String
+  }
+  class LineaFactura {
+    - orden : Integer
+    - concepto : String
+    - cantidad : Decimal
+    - precioUnitario : Decimal
+    - descuento : Decimal
+    - importeImpuesto : Decimal
+    - subtotal : Decimal
+    + calcularSubtotal() : Decimal
+  }
+  class DatosFiscalesFactura {
+    - razonSocialCliente : String
+    - idFiscalCliente : String
+    - domicilioCliente : String
+    - paisCliente : String
+    - razonSocialEmisor : String
+    - idFiscalEmisor : String
+    - domicilioEmisor : String
+  }
+  note right of DatosFiscalesFactura
+    Copia tomada al emitir: cambios posteriores del cliente,
+    del emisor o de las tarifas no alteran la factura (BR-11).
+  end note
+  class AprobacionFactura {
+    - causa : CausaRetencion
+  }
+  class OperacionExcepcional {
+    - tipo : TipoOperacion
+    - importe : Decimal
+    + ejecutar() : void
+  }
+  class PeriodoFiscal {
+    - anio : Integer
+    - trimestre : Integer
+    - fechaPresentacion : Fecha
+    - cerrado : Boolean
+    - fechaReapertura : FechaHora [0..1]
+    - motivoReapertura : String [0..1]
+    + cerrar() : void
+    + reabrir(u : Usuario, motivo : String) : void
+  }
+  class FiltroGuardado {
+    - nombre : String
+    - ambito : String
+    - criterios : String
+    + aplicar() : void
+  }
+  package "Enumeraciones" #FFFFFF {
+    enum TipoFactura {
+    PUNTUAL
+    RECURRENTE
+  }
+    enum EstadoFactura {
+    BORRADOR
+    APROBADA
+    EMITIDA
+    ENVIADA
+    VENCIDA
+    PARCIALMENTE_CONCILIADA
+    PAGADA
+    ANULADA
+    RECTIFICADA
+    INCOBRABLE
+    CANCELADA
+  }
+    enum CausaRetencion {
+    IMPORTE_MODIFICADO
+    DESCUENTO_EXTRAORDINARIO
+    VENCIMIENTO_ATIPICO
+    IMPORTE_ALTO
+  }
+    enum TipoOperacion {
+    RECTIFICACION
+    ANULACION
+    INCOBRABLE
+    CANCELACION
+  }
+  }
+}
+
+package "Bloque A - Clientes y contactos (referencia)" #F4F5F7 {
+  class Cliente
+}
+
+package "Bloque B - Suscripciones, tarifas y descuentos (referencia)" #F4F5F7 {
+  abstract class SolicitudAprobacion
+  class SolicitudDescuento
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F5F7 {
+  class Usuario
+  class Impuesto
+  class SerieFacturacion
+  class EjecucionTarea
+}
+
+' ---- Relaciones ----
+Cliente "1" -- "0..*" Factura
+SolicitudAprobacion <|-- AprobacionFactura
+SolicitudAprobacion <|-- OperacionExcepcional
+SolicitudAprobacion "0..*" --> "0..1" Usuario : aprobador
+Factura "1" *-- "1..*" LineaFactura
+LineaFactura "0..*" --> "1" Impuesto
+SerieFacturacion "1" -- "0..*" Factura : numera >
+Factura "1" *-- "0..1" DatosFiscalesFactura
+Factura <|-- FacturaRectificativa
+FacturaRectificativa "0..1" --> "1" Factura : rectificaA
+Factura "0..*" --> "1" PeriodoFiscal
+PeriodoFiscal "0..*" --> "0..1" Usuario : reabiertoPor
+Factura "0..*" --> "0..1" SolicitudDescuento : descuentoAplicado
+AprobacionFactura "0..*" --> "1" Factura : retiene
+OperacionExcepcional "0..*" --> "1" Factura : sobre
+OperacionExcepcional "0..1" --> "0..1" FacturaRectificativa : genera
+Factura "0..*" --> "0..1" EjecucionTarea : generadaEn
+Usuario "1" *-- "0..*" FiltroGuardado
+
+legend bottom right
+  Paquetes grises: clases detalladas en su propio bloque.
+  Importes en Decimal (NFR-06). version: control de edición concurrente (NFR-13).
+endlegend
+@enduml

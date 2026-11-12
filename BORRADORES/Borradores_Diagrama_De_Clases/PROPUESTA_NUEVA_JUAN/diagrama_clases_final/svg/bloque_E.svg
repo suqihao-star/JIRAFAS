@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1026px" preserveAspectRatio="none" style="width:2683px;height:1026px;background:#FFFFFF;" version="1.1" viewBox="0 0 2683 1026" width="2683px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="43.8789" id="_title" style="stroke:none;stroke-width:1.0;" width="315" x="1177" y="5"/><text fill="#000000" font-family="Helvetica" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="305" x="1182" y="23.5625">Bloque E - Seguimiento, consulta e informes</text><text fill="#000000" font-family="Helvetica" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="114" x="1277.5" y="40.502">(CU-23 a CU-29)</text><!--MD5=[7d95886829203dfd7b5fcdf5974d8c5a]
+cluster Bloque E - Seguimiento, consulta e informes--><g id="cluster_Bloque E - Seguimiento, consulta e informes"><rect fill="none" height="749" rx="2.5" ry="2.5" style="stroke:#9AA4B5;stroke-width:1.5;" width="2043" x="620" y="196.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="255" x="1514" y="210.5039">Bloque E - Seguimiento, consulta e informes</text></g><!--MD5=[a9177b8d9e675a4ef9a13d65a19c67f4]
+cluster Enumeraciones--><g id="cluster_Enumeraciones"><rect fill="#FFFFFF" height="660.5" rx="2.5" ry="2.5" style="stroke:#9AA4B5;stroke-width:1.5;" width="583" x="2056" y="237.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="89" x="2303" y="251.5039">Enumeraciones</text></g><!--MD5=[2d71f63ebc1fb6f822359b5fd780f090]
+cluster Bloque A - Clientes y contactos (referencia)--><g id="cluster_Bloque A - Clientes y contactos (referencia)"><rect fill="#F4F5F7" height="96" rx="2.5" ry="2.5" style="stroke:#9AA4B5;stroke-width:1.5;" width="270" x="1621" y="61.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="254" x="1629" y="75.5039">Bloque A - Clientes y contactos (referencia)</text></g><!--MD5=[0f521cf17aacb04d28d20335d6a2beba]
+cluster Bloque C - Facturación (referencia)--><g id="cluster_Bloque C - Facturación (referencia)"><rect fill="#F4F5F7" height="96" rx="2.5" ry="2.5" style="stroke:#9AA4B5;stroke-width:1.5;" width="221" x="1376" y="61.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="205" x="1384" y="75.5039">Bloque C - Facturación (referencia)</text></g><!--MD5=[ed61c5dd8aa4fe925f0d9dbc3e7196ff]
+cluster Bloque D - Cobros y comunicaciones (referencia)--><g id="cluster_Bloque D - Cobros y comunicaciones (referencia)"><rect fill="#F4F5F7" height="96" rx="2.5" ry="2.5" style="stroke:#9AA4B5;stroke-width:1.5;" width="303" x="293" y="527.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="287" x="301" y="541.0039">Bloque D - Cobros y comunicaciones (referencia)</text></g><!--MD5=[8b1173831e711bacac50d26df6134885]
+cluster Bloque F - Administración, seguridad y sistema (referencia)--><g id="cluster_Bloque F - Administración, seguridad y sistema (referencia)"><rect fill="#F4F5F7" height="96" rx="2.5" ry="2.5" style="stroke:#9AA4B5;stroke-width:1.5;" width="365" x="231" y="761.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="349" x="239" y="775.5039">Bloque F - Administración, seguridad y sistema (referencia)</text></g><!--MD5=[d331226d1317b3fc678f52fa8b08f650]
+class Notificacion--><g id="elem_Notificacion"><rect codeLine="37" fill="#FFFFFF" height="205.7148" id="Notificacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="212" x="1330" y="723.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="212" x="1330" y="723.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="212" x="1330" y="751.3789"/><rect codeLine="37" fill="none" height="205.7148" id="Notificacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="212" x="1330" y="723.8789"/><ellipse cx="1398" cy="738.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1399.8281,743.1289 Q1399.4219,743.332 1398.9688,743.4414 Q1398.5156,743.5508 1398.0313,743.5508 Q1396.25,743.5508 1395.3125,742.3945 Q1394.3906,741.2227 1394.3906,739.0195 Q1394.3906,736.8008 1395.3125,735.6445 Q1396.25,734.4727 1398.0313,734.4727 Q1398.5156,734.4727 1398.9688,734.582 Q1399.4375,734.6758 1399.8281,734.8945 L1399.8281,736.8164 Q1399.3906,736.4102 1398.9688,736.2227 Q1398.5469,736.0195 1398.1094,736.0195 Q1397.1563,736.0195 1396.6719,736.7852 Q1396.1875,737.5352 1396.1875,739.0195 Q1396.1875,740.4883 1396.6719,741.2383 Q1397.1563,741.9883 1398.1094,741.9883 Q1398.5469,741.9883 1398.9688,741.8008 Q1399.3906,741.6133 1399.8281,741.207 L1399.8281,743.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="68" x="1417" y="743.2441">Notificacion</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1331" x2="1541" y1="753.8789" y2="753.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="53" x="1336" y="769.5039">-id : Long</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="193" x="1336" y="784.0234">-categoria : CategoriaNotificacion</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="97" x="1336" y="798.543">-mensaje : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="132" x="1336" y="813.0625">-tipoReferencia : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="115" x="1336" y="827.582">-idReferencia : Long</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="148" x="1336" y="842.1016">-requiereAccion : Boolean</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="88" x="1336" y="856.6211">-leida : Boolean</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="107" x="1336" y="871.1406">-resuelta : Boolean</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="110" x="1336" y="885.6602">-fecha : FechaHora</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1331" x2="1541" y1="892.5547" y2="892.5547"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="122" x="1336" y="908.1797">+marcarLeida() : void</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="200" x="1336" y="922.6992">+marcarResuelta(u : Usuario) : void</text></g><!--MD5=[ac5ae3ddca516caa63272ac009e5f849]
+class PreferenciaNotificacion--><g id="elem_PreferenciaNotificacion"><rect codeLine="50" fill="#FFFFFF" height="96.0781" id="PreferenciaNotificacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="205" x="1016.5" y="309.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="205" x="1016.5" y="309.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="205" x="1016.5" y="337.3789"/><rect codeLine="50" fill="none" height="96.0781" id="PreferenciaNotificacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="205" x="1016.5" y="309.8789"/><ellipse cx="1048.5" cy="324.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1050.3281,329.1289 Q1049.9219,329.332 1049.4688,329.4414 Q1049.0156,329.5508 1048.5313,329.5508 Q1046.75,329.5508 1045.8125,328.3945 Q1044.8906,327.2227 1044.8906,325.0195 Q1044.8906,322.8008 1045.8125,321.6445 Q1046.75,320.4727 1048.5313,320.4727 Q1049.0156,320.4727 1049.4688,320.582 Q1049.9375,320.6758 1050.3281,320.8945 L1050.3281,322.8164 Q1049.8906,322.4102 1049.4688,322.2227 Q1049.0469,322.0195 1048.6094,322.0195 Q1047.6563,322.0195 1047.1719,322.7852 Q1046.6875,323.5352 1046.6875,325.0195 Q1046.6875,326.4883 1047.1719,327.2383 Q1047.6563,327.9883 1048.6094,327.9883 Q1049.0469,327.9883 1049.4688,327.8008 Q1049.8906,327.6133 1050.3281,327.207 L1050.3281,329.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="135" x="1065.5" y="329.2441">PreferenciaNotificacion</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1017.5" x2="1220.5" y1="339.8789" y2="339.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="193" x="1022.5" y="355.5039">-categoria : CategoriaNotificacion</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="134" x="1022.5" y="370.0234">-enAplicacion : Boolean</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="111" x="1022.5" y="384.543">-porEmail : Boolean</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="162" x="1022.5" y="399.0625">-enResumenDiario : Boolean</text></g><!--MD5=[dc646167d91304cd09155e6ec6e0cecf]
+class ReglaAlerta--><g id="elem_ReglaAlerta"><rect codeLine="56" fill="#FFFFFF" height="104.0781" id="ReglaAlerta" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="184" x="1542" y="540.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="184" x="1542" y="540.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="184" x="1542" y="567.8789"/><rect codeLine="56" fill="none" height="104.0781" id="ReglaAlerta" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="184" x="1542" y="540.3789"/><ellipse cx="1597" cy="555.3789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1598.8281,559.6289 Q1598.4219,559.832 1597.9688,559.9414 Q1597.5156,560.0508 1597.0313,560.0508 Q1595.25,560.0508 1594.3125,558.8945 Q1593.3906,557.7227 1593.3906,555.5195 Q1593.3906,553.3008 1594.3125,552.1445 Q1595.25,550.9727 1597.0313,550.9727 Q1597.5156,550.9727 1597.9688,551.082 Q1598.4375,551.1758 1598.8281,551.3945 L1598.8281,553.3164 Q1598.3906,552.9102 1597.9688,552.7227 Q1597.5469,552.5195 1597.1094,552.5195 Q1596.1563,552.5195 1595.6719,553.2852 Q1595.1875,554.0352 1595.1875,555.5195 Q1595.1875,556.9883 1595.6719,557.7383 Q1596.1563,558.4883 1597.1094,558.4883 Q1597.5469,558.4883 1597.9688,558.3008 Q1598.3906,558.1133 1598.8281,557.707 L1598.8281,559.6289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="66" x="1616" y="559.7441">ReglaAlerta</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1543" x2="1725" y1="570.3789" y2="570.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="127" x="1548" y="586.0039">-tipo : TipoReglaAlerta</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="102" x="1548" y="600.5234">-umbral : Decimal</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="96" x="1548" y="615.043">-activa : Boolean</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1543" x2="1725" y1="621.9375" y2="621.9375"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="172" x="1548" y="637.5625">+evaluar() : List&lt;Notificacion&gt;</text></g><!--MD5=[7d60b85d002f7850c34c5698b92f8c8e]
+class Incidencia--><g id="elem_Incidencia"><rect codeLine="62" fill="#FFFFFF" height="162.1563" id="Incidencia" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="216" x="1500" y="276.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="216" x="1500" y="276.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="216" x="1500" y="304.3789"/><rect codeLine="62" fill="none" height="162.1563" id="Incidencia" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="216" x="1500" y="276.8789"/><ellipse cx="1575" cy="291.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1576.8281,296.1289 Q1576.4219,296.332 1575.9688,296.4414 Q1575.5156,296.5508 1575.0313,296.5508 Q1573.25,296.5508 1572.3125,295.3945 Q1571.3906,294.2227 1571.3906,292.0195 Q1571.3906,289.8008 1572.3125,288.6445 Q1573.25,287.4727 1575.0313,287.4727 Q1575.5156,287.4727 1575.9688,287.582 Q1576.4375,287.6758 1576.8281,287.8945 L1576.8281,289.8164 Q1576.3906,289.4102 1575.9688,289.2227 Q1575.5469,289.0195 1575.1094,289.0195 Q1574.1563,289.0195 1573.6719,289.7852 Q1573.1875,290.5352 1573.1875,292.0195 Q1573.1875,293.4883 1573.6719,294.2383 Q1574.1563,294.9883 1575.1094,294.9883 Q1575.5469,294.9883 1575.9688,294.8008 Q1576.3906,294.6133 1576.8281,294.207 L1576.8281,296.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="58" x="1594" y="296.2441">Incidencia</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1501" x2="1715" y1="306.8789" y2="306.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="53" x="1506" y="322.5039">-id : Long</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="119" x="1506" y="337.0234">-tipo : TipoIncidencia</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="115" x="1506" y="351.543">-descripcion : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="149" x="1506" y="366.0625">-estado : EstadoIncidencia</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="118" x="1506" y="380.582">-prioridad : Prioridad</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="160" x="1506" y="395.1016">-fechaApertura : FechaHora</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="176" x="1506" y="409.6211">-fechaCierre : FechaHora [0..1]</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1501" x2="1715" y1="416.5156" y2="416.5156"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="204" x="1506" y="432.1406">+resolver(comentario : String) : void</text></g><!--MD5=[92bd6e401080a2853674e2906bfd22c8]
+class Comentario--><g id="elem_Comentario"><rect codeLine="72" fill="#FFFFFF" height="67.0391" id="Comentario" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="122" x="1375" y="558.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="122" x="1375" y="558.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="122" x="1375" y="586.3789"/><rect codeLine="72" fill="none" height="67.0391" id="Comentario" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="122" x="1375" y="558.8789"/><ellipse cx="1400.25" cy="573.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1402.0781,578.1289 Q1401.6719,578.332 1401.2188,578.4414 Q1400.7656,578.5508 1400.2813,578.5508 Q1398.5,578.5508 1397.5625,577.3945 Q1396.6406,576.2227 1396.6406,574.0195 Q1396.6406,571.8008 1397.5625,570.6445 Q1398.5,569.4727 1400.2813,569.4727 Q1400.7656,569.4727 1401.2188,569.582 Q1401.6875,569.6758 1402.0781,569.8945 L1402.0781,571.8164 Q1401.6406,571.4102 1401.2188,571.2227 Q1400.7969,571.0195 1400.3594,571.0195 Q1399.4063,571.0195 1398.9219,571.7852 Q1398.4375,572.5352 1398.4375,574.0195 Q1398.4375,575.4883 1398.9219,576.2383 Q1399.4063,576.9883 1400.3594,576.9883 Q1400.7969,576.9883 1401.2188,576.8008 Q1401.6406,576.6133 1402.0781,576.207 L1402.0781,578.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="67" x="1415.75" y="578.2441">Comentario</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1376" x2="1496" y1="588.8789" y2="588.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="78" x="1381" y="604.5039">-texto : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="110" x="1381" y="619.0234">-fecha : FechaHora</text></g><g id="elem_GMN8"><path d="M915,808.3789 L915,844.998 L1285,844.998 L1285,818.3789 L1275,808.3789 L915,808.3789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><path d="M1275,808.3789 L1275,818.3789 L1285,818.3789 L1275,808.3789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="266" x="921" y="824.0352">Siempre interno: nunca se envía al cliente (BR-20).</text><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="349" x="921" y="837.3447">Pertenece a una incidencia, una factura o un cliente {xor} (FR-35).</text></g><!--MD5=[7947b6124db764dd2594ffbfb19cb9f4]
+class Adjunto--><g id="elem_Adjunto"><rect codeLine="80" fill="#FFFFFF" height="118.5977" id="Adjunto" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="209" x="926.5" y="532.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="209" x="926.5" y="532.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="209" x="926.5" y="560.3789"/><rect codeLine="80" fill="none" height="118.5977" id="Adjunto" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="209" x="926.5" y="532.8789"/><ellipse cx="1005.5" cy="547.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1007.3281,552.1289 Q1006.9219,552.332 1006.4688,552.4414 Q1006.0156,552.5508 1005.5313,552.5508 Q1003.75,552.5508 1002.8125,551.3945 Q1001.8906,550.2227 1001.8906,548.0195 Q1001.8906,545.8008 1002.8125,544.6445 Q1003.75,543.4727 1005.5313,543.4727 Q1006.0156,543.4727 1006.4688,543.582 Q1006.9375,543.6758 1007.3281,543.8945 L1007.3281,545.8164 Q1006.8906,545.4102 1006.4688,545.2227 Q1006.0469,545.0195 1005.6094,545.0195 Q1004.6563,545.0195 1004.1719,545.7852 Q1003.6875,546.5352 1003.6875,548.0195 Q1003.6875,549.4883 1004.1719,550.2383 Q1004.6563,550.9883 1005.6094,550.9883 Q1006.0469,550.9883 1006.4688,550.8008 Q1006.8906,550.6133 1007.3281,550.207 L1007.3281,552.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="43" x="1024.5" y="552.2441">Adjunto</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="927.5" x2="1134.5" y1="562.8789" y2="562.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="93" x="932.5" y="578.5039">-nombre : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="102" x="932.5" y="593.0234">-tipoMime : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="86" x="932.5" y="607.543">-tamano : Long</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="122" x="932.5" y="622.0625">-rutaAlmacen : String</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="927.5" x2="1134.5" y1="628.957" y2="628.957"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="197" x="932.5" y="644.582">+generarEnlaceTemporal() : String</text></g><!--MD5=[df1837eb2b2a8a561ce45404d2e859f6]
+class Informe--><g id="elem_Informe"><rect codeLine="87" fill="#FFFFFF" height="205.7148" id="Informe" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="188" x="1267" y="254.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="188" x="1267" y="254.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="188" x="1267" y="282.3789"/><rect codeLine="87" fill="none" height="205.7148" id="Informe" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="188" x="1267" y="254.8789"/><ellipse cx="1335" cy="269.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1336.8281,274.1289 Q1336.4219,274.332 1335.9688,274.4414 Q1335.5156,274.5508 1335.0313,274.5508 Q1333.25,274.5508 1332.3125,273.3945 Q1331.3906,272.2227 1331.3906,270.0195 Q1331.3906,267.8008 1332.3125,266.6445 Q1333.25,265.4727 1335.0313,265.4727 Q1335.5156,265.4727 1335.9688,265.582 Q1336.4375,265.6758 1336.8281,265.8945 L1336.8281,267.8164 Q1336.3906,267.4102 1335.9688,267.2227 Q1335.5469,267.0195 1335.1094,267.0195 Q1334.1563,267.0195 1333.6719,267.7852 Q1333.1875,268.5352 1333.1875,270.0195 Q1333.1875,271.4883 1333.6719,272.2383 Q1334.1563,272.9883 1335.1094,272.9883 Q1335.5469,272.9883 1335.9688,272.8008 Q1336.3906,272.6133 1336.8281,272.207 L1336.8281,274.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="44" x="1354" y="274.2441">Informe</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1268" x2="1454" y1="284.8789" y2="284.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="53" x="1273" y="300.5039">-id : Long</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="81" x="1273" y="315.0234">-filtros : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="152" x="1273" y="329.543">-formato : FormatoInforme</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="135" x="1273" y="344.0625">-estado : EstadoInforme</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="176" x="1273" y="358.582">-fechaGeneracion : FechaHora</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="171" x="1273" y="373.1016">-fechaCaducidad : FechaHora</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="146" x="1273" y="387.6211">-rutaArchivo : String [0..1]</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1268" x2="1454" y1="394.5156" y2="394.5156"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="94" x="1273" y="410.1406">+generar() : void</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="108" x="1273" y="424.6602">+exportar() : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="126" x="1273" y="439.1797">+regenerar() : Informe</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="153" x="1273" y="453.6992">+estaCaducado() : Boolean</text></g><!--MD5=[e6b52e4ae72b153253de240a8af14f5b]
+class ObjetivoFacturacion--><g id="elem_ObjetivoFacturacion"><rect codeLine="100" fill="#FFFFFF" height="104.0781" id="ObjetivoFacturacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="266" x="1761" y="305.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="266" x="1761" y="305.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="266" x="1761" y="333.3789"/><rect codeLine="100" fill="none" height="104.0781" id="ObjetivoFacturacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="266" x="1761" y="305.8789"/><ellipse cx="1832.5" cy="320.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1834.3281,325.1289 Q1833.9219,325.332 1833.4688,325.4414 Q1833.0156,325.5508 1832.5313,325.5508 Q1830.75,325.5508 1829.8125,324.3945 Q1828.8906,323.2227 1828.8906,321.0195 Q1828.8906,318.8008 1829.8125,317.6445 Q1830.75,316.4727 1832.5313,316.4727 Q1833.0156,316.4727 1833.4688,316.582 Q1833.9375,316.6758 1834.3281,316.8945 L1834.3281,318.8164 Q1833.8906,318.4102 1833.4688,318.2227 Q1833.0469,318.0195 1832.6094,318.0195 Q1831.6563,318.0195 1831.1719,318.7852 Q1830.6875,319.5352 1830.6875,321.0195 Q1830.6875,322.4883 1831.1719,323.2383 Q1831.6563,323.9883 1832.6094,323.9883 Q1833.0469,323.9883 1833.4688,323.8008 Q1833.8906,323.6133 1834.3281,323.207 L1834.3281,325.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="115" x="1851.5" y="325.2441">ObjetivoFacturacion</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1762" x2="2026" y1="335.8789" y2="335.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="92" x="1767" y="351.5039">-periodo : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="106" x="1767" y="366.0234">-importe : Decimal</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="95" x="1767" y="380.543">-moneda : String</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1762" x2="2026" y1="387.4375" y2="387.4375"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="254" x="1767" y="403.0625">+modificar(valor : Decimal, u : Usuario) : void</text></g><!--MD5=[600d04c61ccec932d3db698cdfad48eb]
+class CambioObjetivo--><g id="elem_CambioObjetivo"><rect codeLine="106" fill="#FFFFFF" height="81.5586" id="CambioObjetivo" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="149" x="1180.5" y="551.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="149" x="1180.5" y="551.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="149" x="1180.5" y="578.8789"/><rect codeLine="106" fill="none" height="81.5586" id="CambioObjetivo" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="149" x="1180.5" y="551.3789"/><ellipse cx="1207.1" cy="566.3789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1208.9281,570.6289 Q1208.5219,570.832 1208.0688,570.9414 Q1207.6156,571.0508 1207.1313,571.0508 Q1205.35,571.0508 1204.4125,569.8945 Q1203.4906,568.7227 1203.4906,566.5195 Q1203.4906,564.3008 1204.4125,563.1445 Q1205.35,561.9727 1207.1313,561.9727 Q1207.6156,561.9727 1208.0688,562.082 Q1208.5375,562.1758 1208.9281,562.3945 L1208.9281,564.3164 Q1208.4906,563.9102 1208.0688,563.7227 Q1207.6469,563.5195 1207.2094,563.5195 Q1206.2563,563.5195 1205.7719,564.2852 Q1205.2875,565.0352 1205.2875,566.5195 Q1205.2875,567.9883 1205.7719,568.7383 Q1206.2563,569.4883 1207.2094,569.4883 Q1207.6469,569.4883 1208.0688,569.3008 Q1208.4906,569.1133 1208.9281,568.707 L1208.9281,570.6289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="91" x="1222.9" y="570.7441">CambioObjetivo</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1181.5" x2="1328.5" y1="581.3789" y2="581.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="137" x="1186.5" y="597.0039">-valorAnterior : Decimal</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="128" x="1186.5" y="611.5234">-valorNuevo : Decimal</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="110" x="1186.5" y="626.043">-fecha : FechaHora</text></g><!--MD5=[faa06ec74f785285cba03698beea33b8]
+class CentroCoste--><g id="elem_CentroCoste"><rect codeLine="111" fill="#FFFFFF" height="104.0781" id="CentroCoste" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="145" x="826.5" y="305.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="145" x="826.5" y="305.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="145" x="826.5" y="333.3789"/><rect codeLine="111" fill="none" height="104.0781" id="CentroCoste" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="145" x="826.5" y="305.8789"/><ellipse cx="859.85" cy="320.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M861.6781,325.1289 Q861.2719,325.332 860.8188,325.4414 Q860.3656,325.5508 859.8813,325.5508 Q858.1,325.5508 857.1625,324.3945 Q856.2406,323.2227 856.2406,321.0195 Q856.2406,318.8008 857.1625,317.6445 Q858.1,316.4727 859.8813,316.4727 Q860.3656,316.4727 860.8188,316.582 Q861.2875,316.6758 861.6781,316.8945 L861.6781,318.8164 Q861.2406,318.4102 860.8188,318.2227 Q860.3969,318.0195 859.9594,318.0195 Q859.0063,318.0195 858.5219,318.7852 Q858.0375,319.5352 858.0375,321.0195 Q858.0375,322.4883 858.5219,323.2383 Q859.0063,323.9883 859.9594,323.9883 Q860.3969,323.9883 860.8188,323.8008 Q861.2406,323.6133 861.6781,323.207 L861.6781,325.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="72" x="877.15" y="325.2441">CentroCoste</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="827.5" x2="970.5" y1="335.8789" y2="335.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="93" x="832.5" y="351.5039">-nombre : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="133" x="832.5" y="366.0234">-tipo : TipoCentroCoste</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="96" x="832.5" y="380.543">-activo : Boolean</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="827.5" x2="970.5" y1="387.4375" y2="387.4375"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="109" x="832.5" y="403.0625">+desactivar() : void</text></g><!--MD5=[3ffbd5f06ecdb241239d02868c200bcb]
+class TipoCambio--><g id="elem_TipoCambio"><rect codeLine="117" fill="#FFFFFF" height="96.0781" id="TipoCambio" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="145" x="636.5" y="309.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="145" x="636.5" y="309.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="145" x="636.5" y="337.3789"/><rect codeLine="117" fill="none" height="96.0781" id="TipoCambio" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="145" x="636.5" y="309.8789"/><ellipse cx="671.2" cy="324.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M673.0281,329.1289 Q672.6219,329.332 672.1688,329.4414 Q671.7156,329.5508 671.2313,329.5508 Q669.45,329.5508 668.5125,328.3945 Q667.5906,327.2227 667.5906,325.0195 Q667.5906,322.8008 668.5125,321.6445 Q669.45,320.4727 671.2313,320.4727 Q671.7156,320.4727 672.1688,320.582 Q672.6375,320.6758 673.0281,320.8945 L673.0281,322.8164 Q672.5906,322.4102 672.1688,322.2227 Q671.7469,322.0195 671.3094,322.0195 Q670.3563,322.0195 669.8719,322.7852 Q669.3875,323.5352 669.3875,325.0195 Q669.3875,326.4883 669.8719,327.2383 Q670.3563,327.9883 671.3094,327.9883 Q671.7469,327.9883 672.1688,327.8008 Q672.5906,327.6133 673.0281,327.207 L673.0281,329.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="69" x="688.8" y="329.2441">TipoCambio</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="637.5" x2="780.5" y1="339.8789" y2="339.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="133" x="642.5" y="355.5039">-monedaOrigen : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="123" x="642.5" y="370.0234">-monedaBase : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="86" x="642.5" y="384.543">-tasa : Decimal</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="82" x="642.5" y="399.0625">-fecha : Fecha</text></g><g id="elem_GMN17"><path d="M636.5,573.8789 L636.5,610.498 A0,0 0 0 0 636.5,610.498 L881.5,610.498 A0,0 0 0 0 881.5,610.498 L881.5,583.8789 L871.5,573.8789 L759.18,573.8789 L719.12,405.9289 L751.18,573.8789 L636.5,573.8789 A0,0 0 0 0 636.5,573.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><path d="M871.5,573.8789 L871.5,583.8789 L881.5,583.8789 L871.5,573.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="224" x="642.5" y="589.5352">Solo para informes y dashboard: la factura</text><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="200" x="642.5" y="602.8447">conserva su moneda original (RB-02).</text></g><!--MD5=[873a3e0009d7b1cba1b9e56e30076a95]
+class CategoriaNotificacion--><g id="elem_CategoriaNotificacion"><rect codeLine="128" fill="#FFFFFF" height="139.6367" id="CategoriaNotificacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="154" x="2072" y="287.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="154" x="2072" y="287.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="154" x="2072" y="315.3789"/><rect codeLine="128" fill="none" height="139.6367" id="CategoriaNotificacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="154" x="2072" y="287.8789"/><ellipse cx="2086" cy="302.8789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M2088.4375,307.3789 L2082.9844,307.3789 L2082.9844,298.6289 L2088.4375,298.6289 L2088.4375,300.1602 L2084.7188,300.1602 L2084.7188,302.0352 L2088.0781,302.0352 L2088.0781,303.5664 L2084.7188,303.5664 L2084.7188,305.8477 L2088.4375,305.8477 L2088.4375,307.3789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="124" x="2099" y="307.2441">CategoriaNotificacion</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="2073" x2="2225" y1="317.8789" y2="317.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="34" x="2078" y="333.5039">PAGO</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="83" x="2078" y="348.0234">VENCIMIENTO</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="69" x="2078" y="362.543">INCIDENCIA</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="79" x="2078" y="377.0625">APROBACION</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="39" x="2078" y="391.582">TAREA</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="57" x="2078" y="406.1016">MENCION</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="46" x="2078" y="420.6211">ALERTA</text></g><!--MD5=[86139501fb4775b0f75084cb60d67981]
+class TipoReglaAlerta--><g id="elem_TipoReglaAlerta"><rect codeLine="137" fill="#FFFFFF" height="67.0391" id="TipoReglaAlerta" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="193" x="2271.5" y="324.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="193" x="2271.5" y="324.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="193" x="2271.5" y="351.8789"/><rect codeLine="137" fill="none" height="67.0391" id="TipoReglaAlerta" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="193" x="2271.5" y="324.3789"/><ellipse cx="2318.5" cy="339.3789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M2320.9375,343.8789 L2315.4844,343.8789 L2315.4844,335.1289 L2320.9375,335.1289 L2320.9375,336.6602 L2317.2188,336.6602 L2317.2188,338.5352 L2320.5781,338.5352 L2320.5781,340.0664 L2317.2188,340.0664 L2317.2188,342.3477 L2320.9375,342.3477 L2320.9375,343.8789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="91" x="2337.5" y="343.7441">TipoReglaAlerta</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="2272.5" x2="2463.5" y1="354.3789" y2="354.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="86" x="2277.5" y="370.0039">DIAS_VENCIDA</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="181" x="2277.5" y="384.5234">IMPORTE_PENDIENTE_CLIENTE</text></g><!--MD5=[a6a3770ab70b955ab8a5029b0e61cb43]
+class TipoIncidencia--><g id="elem_TipoIncidencia"><rect codeLine="141" fill="#FFFFFF" height="96.0781" id="TipoIncidencia" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="113" x="2509.5" y="309.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="113" x="2509.5" y="309.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="113" x="2509.5" y="337.3789"/><rect codeLine="141" fill="none" height="96.0781" id="TipoIncidencia" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="113" x="2509.5" y="309.8789"/><ellipse cx="2523.5" cy="324.8789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M2525.9375,329.3789 L2520.4844,329.3789 L2520.4844,320.6289 L2525.9375,320.6289 L2525.9375,322.1602 L2522.2188,322.1602 L2522.2188,324.0352 L2525.5781,324.0352 L2525.5781,325.5664 L2522.2188,325.5664 L2522.2188,327.8477 L2525.9375,327.8477 L2525.9375,329.3789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="83" x="2536.5" y="329.2441">TipoIncidencia</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="2510.5" x2="2621.5" y1="339.8789" y2="339.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="56" x="2515.5" y="355.5039">ENTREGA</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="43" x="2515.5" y="370.0234">COBRO</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="87" x="2515.5" y="384.543">FACTURACION</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="33" x="2515.5" y="399.0625">OTRA</text></g><!--MD5=[d49081bd229d6c99f90929097ea9c9fc]
+class EstadoIncidencia--><g id="elem_EstadoIncidencia"><rect codeLine="147" fill="#FFFFFF" height="96.0781" id="EstadoIncidencia" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="126" x="2086" y="544.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="126" x="2086" y="544.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="126" x="2086" y="571.8789"/><rect codeLine="147" fill="none" height="96.0781" id="EstadoIncidencia" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="126" x="2086" y="544.3789"/><ellipse cx="2100" cy="559.3789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M2102.4375,563.8789 L2096.9844,563.8789 L2096.9844,555.1289 L2102.4375,555.1289 L2102.4375,556.6602 L2098.7188,556.6602 L2098.7188,558.5352 L2102.0781,558.5352 L2102.0781,560.0664 L2098.7188,560.0664 L2098.7188,562.3477 L2102.4375,562.3477 L2102.4375,563.8789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="96" x="2113" y="563.7441">EstadoIncidencia</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="2087" x2="2211" y1="574.3789" y2="574.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="50" x="2092" y="590.0039">ABIERTA</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="64" x="2092" y="604.5234">EN_CURSO</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="62" x="2092" y="619.043">RESUELTA</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="57" x="2092" y="633.5625">CERRADA</text></g><!--MD5=[44aa40e15ced93053b73cfaf7e2bb2b8]
+class Prioridad--><g id="elem_Prioridad"><rect codeLine="153" fill="#FFFFFF" height="96.0781" id="Prioridad" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="82" x="2257" y="544.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="82" x="2257" y="544.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="82" x="2257" y="571.8789"/><rect codeLine="153" fill="none" height="96.0781" id="Prioridad" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="82" x="2257" y="544.3789"/><ellipse cx="2271" cy="559.3789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M2273.4375,563.8789 L2267.9844,563.8789 L2267.9844,555.1289 L2273.4375,555.1289 L2273.4375,556.6602 L2269.7188,556.6602 L2269.7188,558.5352 L2273.0781,558.5352 L2273.0781,560.0664 L2269.7188,560.0664 L2269.7188,562.3477 L2273.4375,562.3477 L2273.4375,563.8789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="52" x="2284" y="563.7441">Prioridad</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="2258" x2="2338" y1="574.3789" y2="574.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="31" x="2263" y="590.0039">BAJA</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="38" x="2263" y="604.5234">MEDIA</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="31" x="2263" y="619.043">ALTA</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="57" x="2263" y="633.5625">URGENTE</text></g><!--MD5=[a42670c8286089bae2bdad5a7ecec6a0]
+class FormatoInforme--><g id="elem_FormatoInforme"><rect codeLine="159" fill="#FFFFFF" height="67.0391" id="FormatoInforme" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="122" x="2384" y="558.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="122" x="2384" y="558.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="122" x="2384" y="586.3789"/><rect codeLine="159" fill="none" height="67.0391" id="FormatoInforme" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="122" x="2384" y="558.8789"/><ellipse cx="2398" cy="573.8789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M2400.4375,578.3789 L2394.9844,578.3789 L2394.9844,569.6289 L2400.4375,569.6289 L2400.4375,571.1602 L2396.7188,571.1602 L2396.7188,573.0352 L2400.0781,573.0352 L2400.0781,574.5664 L2396.7188,574.5664 L2396.7188,576.8477 L2400.4375,576.8477 L2400.4375,578.3789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="92" x="2411" y="578.2441">FormatoInforme</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="2385" x2="2505" y1="588.8789" y2="588.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="25" x="2390" y="604.5039">CSV</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="24" x="2390" y="619.0234">PDF</text></g><!--MD5=[73c5fd837f2d2a12af6f6460468c161f]
+class EstadoInforme--><g id="elem_EstadoInforme"><rect codeLine="163" fill="#FFFFFF" height="110.5977" id="EstadoInforme" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="112" x="2093" y="771.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="112" x="2093" y="771.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="112" x="2093" y="798.8789"/><rect codeLine="163" fill="none" height="110.5977" id="EstadoInforme" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="112" x="2093" y="771.3789"/><ellipse cx="2107" cy="786.3789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M2109.4375,790.8789 L2103.9844,790.8789 L2103.9844,782.1289 L2109.4375,782.1289 L2109.4375,783.6602 L2105.7188,783.6602 L2105.7188,785.5352 L2109.0781,785.5352 L2109.0781,787.0664 L2105.7188,787.0664 L2105.7188,789.3477 L2109.4375,789.3477 L2109.4375,790.8789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="82" x="2120" y="790.7441">EstadoInforme</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="2094" x2="2204" y1="801.3789" y2="801.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="67" x="2099" y="817.0039">PENDIENTE</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="84" x="2099" y="831.5234">PROCESANDO</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="85" x="2099" y="846.043">COMPLETADO</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="87" x="2099" y="860.5625">CON_ERRORES</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="70" x="2099" y="875.082">CADUCADO</text></g><!--MD5=[f7ae400359b7c13aea5cafcb2d976c28]
+class TipoCentroCoste--><g id="elem_TipoCentroCoste"><rect codeLine="170" fill="#FFFFFF" height="67.0391" id="TipoCentroCoste" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="127" x="2250.5" y="793.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="127" x="2250.5" y="793.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="127" x="2250.5" y="820.8789"/><rect codeLine="170" fill="none" height="67.0391" id="TipoCentroCoste" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="127" x="2250.5" y="793.3789"/><ellipse cx="2264.5" cy="808.3789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M2266.9375,812.8789 L2261.4844,812.8789 L2261.4844,804.1289 L2266.9375,804.1289 L2266.9375,805.6602 L2263.2188,805.6602 L2263.2188,807.5352 L2266.5781,807.5352 L2266.5781,809.0664 L2263.2188,809.0664 L2263.2188,811.3477 L2266.9375,811.3477 L2266.9375,812.8789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="97" x="2277.5" y="812.7441">TipoCentroCoste</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="2251.5" x2="2376.5" y1="823.3789" y2="823.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="96" x="2256.5" y="839.0039">CENTRO_COSTE</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="66" x="2256.5" y="853.5234">PROYECTO</text></g><!--MD5=[20a748d5ee336a9a91751b0a3d4f0beb]
+class Cliente--><g id="elem_Cliente"><rect codeLine="178" fill="#FFFFFF" height="30" id="Cliente" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="70" x="1637" y="111.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="70" x="1637" y="111.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="70" x="1637" y="139.3789"/><rect codeLine="178" fill="none" height="30" id="Cliente" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="70" x="1637" y="111.8789"/><ellipse cx="1651" cy="126.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1652.8281,131.1289 Q1652.4219,131.332 1651.9688,131.4414 Q1651.5156,131.5508 1651.0313,131.5508 Q1649.25,131.5508 1648.3125,130.3945 Q1647.3906,129.2227 1647.3906,127.0195 Q1647.3906,124.8008 1648.3125,123.6445 Q1649.25,122.4727 1651.0313,122.4727 Q1651.5156,122.4727 1651.9688,122.582 Q1652.4375,122.6758 1652.8281,122.8945 L1652.8281,124.8164 Q1652.3906,124.4102 1651.9688,124.2227 Q1651.5469,124.0195 1651.1094,124.0195 Q1650.1563,124.0195 1649.6719,124.7852 Q1649.1875,125.5352 1649.1875,127.0195 Q1649.1875,128.4883 1649.6719,129.2383 Q1650.1563,129.9883 1651.1094,129.9883 Q1651.5469,129.9883 1651.9688,129.8008 Q1652.3906,129.6133 1652.8281,129.207 L1652.8281,131.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="40" x="1664" y="131.2441">Cliente</text></g><!--MD5=[a926c88f85ce99385ed3fd3448dac0f5]
+class Factura--><g id="elem_Factura"><rect codeLine="182" fill="#FFFFFF" height="30" id="Factura" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="74" x="1507" y="111.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="74" x="1507" y="111.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="74" x="1507" y="139.3789"/><rect codeLine="182" fill="none" height="30" id="Factura" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="74" x="1507" y="111.8789"/><ellipse cx="1521" cy="126.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1522.8281,131.1289 Q1522.4219,131.332 1521.9688,131.4414 Q1521.5156,131.5508 1521.0313,131.5508 Q1519.25,131.5508 1518.3125,130.3945 Q1517.3906,129.2227 1517.3906,127.0195 Q1517.3906,124.8008 1518.3125,123.6445 Q1519.25,122.4727 1521.0313,122.4727 Q1521.5156,122.4727 1521.9688,122.582 Q1522.4375,122.6758 1522.8281,122.8945 L1522.8281,124.8164 Q1522.3906,124.4102 1521.9688,124.2227 Q1521.5469,124.0195 1521.1094,124.0195 Q1520.1563,124.0195 1519.6719,124.7852 Q1519.1875,125.5352 1519.1875,127.0195 Q1519.1875,128.4883 1519.6719,129.2383 Q1520.1563,129.9883 1521.1094,129.9883 Q1521.5469,129.9883 1521.9688,129.8008 Q1522.3906,129.6133 1522.8281,129.207 L1522.8281,131.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="44" x="1534" y="131.2441">Factura</text></g><!--MD5=[655a61590b41bb1e6d85e9a1ee5dcd51]
+class Comunicacion--><g id="elem_Comunicacion"><rect codeLine="186" fill="#FFFFFF" height="30" id="Comunicacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="112" x="468" y="577.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="112" x="468" y="577.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="112" x="468" y="604.8789"/><rect codeLine="186" fill="none" height="30" id="Comunicacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="112" x="468" y="577.3789"/><ellipse cx="482" cy="592.3789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M483.8281,596.6289 Q483.4219,596.832 482.9688,596.9414 Q482.5156,597.0508 482.0313,597.0508 Q480.25,597.0508 479.3125,595.8945 Q478.3906,594.7227 478.3906,592.5195 Q478.3906,590.3008 479.3125,589.1445 Q480.25,587.9727 482.0313,587.9727 Q482.5156,587.9727 482.9688,588.082 Q483.4375,588.1758 483.8281,588.3945 L483.8281,590.3164 Q483.3906,589.9102 482.9688,589.7227 Q482.5469,589.5195 482.1094,589.5195 Q481.1563,589.5195 480.6719,590.2852 Q480.1875,591.0352 480.1875,592.5195 Q480.1875,593.9883 480.6719,594.7383 Q481.1563,595.4883 482.1094,595.4883 Q482.5469,595.4883 482.9688,595.3008 Q483.3906,595.1133 483.8281,594.707 L483.8281,596.6289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="82" x="495" y="596.7441">Comunicacion</text></g><!--MD5=[35a64b983c79880384a2fd9b61f0c24b]
+class Usuario--><g id="elem_Usuario"><rect codeLine="190" fill="#FFFFFF" height="30" id="Usuario" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="74" x="506" y="811.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="74" x="506" y="811.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="74" x="506" y="839.3789"/><rect codeLine="190" fill="none" height="30" id="Usuario" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="74" x="506" y="811.8789"/><ellipse cx="520" cy="826.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M521.8281,831.1289 Q521.4219,831.332 520.9688,831.4414 Q520.5156,831.5508 520.0313,831.5508 Q518.25,831.5508 517.3125,830.3945 Q516.3906,829.2227 516.3906,827.0195 Q516.3906,824.8008 517.3125,823.6445 Q518.25,822.4727 520.0313,822.4727 Q520.5156,822.4727 520.9688,822.582 Q521.4375,822.6758 521.8281,822.8945 L521.8281,824.8164 Q521.3906,824.4102 520.9688,824.2227 Q520.5469,824.0195 520.1094,824.0195 Q519.1563,824.0195 518.6719,824.7852 Q518.1875,825.5352 518.1875,827.0195 Q518.1875,828.4883 518.6719,829.2383 Q519.1563,829.9883 520.1094,829.9883 Q520.5469,829.9883 520.9688,829.8008 Q521.3906,829.6133 521.8281,829.207 L521.8281,831.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="44" x="533" y="831.2441">Usuario</text></g><g id="elem_N0"><path d="M1907.5,101.8789 L1907.5,151.8076 L2274.5,151.8076 L2274.5,111.8789 L2264.5,101.8789 L1907.5,101.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><path d="M2264.5,101.8789 L2264.5,111.8789 L2274.5,111.8789 L2264.5,101.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="316" x="1913.5" y="117.5352">El dashboard (CU-27) y la pantalla de trabajo diario (CU-29)</text><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="294" x="1913.5" y="130.8447">son vistas calculadas sobre Factura, MovimientoCobro,</text><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="346" x="1913.5" y="144.1543">Notificacion, Tarea y SolicitudAprobacion: no tienen clase propia.</text></g><!--MD5=[f437e816efddf58ba6e4e2e416a3ee3e]
+link Comentario to GMN8--><g id="link_Comentario_GMN8"><path d="M1389.09,626.0489 C1369.85,639.4489 1352,651.8789 1352,651.8789 C1352,651.8789 1189.62,763.9989 1125.55,808.2389 " fill="none" id="Comentario-GMN8" style="stroke:#3B4456;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/></g><!--MD5=[efe0a202fc5768b7fbce07490ce519ff]
+link Usuario to Notificacion--><g id="link_Usuario_Notificacion"><path codeLine="200" d="M553.92,811.6789 C574.5,783.0289 617,723.8789 617,723.8789 C617,723.8789 1134,698.8789 1134,698.8789 C1134,698.8789 1184,698.8789 1184,698.8789 C1184,698.8789 1308,723.8789 1308,723.8789 C1308,723.8789 1316.77,730.9389 1329.71,741.3489 " fill="none" id="Usuario-Notificacion" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#000000" points="1141.9837,687.7775,1134.5649,686.0893,1134.9894,690.7724,1141.9837,687.7775" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="36" x="1147" y="692.5039">recibe</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="559.0364" y="800.9392">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1301.8968" y="732.7841">0..*</text></g><!--MD5=[45bc9b540ad6997936b70a6f09c48a67]
+reverse link Usuario to PreferenciaNotificacion--><g id="link_Usuario_PreferenciaNotificacion"><path codeLine="201" d="M493.03,813.2689 C363.7,780.6189 28,695.8789 28,695.8789 C28,695.8789 6,651.8789 6,651.8789 C6,651.8789 6,519.3789 6,519.3789 C6,519.3789 28,488.8789 28,488.8789 C28,488.8789 994,460.8789 994,460.8789 C994,460.8789 1028.5,432.7189 1061.26,405.9989 " fill="none" id="Usuario-backto-PreferenciaNotificacion" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="505.96,816.5289,501.1235,811.1802,494.3261,813.5875,499.1626,818.9361,505.96,816.5289" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="492.8049" y="827.5165">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1031.3107" y="425.7521">0..*</text></g><!--MD5=[00caf1131f1e0f88959ac744b11a2d0a]
+link ReglaAlerta to Notificacion--><g id="link_ReglaAlerta_Notificacion"><path codeLine="202" d="M1590.55,644.3989 C1570.74,667.6589 1546.55,696.0689 1523.24,723.4389 " fill="none" id="ReglaAlerta-Notificacion" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#000000" points="1559.4066,691.184,1565.8881,687.1993,1562.3081,684.1506,1559.4066,691.184" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="40" x="1571" y="692.5039">genera</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="1564.4348" y="663.9844">0..1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1508.9123" y="712.983">0..*</text></g><!--MD5=[0f617cca91d35272d3bc333477724287]
+link ReglaAlerta to Usuario--><g id="link_ReglaAlerta_Usuario"><path codeLine="203" d="M1541.98,640.5989 C1529.02,647.2489 1520,651.8789 1520,651.8789 C1520,651.8789 1061,679.8789 1061,679.8789 C1061,679.8789 998,695.8789 998,695.8789 C998,695.8789 617,723.8789 617,723.8789 C617,723.8789 577.59,778.1989 556.29,807.5589 " fill="none" id="ReglaAlerta-to-Usuario" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="553.29,811.6989,561.8206,806.7766,556.2326,807.6565,555.3526,802.0685,553.29,811.6989" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="60" x="1062" y="692.5039">creadaPor</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1513.8503" y="641.5262">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="551.2599" y="800.9668">1</text></g><!--MD5=[cee60a42b9fc7a57e84f6deedafc2178]
+link Cliente to Incidencia--><g id="link_Cliente_Incidencia"><path codeLine="204" d="M1668,142.1989 C1660.57,168.7889 1644.15,227.5389 1630.36,276.8789 " fill="none" id="Cliente-Incidencia" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="1660.7656" y="161.5857">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1611.5767" y="265.8593">0..*</text></g><!--MD5=[4d340981929ba5197223e227e905e9f2]
+link Factura to Incidencia--><g id="link_Factura_Incidencia"><path codeLine="205" d="M1548,142.1989 C1555.43,168.7889 1571.85,227.5389 1585.64,276.8789 " fill="none" id="Factura-Incidencia" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="1527.1094" y="161.5857">0..1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1562.4546" y="265.8593">0..*</text></g><!--MD5=[974ce9f9c08519851c742add7ba7822d]
+link Incidencia to Comunicacion--><g id="link_Incidencia_Comunicacion"><path codeLine="206" d="M1505.89,438.9989 C1489.61,451.7689 1478,460.8789 1478,460.8789 C1478,460.8789 617,519.3789 617,519.3789 C617,519.3789 574.18,552.5289 546.65,573.8389 " fill="none" id="Incidencia-to-Comunicacion" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="542.37,577.1589,551.9376,574.822,546.3267,574.1021,547.0467,568.4912,542.37,577.1589" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="53" x="1048" y="501.5039">reboteDe</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="1497.3525" y="458.7642">0..1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="526.7517" y="566.4116">0..1</text></g><!--MD5=[2b4c551e8bc904d086404dc5a2af1f0c]
+link Incidencia to Usuario--><g id="link_Incidencia_Usuario"><path codeLine="207" d="M1505.89,438.9989 C1489.61,451.7689 1478,460.8789 1478,460.8789 C1478,460.8789 836,488.8789 836,488.8789 C836,488.8789 378,519.3789 378,519.3789 C378,519.3789 378,651.8789 378,651.8789 C378,651.8789 483.62,763.2589 525.85,807.7989 " fill="none" id="Incidencia-to-Usuario" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="529.5,811.6389,526.207,802.3569,526.0585,808.0118,520.4036,807.8633,529.5,811.6389" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="69" x="379" y="597.0039">responsable</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1472.2266" y="445.6794">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="518.4" y="800.8839">1</text></g><!--MD5=[cf2f004319582480496d39ddcd56a59b]
+reverse link Incidencia to Adjunto--><g id="link_Incidencia_Adjunto"><path codeLine="208" d="M1495.62,447.0489 C1484.94,455.4289 1478,460.8789 1478,460.8789 C1478,460.8789 1158,519.3789 1158,519.3789 C1158,519.3789 1148.37,524.8389 1134.41,532.7489 " fill="none" id="Incidencia-backto-Adjunto" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="1505.89,438.9989,1498.7005,439.557,1496.4505,446.4081,1503.64,445.85,1505.89,438.9989" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="1491.2463" y="458.7642">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1126.3782" y="521.896">0..*</text></g><!--MD5=[89d8e56b26820108d378946016bf98ea]
+link Incidencia to Comentario--><g id="link_Incidencia_Comentario"><path codeLine="209" d="M1548.81,438.8889 C1518.39,480.0089 1483.01,527.8389 1460.09,558.8089 " fill="none" id="Incidencia-Comentario" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="1523.4776" y="458.6441">0..1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1442.9961" y="548.1159">0..*</text></g><!--MD5=[8d826f3932a425a506a2d4988bdfeff3]
+link Factura to Comentario--><g id="link_Factura_Comentario"><path codeLine="210" d="M1571.55,142.0289 C1592.59,152.8289 1618,165.8789 1618,165.8789 C1618,165.8789 2642,188.8789 2642,188.8789 C2642,188.8789 2642,460.8789 2642,460.8789 C2642,460.8789 1520,519.3789 1520,519.3789 C1520,519.3789 1496.29,539.6989 1474.07,558.7489 " fill="none" id="Factura-Comentario" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="1558.9803" y="161.6374">0..1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1459.8594" y="548.0435">0..*</text></g><!--MD5=[7c7e793488ff9a181fb9db074cd18270]
+link Cliente to Comentario--><g id="link_Cliente_Comentario"><path codeLine="211" d="M1707.17,134.1489 C1767.67,144.9489 1885,165.8789 1885,165.8789 C1885,165.8789 2676,188.8789 2676,188.8789 C2676,188.8789 2676,460.8789 2676,460.8789 C2676,460.8789 1989,504.8789 1989,504.8789 C1989,504.8789 1520,519.3789 1520,519.3789 C1520,519.3789 1496.29,539.6989 1474.07,558.7489 " fill="none" id="Cliente-Comentario" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="1715.1268" y="131.8683">0..1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1483.9844" y="548.0435">0..*</text></g><!--MD5=[e039922bbe74eaac9fa8ea5bae666447]
+link Comentario to Usuario--><g id="link_Comentario_Usuario"><path codeLine="212" d="M1389.09,626.0489 C1369.85,639.4489 1352,651.8789 1352,651.8789 C1352,651.8789 959,679.8789 959,679.8789 C959,679.8789 617,723.8789 617,723.8789 C617,723.8789 577.59,778.1989 556.29,807.5589 " fill="none" id="Comentario-to-Usuario" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="553.29,811.6989,561.8206,806.7766,556.2326,807.6565,555.3526,802.0685,553.29,811.6989" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="30" x="960" y="692.5039">autor</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1358.2415" y="645.4724">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="558.1662" y="800.9668">1</text></g><!--MD5=[e039922bbe74eaac9fa8ea5bae666447]
+link Comentario to Usuario--><g id="link_Comentario_Usuario"><path codeLine="213" d="M1389.09,626.0489 C1369.85,639.4489 1352,651.8789 1352,651.8789 C1352,651.8789 769,679.8789 769,679.8789 C769,679.8789 617,723.8789 617,723.8789 C617,723.8789 577.59,778.1989 556.29,807.5589 " fill="none" id="Comentario-to-Usuario-1" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="553.29,811.6989,561.8206,806.7766,556.2326,807.6565,555.3526,802.0685,553.29,811.6989" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="56" x="770" y="692.5039">menciona</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1382.054" y="645.4724">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="533.4006" y="800.9668">0..*</text></g><!--MD5=[4059571a611fb674c74f714fb48d2cb9]
+link Comentario to Notificacion--><g id="link_Comentario_Notificacion"><path codeLine="214" d="M1436,626.1989 C1436,651.7289 1436,688.6189 1436,723.7589 " fill="none" id="Comentario-Notificacion" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#000000" points="1440,692.1387,1442.3511,684.9026,1437.6489,684.9026,1440,692.1387" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="40" x="1449" y="692.5039">genera</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="1415.1891" y="645.651">0..1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1415.2344" y="712.9836">0..*</text></g><!--MD5=[d042d8d4c1d57c0f79b6e4a4d301f456]
+link Usuario to Informe--><g id="link_Usuario_Informe"><path codeLine="215" d="M505.73,812.8189 C411.65,779.8489 172,695.8789 172,695.8789 C172,695.8789 96,651.8789 96,651.8789 C96,651.8789 96,519.3789 96,519.3789 C96,519.3789 172,488.8789 172,488.8789 C172,488.8789 1244,460.8789 1244,460.8789 C1244,460.8789 1253.38,452.6989 1266.84,440.9689 " fill="none" id="Usuario-Informe" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#000000" points="103.594,590.8828,96.0603,591.9467,98.1245,596.1717,103.594,590.8828" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="40" x="109" y="597.0039">solicita</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="492.9003" y="806.3489">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1238.8652" y="444.4504">0..*</text></g><!--MD5=[7c3371fd72a71e4e16a19b71707f8a72]
+reverse link ObjetivoFacturacion to CambioObjetivo--><g id="link_ObjetivoFacturacion_CambioObjetivo"><path codeLine="216" d="M1804.78,417.5889 C1770.31,440.2789 1739,460.8789 1739,460.8789 C1739,460.8789 1353,519.3789 1353,519.3789 C1353,519.3789 1332,534.8089 1309.45,551.3789 " fill="none" id="ObjetivoFacturacion-backto-CambioObjetivo" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="1816.05,410.1789,1808.8391,410.1306,1806.021,416.7683,1813.232,416.8166,1816.05,410.1789" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="1800.7423" y="429.43">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1297.3677" y="540.5395">0..*</text></g><!--MD5=[9f686f2c6aaf725ed4bbc4ebcc8cc6a3]
+link CambioObjetivo to Usuario--><g id="link_CambioObjetivo_Usuario"><path codeLine="217" d="M1188.43,633.5289 C1171.5,643.7389 1158,651.8789 1158,651.8789 C1158,651.8789 648,679.8789 648,679.8789 C648,679.8789 584.4,768.3189 556.2,807.5289 " fill="none" id="CambioObjetivo-to-Usuario" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="553.26,811.6189,561.7709,806.6626,556.1864,807.5648,555.2842,801.9803,553.26,811.6189" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="30" x="649" y="692.5039">autor</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1156.7052" y="652.6004">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="569.6" y="801.2433">1</text></g><!--MD5=[4f1844542b2d44ce89a072d315057a01]
+link Cliente to CentroCoste--><g id="link_Cliente_CentroCoste"><path codeLine="218" d="M1645.19,142.0289 C1624.72,152.8289 1600,165.8789 1600,165.8789 C1600,165.8789 994,188.8789 994,188.8789 C994,188.8789 958.15,252.2689 930.5,301.1789 " fill="none" id="Cliente-to-CentroCoste" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="928.02,305.5589,935.9333,299.6955,930.4822,301.2072,928.9705,295.756,928.02,305.5589" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1612.0764" y="161.6374">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="911.765" y="294.8731">0..1</text></g><!--MD5=[835415a9561d939caa7858659b29c325]
+link Factura to CentroCoste--><g id="link_Factura_CentroCoste"><path codeLine="219" d="M1506.63,132.0189 C1382.84,145.7489 994,188.8789 994,188.8789 C994,188.8789 958.15,252.2689 930.5,301.1789 " fill="none" id="Factura-to-CentroCoste" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="928.02,305.5589,935.9333,299.6955,930.4822,301.2072,928.9705,295.756,928.02,305.5589" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1479.0804" y="129.3889">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="933.4369" y="294.8731">0..1</text></g><rect fill="#FFFFFF" height="43.8789" id="_legend" rx="7.5" ry="7.5" style="stroke:#000000;stroke-width:1.0;" width="540" x="2117" y="962.8789"/><text fill="#000000" font-family="Helvetica" font-size="14" lengthAdjust="spacing" textLength="364" x="2122" y="981.4414">Paquetes grises: clases detalladas en su propio bloque.</text><text fill="#000000" font-family="Helvetica" font-size="14" lengthAdjust="spacing" textLength="530" x="2122" y="998.3809">Importes en Decimal (NFR-06). version: control de edición concurrente (NFR-13).</text><!--MD5=[78e1a701a3f479c26ea0b9831fd8d8c6]
+@startuml bloque_E
+skinparam backgroundColor #FFFFFF
+skinparam linetype polyline
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4456
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  HeaderBackgroundColor #E6ECF7
+}
+skinparam enum {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A2A
+}
+skinparam interface {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9AA4B5
+  FontColor #3B4456
+}
+hide empty members
+title Bloque E - Seguimiento, consulta e informes\n(CU-23 a CU-29)
+
+package "Bloque E - Seguimiento, consulta e informes" {
+  class Notificacion {
+    - id : Long
+    - categoria : CategoriaNotificacion
+    - mensaje : String
+    - tipoReferencia : String
+    - idReferencia : Long
+    - requiereAccion : Boolean
+    - leida : Boolean
+    - resuelta : Boolean
+    - fecha : FechaHora
+    + marcarLeida() : void
+    + marcarResuelta(u : Usuario) : void
+  }
+  class PreferenciaNotificacion {
+    - categoria : CategoriaNotificacion
+    - enAplicacion : Boolean
+    - porEmail : Boolean
+    - enResumenDiario : Boolean
+  }
+  class ReglaAlerta {
+    - tipo : TipoReglaAlerta
+    - umbral : Decimal
+    - activa : Boolean
+    + evaluar() : List<Notificacion>
+  }
+  class Incidencia {
+    - id : Long
+    - tipo : TipoIncidencia
+    - descripcion : String
+    - estado : EstadoIncidencia
+    - prioridad : Prioridad
+    - fechaApertura : FechaHora
+    - fechaCierre : FechaHora [0..1]
+    + resolver(comentario : String) : void
+  }
+  class Comentario {
+    - texto : String
+    - fecha : FechaHora
+  }
+  note bottom of Comentario
+    Siempre interno: nunca se envía al cliente (BR-20).
+    Pertenece a una incidencia, una factura o un cliente {xor} (FR-35).
+  end note
+  class Adjunto {
+    - nombre : String
+    - tipoMime : String
+    - tamano : Long
+    - rutaAlmacen : String
+    + generarEnlaceTemporal() : String
+  }
+  class Informe {
+    - id : Long
+    - filtros : String
+    - formato : FormatoInforme
+    - estado : EstadoInforme
+    - fechaGeneracion : FechaHora
+    - fechaCaducidad : FechaHora
+    - rutaArchivo : String [0..1]
+    + generar() : void
+    + exportar() : String
+    + regenerar() : Informe
+    + estaCaducado() : Boolean
+  }
+  class ObjetivoFacturacion {
+    - periodo : String
+    - importe : Decimal
+    - moneda : String
+    + modificar(valor : Decimal, u : Usuario) : void
+  }
+  class CambioObjetivo {
+    - valorAnterior : Decimal
+    - valorNuevo : Decimal
+    - fecha : FechaHora
+  }
+  class CentroCoste {
+    - nombre : String
+    - tipo : TipoCentroCoste
+    - activo : Boolean
+    + desactivar() : void
+  }
+  class TipoCambio {
+    - monedaOrigen : String
+    - monedaBase : String
+    - tasa : Decimal
+    - fecha : Fecha
+  }
+  note bottom of TipoCambio
+    Solo para informes y dashboard: la factura
+    conserva su moneda original (RB-02).
+  end note
+  package "Enumeraciones" #FFFFFF {
+    enum CategoriaNotificacion {
+    PAGO
+    VENCIMIENTO
+    INCIDENCIA
+    APROBACION
+    TAREA
+    MENCION
+    ALERTA
+  }
+    enum TipoReglaAlerta {
+    DIAS_VENCIDA
+    IMPORTE_PENDIENTE_CLIENTE
+  }
+    enum TipoIncidencia {
+    ENTREGA
+    COBRO
+    FACTURACION
+    OTRA
+  }
+    enum EstadoIncidencia {
+    ABIERTA
+    EN_CURSO
+    RESUELTA
+    CERRADA
+  }
+    enum Prioridad {
+    BAJA
+    MEDIA
+    ALTA
+    URGENTE
+  }
+    enum FormatoInforme {
+    CSV
+    PDF
+  }
+    enum EstadoInforme {
+    PENDIENTE
+    PROCESANDO
+    COMPLETADO
+    CON_ERRORES
+    CADUCADO
+  }
+    enum TipoCentroCoste {
+    CENTRO_COSTE
+    PROYECTO
+  }
+  }
+}
+
+package "Bloque A - Clientes y contactos (referencia)" #F4F5F7 {
+  class Cliente
+}
+
+package "Bloque C - Facturación (referencia)" #F4F5F7 {
+  class Factura
+}
+
+package "Bloque D - Cobros y comunicaciones (referencia)" #F4F5F7 {
+  class Comunicacion
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F5F7 {
+  class Usuario
+}
+
+note as N0
+  El dashboard (CU-27) y la pantalla de trabajo diario (CU-29)
+  son vistas calculadas sobre Factura, MovimientoCobro,
+  Notificacion, Tarea y SolicitudAprobacion: no tienen clase propia.
+end note
+
+' - - - - Relaciones - - - -
+Usuario "1" - - "0..*" Notificacion : recibe >
+Usuario "1" *- - "0..*" PreferenciaNotificacion
+ReglaAlerta "0..1" - - "0..*" Notificacion : genera >
+ReglaAlerta "0..*" - -> "1" Usuario : creadaPor
+Cliente "1" - - "0..*" Incidencia
+Factura "0..1" - - "0..*" Incidencia
+Incidencia "0..1" - -> "0..1" Comunicacion : reboteDe
+Incidencia "0..*" - -> "1" Usuario : responsable
+Incidencia "1" *- - "0..*" Adjunto
+Incidencia "0..1" - - "0..*" Comentario
+Factura "0..1" - - "0..*" Comentario
+Cliente "0..1" - - "0..*" Comentario
+Comentario "0..*" - -> "1" Usuario : autor
+Comentario "0..*" - -> "0..*" Usuario : menciona
+Comentario "0..1" - - "0..*" Notificacion : genera >
+Usuario "1" - - "0..*" Informe : solicita >
+ObjetivoFacturacion "1" *- - "0..*" CambioObjetivo
+CambioObjetivo "0..*" - -> "1" Usuario : autor
+Cliente "0..*" - -> "0..1" CentroCoste
+Factura "0..*" - -> "0..1" CentroCoste
+
+legend bottom right
+  Paquetes grises: clases detalladas en su propio bloque.
+  Importes en Decimal (NFR-06). version: control de edición concurrente (NFR-13).
+endlegend
+@enduml
+
+@startuml bloque_E
+skinparam backgroundColor #FFFFFF
+skinparam linetype polyline
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4456
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  HeaderBackgroundColor #E6ECF7
+}
+skinparam enum {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A2A
+}
+skinparam interface {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9AA4B5
+  FontColor #3B4456
+}
+hide empty members
+title Bloque E - Seguimiento, consulta e informes\n(CU-23 a CU-29)
+
+package "Bloque E - Seguimiento, consulta e informes" {
+  class Notificacion {
+    - id : Long
+    - categoria : CategoriaNotificacion
+    - mensaje : String
+    - tipoReferencia : String
+    - idReferencia : Long
+    - requiereAccion : Boolean
+    - leida : Boolean
+    - resuelta : Boolean
+    - fecha : FechaHora
+    + marcarLeida() : void
+    + marcarResuelta(u : Usuario) : void
+  }
+  class PreferenciaNotificacion {
+    - categoria : CategoriaNotificacion
+    - enAplicacion : Boolean
+    - porEmail : Boolean
+    - enResumenDiario : Boolean
+  }
+  class ReglaAlerta {
+    - tipo : TipoReglaAlerta
+    - umbral : Decimal
+    - activa : Boolean
+    + evaluar() : List<Notificacion>
+  }
+  class Incidencia {
+    - id : Long
+    - tipo : TipoIncidencia
+    - descripcion : String
+    - estado : EstadoIncidencia
+    - prioridad : Prioridad
+    - fechaApertura : FechaHora
+    - fechaCierre : FechaHora [0..1]
+    + resolver(comentario : String) : void
+  }
+  class Comentario {
+    - texto : String
+    - fecha : FechaHora
+  }
+  note bottom of Comentario
+    Siempre interno: nunca se envía al cliente (BR-20).
+    Pertenece a una incidencia, una factura o un cliente {xor} (FR-35).
+  end note
+  class Adjunto {
+    - nombre : String
+    - tipoMime : String
+    - tamano : Long
+    - rutaAlmacen : String
+    + generarEnlaceTemporal() : String
+  }
+  class Informe {
+    - id : Long
+    - filtros : String
+    - formato : FormatoInforme
+    - estado : EstadoInforme
+    - fechaGeneracion : FechaHora
+    - fechaCaducidad : FechaHora
+    - rutaArchivo : String [0..1]
+    + generar() : void
+    + exportar() : String
+    + regenerar() : Informe
+    + estaCaducado() : Boolean
+  }
+  class ObjetivoFacturacion {
+    - periodo : String
+    - importe : Decimal
+    - moneda : String
+    + modificar(valor : Decimal, u : Usuario) : void
+  }
+  class CambioObjetivo {
+    - valorAnterior : Decimal
+    - valorNuevo : Decimal
+    - fecha : FechaHora
+  }
+  class CentroCoste {
+    - nombre : String
+    - tipo : TipoCentroCoste
+    - activo : Boolean
+    + desactivar() : void
+  }
+  class TipoCambio {
+    - monedaOrigen : String
+    - monedaBase : String
+    - tasa : Decimal
+    - fecha : Fecha
+  }
+  note bottom of TipoCambio
+    Solo para informes y dashboard: la factura
+    conserva su moneda original (RB-02).
+  end note
+  package "Enumeraciones" #FFFFFF {
+    enum CategoriaNotificacion {
+    PAGO
+    VENCIMIENTO
+    INCIDENCIA
+    APROBACION
+    TAREA
+    MENCION
+    ALERTA
+  }
+    enum TipoReglaAlerta {
+    DIAS_VENCIDA
+    IMPORTE_PENDIENTE_CLIENTE
+  }
+    enum TipoIncidencia {
+    ENTREGA
+    COBRO
+    FACTURACION
+    OTRA
+  }
+    enum EstadoIncidencia {
+    ABIERTA
+    EN_CURSO
+    RESUELTA
+    CERRADA
+  }
+    enum Prioridad {
+    BAJA
+    MEDIA
+    ALTA
+    URGENTE
+  }
+    enum FormatoInforme {
+    CSV
+    PDF
+  }
+    enum EstadoInforme {
+    PENDIENTE
+    PROCESANDO
+    COMPLETADO
+    CON_ERRORES
+    CADUCADO
+  }
+    enum TipoCentroCoste {
+    CENTRO_COSTE
+    PROYECTO
+  }
+  }
+}
+
+package "Bloque A - Clientes y contactos (referencia)" #F4F5F7 {
+  class Cliente
+}
+
+package "Bloque C - Facturación (referencia)" #F4F5F7 {
+  class Factura
+}
+
+package "Bloque D - Cobros y comunicaciones (referencia)" #F4F5F7 {
+  class Comunicacion
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F5F7 {
+  class Usuario
+}
+
+note as N0
+  El dashboard (CU-27) y la pantalla de trabajo diario (CU-29)
+  son vistas calculadas sobre Factura, MovimientoCobro,
+  Notificacion, Tarea y SolicitudAprobacion: no tienen clase propia.
+end note
+
+Usuario "1" - - "0..*" Notificacion : recibe >
+Usuario "1" *- - "0..*" PreferenciaNotificacion
+ReglaAlerta "0..1" - - "0..*" Notificacion : genera >
+ReglaAlerta "0..*" - -> "1" Usuario : creadaPor
+Cliente "1" - - "0..*" Incidencia
+Factura "0..1" - - "0..*" Incidencia
+Incidencia "0..1" - -> "0..1" Comunicacion : reboteDe
+Incidencia "0..*" - -> "1" Usuario : responsable
+Incidencia "1" *- - "0..*" Adjunto
+Incidencia "0..1" - - "0..*" Comentario
+Factura "0..1" - - "0..*" Comentario
+Cliente "0..1" - - "0..*" Comentario
+Comentario "0..*" - -> "1" Usuario : autor
+Comentario "0..*" - -> "0..*" Usuario : menciona
+Comentario "0..1" - - "0..*" Notificacion : genera >
+Usuario "1" - - "0..*" Informe : solicita >
+ObjetivoFacturacion "1" *- - "0..*" CambioObjetivo
+CambioObjetivo "0..*" - -> "1" Usuario : autor
+Cliente "0..*" - -> "0..1" CentroCoste
+Factura "0..*" - -> "0..1" CentroCoste
+
+legend bottom right
+  Paquetes grises: clases detalladas en su propio bloque.
+  Importes en Decimal (NFR-06). version: control de edición concurrente (NFR-13).
+endlegend
+@enduml
+
+PlantUML version 1.2022.12(Sun Oct 23 20:12:26 CEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

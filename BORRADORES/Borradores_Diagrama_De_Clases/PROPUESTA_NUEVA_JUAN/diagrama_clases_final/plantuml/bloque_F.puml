@@ -1,0 +1,269 @@
+@startuml bloque_F
+skinparam backgroundColor #FFFFFF
+skinparam linetype polyline
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4456
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  HeaderBackgroundColor #E6ECF7
+}
+skinparam enum {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A2A
+}
+skinparam interface {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9AA4B5
+  FontColor #3B4456
+}
+hide empty members
+title Bloque F - Administración, seguridad y sistema\n(CU-30 a CU-37)
+
+package "Bloque F - Administración, seguridad y sistema" {
+  class Usuario {
+    - id : Long
+    - nombre : String
+    - correoCorporativo : String
+    - hashContrasena : String
+    - rol : Rol
+    - estado : EstadoUsuario
+    - dobleFactorActivo : Boolean
+    - intentosFallidos : Integer
+    - bloqueadoHasta : FechaHora [0..1]
+    - version : Integer
+    + iniciarSesion(correo : String, contrasena : String) : Sesion
+    + solicitarRecuperacion(correo : String) : void
+    + cambiarRol(r : Rol) : void
+    + desactivar() : void
+    + tienePermiso(codigo : String) : Boolean
+    + puedeAcceder(c : Cliente) : Boolean
+  }
+  note right of Usuario
+    El rol es un atributo porque puede cambiar (FR-07).
+    Desactivar invalida las sesiones y conserva el rastro.
+    No hay autorregistro: alta solo por invitación.
+  end note
+  class Permiso {
+    - codigo : String
+    - descripcion : String
+  }
+  class Sesion {
+    - tokenHash : String
+    - inicio : FechaHora
+    - expiracion : FechaHora
+    - invalidada : Boolean
+    + estaVigente() : Boolean
+    + invalidar() : void
+  }
+  class EnlaceTemporal {
+    - tokenHash : String
+    - tipo : TipoEnlace
+    - expiracion : FechaHora
+    - usado : Boolean
+    + esValido() : Boolean
+    + consumir() : void
+  }
+  class EventoAuditoria {
+    - id : Long
+    - fechaHora : FechaHora
+    - accion : String
+    - tipoEntidad : String
+    - idEntidad : Long
+    - valoresAnteriores : String [0..1]
+    - valoresNuevos : String [0..1]
+    - idError : String [0..1]
+  }
+  note right of EventoAuditoria
+    Inmutable; solo lo consulta el Superadministrador (NFR-09).
+    Los eventos con cliente alimentan su línea temporal (FR-43).
+  end note
+  class AccionMasiva {
+    - tipo : TipoAccionMasiva
+    - numeroElementos : Integer
+    - altoImpacto : Boolean
+    - estado : EstadoAccion
+    - fecha : FechaHora
+    + mostrarAlcance() : Integer
+    + confirmar() : void
+    + ejecutar() : void
+  }
+  class EjecucionTarea {
+    - tipo : TipoTarea
+    - inicio : FechaHora
+    - fin : FechaHora [0..1]
+    - estado : EstadoEjecucion
+    - procesados : Integer
+    - errores : Integer
+    - resumen : String
+    + reanudar() : void
+  }
+  note right of EjecucionTarea
+    Las ejecuta el Planificador. Al reanudar no duplica
+    facturas ni avisos (NFR-15). Base de las métricas agregadas (FR-38).
+  end note
+  class ErrorTecnico {
+    - idError : String
+    - origen : String
+    - mensaje : String
+    - fecha : FechaHora
+  }
+  class ConfiguracionSistema {
+    - razonSocialEmisor : String
+    - idFiscalEmisor : String
+    - domicilioEmisor : String
+    - dominiosAutorizados : List<String>
+    - umbralDescuento : Decimal
+    - umbralImporteAlto : Decimal
+    - vencimientoGeneralDias : Integer
+    - diasRecordatorioPrevio : Integer = 3
+    - diasRecordatorioVencimiento : Integer = 5
+    - frecuenciaAvisoImpagoDias : Integer = 2
+    - diasConservacionInformes : Integer
+    + validar() : Boolean
+    + admiteCorreo(correo : String) : Boolean
+  }
+  class FuncionInteligente {
+    - codigo : String
+    - descripcion : String
+    - activa : Boolean
+  }
+  note bottom of FuncionInteligente
+    Opcional y desactivable; no salta permisos y toda
+    sugerencia económica requiere confirmación humana (BR-22).
+  end note
+  class SerieFacturacion {
+    - codigo : String
+    - prefijo : String
+    - ultimoNumero : Long
+    - activa : Boolean
+    + asignarSiguienteNumero() : String
+  }
+  class Impuesto {
+    - nombre : String
+    - porcentaje : Decimal
+    - activo : Boolean
+  }
+  class RangoTarifa {
+    - facturacionMinima : Decimal
+    - facturacionMaxima : Decimal
+    - precio : Decimal
+    - fechaEfecto : Fecha
+    - vigente : Boolean
+  }
+  note bottom of RangoTarifa
+    Un cambio de tabla crea rangos nuevos con su fecha de efecto;
+    no reescribe facturas emitidas (FR-17).
+  end note
+  class ClienteAPI {
+    - nombre : String
+    - hashCredencial : String
+    - activo : Boolean
+    - expiracion : FechaHora
+  }
+  class SolicitudExterna {
+    - tipo : TipoSolicitudExterna
+    - datos : String
+    - estado : EstadoAprobacion
+    - fecha : FechaHora
+    + marcarPendienteRevision() : void
+  }
+  note bottom of SolicitudExterna
+    Nunca modifica datos ni recurrencias directamente:
+    queda pendiente de revisión humana (BR-21).
+  end note
+  package "Enumeraciones" #FFFFFF {
+    enum Rol {
+    SUPERADMINISTRADOR
+    ADMINISTRADOR
+    USUARIO_OPERATIVO
+  }
+    enum EstadoUsuario {
+    INVITADO
+    ACTIVO
+    BLOQUEADO
+    DESACTIVADO
+  }
+    enum TipoEnlace {
+    INVITACION
+    RECUPERACION_CONTRASENA
+  }
+    enum TipoAccionMasiva {
+    REASIGNAR_CLIENTES
+    ETIQUETAR_CLIENTES
+    ASIGNAR_CENTRO_COSTE
+  }
+    enum EstadoAccion {
+    PENDIENTE_CONFIRMACION
+    PENDIENTE_APROBACION
+    EJECUTADA
+    CANCELADA
+    FALLIDA
+  }
+    enum TipoTarea {
+    GENERACION_RECURRENTE
+    RECORDATORIOS
+    CONSULTA_PAGOS
+    EVALUACION_ALERTAS
+    RESUMEN_DIARIO
+    COPIA_SEGURIDAD
+  }
+    enum EstadoEjecucion {
+    EN_CURSO
+    COMPLETADA
+    CON_ERRORES
+    INTERRUMPIDA
+  }
+    enum TipoSolicitudExterna {
+    BAJA_CLIENTE
+    CAMBIO_DATOS_CONTACTO
+  }
+  }
+}
+
+package "Bloque A - Clientes y contactos (referencia)" #F4F5F7 {
+  class Cliente
+}
+
+package "Bloque B - Suscripciones, tarifas y descuentos (referencia)" #F4F5F7 {
+  abstract class SolicitudAprobacion
+}
+
+' ---- Relaciones ----
+Usuario "1" *-- "0..*" Sesion
+Usuario "1" *-- "0..*" EnlaceTemporal
+Usuario "0..*" --> "0..*" Permiso : permisosAdicionales
+EventoAuditoria "0..*" --> "0..1" Usuario : autor
+EventoAuditoria "0..*" --> "0..1" ClienteAPI : autor
+EventoAuditoria "0..*" --> "0..1" Cliente : clienteAfectado
+Usuario "1" -- "0..*" AccionMasiva : ejecuta >
+AccionMasiva "0..1" --> "0..1" SolicitudAprobacion : aprobacionAltoImpacto
+EjecucionTarea "1" *-- "0..*" ErrorTecnico
+ConfiguracionSistema "1" *-- "1..*" SerieFacturacion
+ConfiguracionSistema "1" *-- "1..*" Impuesto
+ConfiguracionSistema "1" *-- "1..*" RangoTarifa
+ConfiguracionSistema "1" *-- "0..*" FuncionInteligente
+ClienteAPI "0..*" --> "0..*" Permiso
+ClienteAPI "1" -- "0..*" SolicitudExterna : envia >
+SolicitudExterna "0..*" --> "1" Cliente : sobre
+SolicitudExterna "0..*" --> "0..1" Usuario : revisadaPor
+
+legend bottom right
+  Paquetes grises: clases detalladas en su propio bloque.
+  Importes en Decimal (NFR-06). version: control de edición concurrente (NFR-13).
+endlegend
+@enduml

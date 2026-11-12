@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1525px" preserveAspectRatio="none" style="width:2514px;height:1525px;background:#FFFFFF;" version="1.1" viewBox="0 0 2514 1525" width="2514px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="43.8789" id="_title" style="stroke:none;stroke-width:1.0;" width="334" x="1083" y="5"/><text fill="#000000" font-family="Helvetica" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="324" x="1088" y="23.5625">Bloque F - Administración, seguridad y sistema</text><text fill="#000000" font-family="Helvetica" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="113" x="1193.5" y="40.502">(CU-30 a CU-37)</text><!--MD5=[39fd826ba3a04ead86ffa5c40584f4f1]
+cluster Bloque F - Administración, seguridad y sistema--><g id="cluster_Bloque F - Administración, seguridad y sistema"><rect fill="none" height="1256" rx="2.5" ry="2.5" style="stroke:#9AA4B5;stroke-width:1.5;" width="2207" x="7" y="61.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="276" x="972.5" y="75.5039">Bloque F - Administración, seguridad y sistema</text></g><!--MD5=[a9177b8d9e675a4ef9a13d65a19c67f4]
+cluster Enumeraciones--><g id="cluster_Enumeraciones"><rect fill="#FFFFFF" height="591" rx="2.5" ry="2.5" style="stroke:#9AA4B5;stroke-width:1.5;" width="642" x="1548" y="131.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="89" x="1824.5" y="145.0039">Enumeraciones</text></g><!--MD5=[2d71f63ebc1fb6f822359b5fd780f090]
+cluster Bloque A - Clientes y contactos (referencia)--><g id="cluster_Bloque A - Clientes y contactos (referencia)"><rect fill="#F4F5F7" height="79" rx="2.5" ry="2.5" style="stroke:#9AA4B5;stroke-width:1.5;" width="270" x="2238" y="880.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="254" x="2246" y="894.5039">Bloque A - Clientes y contactos (referencia)</text></g><!--MD5=[75b1fc1b0d1c81ef60de3400e953d9a1]
+cluster Bloque B - Suscripciones, tarifas y descuentos (referencia)--><g id="cluster_Bloque B - Suscripciones, tarifas y descuentos (referencia)"><rect fill="#F4F5F7" height="79" rx="2.5" ry="2.5" style="stroke:#9AA4B5;stroke-width:1.5;" width="361" x="1327" y="1365.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="345" x="1335" y="1379.5039">Bloque B - Suscripciones, tarifas y descuentos (referencia)</text></g><!--MD5=[35a64b983c79880384a2fd9b61f0c24b]
+class Usuario--><g id="elem_Usuario"><rect codeLine="37" fill="#FFFFFF" height="278.3125" id="Usuario" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="342" x="1164" y="789.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="342" x="1164" y="789.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="342" x="1164" y="817.3789"/><rect codeLine="37" fill="none" height="278.3125" id="Usuario" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="342" x="1164" y="789.8789"/><ellipse cx="1309" cy="804.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1310.8281,809.1289 Q1310.4219,809.332 1309.9688,809.4414 Q1309.5156,809.5508 1309.0313,809.5508 Q1307.25,809.5508 1306.3125,808.3945 Q1305.3906,807.2227 1305.3906,805.0195 Q1305.3906,802.8008 1306.3125,801.6445 Q1307.25,800.4727 1309.0313,800.4727 Q1309.5156,800.4727 1309.9688,800.582 Q1310.4375,800.6758 1310.8281,800.8945 L1310.8281,802.8164 Q1310.3906,802.4102 1309.9688,802.2227 Q1309.5469,802.0195 1309.1094,802.0195 Q1308.1563,802.0195 1307.6719,802.7852 Q1307.1875,803.5352 1307.1875,805.0195 Q1307.1875,806.4883 1307.6719,807.2383 Q1308.1563,807.9883 1309.1094,807.9883 Q1309.5469,807.9883 1309.9688,807.8008 Q1310.3906,807.6133 1310.8281,807.207 L1310.8281,809.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="44" x="1328" y="809.2441">Usuario</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1165" x2="1505" y1="819.8789" y2="819.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="53" x="1170" y="835.5039">-id : Long</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="93" x="1170" y="850.0234">-nombre : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="155" x="1170" y="864.543">-correoCorporativo : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="142" x="1170" y="879.0625">-hashContrasena : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="48" x="1170" y="893.582">-rol : Rol</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="135" x="1170" y="908.1016">-estado : EstadoUsuario</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="165" x="1170" y="922.6211">-dobleFactorActivo : Boolean</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="143" x="1170" y="937.1406">-intentosFallidos : Integer</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="200" x="1170" y="951.6602">-bloqueadoHasta : FechaHora [0..1]</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="97" x="1170" y="966.1797">-version : Integer</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1165" x2="1505" y1="973.0742" y2="973.0742"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="330" x="1170" y="988.6992">+iniciarSesion(correo : String, contrasena : String) : Sesion</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="254" x="1170" y="1003.2188">+solicitarRecuperacion(correo : String) : void</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="146" x="1170" y="1017.7383">+cambiarRol(r : Rol) : void</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="109" x="1170" y="1032.2578">+desactivar() : void</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="227" x="1170" y="1046.7773">+tienePermiso(codigo : String) : Boolean</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="210" x="1170" y="1061.2969">+puedeAcceder(c : Cliente) : Boolean</text></g><g id="elem_GMN4"><path d="M1551.5,903.8789 L1551.5,924.8789 L1506.15,928.8789 L1551.5,932.8789 L1551.5,953.8076 A0,0 0 0 0 1551.5,953.8076 L1848.5,953.8076 A0,0 0 0 0 1848.5,953.8076 L1848.5,913.8789 L1838.5,903.8789 L1551.5,903.8789 A0,0 0 0 0 1551.5,903.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><path d="M1838.5,903.8789 L1838.5,913.8789 L1848.5,913.8789 L1838.5,903.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="272" x="1557.5" y="919.5352">El rol es un atributo porque puede cambiar (FR-07).</text><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="276" x="1557.5" y="932.8447">Desactivar invalida las sesiones y conserva el rastro.</text><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="239" x="1557.5" y="946.1543">No hay autorregistro: alta solo por invitación.</text></g><!--MD5=[e4c19c9e3d043a71625eab5525ae4353]
+class Permiso--><g id="elem_Permiso"><rect codeLine="60" fill="#FFFFFF" height="67.0391" id="Permiso" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="127" x="1054.5" y="1187.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="127" x="1054.5" y="1187.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="127" x="1054.5" y="1214.8789"/><rect codeLine="60" fill="none" height="67.0391" id="Permiso" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="127" x="1054.5" y="1187.3789"/><ellipse cx="1091" cy="1202.3789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1092.8281,1206.6289 Q1092.4219,1206.832 1091.9688,1206.9414 Q1091.5156,1207.0508 1091.0313,1207.0508 Q1089.25,1207.0508 1088.3125,1205.8945 Q1087.3906,1204.7227 1087.3906,1202.5195 Q1087.3906,1200.3008 1088.3125,1199.1445 Q1089.25,1197.9727 1091.0313,1197.9727 Q1091.5156,1197.9727 1091.9688,1198.082 Q1092.4375,1198.1758 1092.8281,1198.3945 L1092.8281,1200.3164 Q1092.3906,1199.9102 1091.9688,1199.7227 Q1091.5469,1199.5195 1091.1094,1199.5195 Q1090.1563,1199.5195 1089.6719,1200.2852 Q1089.1875,1201.0352 1089.1875,1202.5195 Q1089.1875,1203.9883 1089.6719,1204.7383 Q1090.1563,1205.4883 1091.1094,1205.4883 Q1091.5469,1205.4883 1091.9688,1205.3008 Q1092.3906,1205.1133 1092.8281,1204.707 L1092.8281,1206.6289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="47" x="1109" y="1206.7441">Permiso</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1055.5" x2="1180.5" y1="1217.3789" y2="1217.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="87" x="1060.5" y="1233.0039">-codigo : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="115" x="1060.5" y="1247.5234">-descripcion : String</text></g><!--MD5=[d729d1612f45e7942212eb73f589c5f8]
+class Sesion--><g id="elem_Sesion"><rect codeLine="64" fill="#FFFFFF" height="133.1172" id="Sesion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="150" x="1637" y="1154.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="150" x="1637" y="1154.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="150" x="1637" y="1181.8789"/><rect codeLine="64" fill="none" height="133.1172" id="Sesion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="150" x="1637" y="1154.3789"/><ellipse cx="1689" cy="1169.3789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1690.8281,1173.6289 Q1690.4219,1173.832 1689.9688,1173.9414 Q1689.5156,1174.0508 1689.0313,1174.0508 Q1687.25,1174.0508 1686.3125,1172.8945 Q1685.3906,1171.7227 1685.3906,1169.5195 Q1685.3906,1167.3008 1686.3125,1166.1445 Q1687.25,1164.9727 1689.0313,1164.9727 Q1689.5156,1164.9727 1689.9688,1165.082 Q1690.4375,1165.1758 1690.8281,1165.3945 L1690.8281,1167.3164 Q1690.3906,1166.9102 1689.9688,1166.7227 Q1689.5469,1166.5195 1689.1094,1166.5195 Q1688.1563,1166.5195 1687.6719,1167.2852 Q1687.1875,1168.0352 1687.1875,1169.5195 Q1687.1875,1170.9883 1687.6719,1171.7383 Q1688.1563,1172.4883 1689.1094,1172.4883 Q1689.5469,1172.4883 1689.9688,1172.3008 Q1690.3906,1172.1133 1690.8281,1171.707 L1690.8281,1173.6289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="38" x="1708" y="1173.7441">Sesion</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1638" x2="1786" y1="1184.3789" y2="1184.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="110" x="1643" y="1200.0039">-tokenHash : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="108" x="1643" y="1214.5234">-inicio : FechaHora</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="138" x="1643" y="1229.043">-expiracion : FechaHora</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="119" x="1643" y="1243.5625">-invalidada : Boolean</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1638" x2="1786" y1="1250.457" y2="1250.457"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="138" x="1643" y="1266.082">+estaVigente() : Boolean</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="98" x="1643" y="1280.6016">+invalidar() : void</text></g><!--MD5=[c6532fc48dc1405556b025dcb903268d]
+class EnlaceTemporal--><g id="elem_EnlaceTemporal"><rect codeLine="72" fill="#FFFFFF" height="133.1172" id="EnlaceTemporal" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="150" x="1227" y="1154.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="150" x="1227" y="1154.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="150" x="1227" y="1181.8789"/><rect codeLine="72" fill="none" height="133.1172" id="EnlaceTemporal" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="150" x="1227" y="1154.3789"/><ellipse cx="1253.15" cy="1169.3789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1254.9781,1173.6289 Q1254.5719,1173.832 1254.1188,1173.9414 Q1253.6656,1174.0508 1253.1813,1174.0508 Q1251.4,1174.0508 1250.4625,1172.8945 Q1249.5406,1171.7227 1249.5406,1169.5195 Q1249.5406,1167.3008 1250.4625,1166.1445 Q1251.4,1164.9727 1253.1813,1164.9727 Q1253.6656,1164.9727 1254.1188,1165.082 Q1254.5875,1165.1758 1254.9781,1165.3945 L1254.9781,1167.3164 Q1254.5406,1166.9102 1254.1188,1166.7227 Q1253.6969,1166.5195 1253.2594,1166.5195 Q1252.3063,1166.5195 1251.8219,1167.2852 Q1251.3375,1168.0352 1251.3375,1169.5195 Q1251.3375,1170.9883 1251.8219,1171.7383 Q1252.3063,1172.4883 1253.2594,1172.4883 Q1253.6969,1172.4883 1254.1188,1172.3008 Q1254.5406,1172.1133 1254.9781,1171.707 L1254.9781,1173.6289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="93" x="1268.85" y="1173.7441">EnlaceTemporal</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1228" x2="1376" y1="1184.3789" y2="1184.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="110" x="1233" y="1200.0039">-tokenHash : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="99" x="1233" y="1214.5234">-tipo : TipoEnlace</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="138" x="1233" y="1229.043">-expiracion : FechaHora</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="95" x="1233" y="1243.5625">-usado : Boolean</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1228" x2="1376" y1="1250.457" y2="1250.457"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="119" x="1233" y="1266.082">+esValido() : Boolean</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="102" x="1233" y="1280.6016">+consumir() : void</text></g><!--MD5=[c8891eac128e17e9c9beca422b127639]
+class EventoAuditoria--><g id="elem_EventoAuditoria"><rect codeLine="80" fill="#FFFFFF" height="154.1563" id="EventoAuditoria" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="192" x="953" y="135.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="192" x="953" y="135.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="192" x="953" y="162.8789"/><rect codeLine="80" fill="none" height="154.1563" id="EventoAuditoria" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="192" x="953" y="135.3789"/><ellipse cx="1000" cy="150.3789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1001.8281,154.6289 Q1001.4219,154.832 1000.9688,154.9414 Q1000.5156,155.0508 1000.0313,155.0508 Q998.25,155.0508 997.3125,153.8945 Q996.3906,152.7227 996.3906,150.5195 Q996.3906,148.3008 997.3125,147.1445 Q998.25,145.9727 1000.0313,145.9727 Q1000.5156,145.9727 1000.9688,146.082 Q1001.4375,146.1758 1001.8281,146.3945 L1001.8281,148.3164 Q1001.3906,147.9102 1000.9688,147.7227 Q1000.5469,147.5195 1000.1094,147.5195 Q999.1563,147.5195 998.6719,148.2852 Q998.1875,149.0352 998.1875,150.5195 Q998.1875,151.9883 998.6719,152.7383 Q999.1563,153.4883 1000.1094,153.4883 Q1000.5469,153.4883 1000.9688,153.3008 Q1001.3906,153.1133 1001.8281,152.707 L1001.8281,154.6289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="90" x="1019" y="154.7441">EventoAuditoria</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="954" x2="1144" y1="165.3789" y2="165.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="53" x="959" y="181.0039">-id : Long</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="138" x="959" y="195.5234">-fechaHora : FechaHora</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="87" x="959" y="210.043">-accion : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="112" x="959" y="224.5625">-tipoEntidad : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="95" x="959" y="239.082">-idEntidad : Long</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="180" x="959" y="253.6016">-valoresAnteriores : String [0..1]</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="164" x="959" y="268.1211">-valoresNuevos : String [0..1]</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="118" x="959" y="282.6406">-idError : String [0..1]</text></g><g id="elem_GMN11"><path d="M1190,193.8789 L1190,230.498 L1532,230.498 L1532,203.8789 L1522,193.8789 L1190,193.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><path d="M1522,193.8789 L1522,203.8789 L1532,203.8789 L1522,193.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="319" x="1196" y="209.5352">Inmutable; solo lo consulta el Superadministrador (NFR-09).</text><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="321" x="1196" y="222.8447">Los eventos con cliente alimentan su línea temporal (FR-43).</text></g><!--MD5=[94fc808cd61fff654c438db4d8d8543b]
+class AccionMasiva--><g id="elem_AccionMasiva"><rect codeLine="94" fill="#FFFFFF" height="162.1563" id="AccionMasiva" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="170" x="1422" y="1139.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="170" x="1422" y="1139.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="170" x="1422" y="1167.3789"/><rect codeLine="94" fill="none" height="162.1563" id="AccionMasiva" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="170" x="1422" y="1139.8789"/><ellipse cx="1463" cy="1154.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1464.8281,1159.1289 Q1464.4219,1159.332 1463.9688,1159.4414 Q1463.5156,1159.5508 1463.0313,1159.5508 Q1461.25,1159.5508 1460.3125,1158.3945 Q1459.3906,1157.2227 1459.3906,1155.0195 Q1459.3906,1152.8008 1460.3125,1151.6445 Q1461.25,1150.4727 1463.0313,1150.4727 Q1463.5156,1150.4727 1463.9688,1150.582 Q1464.4375,1150.6758 1464.8281,1150.8945 L1464.8281,1152.8164 Q1464.3906,1152.4102 1463.9688,1152.2227 Q1463.5469,1152.0195 1463.1094,1152.0195 Q1462.1563,1152.0195 1461.6719,1152.7852 Q1461.1875,1153.5352 1461.1875,1155.0195 Q1461.1875,1156.4883 1461.6719,1157.2383 Q1462.1563,1157.9883 1463.1094,1157.9883 Q1463.5469,1157.9883 1463.9688,1157.8008 Q1464.3906,1157.6133 1464.8281,1157.207 L1464.8281,1159.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="80" x="1482" y="1159.2441">AccionMasiva</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1423" x2="1591" y1="1169.8789" y2="1169.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="141" x="1428" y="1185.5039">-tipo : TipoAccionMasiva</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="158" x="1428" y="1200.0234">-numeroElementos : Integer</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="128" x="1428" y="1214.543">-altoImpacto : Boolean</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="130" x="1428" y="1229.0625">-estado : EstadoAccion</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="110" x="1428" y="1243.582">-fecha : FechaHora</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1423" x2="1591" y1="1250.4766" y2="1250.4766"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="156" x="1428" y="1266.1016">+mostrarAlcance() : Integer</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="105" x="1428" y="1280.6211">+confirmar() : void</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="96" x="1428" y="1295.1406">+ejecutar() : void</text></g><!--MD5=[6196c4e16391b889fde43937de53f34c]
+class EjecucionTarea--><g id="elem_EjecucionTarea"><rect codeLine="104" fill="#FFFFFF" height="162.1563" id="EjecucionTarea" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="158" x="324" y="131.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="158" x="324" y="131.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="158" x="324" y="158.8789"/><rect codeLine="104" fill="none" height="162.1563" id="EjecucionTarea" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="158" x="324" y="131.3789"/><ellipse cx="355.55" cy="146.3789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M357.3781,150.6289 Q356.9719,150.832 356.5188,150.9414 Q356.0656,151.0508 355.5813,151.0508 Q353.8,151.0508 352.8625,149.8945 Q351.9406,148.7227 351.9406,146.5195 Q351.9406,144.3008 352.8625,143.1445 Q353.8,141.9727 355.5813,141.9727 Q356.0656,141.9727 356.5188,142.082 Q356.9875,142.1758 357.3781,142.3945 L357.3781,144.3164 Q356.9406,143.9102 356.5188,143.7227 Q356.0969,143.5195 355.6594,143.5195 Q354.7063,143.5195 354.2219,144.2852 Q353.7375,145.0352 353.7375,146.5195 Q353.7375,147.9883 354.2219,148.7383 Q354.7063,149.4883 355.6594,149.4883 Q356.0969,149.4883 356.5188,149.3008 Q356.9406,149.1133 357.3781,148.707 L357.3781,150.6289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="89" x="372.45" y="150.7441">EjecucionTarea</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="325" x2="481" y1="161.3789" y2="161.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="95" x="330" y="177.0039">-tipo : TipoTarea</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="108" x="330" y="191.5234">-inicio : FechaHora</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="122" x="330" y="206.043">-fin : FechaHora [0..1]</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="146" x="330" y="220.5625">-estado : EstadoEjecucion</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="121" x="330" y="235.082">-procesados : Integer</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="97" x="330" y="249.6016">-errores : Integer</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="99" x="330" y="264.1211">-resumen : String</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="325" x2="481" y1="271.0156" y2="271.0156"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="101" x="330" y="286.6406">+reanudar() : void</text></g><g id="elem_GMN16"><path d="M526.5,193.8789 L526.5,230.498 L907.5,230.498 L907.5,203.8789 L897.5,193.8789 L526.5,193.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><path d="M897.5,193.8789 L897.5,203.8789 L907.5,203.8789 L897.5,193.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="263" x="532.5" y="209.5352">Las ejecuta el Planificador. Al reanudar no duplica</text><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="360" x="532.5" y="222.8447">facturas ni avisos (NFR-15). Base de las métricas agregadas (FR-38).</text></g><!--MD5=[dbb43aa347bba8f0e3aa41482d78eeab]
+class ErrorTecnico--><g id="elem_ErrorTecnico"><rect codeLine="118" fill="#FFFFFF" height="96.0781" id="ErrorTecnico" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="122" x="870" y="416.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="122" x="870" y="416.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="122" x="870" y="443.8789"/><rect codeLine="118" fill="none" height="96.0781" id="ErrorTecnico" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="122" x="870" y="416.3789"/><ellipse cx="891.65" cy="431.3789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M893.4781,435.6289 Q893.0719,435.832 892.6188,435.9414 Q892.1656,436.0508 891.6813,436.0508 Q889.9,436.0508 888.9625,434.8945 Q888.0406,433.7227 888.0406,431.5195 Q888.0406,429.3008 888.9625,428.1445 Q889.9,426.9727 891.6813,426.9727 Q892.1656,426.9727 892.6188,427.082 Q893.0875,427.1758 893.4781,427.3945 L893.4781,429.3164 Q893.0406,428.9102 892.6188,428.7227 Q892.1969,428.5195 891.7594,428.5195 Q890.8063,428.5195 890.3219,429.2852 Q889.8375,430.0352 889.8375,431.5195 Q889.8375,432.9883 890.3219,433.7383 Q890.8063,434.4883 891.7594,434.4883 Q892.1969,434.4883 892.6188,434.3008 Q893.0406,434.1133 893.4781,433.707 L893.4781,435.6289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="75" x="906.35" y="435.7441">ErrorTecnico</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="871" x2="991" y1="446.3789" y2="446.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="88" x="876" y="462.0039">-idError : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="85" x="876" y="476.5234">-origen : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="97" x="876" y="491.043">-mensaje : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="110" x="876" y="505.5625">-fecha : FechaHora</text></g><!--MD5=[6dd7c9a4b01abe5a331bebef8bd07b9f]
+class ConfiguracionSistema--><g id="elem_ConfiguracionSistema"><rect codeLine="124" fill="#FFFFFF" height="234.7539" id="ConfiguracionSistema" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="256" x="23" y="94.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="256" x="23" y="94.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="256" x="23" y="122.3789"/><rect codeLine="124" fill="none" height="234.7539" id="ConfiguracionSistema" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="256" x="23" y="94.8789"/><ellipse cx="84" cy="109.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M85.8281,114.1289 Q85.4219,114.332 84.9688,114.4414 Q84.5156,114.5508 84.0313,114.5508 Q82.25,114.5508 81.3125,113.3945 Q80.3906,112.2227 80.3906,110.0195 Q80.3906,107.8008 81.3125,106.6445 Q82.25,105.4727 84.0313,105.4727 Q84.5156,105.4727 84.9688,105.582 Q85.4375,105.6758 85.8281,105.8945 L85.8281,107.8164 Q85.3906,107.4102 84.9688,107.2227 Q84.5469,107.0195 84.1094,107.0195 Q83.1563,107.0195 82.6719,107.7852 Q82.1875,108.5352 82.1875,110.0195 Q82.1875,111.4883 82.6719,112.2383 Q83.1563,112.9883 84.1094,112.9883 Q84.5469,112.9883 84.9688,112.8008 Q85.3906,112.6133 85.8281,112.207 L85.8281,114.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="126" x="103" y="114.2441">ConfiguracionSistema</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="24" x2="278" y1="124.8789" y2="124.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="156" x="29" y="140.5039">-razonSocialEmisor : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="131" x="29" y="155.0234">-idFiscalEmisor : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="139" x="29" y="169.543">-domicilioEmisor : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="204" x="29" y="184.0625">-dominiosAutorizados : List&lt;String&gt;</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="163" x="29" y="198.582">-umbralDescuento : Decimal</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="168" x="29" y="213.1016">-umbralImporteAlto : Decimal</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="195" x="29" y="227.6211">-vencimientoGeneralDias : Integer</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="210" x="29" y="242.1406">-diasRecordatorioPrevio : Integer = 3</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="244" x="29" y="256.6602">-diasRecordatorioVencimiento : Integer = 5</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="235" x="29" y="271.1797">-frecuenciaAvisoImpagoDias : Integer = 2</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="207" x="29" y="285.6992">-diasConservacionInformes : Integer</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="24" x2="278" y1="292.5938" y2="292.5938"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="110" x="29" y="308.2188">+validar() : Boolean</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="231" x="29" y="322.7383">+admiteCorreo(correo : String) : Boolean</text></g><!--MD5=[d2d7d773b9e5a9fa7eacfab2f345ca02]
+class FuncionInteligente--><g id="elem_FuncionInteligente"><rect codeLine="139" fill="#FFFFFF" height="81.5586" id="FuncionInteligente" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="134" x="23" y="423.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="134" x="23" y="423.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="134" x="23" y="450.8789"/><rect codeLine="139" fill="none" height="81.5586" id="FuncionInteligente" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="134" x="23" y="423.3789"/><ellipse cx="37" cy="438.3789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M38.8281,442.6289 Q38.4219,442.832 37.9688,442.9414 Q37.5156,443.0508 37.0313,443.0508 Q35.25,443.0508 34.3125,441.8945 Q33.3906,440.7227 33.3906,438.5195 Q33.3906,436.3008 34.3125,435.1445 Q35.25,433.9727 37.0313,433.9727 Q37.5156,433.9727 37.9688,434.082 Q38.4375,434.1758 38.8281,434.3945 L38.8281,436.3164 Q38.3906,435.9102 37.9688,435.7227 Q37.5469,435.5195 37.1094,435.5195 Q36.1563,435.5195 35.6719,436.2852 Q35.1875,437.0352 35.1875,438.5195 Q35.1875,439.9883 35.6719,440.7383 Q36.1563,441.4883 37.1094,441.4883 Q37.5469,441.4883 37.9688,441.3008 Q38.3906,441.1133 38.8281,440.707 L38.8281,442.6289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="104" x="50" y="442.7441">FuncionInteligente</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="24" x2="156" y1="453.3789" y2="453.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="87" x="29" y="469.0039">-codigo : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="115" x="29" y="483.5234">-descripcion : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="96" x="29" y="498.043">-activa : Boolean</text></g><g id="elem_GMN22"><path d="M23,639.8789 L23,676.498 A0,0 0 0 0 23,676.498 L375,676.498 A0,0 0 0 0 375,676.498 L375,649.8789 L365,639.8789 L192.96,639.8789 L112.85,505.6289 L184.96,639.8789 L23,639.8789 A0,0 0 0 0 23,639.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><path d="M365,639.8789 L365,649.8789 L375,649.8789 L365,639.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="261" x="29" y="655.5352">Opcional y desactivable; no salta permisos y toda</text><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="331" x="29" y="668.8447">sugerencia económica requiere confirmación humana (BR-22).</text></g><!--MD5=[d3dca71097dbf23c6416e98d7f154eff]
+class SerieFacturacion--><g id="elem_SerieFacturacion"><rect codeLine="148" fill="#FFFFFF" height="118.5977" id="SerieFacturacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="212" x="202" y="404.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="212" x="202" y="404.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="212" x="202" y="432.3789"/><rect codeLine="148" fill="none" height="118.5977" id="SerieFacturacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="212" x="202" y="404.8789"/><ellipse cx="255" cy="419.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M256.8281,424.1289 Q256.4219,424.332 255.9688,424.4414 Q255.5156,424.5508 255.0313,424.5508 Q253.25,424.5508 252.3125,423.3945 Q251.3906,422.2227 251.3906,420.0195 Q251.3906,417.8008 252.3125,416.6445 Q253.25,415.4727 255.0313,415.4727 Q255.5156,415.4727 255.9688,415.582 Q256.4375,415.6758 256.8281,415.8945 L256.8281,417.8164 Q256.3906,417.4102 255.9688,417.2227 Q255.5469,417.0195 255.1094,417.0195 Q254.1563,417.0195 253.6719,417.7852 Q253.1875,418.5352 253.1875,420.0195 Q253.1875,421.4883 253.6719,422.2383 Q254.1563,422.9883 255.1094,422.9883 Q255.5469,422.9883 255.9688,422.8008 Q256.3906,422.6133 256.8281,422.207 L256.8281,424.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="98" x="274" y="424.2441">SerieFacturacion</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="203" x2="413" y1="434.8789" y2="434.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="87" x="208" y="450.5039">-codigo : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="85" x="208" y="465.0234">-prefijo : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="124" x="208" y="479.543">-ultimoNumero : Long</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="96" x="208" y="494.0625">-activa : Boolean</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="203" x2="413" y1="500.957" y2="500.957"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="200" x="208" y="516.582">+asignarSiguienteNumero() : String</text></g><!--MD5=[75a24480085c0c38bc912cc75ff08c21]
+class Impuesto--><g id="elem_Impuesto"><rect codeLine="155" fill="#FFFFFF" height="81.5586" id="Impuesto" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="135" x="459.5" y="423.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="135" x="459.5" y="423.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="135" x="459.5" y="450.8789"/><rect codeLine="155" fill="none" height="81.5586" id="Impuesto" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="135" x="459.5" y="423.3789"/><ellipse cx="497.35" cy="438.3789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M499.1781,442.6289 Q498.7719,442.832 498.3188,442.9414 Q497.8656,443.0508 497.3813,443.0508 Q495.6,443.0508 494.6625,441.8945 Q493.7406,440.7227 493.7406,438.5195 Q493.7406,436.3008 494.6625,435.1445 Q495.6,433.9727 497.3813,433.9727 Q497.8656,433.9727 498.3188,434.082 Q498.7875,434.1758 499.1781,434.3945 L499.1781,436.3164 Q498.7406,435.9102 498.3188,435.7227 Q497.8969,435.5195 497.4594,435.5195 Q496.5063,435.5195 496.0219,436.2852 Q495.5375,437.0352 495.5375,438.5195 Q495.5375,439.9883 496.0219,440.7383 Q496.5063,441.4883 497.4594,441.4883 Q497.8969,441.4883 498.3188,441.3008 Q498.7406,441.1133 499.1781,440.707 L499.1781,442.6289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="52" x="515.65" y="442.7441">Impuesto</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="460.5" x2="593.5" y1="453.3789" y2="453.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="93" x="465.5" y="469.0039">-nombre : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="123" x="465.5" y="483.5234">-porcentaje : Decimal</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="96" x="465.5" y="498.043">-activo : Boolean</text></g><!--MD5=[8d430d375e325ee2d810e6077f92f610]
+class RangoTarifa--><g id="elem_RangoTarifa"><rect codeLine="160" fill="#FFFFFF" height="110.5977" id="RangoTarifa" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="185" x="639.5" y="408.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="185" x="639.5" y="408.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="185" x="639.5" y="436.3789"/><rect codeLine="160" fill="none" height="110.5977" id="RangoTarifa" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="185" x="639.5" y="408.8789"/><ellipse cx="693" cy="423.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M694.8281,428.1289 Q694.4219,428.332 693.9688,428.4414 Q693.5156,428.5508 693.0313,428.5508 Q691.25,428.5508 690.3125,427.3945 Q689.3906,426.2227 689.3906,424.0195 Q689.3906,421.8008 690.3125,420.6445 Q691.25,419.4727 693.0313,419.4727 Q693.5156,419.4727 693.9688,419.582 Q694.4375,419.6758 694.8281,419.8945 L694.8281,421.8164 Q694.3906,421.4102 693.9688,421.2227 Q693.5469,421.0195 693.1094,421.0195 Q692.1563,421.0195 691.6719,421.7852 Q691.1875,422.5352 691.1875,424.0195 Q691.1875,425.4883 691.6719,426.2383 Q692.1563,426.9883 693.1094,426.9883 Q693.5469,426.9883 693.9688,426.8008 Q694.3906,426.6133 694.8281,426.207 L694.8281,428.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="70" x="712" y="428.2441">RangoTarifa</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="640.5" x2="823.5" y1="438.8789" y2="438.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="169" x="645.5" y="454.5039">-facturacionMinima : Decimal</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="173" x="645.5" y="469.0234">-facturacionMaxima : Decimal</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="98" x="645.5" y="483.543">-precio : Decimal</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="118" x="645.5" y="498.0625">-fechaEfecto : Fecha</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="103" x="645.5" y="512.582">-vigente : Boolean</text></g><g id="elem_GMN28"><path d="M554,639.8789 L554,676.498 A0,0 0 0 0 554,676.498 L910,676.498 A0,0 0 0 0 910,676.498 L910,649.8789 L900,639.8789 L736,639.8789 L732,519.8889 L728,639.8789 L554,639.8789 A0,0 0 0 0 554,639.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><path d="M900,639.8789 L900,649.8789 L910,649.8789 L900,639.8789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="335" x="560" y="655.5352">Un cambio de tabla crea rangos nuevos con su fecha de efecto;</text><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="202" x="560" y="668.8447">no reescribe facturas emitidas (FR-17).</text></g><!--MD5=[1def5a2a075f1c58644b6d4531dcdfca]
+class ClienteAPI--><g id="elem_ClienteAPI"><rect codeLine="171" fill="#FFFFFF" height="96.0781" id="ClienteAPI" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="150" x="1095" y="416.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="150" x="1095" y="416.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="150" x="1095" y="443.8789"/><rect codeLine="171" fill="none" height="96.0781" id="ClienteAPI" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="150" x="1095" y="416.3789"/><ellipse cx="1136.5" cy="431.3789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1138.3281,435.6289 Q1137.9219,435.832 1137.4688,435.9414 Q1137.0156,436.0508 1136.5313,436.0508 Q1134.75,436.0508 1133.8125,434.8945 Q1132.8906,433.7227 1132.8906,431.5195 Q1132.8906,429.3008 1133.8125,428.1445 Q1134.75,426.9727 1136.5313,426.9727 Q1137.0156,426.9727 1137.4688,427.082 Q1137.9375,427.1758 1138.3281,427.3945 L1138.3281,429.3164 Q1137.8906,428.9102 1137.4688,428.7227 Q1137.0469,428.5195 1136.6094,428.5195 Q1135.6563,428.5195 1135.1719,429.2852 Q1134.6875,430.0352 1134.6875,431.5195 Q1134.6875,432.9883 1135.1719,433.7383 Q1135.6563,434.4883 1136.6094,434.4883 Q1137.0469,434.4883 1137.4688,434.3008 Q1137.8906,434.1133 1138.3281,433.707 L1138.3281,435.6289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="59" x="1155.5" y="435.7441">ClienteAPI</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1096" x2="1244" y1="446.3789" y2="446.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="93" x="1101" y="462.0039">-nombre : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="138" x="1101" y="476.5234">-hashCredencial : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="96" x="1101" y="491.043">-activo : Boolean</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="138" x="1101" y="505.5625">-expiracion : FechaHora</text></g><!--MD5=[731a5559606bcc719317359472e7947f]
+class SolicitudExterna--><g id="elem_SolicitudExterna"><rect codeLine="177" fill="#FFFFFF" height="118.5977" id="SolicitudExterna" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="208" x="1311" y="598.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="208" x="1311" y="598.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="208" x="1311" y="626.3789"/><rect codeLine="177" fill="none" height="118.5977" id="SolicitudExterna" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="208" x="1311" y="598.8789"/><ellipse cx="1364.5" cy="613.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1366.3281,618.1289 Q1365.9219,618.332 1365.4688,618.4414 Q1365.0156,618.5508 1364.5313,618.5508 Q1362.75,618.5508 1361.8125,617.3945 Q1360.8906,616.2227 1360.8906,614.0195 Q1360.8906,611.8008 1361.8125,610.6445 Q1362.75,609.4727 1364.5313,609.4727 Q1365.0156,609.4727 1365.4688,609.582 Q1365.9375,609.6758 1366.3281,609.8945 L1366.3281,611.8164 Q1365.8906,611.4102 1365.4688,611.2227 Q1365.0469,611.0195 1364.6094,611.0195 Q1363.6563,611.0195 1363.1719,611.7852 Q1362.6875,612.5352 1362.6875,614.0195 Q1362.6875,615.4883 1363.1719,616.2383 Q1363.6563,616.9883 1364.6094,616.9883 Q1365.0469,616.9883 1365.4688,616.8008 Q1365.8906,616.6133 1366.3281,616.207 L1366.3281,618.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="93" x="1383.5" y="618.2441">SolicitudExterna</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1312" x2="1518" y1="628.8789" y2="628.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="154" x="1317" y="644.5039">-tipo : TipoSolicitudExterna</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="80" x="1317" y="659.0234">-datos : String</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="156" x="1317" y="673.543">-estado : EstadoAprobacion</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="110" x="1317" y="688.0625">-fecha : FechaHora</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1312" x2="1518" y1="694.957" y2="694.957"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="196" x="1317" y="710.582">+marcarPendienteRevision() : void</text></g><g id="elem_GMN33"><path d="M1893.5,910.3789 L1893.5,946.998 L2186.5,946.998 L2186.5,920.3789 L2176.5,910.3789 L1893.5,910.3789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:0.5;"/><path d="M2176.5,910.3789 L2176.5,920.3789 L2186.5,920.3789 L2176.5,910.3789 " fill="#FFFDF3" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="272" x="1899.5" y="926.0352">Nunca modifica datos ni recurrencias directamente:</text><text fill="#000000" font-family="Helvetica" font-size="11" lengthAdjust="spacing" textLength="240" x="1899.5" y="939.3447">queda pendiente de revisión humana (BR-21).</text></g><!--MD5=[54736e807c59b9b647b6e830d606a429]
+class Rol--><g id="elem_Rol"><rect codeLine="189" fill="#FFFFFF" height="81.5586" id="Rol" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="153" x="1577.5" y="171.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="153" x="1577.5" y="171.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="153" x="1577.5" y="198.8789"/><rect codeLine="189" fill="none" height="81.5586" id="Rol" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="153" x="1577.5" y="171.3789"/><ellipse cx="1641" cy="186.3789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1643.4375,190.8789 L1637.9844,190.8789 L1637.9844,182.1289 L1643.4375,182.1289 L1643.4375,183.6602 L1639.7188,183.6602 L1639.7188,185.5352 L1643.0781,185.5352 L1643.0781,187.0664 L1639.7188,187.0664 L1639.7188,189.3477 L1643.4375,189.3477 L1643.4375,190.8789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="18" x="1660" y="190.7441">Rol</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1578.5" x2="1729.5" y1="201.3789" y2="201.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="141" x="1583.5" y="217.0039">SUPERADMINISTRADOR</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="101" x="1583.5" y="231.5234">ADMINISTRADOR</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="127" x="1583.5" y="246.043">USUARIO_OPERATIVO</text></g><!--MD5=[188556486f5b4f9f5216fc016fb71cfc]
+class EstadoUsuario--><g id="elem_EstadoUsuario"><rect codeLine="194" fill="#FFFFFF" height="96.0781" id="EstadoUsuario" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="112" x="1776" y="164.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="112" x="1776" y="164.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="112" x="1776" y="191.8789"/><rect codeLine="194" fill="none" height="96.0781" id="EstadoUsuario" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="112" x="1776" y="164.3789"/><ellipse cx="1790" cy="179.3789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1792.4375,183.8789 L1786.9844,183.8789 L1786.9844,175.1289 L1792.4375,175.1289 L1792.4375,176.6602 L1788.7188,176.6602 L1788.7188,178.5352 L1792.0781,178.5352 L1792.0781,180.0664 L1788.7188,180.0664 L1788.7188,182.3477 L1792.4375,182.3477 L1792.4375,183.8789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="82" x="1803" y="183.7441">EstadoUsuario</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1777" x2="1887" y1="194.3789" y2="194.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="57" x="1782" y="210.0039">INVITADO</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="45" x="1782" y="224.5234">ACTIVO</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="75" x="1782" y="239.043">BLOQUEADO</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="86" x="1782" y="253.5625">DESACTIVADO</text></g><!--MD5=[af4960d0dcd2450867e3bd6a9c90799d]
+class TipoEnlace--><g id="elem_TipoEnlace"><rect codeLine="200" fill="#FFFFFF" height="67.0391" id="TipoEnlace" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="194" x="1933" y="178.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="194" x="1933" y="178.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="194" x="1933" y="206.3789"/><rect codeLine="200" fill="none" height="67.0391" id="TipoEnlace" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="194" x="1933" y="178.8789"/><ellipse cx="1994.5" cy="193.8789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1996.9375,198.3789 L1991.4844,198.3789 L1991.4844,189.6289 L1996.9375,189.6289 L1996.9375,191.1602 L1993.2188,191.1602 L1993.2188,193.0352 L1996.5781,193.0352 L1996.5781,194.5664 L1993.2188,194.5664 L1993.2188,196.8477 L1996.9375,196.8477 L1996.9375,198.3789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="63" x="2013.5" y="198.2441">TipoEnlace</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1934" x2="2126" y1="208.8789" y2="208.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="69" x="1939" y="224.5039">INVITACION</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="182" x="1939" y="239.0234">RECUPERACION_CONTRASENA</text></g><!--MD5=[06e8b16fd5a2863a05d9bb81dc1d4557]
+class TipoAccionMasiva--><g id="elem_TipoAccionMasiva"><rect codeLine="204" fill="#FFFFFF" height="81.5586" id="TipoAccionMasiva" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="166" x="1564" y="423.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="166" x="1564" y="423.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="166" x="1564" y="450.8789"/><rect codeLine="204" fill="none" height="81.5586" id="TipoAccionMasiva" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="166" x="1564" y="423.3789"/><ellipse cx="1591.95" cy="438.3789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1594.3875,442.8789 L1588.9344,442.8789 L1588.9344,434.1289 L1594.3875,434.1289 L1594.3875,435.6602 L1590.6688,435.6602 L1590.6688,437.5352 L1594.0281,437.5352 L1594.0281,439.0664 L1590.6688,439.0664 L1590.6688,441.3477 L1594.3875,441.3477 L1594.3875,442.8789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="105" x="1608.05" y="442.7441">TipoAccionMasiva</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1565" x2="1729" y1="453.3789" y2="453.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="131" x="1570" y="469.0039">REASIGNAR_CLIENTES</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="130" x="1570" y="483.5234">ETIQUETAR_CLIENTES</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="154" x="1570" y="498.043">ASIGNAR_CENTRO_COSTE</text></g><!--MD5=[02886c3141a4db37c1218087a5bd53ad]
+class EstadoAccion--><g id="elem_EstadoAccion"><rect codeLine="209" fill="#FFFFFF" height="110.5977" id="EstadoAccion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="178" x="1775" y="408.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="178" x="1775" y="408.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="178" x="1775" y="436.3789"/><rect codeLine="209" fill="none" height="110.5977" id="EstadoAccion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="178" x="1775" y="408.8789"/><ellipse cx="1821.5" cy="423.8789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1823.9375,428.3789 L1818.4844,428.3789 L1818.4844,419.6289 L1823.9375,419.6289 L1823.9375,421.1602 L1820.2188,421.1602 L1820.2188,423.0352 L1823.5781,423.0352 L1823.5781,424.5664 L1820.2188,424.5664 L1820.2188,426.8477 L1823.9375,426.8477 L1823.9375,428.3789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="77" x="1840.5" y="428.2441">EstadoAccion</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1776" x2="1952" y1="438.8789" y2="438.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="166" x="1781" y="454.5039">PENDIENTE_CONFIRMACION</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="151" x="1781" y="469.0234">PENDIENTE_APROBACION</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="72" x="1781" y="483.543">EJECUTADA</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="74" x="1781" y="498.0625">CANCELADA</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="49" x="1781" y="512.582">FALLIDA</text></g><!--MD5=[701fbad3f32260505ffb99c1c57d7f12]
+class TipoTarea--><g id="elem_TipoTarea"><rect codeLine="216" fill="#FFFFFF" height="125.1172" id="TipoTarea" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="175" x="1998.5" y="401.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="175" x="1998.5" y="401.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="175" x="1998.5" y="429.3789"/><rect codeLine="216" fill="none" height="125.1172" id="TipoTarea" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="175" x="1998.5" y="401.8789"/><ellipse cx="2052.5" cy="416.8789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M2054.9375,421.3789 L2049.4844,421.3789 L2049.4844,412.6289 L2054.9375,412.6289 L2054.9375,414.1602 L2051.2188,414.1602 L2051.2188,416.0352 L2054.5781,416.0352 L2054.5781,417.5664 L2051.2188,417.5664 L2051.2188,419.8477 L2054.9375,419.8477 L2054.9375,421.3789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="59" x="2071.5" y="421.2441">TipoTarea</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1999.5" x2="2172.5" y1="431.8789" y2="431.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="163" x="2004.5" y="447.5039">GENERACION_RECURRENTE</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="103" x="2004.5" y="462.0234">RECORDATORIOS</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="114" x="2004.5" y="476.543">CONSULTA_PAGOS</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="136" x="2004.5" y="491.0625">EVALUACION_ALERTAS</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="104" x="2004.5" y="505.582">RESUMEN_DIARIO</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="112" x="2004.5" y="520.1016">COPIA_SEGURIDAD</text></g><!--MD5=[6a0a273990d940ee0b57f35b9c2327c4]
+class EstadoEjecucion--><g id="elem_EstadoEjecucion"><rect codeLine="224" fill="#FFFFFF" height="96.0781" id="EstadoEjecucion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="123" x="1585.5" y="610.3789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="123" x="1585.5" y="610.3789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="123" x="1585.5" y="637.8789"/><rect codeLine="224" fill="none" height="96.0781" id="EstadoEjecucion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="123" x="1585.5" y="610.3789"/><ellipse cx="1599.5" cy="625.3789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1601.9375,629.8789 L1596.4844,629.8789 L1596.4844,621.1289 L1601.9375,621.1289 L1601.9375,622.6602 L1598.2188,622.6602 L1598.2188,624.5352 L1601.5781,624.5352 L1601.5781,626.0664 L1598.2188,626.0664 L1598.2188,628.3477 L1601.9375,628.3477 L1601.9375,629.8789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="93" x="1612.5" y="629.7441">EstadoEjecucion</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1586.5" x2="1707.5" y1="640.3789" y2="640.3789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="64" x="1591.5" y="656.0039">EN_CURSO</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="84" x="1591.5" y="670.5234">COMPLETADA</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="87" x="1591.5" y="685.043">CON_ERRORES</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="91" x="1591.5" y="699.5625">INTERRUMPIDA</text></g><!--MD5=[9e1dc8a0cc180838e61ca6e44dfb39f9]
+class TipoSolicitudExterna--><g id="elem_TipoSolicitudExterna"><rect codeLine="230" fill="#FFFFFF" height="67.0391" id="TipoSolicitudExterna" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="181" x="1753.5" y="624.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="181" x="1753.5" y="624.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="181" x="1753.5" y="652.3789"/><rect codeLine="230" fill="none" height="67.0391" id="TipoSolicitudExterna" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="181" x="1753.5" y="624.8789"/><ellipse cx="1782.35" cy="639.8789" fill="#EB937F" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1784.7875,644.3789 L1779.3344,644.3789 L1779.3344,635.6289 L1784.7875,635.6289 L1784.7875,637.1602 L1781.0688,637.1602 L1781.0688,639.0352 L1784.4281,639.0352 L1784.4281,640.5664 L1781.0688,640.5664 L1781.0688,642.8477 L1784.7875,642.8477 L1784.7875,644.3789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="118" x="1798.65" y="644.2441">TipoSolicitudExterna</text><line style="stroke:#2C4F94;stroke-width:0.5;" x1="1754.5" x2="1933.5" y1="654.8789" y2="654.8789"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="86" x="1759.5" y="670.5039">BAJA_CLIENTE</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="169" x="1759.5" y="685.0234">CAMBIO_DATOS_CONTACTO</text></g><!--MD5=[20a748d5ee336a9a91751b0a3d4f0beb]
+class Cliente--><g id="elem_Cliente"><rect codeLine="238" fill="#FFFFFF" height="30" id="Cliente" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="70" x="2254" y="913.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="70" x="2254" y="913.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="70" x="2254" y="941.3789"/><rect codeLine="238" fill="none" height="30" id="Cliente" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="70" x="2254" y="913.8789"/><ellipse cx="2268" cy="928.8789" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M2269.8281,933.1289 Q2269.4219,933.332 2268.9688,933.4414 Q2268.5156,933.5508 2268.0313,933.5508 Q2266.25,933.5508 2265.3125,932.3945 Q2264.3906,931.2227 2264.3906,929.0195 Q2264.3906,926.8008 2265.3125,925.6445 Q2266.25,924.4727 2268.0313,924.4727 Q2268.5156,924.4727 2268.9688,924.582 Q2269.4375,924.6758 2269.8281,924.8945 L2269.8281,926.8164 Q2269.3906,926.4102 2268.9688,926.2227 Q2268.5469,926.0195 2268.1094,926.0195 Q2267.1563,926.0195 2266.6719,926.7852 Q2266.1875,927.5352 2266.1875,929.0195 Q2266.1875,930.4883 2266.6719,931.2383 Q2267.1563,931.9883 2268.1094,931.9883 Q2268.5469,931.9883 2268.9688,931.8008 Q2269.3906,931.6133 2269.8281,931.207 L2269.8281,933.1289 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="40" x="2281" y="933.2441">Cliente</text></g><!--MD5=[26eb5debe1c1ab58578ea1f94e672a36]
+class SolicitudAprobacion--><g id="elem_SolicitudAprobacion"><rect codeLine="242" fill="#FFFFFF" height="30" id="SolicitudAprobacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="144" x="1435" y="1398.8789"/><rect fill="#E6ECF7" height="30" rx="2.5" ry="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="144" x="1435" y="1398.8789"/><rect fill="#E6ECF7" height="2.5" style="stroke:#E6ECF7;stroke-width:0.5;" width="144" x="1435" y="1426.3789"/><rect codeLine="242" fill="none" height="30" id="SolicitudAprobacion" rx="2.5" ry="2.5" style="stroke:#2C4F94;stroke-width:0.5;" width="144" x="1435" y="1398.8789"/><ellipse cx="1449" cy="1413.8789" fill="#A9DCDF" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M1448.6094,1410.957 L1447.7969,1414.5352 L1449.4375,1414.5352 L1448.6094,1410.957 Z M1447.5625,1409.3789 L1449.6719,1409.3789 L1452.0313,1418.1289 L1450.2969,1418.1289 L1449.7656,1415.9727 L1447.4531,1415.9727 L1446.9219,1418.1289 L1445.1875,1418.1289 L1447.5625,1409.3789 Z " fill="#000000"/><text fill="#000000" font-family="Helvetica" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="114" x="1462" y="1418.2441">SolicitudAprobacion</text></g><!--MD5=[2a4ff518be1bc260d94e7bfceb5ecb60]
+link EventoAuditoria to GMN11--><g id="link_EventoAuditoria_GMN11"><path d="M1145.18,212.3789 C1150.07,212.3789 1153,212.3789 1153,212.3789 C1153,212.3789 1169.84,212.3789 1189.96,212.3789 " fill="none" id="EventoAuditoria-GMN11" style="stroke:#3B4456;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/></g><!--MD5=[dd92641fe11353ffc5d8f0be70be3ad1]
+link EjecucionTarea to GMN16--><g id="link_EjecucionTarea_GMN16"><path d="M482.06,212.3789 C496.8,212.3789 507.67,212.3789 507.67,212.3789 C507.67,212.3789 515.27,212.3789 526.38,212.3789 " fill="none" id="EjecucionTarea-GMN16" style="stroke:#3B4456;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/></g><!--MD5=[d7c94e7101a30e0411a8fcd4d0f4172a]
+link SolicitudExterna to GMN33--><g id="link_SolicitudExterna_GMN33"><path d="M1519.01,716.1789 C1534.28,724.5289 1545,730.3789 1545,730.3789 C1545,730.3789 1871,789.8789 1871,789.8789 C1871,789.8789 1972.61,872.8489 2018.25,910.1189 " fill="none" id="SolicitudExterna-GMN33" style="stroke:#3B4456;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/></g><!--MD5=[d050ae4e70ab458a41a0289ef97ead6e]
+reverse link Usuario to Sesion--><g id="link_Usuario_Sesion"><path codeLine="246" d="M1516.53,1066.5089 C1569.77,1106.5889 1614,1139.8789 1614,1139.8789 C1614,1139.8789 1623.57,1147.6889 1636.73,1158.4289 " fill="none" id="Usuario-backto-Sesion" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="1506.13,1058.6889,1508.5195,1065.4926,1515.7189,1065.9037,1513.3294,1059.1,1506.13,1058.6889" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="1513.9976" y="1061.8834">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1608.8692" y="1149.67">0..*</text></g><!--MD5=[d60e98610e7ed1c888a7e56a1e887761]
+reverse link Usuario to EnlaceTemporal--><g id="link_Usuario_EnlaceTemporal"><path codeLine="247" d="M1317.79,1081.1189 C1314.86,1106.8389 1311.97,1132.2889 1309.47,1154.2289 " fill="none" id="Usuario-backto-EnlaceTemporal" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="1319.27,1068.0889,1314.6165,1073.5975,1317.9115,1080.0118,1322.5651,1074.5032,1319.27,1068.0889" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="1313.273" y="1087.7154">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1289.1775" y="1143.3614">0..*</text></g><!--MD5=[98bdb2d1e81c8a6a59e47c11405c75a8]
+link Usuario to Permiso--><g id="link_Usuario_Permiso"><path codeLine="248" d="M1210.11,1068.0989 C1195.12,1084.6789 1185,1095.8789 1185,1095.8789 C1185,1095.8789 1157.94,1145.9589 1138.21,1182.4689 " fill="none" id="Usuario-to-Permiso" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="1135.6,1187.2989,1143.3911,1181.2741,1137.9722,1182.8975,1136.3488,1177.4786,1135.6,1187.2989" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="117" x="1186" y="1108.5039">permisosAdicionales</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1182.7332" y="1087.726">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1141.2925" y="1176.6038">0..*</text></g><!--MD5=[e2a0938e3840a4094bc4122c46df6634]
+link EventoAuditoria to Usuario--><g id="link_EventoAuditoria_Usuario"><path codeLine="249" d="M1054.6,289.6689 C1061.41,382.4689 1072,526.8789 1072,526.8789 C1072,526.8789 1165.98,670.1689 1241.58,785.4489 " fill="none" id="EventoAuditoria-to-Usuario" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="1244.49,789.8789,1242.9028,780.1588,1241.7495,785.6968,1236.2115,784.5435,1244.49,789.8789" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="30" x="1101" y="567.5039">autor</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1034.1944" y="309.0811">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="1219.7082" y="779.0693">0..1</text></g><!--MD5=[66fd8776784791b790954f84d14fa374]
+link EventoAuditoria to ClienteAPI--><g id="link_EventoAuditoria_ClienteAPI"><path codeLine="250" d="M1085.8,289.4089 C1104.96,328.9989 1127.89,376.3789 1144.98,411.6889 " fill="none" id="EventoAuditoria-to-ClienteAPI" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="1147.25,416.3789,1146.9159,406.5357,1145.0655,411.8814,1139.7198,410.0309,1147.25,416.3789" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="30" x="1125" y="370.5039">autor</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1068.3544" y="309.0603">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="1123.3117" y="405.6158">0..1</text></g><!--MD5=[f86a513096c3562106107f9e912171a4]
+link EventoAuditoria to Cliente--><g id="link_EventoAuditoria_Cliente"><path codeLine="251" d="M1126.06,289.4589 C1148.45,311.5689 1167,329.8789 1167,329.8789 C1167,329.8789 2193,401.8789 2193,401.8789 C2193,401.8789 2268.29,814.4189 2285.52,908.7989 " fill="none" id="EventoAuditoria-to-Cliente" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="2286.43,913.8089,2288.7482,904.2368,2285.5318,908.8902,2280.8783,905.6739,2286.43,913.8089" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="89" x="2225" y="567.5039">clienteAfectado</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1112.4517" y="309.1151">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="2289.0721" y="903.1188">0..1</text></g><!--MD5=[20584f4f79debde47982cc251bf84b58]
+link Usuario to AccionMasiva--><g id="link_Usuario_AccionMasiva"><path codeLine="252" d="M1416.97,1068.0889 C1431.51,1092.5889 1446.2,1117.3589 1459.37,1139.5789 " fill="none" id="Usuario-AccionMasiva" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#000000" points="1448.0405,1107.5791,1446.3714,1100.156,1442.327,1102.5547,1448.0405,1107.5791" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="42" x="1455" y="1108.5039">ejecuta</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="1416.316" y="1087.7154">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1434.0572" y="1129.0805">0..*</text></g><!--MD5=[9f300a33b86d918f2e4af0df6fc32392]
+link AccionMasiva to SolicitudAprobacion--><g id="link_AccionMasiva_SolicitudAprobacion"><path codeLine="253" d="M1507,1302.0489 C1507,1335.7389 1507,1372.0489 1507,1393.5989 " fill="none" id="AccionMasiva-to-SolicitudAprobacion" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="1507,1398.7489,1511,1389.7489,1507,1393.7489,1503,1389.7489,1507,1398.7489" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="132" x="1508" y="1346.5039">aprobacionAltoImpacto</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="1487.1539" y="1321.5427">0..1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="1484.3781" y="1388.0359">0..1</text></g><!--MD5=[77e8ac6c5ee1c384839b7eacdb36f2f9]
+reverse link EjecucionTarea to ErrorTecnico--><g id="link_EjecucionTarea_ErrorTecnico"><path codeLine="254" d="M481.25,303.6389 C494.46,318.8789 504,329.8789 504,329.8789 C504,329.8789 847,401.8789 847,401.8789 C847,401.8789 856.93,409.1489 869.95,418.6889 " fill="none" id="EjecucionTarea-backto-ErrorTecnico" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="472.6,293.6589,473.5052,300.813,480.4572,302.7289,479.5519,295.5749,472.6,293.6589" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="473.5761" y="313.1625">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="842.1789" y="410.5751">0..*</text></g><!--MD5=[35566b4943e15256c2093e8175b63304]
+reverse link ConfiguracionSistema to SerieFacturacion--><g id="link_ConfiguracionSistema_SerieFacturacion"><path codeLine="255" d="M231.3,341.2389 C245.27,363.4889 259.17,385.6289 271.22,404.8189 " fill="none" id="ConfiguracionSistema-backto-SerieFacturacion" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="224.21,329.9589,224.0123,337.1673,230.5901,340.1223,230.7878,332.9139,224.21,329.9589" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="223.5189" y="349.1988">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="17" x="248.4185" y="393.975">1..*</text></g><!--MD5=[0b47d6da10b4c9c01cd79a86246ec392]
+reverse link ConfiguracionSistema to Impuesto--><g id="link_ConfiguracionSistema_Impuesto"><path codeLine="256" d="M289.61,321.0289 C296.72,326.5589 301,329.8789 301,329.8789 C301,329.8789 436,401.8789 436,401.8789 C436,401.8789 450.31,411.5489 467.57,423.2189 " fill="none" id="ConfiguracionSistema-backto-Impuesto" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="279.19,312.9389,281.4717,319.7795,288.6636,320.3044,286.382,313.4638,279.19,312.9389" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="287.1539" y="316.2885">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="17" x="438.47" y="412.351">1..*</text></g><!--MD5=[6c42c56d284d2209001814dc3d73710a]
+reverse link ConfiguracionSistema to RangoTarifa--><g id="link_ConfiguracionSistema_RangoTarifa"><path codeLine="257" d="M289.61,321.0289 C296.72,326.5589 301,329.8789 301,329.8789 C301,329.8789 617,401.8789 617,401.8789 C617,401.8789 626.22,406.8089 639.45,413.8789 " fill="none" id="ConfiguracionSistema-backto-RangoTarifa" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="279.19,312.9389,281.4717,319.7795,288.6636,320.3044,286.382,313.4638,279.19,312.9389" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="287.1539" y="331.1417">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="17" x="614.3976" y="406.9586">1..*</text></g><!--MD5=[503b0c2b5b3291cd54758bf6dba82c24]
+reverse link ConfiguracionSistema to FuncionInteligente--><g id="link_ConfiguracionSistema_FuncionInteligente"><path codeLine="258" d="M119.39,342.9289 C112.26,372.1289 105.22,401.0089 99.81,423.1589 " fill="none" id="ConfiguracionSistema-backto-FuncionInteligente" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="122.55,329.9589,117.2401,334.838,119.7017,341.616,125.0115,336.7369,122.55,329.9589" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="115.664" y="349.1988">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="79.7773" y="412.5787">0..*</text></g><!--MD5=[ef1778aa5cfaf4b7ffafc3e6fbf607c5]
+link ClienteAPI to Permiso--><g id="link_ClienteAPI_Permiso"><path codeLine="259" d="M1165.78,512.5689 C1157.74,602.5589 1141,789.8789 1141,789.8789 C1141,789.8789 1125.64,1077.0789 1120.02,1182.0489 " fill="none" id="ClienteAPI-to-Permiso" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="1119.75,1187.2089,1124.2333,1178.4397,1120.0218,1182.2163,1116.2452,1178.0048,1119.75,1187.2089" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1143.7803" y="531.986">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1098.0484" y="1176.4953">0..*</text></g><!--MD5=[1273209be10d0088fedd8fd4ba210297]
+link ClienteAPI to SolicitudExterna--><g id="link_ClienteAPI_SolicitudExterna"><path codeLine="260" d="M1230.25,512.5889 C1263.4,538.5789 1304.84,571.0489 1340.07,598.6589 " fill="none" id="ClienteAPI-SolicitudExterna" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#000000" points="1307.1483,565.6061,1302.9033,559.292,1300.0027,562.993,1307.1483,565.6061" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="31" x="1313" y="567.5039">envia</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="1233.3711" y="532.0088">1</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1309.1883" y="587.7945">0..*</text></g><!--MD5=[9645b8db896acf1945a633d9e1a01f03]
+link SolicitudExterna to Cliente--><g id="link_SolicitudExterna_Cliente"><path codeLine="261" d="M1519.01,716.1789 C1534.28,724.5289 1545,730.3789 1545,730.3789 C1545,730.3789 2217,789.8789 2217,789.8789 C2217,789.8789 2259.29,870.9289 2279.05,908.7989 " fill="none" id="SolicitudExterna-to-Cliente" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="2281.57,913.6289,2280.9467,903.7998,2279.2542,909.1975,2273.8565,907.505,2281.57,913.6289" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="32" x="1882" y="758.5039">sobre</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1527.0263" y="717.4082">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="5" x="2272.7842" y="902.8701">1</text></g><!--MD5=[2339a82e482b6bd0a98bdb482304f820]
+link SolicitudExterna to Usuario--><g id="link_SolicitudExterna_Usuario"><path codeLine="262" d="M1397.54,717.9689 C1391.6,737.9189 1384.67,761.1889 1377.63,784.8089 " fill="none" id="SolicitudExterna-to-Usuario" style="stroke:#3B4456;stroke-width:1.0;"/><polygon fill="#3B4456" points="1376.12,789.8589,1382.5211,782.3739,1377.5463,785.0666,1374.8535,780.0918,1376.12,789.8589" style="stroke:#3B4456;stroke-width:1.0;"/><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="69" x="1391" y="758.5039">revisadaPor</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="20" x="1374.5366" y="736.9276">0..*</text><text fill="#000000" font-family="Helvetica" font-size="12" lengthAdjust="spacing" textLength="19" x="1358.948" y="779.0481">0..1</text></g><rect fill="#FFFFFF" height="43.8789" id="_legend" rx="7.5" ry="7.5" style="stroke:#000000;stroke-width:1.0;" width="540" x="1948" y="1461.8789"/><text fill="#000000" font-family="Helvetica" font-size="14" lengthAdjust="spacing" textLength="364" x="1953" y="1480.4414">Paquetes grises: clases detalladas en su propio bloque.</text><text fill="#000000" font-family="Helvetica" font-size="14" lengthAdjust="spacing" textLength="530" x="1953" y="1497.3809">Importes en Decimal (NFR-06). version: control de edición concurrente (NFR-13).</text><!--MD5=[ca6d5069fc7c85581bb3c07874886c22]
+@startuml bloque_F
+skinparam backgroundColor #FFFFFF
+skinparam linetype polyline
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4456
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  HeaderBackgroundColor #E6ECF7
+}
+skinparam enum {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A2A
+}
+skinparam interface {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9AA4B5
+  FontColor #3B4456
+}
+hide empty members
+title Bloque F - Administración, seguridad y sistema\n(CU-30 a CU-37)
+
+package "Bloque F - Administración, seguridad y sistema" {
+  class Usuario {
+    - id : Long
+    - nombre : String
+    - correoCorporativo : String
+    - hashContrasena : String
+    - rol : Rol
+    - estado : EstadoUsuario
+    - dobleFactorActivo : Boolean
+    - intentosFallidos : Integer
+    - bloqueadoHasta : FechaHora [0..1]
+    - version : Integer
+    + iniciarSesion(correo : String, contrasena : String) : Sesion
+    + solicitarRecuperacion(correo : String) : void
+    + cambiarRol(r : Rol) : void
+    + desactivar() : void
+    + tienePermiso(codigo : String) : Boolean
+    + puedeAcceder(c : Cliente) : Boolean
+  }
+  note right of Usuario
+    El rol es un atributo porque puede cambiar (FR-07).
+    Desactivar invalida las sesiones y conserva el rastro.
+    No hay autorregistro: alta solo por invitación.
+  end note
+  class Permiso {
+    - codigo : String
+    - descripcion : String
+  }
+  class Sesion {
+    - tokenHash : String
+    - inicio : FechaHora
+    - expiracion : FechaHora
+    - invalidada : Boolean
+    + estaVigente() : Boolean
+    + invalidar() : void
+  }
+  class EnlaceTemporal {
+    - tokenHash : String
+    - tipo : TipoEnlace
+    - expiracion : FechaHora
+    - usado : Boolean
+    + esValido() : Boolean
+    + consumir() : void
+  }
+  class EventoAuditoria {
+    - id : Long
+    - fechaHora : FechaHora
+    - accion : String
+    - tipoEntidad : String
+    - idEntidad : Long
+    - valoresAnteriores : String [0..1]
+    - valoresNuevos : String [0..1]
+    - idError : String [0..1]
+  }
+  note right of EventoAuditoria
+    Inmutable; solo lo consulta el Superadministrador (NFR-09).
+    Los eventos con cliente alimentan su línea temporal (FR-43).
+  end note
+  class AccionMasiva {
+    - tipo : TipoAccionMasiva
+    - numeroElementos : Integer
+    - altoImpacto : Boolean
+    - estado : EstadoAccion
+    - fecha : FechaHora
+    + mostrarAlcance() : Integer
+    + confirmar() : void
+    + ejecutar() : void
+  }
+  class EjecucionTarea {
+    - tipo : TipoTarea
+    - inicio : FechaHora
+    - fin : FechaHora [0..1]
+    - estado : EstadoEjecucion
+    - procesados : Integer
+    - errores : Integer
+    - resumen : String
+    + reanudar() : void
+  }
+  note right of EjecucionTarea
+    Las ejecuta el Planificador. Al reanudar no duplica
+    facturas ni avisos (NFR-15). Base de las métricas agregadas (FR-38).
+  end note
+  class ErrorTecnico {
+    - idError : String
+    - origen : String
+    - mensaje : String
+    - fecha : FechaHora
+  }
+  class ConfiguracionSistema {
+    - razonSocialEmisor : String
+    - idFiscalEmisor : String
+    - domicilioEmisor : String
+    - dominiosAutorizados : List<String>
+    - umbralDescuento : Decimal
+    - umbralImporteAlto : Decimal
+    - vencimientoGeneralDias : Integer
+    - diasRecordatorioPrevio : Integer = 3
+    - diasRecordatorioVencimiento : Integer = 5
+    - frecuenciaAvisoImpagoDias : Integer = 2
+    - diasConservacionInformes : Integer
+    + validar() : Boolean
+    + admiteCorreo(correo : String) : Boolean
+  }
+  class FuncionInteligente {
+    - codigo : String
+    - descripcion : String
+    - activa : Boolean
+  }
+  note bottom of FuncionInteligente
+    Opcional y desactivable; no salta permisos y toda
+    sugerencia económica requiere confirmación humana (BR-22).
+  end note
+  class SerieFacturacion {
+    - codigo : String
+    - prefijo : String
+    - ultimoNumero : Long
+    - activa : Boolean
+    + asignarSiguienteNumero() : String
+  }
+  class Impuesto {
+    - nombre : String
+    - porcentaje : Decimal
+    - activo : Boolean
+  }
+  class RangoTarifa {
+    - facturacionMinima : Decimal
+    - facturacionMaxima : Decimal
+    - precio : Decimal
+    - fechaEfecto : Fecha
+    - vigente : Boolean
+  }
+  note bottom of RangoTarifa
+    Un cambio de tabla crea rangos nuevos con su fecha de efecto;
+    no reescribe facturas emitidas (FR-17).
+  end note
+  class ClienteAPI {
+    - nombre : String
+    - hashCredencial : String
+    - activo : Boolean
+    - expiracion : FechaHora
+  }
+  class SolicitudExterna {
+    - tipo : TipoSolicitudExterna
+    - datos : String
+    - estado : EstadoAprobacion
+    - fecha : FechaHora
+    + marcarPendienteRevision() : void
+  }
+  note bottom of SolicitudExterna
+    Nunca modifica datos ni recurrencias directamente:
+    queda pendiente de revisión humana (BR-21).
+  end note
+  package "Enumeraciones" #FFFFFF {
+    enum Rol {
+    SUPERADMINISTRADOR
+    ADMINISTRADOR
+    USUARIO_OPERATIVO
+  }
+    enum EstadoUsuario {
+    INVITADO
+    ACTIVO
+    BLOQUEADO
+    DESACTIVADO
+  }
+    enum TipoEnlace {
+    INVITACION
+    RECUPERACION_CONTRASENA
+  }
+    enum TipoAccionMasiva {
+    REASIGNAR_CLIENTES
+    ETIQUETAR_CLIENTES
+    ASIGNAR_CENTRO_COSTE
+  }
+    enum EstadoAccion {
+    PENDIENTE_CONFIRMACION
+    PENDIENTE_APROBACION
+    EJECUTADA
+    CANCELADA
+    FALLIDA
+  }
+    enum TipoTarea {
+    GENERACION_RECURRENTE
+    RECORDATORIOS
+    CONSULTA_PAGOS
+    EVALUACION_ALERTAS
+    RESUMEN_DIARIO
+    COPIA_SEGURIDAD
+  }
+    enum EstadoEjecucion {
+    EN_CURSO
+    COMPLETADA
+    CON_ERRORES
+    INTERRUMPIDA
+  }
+    enum TipoSolicitudExterna {
+    BAJA_CLIENTE
+    CAMBIO_DATOS_CONTACTO
+  }
+  }
+}
+
+package "Bloque A - Clientes y contactos (referencia)" #F4F5F7 {
+  class Cliente
+}
+
+package "Bloque B - Suscripciones, tarifas y descuentos (referencia)" #F4F5F7 {
+  abstract class SolicitudAprobacion
+}
+
+' - - - - Relaciones - - - -
+Usuario "1" *- - "0..*" Sesion
+Usuario "1" *- - "0..*" EnlaceTemporal
+Usuario "0..*" - -> "0..*" Permiso : permisosAdicionales
+EventoAuditoria "0..*" - -> "0..1" Usuario : autor
+EventoAuditoria "0..*" - -> "0..1" ClienteAPI : autor
+EventoAuditoria "0..*" - -> "0..1" Cliente : clienteAfectado
+Usuario "1" - - "0..*" AccionMasiva : ejecuta >
+AccionMasiva "0..1" - -> "0..1" SolicitudAprobacion : aprobacionAltoImpacto
+EjecucionTarea "1" *- - "0..*" ErrorTecnico
+ConfiguracionSistema "1" *- - "1..*" SerieFacturacion
+ConfiguracionSistema "1" *- - "1..*" Impuesto
+ConfiguracionSistema "1" *- - "1..*" RangoTarifa
+ConfiguracionSistema "1" *- - "0..*" FuncionInteligente
+ClienteAPI "0..*" - -> "0..*" Permiso
+ClienteAPI "1" - - "0..*" SolicitudExterna : envia >
+SolicitudExterna "0..*" - -> "1" Cliente : sobre
+SolicitudExterna "0..*" - -> "0..1" Usuario : revisadaPor
+
+legend bottom right
+  Paquetes grises: clases detalladas en su propio bloque.
+  Importes en Decimal (NFR-06). version: control de edición concurrente (NFR-13).
+endlegend
+@enduml
+
+@startuml bloque_F
+skinparam backgroundColor #FFFFFF
+skinparam linetype polyline
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4456
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  HeaderBackgroundColor #E6ECF7
+}
+skinparam enum {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A2A
+}
+skinparam interface {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9AA4B5
+  FontColor #3B4456
+}
+hide empty members
+title Bloque F - Administración, seguridad y sistema\n(CU-30 a CU-37)
+
+package "Bloque F - Administración, seguridad y sistema" {
+  class Usuario {
+    - id : Long
+    - nombre : String
+    - correoCorporativo : String
+    - hashContrasena : String
+    - rol : Rol
+    - estado : EstadoUsuario
+    - dobleFactorActivo : Boolean
+    - intentosFallidos : Integer
+    - bloqueadoHasta : FechaHora [0..1]
+    - version : Integer
+    + iniciarSesion(correo : String, contrasena : String) : Sesion
+    + solicitarRecuperacion(correo : String) : void
+    + cambiarRol(r : Rol) : void
+    + desactivar() : void
+    + tienePermiso(codigo : String) : Boolean
+    + puedeAcceder(c : Cliente) : Boolean
+  }
+  note right of Usuario
+    El rol es un atributo porque puede cambiar (FR-07).
+    Desactivar invalida las sesiones y conserva el rastro.
+    No hay autorregistro: alta solo por invitación.
+  end note
+  class Permiso {
+    - codigo : String
+    - descripcion : String
+  }
+  class Sesion {
+    - tokenHash : String
+    - inicio : FechaHora
+    - expiracion : FechaHora
+    - invalidada : Boolean
+    + estaVigente() : Boolean
+    + invalidar() : void
+  }
+  class EnlaceTemporal {
+    - tokenHash : String
+    - tipo : TipoEnlace
+    - expiracion : FechaHora
+    - usado : Boolean
+    + esValido() : Boolean
+    + consumir() : void
+  }
+  class EventoAuditoria {
+    - id : Long
+    - fechaHora : FechaHora
+    - accion : String
+    - tipoEntidad : String
+    - idEntidad : Long
+    - valoresAnteriores : String [0..1]
+    - valoresNuevos : String [0..1]
+    - idError : String [0..1]
+  }
+  note right of EventoAuditoria
+    Inmutable; solo lo consulta el Superadministrador (NFR-09).
+    Los eventos con cliente alimentan su línea temporal (FR-43).
+  end note
+  class AccionMasiva {
+    - tipo : TipoAccionMasiva
+    - numeroElementos : Integer
+    - altoImpacto : Boolean
+    - estado : EstadoAccion
+    - fecha : FechaHora
+    + mostrarAlcance() : Integer
+    + confirmar() : void
+    + ejecutar() : void
+  }
+  class EjecucionTarea {
+    - tipo : TipoTarea
+    - inicio : FechaHora
+    - fin : FechaHora [0..1]
+    - estado : EstadoEjecucion
+    - procesados : Integer
+    - errores : Integer
+    - resumen : String
+    + reanudar() : void
+  }
+  note right of EjecucionTarea
+    Las ejecuta el Planificador. Al reanudar no duplica
+    facturas ni avisos (NFR-15). Base de las métricas agregadas (FR-38).
+  end note
+  class ErrorTecnico {
+    - idError : String
+    - origen : String
+    - mensaje : String
+    - fecha : FechaHora
+  }
+  class ConfiguracionSistema {
+    - razonSocialEmisor : String
+    - idFiscalEmisor : String
+    - domicilioEmisor : String
+    - dominiosAutorizados : List<String>
+    - umbralDescuento : Decimal
+    - umbralImporteAlto : Decimal
+    - vencimientoGeneralDias : Integer
+    - diasRecordatorioPrevio : Integer = 3
+    - diasRecordatorioVencimiento : Integer = 5
+    - frecuenciaAvisoImpagoDias : Integer = 2
+    - diasConservacionInformes : Integer
+    + validar() : Boolean
+    + admiteCorreo(correo : String) : Boolean
+  }
+  class FuncionInteligente {
+    - codigo : String
+    - descripcion : String
+    - activa : Boolean
+  }
+  note bottom of FuncionInteligente
+    Opcional y desactivable; no salta permisos y toda
+    sugerencia económica requiere confirmación humana (BR-22).
+  end note
+  class SerieFacturacion {
+    - codigo : String
+    - prefijo : String
+    - ultimoNumero : Long
+    - activa : Boolean
+    + asignarSiguienteNumero() : String
+  }
+  class Impuesto {
+    - nombre : String
+    - porcentaje : Decimal
+    - activo : Boolean
+  }
+  class RangoTarifa {
+    - facturacionMinima : Decimal
+    - facturacionMaxima : Decimal
+    - precio : Decimal
+    - fechaEfecto : Fecha
+    - vigente : Boolean
+  }
+  note bottom of RangoTarifa
+    Un cambio de tabla crea rangos nuevos con su fecha de efecto;
+    no reescribe facturas emitidas (FR-17).
+  end note
+  class ClienteAPI {
+    - nombre : String
+    - hashCredencial : String
+    - activo : Boolean
+    - expiracion : FechaHora
+  }
+  class SolicitudExterna {
+    - tipo : TipoSolicitudExterna
+    - datos : String
+    - estado : EstadoAprobacion
+    - fecha : FechaHora
+    + marcarPendienteRevision() : void
+  }
+  note bottom of SolicitudExterna
+    Nunca modifica datos ni recurrencias directamente:
+    queda pendiente de revisión humana (BR-21).
+  end note
+  package "Enumeraciones" #FFFFFF {
+    enum Rol {
+    SUPERADMINISTRADOR
+    ADMINISTRADOR
+    USUARIO_OPERATIVO
+  }
+    enum EstadoUsuario {
+    INVITADO
+    ACTIVO
+    BLOQUEADO
+    DESACTIVADO
+  }
+    enum TipoEnlace {
+    INVITACION
+    RECUPERACION_CONTRASENA
+  }
+    enum TipoAccionMasiva {
+    REASIGNAR_CLIENTES
+    ETIQUETAR_CLIENTES
+    ASIGNAR_CENTRO_COSTE
+  }
+    enum EstadoAccion {
+    PENDIENTE_CONFIRMACION
+    PENDIENTE_APROBACION
+    EJECUTADA
+    CANCELADA
+    FALLIDA
+  }
+    enum TipoTarea {
+    GENERACION_RECURRENTE
+    RECORDATORIOS
+    CONSULTA_PAGOS
+    EVALUACION_ALERTAS
+    RESUMEN_DIARIO
+    COPIA_SEGURIDAD
+  }
+    enum EstadoEjecucion {
+    EN_CURSO
+    COMPLETADA
+    CON_ERRORES
+    INTERRUMPIDA
+  }
+    enum TipoSolicitudExterna {
+    BAJA_CLIENTE
+    CAMBIO_DATOS_CONTACTO
+  }
+  }
+}
+
+package "Bloque A - Clientes y contactos (referencia)" #F4F5F7 {
+  class Cliente
+}
+
+package "Bloque B - Suscripciones, tarifas y descuentos (referencia)" #F4F5F7 {
+  abstract class SolicitudAprobacion
+}
+
+Usuario "1" *- - "0..*" Sesion
+Usuario "1" *- - "0..*" EnlaceTemporal
+Usuario "0..*" - -> "0..*" Permiso : permisosAdicionales
+EventoAuditoria "0..*" - -> "0..1" Usuario : autor
+EventoAuditoria "0..*" - -> "0..1" ClienteAPI : autor
+EventoAuditoria "0..*" - -> "0..1" Cliente : clienteAfectado
+Usuario "1" - - "0..*" AccionMasiva : ejecuta >
+AccionMasiva "0..1" - -> "0..1" SolicitudAprobacion : aprobacionAltoImpacto
+EjecucionTarea "1" *- - "0..*" ErrorTecnico
+ConfiguracionSistema "1" *- - "1..*" SerieFacturacion
+ConfiguracionSistema "1" *- - "1..*" Impuesto
+ConfiguracionSistema "1" *- - "1..*" RangoTarifa
+ConfiguracionSistema "1" *- - "0..*" FuncionInteligente
+ClienteAPI "0..*" - -> "0..*" Permiso
+ClienteAPI "1" - - "0..*" SolicitudExterna : envia >
+SolicitudExterna "0..*" - -> "1" Cliente : sobre
+SolicitudExterna "0..*" - -> "0..1" Usuario : revisadaPor
+
+legend bottom right
+  Paquetes grises: clases detalladas en su propio bloque.
+  Importes en Decimal (NFR-06). version: control de edición concurrente (NFR-13).
+endlegend
+@enduml
+
+PlantUML version 1.2022.12(Sun Oct 23 20:12:26 CEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

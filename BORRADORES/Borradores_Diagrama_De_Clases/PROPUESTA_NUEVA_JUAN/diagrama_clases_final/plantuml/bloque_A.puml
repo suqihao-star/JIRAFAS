@@ -1,0 +1,179 @@
+@startuml bloque_A
+skinparam backgroundColor #FFFFFF
+skinparam linetype polyline
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4456
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  HeaderBackgroundColor #E6ECF7
+}
+skinparam enum {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A2A
+}
+skinparam interface {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9AA4B5
+  FontColor #3B4456
+}
+hide empty members
+title Bloque A - Clientes y contactos\n(CU-01, CU-03, CU-04)
+
+package "Bloque A - Clientes y contactos" {
+  class Cliente {
+    - id : Long
+    - nombreComercial : String
+    - razonSocial : String
+    - identificadorFiscal : String [0..1]
+    - domicilioFiscal : String
+    - pais : String
+    - moneda : String
+    - idioma : String
+    - sector : String
+    - ubicacion : String
+    - etiquetas : List<String>
+    - estado : EstadoCliente
+    - condicionesPago : String
+    - vencimientoPactadoDias : Integer [0..1]
+    - refDocumentoFirmado : String [0..1]
+    - version : Integer
+    + datosFiscalesCompletos() : Boolean
+    + camposFiscalesPendientes() : List<String>
+    + buscarDuplicados() : List<Cliente>
+    + cambiarResponsable(u : Usuario) : void
+    + saldoPendiente() : Decimal
+  }
+  note right of Cliente
+    Sin identificador fiscal se guarda, pero no se factura (CU-01 FA-5).
+    Duplicados por identificador fiscal: avisa, nunca fusiona (FR-27).
+    El vencimiento pactado prevalece sobre el general (BR-16).
+    Dar de baja no borra el histórico (BR-19).
+  end note
+  class Contacto {
+    - id : Long
+    - nombre : String
+    - correo : String
+    - telefono : String [0..1]
+    - idioma : String
+    - consentimientoWhatsApp : Boolean
+    - activo : Boolean
+    - anonimizado : Boolean
+    + desactivar() : void
+    + anonimizar() : void
+  }
+  note right of Contacto
+    Anonimizar no invalida las facturas emitidas (NFR-18).
+  end note
+  class ClienteContacto {
+    - tipo : TipoContacto
+    - activo : Boolean
+  }
+  class Tarea {
+    - descripcion : String
+    - fechaPrevista : Fecha [0..1]
+    - completada : Boolean
+    - fechaCompletada : FechaHora [0..1]
+    - version : Integer
+    + completar(u : Usuario) : void
+  }
+  note bottom of Tarea
+    Asociada al cliente, no al usuario: pasa al nuevo responsable (FR-32).
+  end note
+  class ExcepcionComercial {
+    - tipo : TipoExcepcion
+    - fechaEfecto : Fecha
+    - motivo : String
+    + tieneEfectoEconomico() : Boolean
+    + estaAprobada() : Boolean
+  }
+  class ImportacionCSV {
+    - nombreArchivo : String
+    - fecha : FechaHora
+    - incluyeFacturasHistoricas : Boolean
+    - estado : EstadoImportacion
+    - creados : Integer
+    - actualizados : Integer
+    - rechazados : Integer
+    + validar() : Boolean
+    + previsualizar() : List<FilaImportacion>
+    + confirmar() : void
+  }
+  class FilaImportacion {
+    - numeroFila : Integer
+    - estado : EstadoFila
+    - motivo : String [0..1]
+    - posibleDuplicado : Boolean
+    - marcadaComoActualizacion : Boolean
+  }
+  package "Enumeraciones" #FFFFFF {
+    enum EstadoCliente {
+    PENDIENTE_ACTIVACION
+    ACTIVO
+    BAJA
+  }
+    enum TipoContacto {
+    CONTRATACION
+    FACTURACION
+    IMPAGOS
+  }
+    enum TipoExcepcion {
+    PRIMER_MES_GRATIS
+    SIN_PRORRATEO
+    INICIO_FUTURO
+  }
+    enum EstadoImportacion {
+    EN_PREVISUALIZACION
+    CONFIRMADA
+    CANCELADA
+    FALLIDA
+  }
+    enum EstadoFila {
+    VALIDA
+    CON_ERROR
+    EXCLUIDA
+  }
+  }
+}
+
+package "Bloque C - Facturación (referencia)" #F4F5F7 {
+  class Factura
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F5F7 {
+  class Usuario
+}
+
+' ---- Relaciones ----
+Cliente "0..*" --> "1" Usuario : responsableInterno
+Usuario "0..*" -- "0..*" Cliente : asignadoA >
+Usuario "0..*" -- "0..*" Cliente : favoritos >
+Cliente "1..*" -- "0..*" Contacto
+(Cliente, Contacto) .. ClienteContacto
+Cliente "1" *-- "0..*" Tarea
+Tarea "0..*" --> "0..1" Usuario : completadaPor
+Cliente "1" *-- "0..*" ExcepcionComercial
+Usuario "1" -- "0..*" ImportacionCSV : realiza >
+ImportacionCSV "1" *-- "1..*" FilaImportacion
+FilaImportacion "0..*" --> "0..1" Cliente : creaOActualiza
+FilaImportacion "0..*" --> "0..1" Factura : facturaMigrada
+
+legend bottom right
+  Paquetes grises: clases detalladas en su propio bloque.
+  Importes en Decimal (NFR-06). version: control de edición concurrente (NFR-13).
+endlegend
+@enduml

@@ -1,0 +1,160 @@
+@startuml bloque_B
+skinparam backgroundColor #FFFFFF
+skinparam linetype polyline
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4456
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  HeaderBackgroundColor #E6ECF7
+}
+skinparam enum {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A2A
+}
+skinparam interface {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9AA4B5
+  FontColor #3B4456
+}
+hide empty members
+title Bloque B - Suscripciones, tarifas y descuentos\n(CU-05 a CU-09)
+
+package "Bloque B - Suscripciones, tarifas y descuentos" {
+  class Suscripcion {
+    - id : Long
+    - planServicio : String
+    - fechaInicio : Fecha
+    - precioAcordado : Decimal
+    - estado : EstadoSuscripcion
+    - fechaBaja : Fecha [0..1]
+    - motivoBaja : String [0..1]
+    - version : Integer
+    + esFacturable(periodo : String) : Boolean
+    + calcularProrrateo(fechaAlta : Fecha) : Decimal
+    + pausar(motivo : String, inicio : Fecha, reactivacion : Fecha) : void
+    + reactivar() : void
+    + darDeBaja(fecha : Fecha, motivo : String) : void
+  }
+  note right of Suscripcion
+    Baja: no genera mensualidades, pero el recobro sigue (BR-14).
+    Pausa: el cliente sigue activo y conserva sus facturas (BR-15).
+    Prorrateo con una regla única y documentada (BR-17).
+  end note
+  class Pausa {
+    - motivo : String
+    - fechaInicio : Fecha
+    - fechaReactivacionPrevista : Fecha [0..1]
+    - fechaFin : Fecha [0..1]
+  }
+  abstract class SolicitudAprobacion {
+    - id : Long
+    - fechaSolicitud : FechaHora
+    - motivo : String
+    - estado : EstadoAprobacion
+    - nivelRequerido : NivelAprobacion
+    - motivoPendiente : String
+    - fechaResolucion : FechaHora [0..1]
+    - motivoResolucion : String [0..1]
+    - version : Integer
+    + aprobar(u : Usuario) : void
+    + rechazar(u : Usuario, motivo : String) : void
+    + escalar() : void
+    + pedirInformacion(texto : String) : void
+    # puedeResolver(u : Usuario) : Boolean
+  }
+  note right of SolicitudAprobacion
+    puedeResolver: rol suficiente y, en importes sensibles,
+    aprobador distinto del solicitante (BR-12).
+    motivoPendiente explica siempre por qué espera (FR-18).
+  end note
+  class SolicitudDescuento {
+    - tipo : TipoDescuento
+    - valor : Decimal
+    - vigenciaDesde : Fecha
+    - vigenciaHasta : Fecha [0..1]
+    + superaUmbral(umbral : Decimal) : Boolean
+  }
+  class RevisionTarifa {
+    - facturacionAnualVerificada : Decimal
+    - precioAnterior : Decimal
+    - precioNuevo : Decimal
+  }
+  class AprobacionExcepcion
+  package "Enumeraciones" #FFFFFF {
+    enum EstadoSuscripcion {
+    PENDIENTE_ACTIVACION
+    ACTIVA
+    PAUSADA
+    BAJA
+  }
+    enum EstadoAprobacion {
+    PENDIENTE
+    ESCALADA
+    INFO_SOLICITADA
+    APROBADA
+    RECHAZADA
+  }
+    enum NivelAprobacion {
+    ADMINISTRADOR
+    SUPERADMINISTRADOR
+  }
+    enum TipoDescuento {
+    PORCENTAJE
+    IMPORTE_FIJO
+  }
+  }
+}
+
+package "Bloque A - Clientes y contactos (referencia)" #F4F5F7 {
+  class Cliente
+  class ExcepcionComercial
+}
+
+package "Bloque C - Facturación (referencia)" #F4F5F7 {
+  class AprobacionFactura
+  class OperacionExcepcional
+  class Factura
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F5F7 {
+  class RangoTarifa
+  class Usuario
+}
+
+' ---- Relaciones ----
+Cliente "1" *-- "1..*" Suscripcion
+Suscripcion "1" *-- "0..*" Pausa
+Suscripcion "0..*" --> "1" RangoTarifa : tarifaAplicada
+SolicitudAprobacion <|-- SolicitudDescuento
+SolicitudAprobacion <|-- RevisionTarifa
+SolicitudAprobacion <|-- AprobacionExcepcion
+SolicitudAprobacion <|-- AprobacionFactura
+SolicitudAprobacion <|-- OperacionExcepcional
+SolicitudAprobacion "0..*" --> "1" Usuario : solicitante
+SolicitudAprobacion "0..*" --> "0..1" Usuario : aprobador
+SolicitudDescuento "0..*" --> "1" Suscripcion : sobre
+RevisionTarifa "0..*" --> "1" Suscripcion : sobre
+RevisionTarifa "0..*" --> "1" RangoTarifa : rangoPropuesto
+AprobacionExcepcion "0..1" --> "1" ExcepcionComercial : aprueba
+Suscripcion "0..1" -- "0..*" Factura : genera >
+
+legend bottom right
+  Paquetes grises: clases detalladas en su propio bloque.
+  Importes en Decimal (NFR-06). version: control de edición concurrente (NFR-13).
+endlegend
+@enduml

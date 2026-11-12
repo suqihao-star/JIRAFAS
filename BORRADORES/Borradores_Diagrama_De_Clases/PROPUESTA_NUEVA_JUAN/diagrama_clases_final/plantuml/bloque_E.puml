@@ -1,0 +1,226 @@
+@startuml bloque_E
+skinparam backgroundColor #FFFFFF
+skinparam linetype polyline
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4456
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  HeaderBackgroundColor #E6ECF7
+}
+skinparam enum {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A2A
+}
+skinparam interface {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9AA4B5
+  FontColor #3B4456
+}
+hide empty members
+title Bloque E - Seguimiento, consulta e informes\n(CU-23 a CU-29)
+
+package "Bloque E - Seguimiento, consulta e informes" {
+  class Notificacion {
+    - id : Long
+    - categoria : CategoriaNotificacion
+    - mensaje : String
+    - tipoReferencia : String
+    - idReferencia : Long
+    - requiereAccion : Boolean
+    - leida : Boolean
+    - resuelta : Boolean
+    - fecha : FechaHora
+    + marcarLeida() : void
+    + marcarResuelta(u : Usuario) : void
+  }
+  class PreferenciaNotificacion {
+    - categoria : CategoriaNotificacion
+    - enAplicacion : Boolean
+    - porEmail : Boolean
+    - enResumenDiario : Boolean
+  }
+  class ReglaAlerta {
+    - tipo : TipoReglaAlerta
+    - umbral : Decimal
+    - activa : Boolean
+    + evaluar() : List<Notificacion>
+  }
+  class Incidencia {
+    - id : Long
+    - tipo : TipoIncidencia
+    - descripcion : String
+    - estado : EstadoIncidencia
+    - prioridad : Prioridad
+    - fechaApertura : FechaHora
+    - fechaCierre : FechaHora [0..1]
+    + resolver(comentario : String) : void
+  }
+  class Comentario {
+    - texto : String
+    - fecha : FechaHora
+  }
+  note bottom of Comentario
+    Siempre interno: nunca se envía al cliente (BR-20).
+    Pertenece a una incidencia, una factura o un cliente {xor} (FR-35).
+  end note
+  class Adjunto {
+    - nombre : String
+    - tipoMime : String
+    - tamano : Long
+    - rutaAlmacen : String
+    + generarEnlaceTemporal() : String
+  }
+  class Informe {
+    - id : Long
+    - filtros : String
+    - formato : FormatoInforme
+    - estado : EstadoInforme
+    - fechaGeneracion : FechaHora
+    - fechaCaducidad : FechaHora
+    - rutaArchivo : String [0..1]
+    + generar() : void
+    + exportar() : String
+    + regenerar() : Informe
+    + estaCaducado() : Boolean
+  }
+  class ObjetivoFacturacion {
+    - periodo : String
+    - importe : Decimal
+    - moneda : String
+    + modificar(valor : Decimal, u : Usuario) : void
+  }
+  class CambioObjetivo {
+    - valorAnterior : Decimal
+    - valorNuevo : Decimal
+    - fecha : FechaHora
+  }
+  class CentroCoste {
+    - nombre : String
+    - tipo : TipoCentroCoste
+    - activo : Boolean
+    + desactivar() : void
+  }
+  class TipoCambio {
+    - monedaOrigen : String
+    - monedaBase : String
+    - tasa : Decimal
+    - fecha : Fecha
+  }
+  note bottom of TipoCambio
+    Solo para informes y dashboard: la factura
+    conserva su moneda original (RB-02).
+  end note
+  package "Enumeraciones" #FFFFFF {
+    enum CategoriaNotificacion {
+    PAGO
+    VENCIMIENTO
+    INCIDENCIA
+    APROBACION
+    TAREA
+    MENCION
+    ALERTA
+  }
+    enum TipoReglaAlerta {
+    DIAS_VENCIDA
+    IMPORTE_PENDIENTE_CLIENTE
+  }
+    enum TipoIncidencia {
+    ENTREGA
+    COBRO
+    FACTURACION
+    OTRA
+  }
+    enum EstadoIncidencia {
+    ABIERTA
+    EN_CURSO
+    RESUELTA
+    CERRADA
+  }
+    enum Prioridad {
+    BAJA
+    MEDIA
+    ALTA
+    URGENTE
+  }
+    enum FormatoInforme {
+    CSV
+    PDF
+  }
+    enum EstadoInforme {
+    PENDIENTE
+    PROCESANDO
+    COMPLETADO
+    CON_ERRORES
+    CADUCADO
+  }
+    enum TipoCentroCoste {
+    CENTRO_COSTE
+    PROYECTO
+  }
+  }
+}
+
+package "Bloque A - Clientes y contactos (referencia)" #F4F5F7 {
+  class Cliente
+}
+
+package "Bloque C - Facturación (referencia)" #F4F5F7 {
+  class Factura
+}
+
+package "Bloque D - Cobros y comunicaciones (referencia)" #F4F5F7 {
+  class Comunicacion
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F5F7 {
+  class Usuario
+}
+
+note as N0
+  El dashboard (CU-27) y la pantalla de trabajo diario (CU-29)
+  son vistas calculadas sobre Factura, MovimientoCobro,
+  Notificacion, Tarea y SolicitudAprobacion: no tienen clase propia.
+end note
+
+' ---- Relaciones ----
+Usuario "1" -- "0..*" Notificacion : recibe >
+Usuario "1" *-- "0..*" PreferenciaNotificacion
+ReglaAlerta "0..1" -- "0..*" Notificacion : genera >
+ReglaAlerta "0..*" --> "1" Usuario : creadaPor
+Cliente "1" -- "0..*" Incidencia
+Factura "0..1" -- "0..*" Incidencia
+Incidencia "0..1" --> "0..1" Comunicacion : reboteDe
+Incidencia "0..*" --> "1" Usuario : responsable
+Incidencia "1" *-- "0..*" Adjunto
+Incidencia "0..1" -- "0..*" Comentario
+Factura "0..1" -- "0..*" Comentario
+Cliente "0..1" -- "0..*" Comentario
+Comentario "0..*" --> "1" Usuario : autor
+Comentario "0..*" --> "0..*" Usuario : menciona
+Comentario "0..1" -- "0..*" Notificacion : genera >
+Usuario "1" -- "0..*" Informe : solicita >
+ObjetivoFacturacion "1" *-- "0..*" CambioObjetivo
+CambioObjetivo "0..*" --> "1" Usuario : autor
+Cliente "0..*" --> "0..1" CentroCoste
+Factura "0..*" --> "0..1" CentroCoste
+
+legend bottom right
+  Paquetes grises: clases detalladas en su propio bloque.
+  Importes en Decimal (NFR-06). version: control de edición concurrente (NFR-13).
+endlegend
+@enduml

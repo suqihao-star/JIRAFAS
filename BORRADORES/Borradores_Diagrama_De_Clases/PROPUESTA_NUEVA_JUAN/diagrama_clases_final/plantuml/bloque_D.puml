@@ -1,0 +1,202 @@
+@startuml bloque_D
+skinparam backgroundColor #FFFFFF
+skinparam linetype polyline
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4456
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  HeaderBackgroundColor #E6ECF7
+}
+skinparam enum {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A2A
+}
+skinparam interface {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9AA4B5
+  FontColor #3B4456
+}
+hide empty members
+title Bloque D - Cobros y comunicaciones\n(CU-16 a CU-22)
+
+package "Bloque D - Cobros y comunicaciones" {
+  interface SistemaPagos {
+    + consultarMovimientos(desde : FechaHora) : List<MovimientoCobro>
+    + recibirNotificacion(evento : String) : MovimientoCobro
+  }
+  class ConectorStripe
+  class ConectorRevolut
+  class MovimientoCobro {
+    - id : Long
+    - idEventoExterno : String
+    - importe : Decimal
+    - moneda : String
+    - fecha : FechaHora
+    - concepto : String
+    - referencia : String [0..1]
+    - estado : EstadoMovimiento
+    - fechaRegistro : FechaHora
+    + esDuplicado() : Boolean
+    + importeSinConciliar() : Decimal
+  }
+  note right of MovimientoCobro
+    Inmutable. idEventoExterno único: un evento
+    repetido no se contabiliza dos veces (FR-15).
+  end note
+  class Conciliacion {
+    - importeAplicado : Decimal
+    - fecha : FechaHora
+    - tipo : TipoConciliacion
+    - reglaAplicada : String [0..1]
+    - revertida : Boolean
+    - fechaReversion : FechaHora [0..1]
+    - motivoReversion : String [0..1]
+    + revertir(u : Usuario, motivo : String) : void
+  }
+  note bottom of Conciliacion
+    Revertir no borra: queda quién o qué regla concilió,
+    quién revirtió, cuándo y por qué (FR-22).
+  end note
+  class DiferenciaCobro {
+    - importe : Decimal
+    - tipo : TipoDiferencia
+    - revisada : Boolean
+  }
+  class Comunicacion {
+    - id : Long
+    - tipo : TipoComunicacion
+    - idioma : String
+    - estado : ResultadoEnvio
+    - fechaSolicitud : FechaHora
+    + enviar() : void
+    + reenviar(c : Contacto) : void
+  }
+  note right of Comunicacion
+    Un fallo o reenvío no deshace la emisión
+    ni crea otra factura u otro número (FR-46).
+  end note
+  class IntentoEnvio {
+    - numero : Integer
+    - canal : Canal
+    - destinatario : String
+    - fecha : FechaHora
+    - resultado : ResultadoEnvio
+    - detalleError : String [0..1]
+  }
+  interface CanalEnvio {
+    + enviar(i : IntentoEnvio) : ResultadoEnvio
+  }
+  class ProveedorCorreo
+  class SimuladorWhatsApp
+  class PlantillaComunicacion {
+    - tipo : TipoComunicacion
+    - idioma : String
+    + versionVigente() : VersionPlantilla
+  }
+  class VersionPlantilla {
+    - numero : Integer
+    - asunto : String
+    - contenido : String
+    - fecha : FechaHora
+    + previsualizar() : String
+    + variablesFaltantes() : List<String>
+  }
+  class SuspensionRecordatorios {
+    - motivo : String
+    - fechaRevision : Fecha
+    - activa : Boolean
+    - fechaReanudacion : FechaHora [0..1]
+    + reanudar() : void
+  }
+  package "Enumeraciones" #FFFFFF {
+    enum EstadoMovimiento {
+    PENDIENTE_CONCILIACION
+    CONCILIADO_PARCIAL
+    CONCILIADO
+  }
+    enum TipoConciliacion {
+    AUTOMATICA
+    MANUAL
+  }
+    enum TipoDiferencia {
+    PAGO_INSUFICIENTE
+    PAGO_EN_EXCESO
+  }
+    enum TipoComunicacion {
+    FACTURA
+    RECORDATORIO_PREVIO
+    RECORDATORIO_VENCIMIENTO
+    AVISO_IMPAGO
+    DISPUTA_RESUELTA
+  }
+    enum Canal {
+    EMAIL
+    WHATSAPP
+  }
+    enum ResultadoEnvio {
+    EN_COLA
+    ENVIADO
+    ENTREGADO
+    REBOTADO
+    FALLIDO
+  }
+  }
+}
+
+package "Bloque A - Clientes y contactos (referencia)" #F4F5F7 {
+  class Cliente
+  class Contacto
+}
+
+package "Bloque C - Facturación (referencia)" #F4F5F7 {
+  class Factura
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F5F7 {
+  class Usuario
+}
+
+' ---- Relaciones ----
+SistemaPagos <|.. ConectorStripe
+SistemaPagos <|.. ConectorRevolut
+SistemaPagos ..> MovimientoCobro : proporciona
+MovimientoCobro "0..*" -- "0..*" Factura
+(MovimientoCobro, Factura) .. Conciliacion
+Conciliacion "0..*" --> "0..1" Usuario : realizadaPor
+Conciliacion "0..*" --> "0..1" Usuario : revertidaPor
+MovimientoCobro "0..*" --> "0..1" Usuario : asignadoA
+DiferenciaCobro "0..*" --> "1" Factura
+DiferenciaCobro "0..*" --> "1" MovimientoCobro
+Cliente "1" -- "0..*" Comunicacion
+Factura "0..1" -- "0..*" Comunicacion
+Comunicacion "1" *-- "1..*" IntentoEnvio
+IntentoEnvio "0..*" --> "0..1" Contacto : destinatario
+Comunicacion "0..*" --> "1" VersionPlantilla : usa
+PlantillaComunicacion "1" *-- "1..*" VersionPlantilla
+VersionPlantilla "0..*" --> "1" Usuario : autor
+CanalEnvio <|.. ProveedorCorreo
+CanalEnvio <|.. SimuladorWhatsApp
+IntentoEnvio ..> CanalEnvio : seEnviaPor
+Factura "1" *-- "0..*" SuspensionRecordatorios
+SuspensionRecordatorios "0..*" --> "1" Usuario : suspendidaPor
+
+legend bottom right
+  Paquetes grises: clases detalladas en su propio bloque.
+  Importes en Decimal (NFR-06). version: control de edición concurrente (NFR-13).
+endlegend
+@enduml

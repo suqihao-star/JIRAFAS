@@ -1,0 +1,834 @@
+@startuml diagrama_clases_completo
+skinparam backgroundColor #FFFFFF
+skinparam linetype polyline
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4456
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  HeaderBackgroundColor #E6ECF7
+}
+skinparam enum {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A2A
+}
+skinparam interface {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9AA4B5
+  FontColor #3B4456
+}
+hide empty members
+left to right direction
+title Diagrama de clases completo - Sistema de facturación TurbineH
+
+package "Bloque A - Clientes y contactos" {
+  class Cliente {
+    - id : Long
+    - nombreComercial : String
+    - razonSocial : String
+    - identificadorFiscal : String [0..1]
+    - domicilioFiscal : String
+    - pais : String
+    - moneda : String
+    - idioma : String
+    - sector : String
+    - ubicacion : String
+    - etiquetas : List<String>
+    - estado : EstadoCliente
+    - condicionesPago : String
+    - vencimientoPactadoDias : Integer [0..1]
+    - refDocumentoFirmado : String [0..1]
+    - version : Integer
+    + datosFiscalesCompletos() : Boolean
+    + camposFiscalesPendientes() : List<String>
+    + buscarDuplicados() : List<Cliente>
+    + cambiarResponsable(u : Usuario) : void
+    + saldoPendiente() : Decimal
+  }
+  enum EstadoCliente {
+    PENDIENTE_ACTIVACION
+    ACTIVO
+    BAJA
+  }
+  class Contacto {
+    - id : Long
+    - nombre : String
+    - correo : String
+    - telefono : String [0..1]
+    - idioma : String
+    - consentimientoWhatsApp : Boolean
+    - activo : Boolean
+    - anonimizado : Boolean
+    + desactivar() : void
+    + anonimizar() : void
+  }
+  class ClienteContacto {
+    - tipo : TipoContacto
+    - activo : Boolean
+  }
+  enum TipoContacto {
+    CONTRATACION
+    FACTURACION
+    IMPAGOS
+  }
+  class Tarea {
+    - descripcion : String
+    - fechaPrevista : Fecha [0..1]
+    - completada : Boolean
+    - fechaCompletada : FechaHora [0..1]
+    - version : Integer
+    + completar(u : Usuario) : void
+  }
+  class ExcepcionComercial {
+    - tipo : TipoExcepcion
+    - fechaEfecto : Fecha
+    - motivo : String
+    + tieneEfectoEconomico() : Boolean
+    + estaAprobada() : Boolean
+  }
+  enum TipoExcepcion {
+    PRIMER_MES_GRATIS
+    SIN_PRORRATEO
+    INICIO_FUTURO
+  }
+  class ImportacionCSV {
+    - nombreArchivo : String
+    - fecha : FechaHora
+    - incluyeFacturasHistoricas : Boolean
+    - estado : EstadoImportacion
+    - creados : Integer
+    - actualizados : Integer
+    - rechazados : Integer
+    + validar() : Boolean
+    + previsualizar() : List<FilaImportacion>
+    + confirmar() : void
+  }
+  class FilaImportacion {
+    - numeroFila : Integer
+    - estado : EstadoFila
+    - motivo : String [0..1]
+    - posibleDuplicado : Boolean
+    - marcadaComoActualizacion : Boolean
+  }
+  enum EstadoImportacion {
+    EN_PREVISUALIZACION
+    CONFIRMADA
+    CANCELADA
+    FALLIDA
+  }
+  enum EstadoFila {
+    VALIDA
+    CON_ERROR
+    EXCLUIDA
+  }
+}
+
+package "Bloque B - Suscripciones, tarifas y descuentos" {
+  class Suscripcion {
+    - id : Long
+    - planServicio : String
+    - fechaInicio : Fecha
+    - precioAcordado : Decimal
+    - estado : EstadoSuscripcion
+    - fechaBaja : Fecha [0..1]
+    - motivoBaja : String [0..1]
+    - version : Integer
+    + esFacturable(periodo : String) : Boolean
+    + calcularProrrateo(fechaAlta : Fecha) : Decimal
+    + pausar(motivo : String, inicio : Fecha, reactivacion : Fecha) : void
+    + reactivar() : void
+    + darDeBaja(fecha : Fecha, motivo : String) : void
+  }
+  enum EstadoSuscripcion {
+    PENDIENTE_ACTIVACION
+    ACTIVA
+    PAUSADA
+    BAJA
+  }
+  class Pausa {
+    - motivo : String
+    - fechaInicio : Fecha
+    - fechaReactivacionPrevista : Fecha [0..1]
+    - fechaFin : Fecha [0..1]
+  }
+  abstract class SolicitudAprobacion {
+    - id : Long
+    - fechaSolicitud : FechaHora
+    - motivo : String
+    - estado : EstadoAprobacion
+    - nivelRequerido : NivelAprobacion
+    - motivoPendiente : String
+    - fechaResolucion : FechaHora [0..1]
+    - motivoResolucion : String [0..1]
+    - version : Integer
+    + aprobar(u : Usuario) : void
+    + rechazar(u : Usuario, motivo : String) : void
+    + escalar() : void
+    + pedirInformacion(texto : String) : void
+    # puedeResolver(u : Usuario) : Boolean
+  }
+  enum EstadoAprobacion {
+    PENDIENTE
+    ESCALADA
+    INFO_SOLICITADA
+    APROBADA
+    RECHAZADA
+  }
+  enum NivelAprobacion {
+    ADMINISTRADOR
+    SUPERADMINISTRADOR
+  }
+  class SolicitudDescuento {
+    - tipo : TipoDescuento
+    - valor : Decimal
+    - vigenciaDesde : Fecha
+    - vigenciaHasta : Fecha [0..1]
+    + superaUmbral(umbral : Decimal) : Boolean
+  }
+  enum TipoDescuento {
+    PORCENTAJE
+    IMPORTE_FIJO
+  }
+  class RevisionTarifa {
+    - facturacionAnualVerificada : Decimal
+    - precioAnterior : Decimal
+    - precioNuevo : Decimal
+  }
+  class AprobacionExcepcion
+}
+
+package "Bloque C - Facturación" {
+  class Factura {
+    - id : Long
+    - numero : String [0..1]
+    - tipo : TipoFactura
+    - estado : EstadoFactura
+    - fechaEmision : Fecha [0..1]
+    - fechaVencimiento : Fecha
+    - periodoFacturado : String [0..1]
+    - moneda : String
+    - baseImponible : Decimal
+    - totalImpuestos : Decimal
+    - total : Decimal
+    - importePendiente : Decimal
+    - migrada : Boolean
+    - rutaPDF : String [0..1]
+    - hashPDF : String [0..1]
+    - claveIdempotencia : String
+    - version : Integer
+    + calcularTotales() : void
+    + validarDatosFiscales() : List<String>
+    + detectarCausaRetencion() : CausaRetencion [0..1]
+    + emitir() : void
+    + generarPDF() : void
+    + estaBloqueada() : Boolean
+    + registrarCobro(importe : Decimal) : void
+  }
+  enum TipoFactura {
+    PUNTUAL
+    RECURRENTE
+  }
+  enum EstadoFactura {
+    BORRADOR
+    APROBADA
+    EMITIDA
+    ENVIADA
+    VENCIDA
+    PARCIALMENTE_CONCILIADA
+    PAGADA
+    ANULADA
+    RECTIFICADA
+    INCOBRABLE
+    CANCELADA
+  }
+  class FacturaRectificativa {
+    - motivoRectificacion : String
+  }
+  class LineaFactura {
+    - orden : Integer
+    - concepto : String
+    - cantidad : Decimal
+    - precioUnitario : Decimal
+    - descuento : Decimal
+    - importeImpuesto : Decimal
+    - subtotal : Decimal
+    + calcularSubtotal() : Decimal
+  }
+  class DatosFiscalesFactura {
+    - razonSocialCliente : String
+    - idFiscalCliente : String
+    - domicilioCliente : String
+    - paisCliente : String
+    - razonSocialEmisor : String
+    - idFiscalEmisor : String
+    - domicilioEmisor : String
+  }
+  class AprobacionFactura {
+    - causa : CausaRetencion
+  }
+  enum CausaRetencion {
+    IMPORTE_MODIFICADO
+    DESCUENTO_EXTRAORDINARIO
+    VENCIMIENTO_ATIPICO
+    IMPORTE_ALTO
+  }
+  class OperacionExcepcional {
+    - tipo : TipoOperacion
+    - importe : Decimal
+    + ejecutar() : void
+  }
+  enum TipoOperacion {
+    RECTIFICACION
+    ANULACION
+    INCOBRABLE
+    CANCELACION
+  }
+  class PeriodoFiscal {
+    - anio : Integer
+    - trimestre : Integer
+    - fechaPresentacion : Fecha
+    - cerrado : Boolean
+    - fechaReapertura : FechaHora [0..1]
+    - motivoReapertura : String [0..1]
+    + cerrar() : void
+    + reabrir(u : Usuario, motivo : String) : void
+  }
+  class FiltroGuardado {
+    - nombre : String
+    - ambito : String
+    - criterios : String
+    + aplicar() : void
+  }
+}
+
+package "Bloque D - Cobros y comunicaciones" {
+  interface SistemaPagos {
+    + consultarMovimientos(desde : FechaHora) : List<MovimientoCobro>
+    + recibirNotificacion(evento : String) : MovimientoCobro
+  }
+  class ConectorStripe
+  class ConectorRevolut
+  class MovimientoCobro {
+    - id : Long
+    - idEventoExterno : String
+    - importe : Decimal
+    - moneda : String
+    - fecha : FechaHora
+    - concepto : String
+    - referencia : String [0..1]
+    - estado : EstadoMovimiento
+    - fechaRegistro : FechaHora
+    + esDuplicado() : Boolean
+    + importeSinConciliar() : Decimal
+  }
+  enum EstadoMovimiento {
+    PENDIENTE_CONCILIACION
+    CONCILIADO_PARCIAL
+    CONCILIADO
+  }
+  class Conciliacion {
+    - importeAplicado : Decimal
+    - fecha : FechaHora
+    - tipo : TipoConciliacion
+    - reglaAplicada : String [0..1]
+    - revertida : Boolean
+    - fechaReversion : FechaHora [0..1]
+    - motivoReversion : String [0..1]
+    + revertir(u : Usuario, motivo : String) : void
+  }
+  enum TipoConciliacion {
+    AUTOMATICA
+    MANUAL
+  }
+  class DiferenciaCobro {
+    - importe : Decimal
+    - tipo : TipoDiferencia
+    - revisada : Boolean
+  }
+  enum TipoDiferencia {
+    PAGO_INSUFICIENTE
+    PAGO_EN_EXCESO
+  }
+  class Comunicacion {
+    - id : Long
+    - tipo : TipoComunicacion
+    - idioma : String
+    - estado : ResultadoEnvio
+    - fechaSolicitud : FechaHora
+    + enviar() : void
+    + reenviar(c : Contacto) : void
+  }
+  enum TipoComunicacion {
+    FACTURA
+    RECORDATORIO_PREVIO
+    RECORDATORIO_VENCIMIENTO
+    AVISO_IMPAGO
+    DISPUTA_RESUELTA
+  }
+  class IntentoEnvio {
+    - numero : Integer
+    - canal : Canal
+    - destinatario : String
+    - fecha : FechaHora
+    - resultado : ResultadoEnvio
+    - detalleError : String [0..1]
+  }
+  enum Canal {
+    EMAIL
+    WHATSAPP
+  }
+  enum ResultadoEnvio {
+    EN_COLA
+    ENVIADO
+    ENTREGADO
+    REBOTADO
+    FALLIDO
+  }
+  interface CanalEnvio {
+    + enviar(i : IntentoEnvio) : ResultadoEnvio
+  }
+  class ProveedorCorreo
+  class SimuladorWhatsApp
+  class PlantillaComunicacion {
+    - tipo : TipoComunicacion
+    - idioma : String
+    + versionVigente() : VersionPlantilla
+  }
+  class VersionPlantilla {
+    - numero : Integer
+    - asunto : String
+    - contenido : String
+    - fecha : FechaHora
+    + previsualizar() : String
+    + variablesFaltantes() : List<String>
+  }
+  class SuspensionRecordatorios {
+    - motivo : String
+    - fechaRevision : Fecha
+    - activa : Boolean
+    - fechaReanudacion : FechaHora [0..1]
+    + reanudar() : void
+  }
+}
+
+package "Bloque E - Seguimiento, consulta e informes" {
+  class Notificacion {
+    - id : Long
+    - categoria : CategoriaNotificacion
+    - mensaje : String
+    - tipoReferencia : String
+    - idReferencia : Long
+    - requiereAccion : Boolean
+    - leida : Boolean
+    - resuelta : Boolean
+    - fecha : FechaHora
+    + marcarLeida() : void
+    + marcarResuelta(u : Usuario) : void
+  }
+  enum CategoriaNotificacion {
+    PAGO
+    VENCIMIENTO
+    INCIDENCIA
+    APROBACION
+    TAREA
+    MENCION
+    ALERTA
+  }
+  class PreferenciaNotificacion {
+    - categoria : CategoriaNotificacion
+    - enAplicacion : Boolean
+    - porEmail : Boolean
+    - enResumenDiario : Boolean
+  }
+  class ReglaAlerta {
+    - tipo : TipoReglaAlerta
+    - umbral : Decimal
+    - activa : Boolean
+    + evaluar() : List<Notificacion>
+  }
+  enum TipoReglaAlerta {
+    DIAS_VENCIDA
+    IMPORTE_PENDIENTE_CLIENTE
+  }
+  class Incidencia {
+    - id : Long
+    - tipo : TipoIncidencia
+    - descripcion : String
+    - estado : EstadoIncidencia
+    - prioridad : Prioridad
+    - fechaApertura : FechaHora
+    - fechaCierre : FechaHora [0..1]
+    + resolver(comentario : String) : void
+  }
+  enum TipoIncidencia {
+    ENTREGA
+    COBRO
+    FACTURACION
+    OTRA
+  }
+  enum EstadoIncidencia {
+    ABIERTA
+    EN_CURSO
+    RESUELTA
+    CERRADA
+  }
+  enum Prioridad {
+    BAJA
+    MEDIA
+    ALTA
+    URGENTE
+  }
+  class Comentario {
+    - texto : String
+    - fecha : FechaHora
+  }
+  class Adjunto {
+    - nombre : String
+    - tipoMime : String
+    - tamano : Long
+    - rutaAlmacen : String
+    + generarEnlaceTemporal() : String
+  }
+  class Informe {
+    - id : Long
+    - filtros : String
+    - formato : FormatoInforme
+    - estado : EstadoInforme
+    - fechaGeneracion : FechaHora
+    - fechaCaducidad : FechaHora
+    - rutaArchivo : String [0..1]
+    + generar() : void
+    + exportar() : String
+    + regenerar() : Informe
+    + estaCaducado() : Boolean
+  }
+  enum FormatoInforme {
+    CSV
+    PDF
+  }
+  enum EstadoInforme {
+    PENDIENTE
+    PROCESANDO
+    COMPLETADO
+    CON_ERRORES
+    CADUCADO
+  }
+  class ObjetivoFacturacion {
+    - periodo : String
+    - importe : Decimal
+    - moneda : String
+    + modificar(valor : Decimal, u : Usuario) : void
+  }
+  class CambioObjetivo {
+    - valorAnterior : Decimal
+    - valorNuevo : Decimal
+    - fecha : FechaHora
+  }
+  class CentroCoste {
+    - nombre : String
+    - tipo : TipoCentroCoste
+    - activo : Boolean
+    + desactivar() : void
+  }
+  enum TipoCentroCoste {
+    CENTRO_COSTE
+    PROYECTO
+  }
+  class TipoCambio {
+    - monedaOrigen : String
+    - monedaBase : String
+    - tasa : Decimal
+    - fecha : Fecha
+  }
+}
+
+package "Bloque F - Administración, seguridad y sistema" {
+  class Usuario {
+    - id : Long
+    - nombre : String
+    - correoCorporativo : String
+    - hashContrasena : String
+    - rol : Rol
+    - estado : EstadoUsuario
+    - dobleFactorActivo : Boolean
+    - intentosFallidos : Integer
+    - bloqueadoHasta : FechaHora [0..1]
+    - version : Integer
+    + iniciarSesion(correo : String, contrasena : String) : Sesion
+    + solicitarRecuperacion(correo : String) : void
+    + cambiarRol(r : Rol) : void
+    + desactivar() : void
+    + tienePermiso(codigo : String) : Boolean
+    + puedeAcceder(c : Cliente) : Boolean
+  }
+  enum Rol {
+    SUPERADMINISTRADOR
+    ADMINISTRADOR
+    USUARIO_OPERATIVO
+  }
+  enum EstadoUsuario {
+    INVITADO
+    ACTIVO
+    BLOQUEADO
+    DESACTIVADO
+  }
+  class Permiso {
+    - codigo : String
+    - descripcion : String
+  }
+  class Sesion {
+    - tokenHash : String
+    - inicio : FechaHora
+    - expiracion : FechaHora
+    - invalidada : Boolean
+    + estaVigente() : Boolean
+    + invalidar() : void
+  }
+  class EnlaceTemporal {
+    - tokenHash : String
+    - tipo : TipoEnlace
+    - expiracion : FechaHora
+    - usado : Boolean
+    + esValido() : Boolean
+    + consumir() : void
+  }
+  enum TipoEnlace {
+    INVITACION
+    RECUPERACION_CONTRASENA
+  }
+  class EventoAuditoria {
+    - id : Long
+    - fechaHora : FechaHora
+    - accion : String
+    - tipoEntidad : String
+    - idEntidad : Long
+    - valoresAnteriores : String [0..1]
+    - valoresNuevos : String [0..1]
+    - idError : String [0..1]
+  }
+  class AccionMasiva {
+    - tipo : TipoAccionMasiva
+    - numeroElementos : Integer
+    - altoImpacto : Boolean
+    - estado : EstadoAccion
+    - fecha : FechaHora
+    + mostrarAlcance() : Integer
+    + confirmar() : void
+    + ejecutar() : void
+  }
+  enum TipoAccionMasiva {
+    REASIGNAR_CLIENTES
+    ETIQUETAR_CLIENTES
+    ASIGNAR_CENTRO_COSTE
+  }
+  enum EstadoAccion {
+    PENDIENTE_CONFIRMACION
+    PENDIENTE_APROBACION
+    EJECUTADA
+    CANCELADA
+    FALLIDA
+  }
+  class EjecucionTarea {
+    - tipo : TipoTarea
+    - inicio : FechaHora
+    - fin : FechaHora [0..1]
+    - estado : EstadoEjecucion
+    - procesados : Integer
+    - errores : Integer
+    - resumen : String
+    + reanudar() : void
+  }
+  enum TipoTarea {
+    GENERACION_RECURRENTE
+    RECORDATORIOS
+    CONSULTA_PAGOS
+    EVALUACION_ALERTAS
+    RESUMEN_DIARIO
+    COPIA_SEGURIDAD
+  }
+  enum EstadoEjecucion {
+    EN_CURSO
+    COMPLETADA
+    CON_ERRORES
+    INTERRUMPIDA
+  }
+  class ErrorTecnico {
+    - idError : String
+    - origen : String
+    - mensaje : String
+    - fecha : FechaHora
+  }
+  class ConfiguracionSistema {
+    - razonSocialEmisor : String
+    - idFiscalEmisor : String
+    - domicilioEmisor : String
+    - dominiosAutorizados : List<String>
+    - umbralDescuento : Decimal
+    - umbralImporteAlto : Decimal
+    - vencimientoGeneralDias : Integer
+    - diasRecordatorioPrevio : Integer = 3
+    - diasRecordatorioVencimiento : Integer = 5
+    - frecuenciaAvisoImpagoDias : Integer = 2
+    - diasConservacionInformes : Integer
+    + validar() : Boolean
+    + admiteCorreo(correo : String) : Boolean
+  }
+  class FuncionInteligente {
+    - codigo : String
+    - descripcion : String
+    - activa : Boolean
+  }
+  class SerieFacturacion {
+    - codigo : String
+    - prefijo : String
+    - ultimoNumero : Long
+    - activa : Boolean
+    + asignarSiguienteNumero() : String
+  }
+  class Impuesto {
+    - nombre : String
+    - porcentaje : Decimal
+    - activo : Boolean
+  }
+  class RangoTarifa {
+    - facturacionMinima : Decimal
+    - facturacionMaxima : Decimal
+    - precio : Decimal
+    - fechaEfecto : Fecha
+    - vigente : Boolean
+  }
+  class ClienteAPI {
+    - nombre : String
+    - hashCredencial : String
+    - activo : Boolean
+    - expiracion : FechaHora
+  }
+  class SolicitudExterna {
+    - tipo : TipoSolicitudExterna
+    - datos : String
+    - estado : EstadoAprobacion
+    - fecha : FechaHora
+    + marcarPendienteRevision() : void
+  }
+  enum TipoSolicitudExterna {
+    BAJA_CLIENTE
+    CAMBIO_DATOS_CONTACTO
+  }
+}
+
+Cliente "0..*" --> "1" Usuario : responsableInterno
+Usuario "0..*" -- "0..*" Cliente : asignadoA >
+Usuario "0..*" -- "0..*" Cliente : favoritos >
+Cliente "1..*" -- "0..*" Contacto
+(Cliente, Contacto) .. ClienteContacto
+Cliente "1" *-- "0..*" Tarea
+Tarea "0..*" --> "0..1" Usuario : completadaPor
+Cliente "1" *-- "0..*" ExcepcionComercial
+Usuario "1" -- "0..*" ImportacionCSV : realiza >
+ImportacionCSV "1" *-- "1..*" FilaImportacion
+FilaImportacion "0..*" --> "0..1" Cliente : creaOActualiza
+FilaImportacion "0..*" --> "0..1" Factura : facturaMigrada
+Cliente "1" *-- "1..*" Suscripcion
+Suscripcion "1" *-- "0..*" Pausa
+Suscripcion "0..*" --> "1" RangoTarifa : tarifaAplicada
+SolicitudAprobacion <|-- SolicitudDescuento
+SolicitudAprobacion <|-- RevisionTarifa
+SolicitudAprobacion <|-- AprobacionExcepcion
+SolicitudAprobacion <|-- AprobacionFactura
+SolicitudAprobacion <|-- OperacionExcepcional
+SolicitudAprobacion "0..*" --> "1" Usuario : solicitante
+SolicitudAprobacion "0..*" --> "0..1" Usuario : aprobador
+SolicitudDescuento "0..*" --> "1" Suscripcion : sobre
+RevisionTarifa "0..*" --> "1" Suscripcion : sobre
+RevisionTarifa "0..*" --> "1" RangoTarifa : rangoPropuesto
+AprobacionExcepcion "0..1" --> "1" ExcepcionComercial : aprueba
+Suscripcion "0..1" -- "0..*" Factura : genera >
+Cliente "1" -- "0..*" Factura
+Factura "1" *-- "1..*" LineaFactura
+LineaFactura "0..*" --> "1" Impuesto
+SerieFacturacion "1" -- "0..*" Factura : numera >
+Factura "1" *-- "0..1" DatosFiscalesFactura
+Factura <|-- FacturaRectificativa
+FacturaRectificativa "0..1" --> "1" Factura : rectificaA
+Factura "0..*" --> "1" PeriodoFiscal
+PeriodoFiscal "0..*" --> "0..1" Usuario : reabiertoPor
+Factura "0..*" --> "0..1" SolicitudDescuento : descuentoAplicado
+AprobacionFactura "0..*" --> "1" Factura : retiene
+OperacionExcepcional "0..*" --> "1" Factura : sobre
+OperacionExcepcional "0..1" --> "0..1" FacturaRectificativa : genera
+Factura "0..*" --> "0..1" EjecucionTarea : generadaEn
+Usuario "1" *-- "0..*" FiltroGuardado
+SistemaPagos <|.. ConectorStripe
+SistemaPagos <|.. ConectorRevolut
+SistemaPagos ..> MovimientoCobro : proporciona
+MovimientoCobro "0..*" -- "0..*" Factura
+(MovimientoCobro, Factura) .. Conciliacion
+Conciliacion "0..*" --> "0..1" Usuario : realizadaPor
+Conciliacion "0..*" --> "0..1" Usuario : revertidaPor
+MovimientoCobro "0..*" --> "0..1" Usuario : asignadoA
+DiferenciaCobro "0..*" --> "1" Factura
+DiferenciaCobro "0..*" --> "1" MovimientoCobro
+Cliente "1" -- "0..*" Comunicacion
+Factura "0..1" -- "0..*" Comunicacion
+Comunicacion "1" *-- "1..*" IntentoEnvio
+IntentoEnvio "0..*" --> "0..1" Contacto : destinatario
+Comunicacion "0..*" --> "1" VersionPlantilla : usa
+PlantillaComunicacion "1" *-- "1..*" VersionPlantilla
+VersionPlantilla "0..*" --> "1" Usuario : autor
+CanalEnvio <|.. ProveedorCorreo
+CanalEnvio <|.. SimuladorWhatsApp
+IntentoEnvio ..> CanalEnvio : seEnviaPor
+Factura "1" *-- "0..*" SuspensionRecordatorios
+SuspensionRecordatorios "0..*" --> "1" Usuario : suspendidaPor
+Usuario "1" -- "0..*" Notificacion : recibe >
+Usuario "1" *-- "0..*" PreferenciaNotificacion
+ReglaAlerta "0..1" -- "0..*" Notificacion : genera >
+ReglaAlerta "0..*" --> "1" Usuario : creadaPor
+Cliente "1" -- "0..*" Incidencia
+Factura "0..1" -- "0..*" Incidencia
+Incidencia "0..1" --> "0..1" Comunicacion : reboteDe
+Incidencia "0..*" --> "1" Usuario : responsable
+Incidencia "1" *-- "0..*" Adjunto
+Incidencia "0..1" -- "0..*" Comentario
+Factura "0..1" -- "0..*" Comentario
+Cliente "0..1" -- "0..*" Comentario
+Comentario "0..*" --> "1" Usuario : autor
+Comentario "0..*" --> "0..*" Usuario : menciona
+Comentario "0..1" -- "0..*" Notificacion : genera >
+Usuario "1" -- "0..*" Informe : solicita >
+ObjetivoFacturacion "1" *-- "0..*" CambioObjetivo
+CambioObjetivo "0..*" --> "1" Usuario : autor
+Cliente "0..*" --> "0..1" CentroCoste
+Factura "0..*" --> "0..1" CentroCoste
+Usuario "1" *-- "0..*" Sesion
+Usuario "1" *-- "0..*" EnlaceTemporal
+Usuario "0..*" --> "0..*" Permiso : permisosAdicionales
+EventoAuditoria "0..*" --> "0..1" Usuario : autor
+EventoAuditoria "0..*" --> "0..1" ClienteAPI : autor
+EventoAuditoria "0..*" --> "0..1" Cliente : clienteAfectado
+Usuario "1" -- "0..*" AccionMasiva : ejecuta >
+AccionMasiva "0..1" --> "0..1" SolicitudAprobacion : aprobacionAltoImpacto
+EjecucionTarea "1" *-- "0..*" ErrorTecnico
+ConfiguracionSistema "1" *-- "1..*" SerieFacturacion
+ConfiguracionSistema "1" *-- "1..*" Impuesto
+ConfiguracionSistema "1" *-- "1..*" RangoTarifa
+ConfiguracionSistema "1" *-- "0..*" FuncionInteligente
+ClienteAPI "0..*" --> "0..*" Permiso
+ClienteAPI "1" -- "0..*" SolicitudExterna : envia >
+SolicitudExterna "0..*" --> "1" Cliente : sobre
+SolicitudExterna "0..*" --> "0..1" Usuario : revisadaPor
+@enduml
