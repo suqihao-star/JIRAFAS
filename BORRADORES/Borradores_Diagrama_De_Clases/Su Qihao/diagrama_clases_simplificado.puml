@@ -1,0 +1,569 @@
+@startuml diagrama_clases_simplificado
+' =====================================================================
+'  DIAGRAMA UML DE CLASES (VERSIÓN SIMPLIFICADA)
+'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
+'  Basado en: Casos de uso (CU-01..CU-37), su especificación y requisitos.
+'  Estados y tipos como atributos String (valores indicados en notas).
+'  Importes con tipo Decimal (NFR-06).
+' =====================================================================
+
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 60
+skinparam ranksep 70
+hide empty members
+left to right direction
+title Diagrama de clases (simplificado) - Sistema de facturación de Turbine
+
+' =====================================================================
+package "Bloque F - Administración, seguridad y sistema" {
+
+  abstract class Usuario {
+    - id : Long
+    - nombre : String
+    - correoCorporativo : String
+    - hashContrasena : String
+    - estado : String
+    - dobleFactorActivo : Boolean
+    - intentosFallidos : Integer
+    - preferenciasNotificacion : String
+    + iniciarSesion(correo : String, contrasena : String) : Boolean
+    + recuperarContrasena(correo : String) : void
+    + cerrarSesion() : void
+  }
+  note right of Usuario
+    estado: INVITADO, ACTIVO, BLOQUEADO, DESACTIVADO
+    (CU-30, CU-31, CU-32)
+    El rol lo da la subclase. Cambiar de rol crea la cuenta
+    en la subclase destino conservando id e histórico.
+  end note
+
+  class UsuarioOperativo {
+    + emitirFactura(f : Factura) : void
+    + solicitarDescuento(c : Cliente) : SolicitudDescuento
+    + conciliarPago(m : MovimientoCobro, f : Factura) : Conciliacion
+  }
+
+  class Administrador {
+    - puedeGestionarUsuarios : Boolean
+    + invitarUsuario(correo : String, rol : String) : Usuario
+    + cambiarRol(u : Usuario, rol : String) : void
+    + aprobarDescuento(s : SolicitudDescuento) : void
+    + aprobarFacturaRetenida(f : Factura) : void
+  }
+
+  class Superadministrador {
+    + resolverEscalado(s : SolicitudDescuento) : void
+    + modificarConfiguracion(c : ConfiguracionSistema) : void
+    + consultarAuditoria() : List<EventoAuditoria>
+  }
+
+  class EventoAuditoria {
+    - fechaHora : FechaHora
+    - accion : String
+    - entidad : String
+    - idEntidad : Long
+    - valoresAnteriores : String
+    - valoresNuevos : String
+  }
+  note bottom of EventoAuditoria
+    Inmutable. También alimenta la
+    línea temporal del cliente (CU-01)
+  end note
+
+  class AccionMasiva {
+    - tipo : String
+    - numeroElementos : Integer
+    - altoImpacto : Boolean
+    - estado : String
+    + mostrarAlcance() : Integer
+    + confirmar() : void
+    + revertir() : void
+  }
+
+  class EjecucionTarea {
+    - tipo : String
+    - inicio : FechaHora
+    - fin : FechaHora
+    - estado : String
+    - resumen : String
+    - errores : String
+  }
+  note bottom of EjecucionTarea
+    tipo: GENERACION_RECURRENTE, RECORDATORIOS,
+    CONSULTA_PAGOS, RESUMEN_DIARIO, COPIA_SEGURIDAD
+    (ejecutadas por el Planificador; CU-33)
+  end note
+
+  class ConfiguracionSistema {
+    - datosEmisor : String
+    - umbralDescuento : Decimal
+    - umbralImporteAlto : Decimal
+    - vencimientoGeneralDias : Integer
+    ' PENDIENTE DE CONFIRMAR: FR-05 es ambiguo; el "5" podria ser el
+    ' vencimiento general por defecto y no el desfase del recordatorio
+    - diasRecordatorioPrevio : Integer = 3
+    - diasRecordatorioVencimiento : Integer = 5
+    - frecuenciaAvisoImpagoDias : Integer = 2
+    - funcionesInteligentesActivas : Boolean
+    + validar() : Boolean
+  }
+
+  class SerieFacturacion {
+    - codigo : String
+    - prefijo : String
+    - ultimoNumero : Integer
+    + asignarSiguienteNumero() : String
+  }
+
+  class Impuesto {
+    - nombre : String
+    - porcentaje : Decimal
+  }
+
+  class RangoTarifa {
+    - facturacionMinima : Decimal
+    - facturacionMaxima : Decimal
+    - precio : Decimal
+    - fechaEfecto : Fecha
+  }
+
+  class SolicitudExterna {
+    - sistemaOrigen : String
+    - tipo : String
+    - datos : String
+    - estado : String
+    - fecha : FechaHora
+    + marcarPendienteRevision() : void
+  }
+  note bottom of SolicitudExterna
+    Del Sistema externo vía API (CU-37).
+    Nunca modifica datos directamente (BR-21)
+  end note
+}
+
+' =====================================================================
+package "Bloque A - Clientes y contactos" {
+
+  class Cliente {
+    - id : Long
+    - nombreComercial : String
+    - razonSocial : String
+    - identificadorFiscal : String
+    - domicilioFiscal : String
+    - pais : String
+    - moneda : String
+    - sector : String
+    - idioma : String
+    - estado : String
+    - datosFiscalesIncompletos : Boolean
+    - planServicio : String
+    - tarifaAcordada : Decimal
+    - condicionesPago : String
+    - vencimientoPactadoDias : Integer
+    - fechaInicio : Fecha
+    - fechaBaja : Fecha
+    - etiquetas : List<String>
+    + darDeAlta() : void
+    + editar() : void
+    + comprobarDuplicado() : Boolean
+    + darDeBaja(fecha : Fecha) : void
+  }
+  note right of Cliente
+    estado: ACTIVO, PENDIENTE_ACTIVACION, BAJA
+    Incluye los datos de la ficha comercial (FR-03)
+    planServicio y tarifaAcordada = lo pactado en la ficha;
+    la Suscripcion guarda el plan y precio vigentes
+  end note
+
+  class Contacto {
+    - nombre : String
+    - correo : String
+    - idioma : String
+    - consentimientoWhatsApp : Boolean
+    - activo : Boolean
+    + anonimizar() : void
+  }
+
+  class ClienteContacto {
+    - tipos : List<String>
+  }
+  note bottom of ClienteContacto
+    tipos: CONTRATACION, FACTURACION, IMPAGOS (FR-04)
+    Un contacto puede tener varios tipos a la vez
+  end note
+
+  class Tarea {
+    - descripcion : String
+    - fechaPrevista : Fecha
+    - estado : String
+    + completar() : void
+  }
+
+  class ExcepcionComercial {
+    - tipo : String
+    - fechaInicioFutura : Fecha
+    - aprobada : Boolean
+  }
+
+  class ImportacionCSV {
+    - nombreArchivo : String
+    - fecha : FechaHora
+    - estado : String
+    - creados : Integer
+    - actualizados : Integer
+    - rechazados : Integer
+    + validar() : Boolean
+    + previsualizar() : List<FilaImportacion>
+    + confirmar() : void
+    + revertir() : void
+  }
+
+  class FilaImportacion {
+    - numeroFila : Integer
+    - estado : String
+    - motivoError : String
+  }
+}
+
+' =====================================================================
+package "Bloque B - Suscripciones, tarifas y descuentos" {
+
+  class Suscripcion {
+    - plan : String
+    - precioVigente : Decimal
+    - fechaInicio : Fecha
+    - estado : String
+    - motivoPausa : String
+    - fechaReactivacionPrevista : Fecha
+    - fechaBaja : Fecha
+    + pausar(motivo : String, reactivacion : Fecha) : void
+    + reactivar() : void
+    + darDeBaja(fecha : Fecha) : void
+    + esFacturable(periodo : String) : Boolean
+    + calcularProrrateo(fechaAlta : Fecha) : Decimal
+  }
+  note right of Suscripcion
+    estado: PENDIENTE_ACTIVACION, ACTIVA,
+    EN_PAUSA, CANCELADA
+  end note
+
+  class RevisionTarifaAnual {
+    - facturacionAnualVerificada : Decimal
+    - precioAnterior : Decimal
+    - precioNuevo : Decimal
+    - estado : String
+    - fechaAprobacion : FechaHora
+    - motivoRechazo : String
+    + aprobar() : void
+    + rechazar(motivo : String) : void
+  }
+
+  class SolicitudDescuento {
+    - tipo : String
+    - valor : Decimal
+    - motivo : String
+    - fechaVigencia : Fecha
+    - estado : String
+    - motivoDecision : String
+    + superaUmbral() : Boolean
+    + aprobar() : void
+    + rechazar(motivo : String) : void
+    + escalar() : void
+  }
+  note right of SolicitudDescuento
+    {solicitante <> aprobador} en importes
+    sensibles (BR-12)
+  end note
+}
+
+' =====================================================================
+package "Bloque C - Facturación" {
+
+  class Factura {
+    - numero : String
+    - tipo : String
+    - estado : String
+    - fechaEmision : Fecha
+    - fechaVencimiento : Fecha
+    - periodoFacturado : String
+    - moneda : String
+    - baseImponible : Decimal
+    - totalImpuestos : Decimal
+    - total : Decimal
+    - saldoPendiente : Decimal
+    - retenida : Boolean
+    - motivoRetencion : String
+    - rutaPDF : String
+    - migrada : Boolean
+    - documentoOriginal : String
+    + calcularTotales() : void
+    + validarDatosFiscales() : Boolean
+    + emitir() : void
+    + generarPDF() : void
+    + anular(motivo : String) : void
+  }
+  note right of Factura
+    estado: BORRADOR, APROBADA, EMITIDA, ENVIADA,
+    VENCIDA, PAGADA, PARCIALMENTE_CONCILIADA,
+    ANULADA, RECTIFICADA (FR-19)
+    Emitida = inmutable (BR-09)
+    migrada = importada como histórica, con su número
+    y documento original, sin notificar (FR-08)
+  end note
+
+  class FacturaRectificativa {
+    - motivoRectificacion : String
+  }
+
+  class LineaFactura {
+    - concepto : String
+    - cantidad : Decimal
+    - precioUnitario : Decimal
+    - descuento : Decimal
+    - porcentajeImpuesto : Decimal
+    - importeImpuesto : Decimal
+    - importe : Decimal
+    + calcularImporte() : Decimal
+  }
+  note bottom of LineaFactura
+    Copia (snapshot) del % de impuesto en el momento
+    de emitir: un cambio posterior en Impuesto no
+    altera facturas históricas (BR-09, BR-11)
+  end note
+
+  class FiltroGuardado {
+    - nombre : String
+    - criterios : String
+    + aplicar() : void
+  }
+
+  class OperacionExcepcional {
+    - tipo : String
+    - motivo : String
+    - estado : String
+    + aprobar() : void
+    + ejecutar() : void
+  }
+  note bottom of OperacionExcepcional
+    tipo: RECTIFICACION, ANULACION,
+    INCOBRABLE, CANCELACION (CU-14)
+    {solicitante <> aprobador} en importes
+    sensibles (BR-12)
+  end note
+}
+
+' =====================================================================
+package "Bloque D - Cobros y comunicaciones" {
+
+  interface SistemaPagos {
+    + consultarPagos(desde : FechaHora) : List<MovimientoCobro>
+  }
+
+  interface CanalEnvio {
+    + enviar(c : Comunicacion) : Boolean
+  }
+
+  class MovimientoCobro {
+    - idExterno : String
+    - importe : Decimal
+    - fecha : FechaHora
+    - moneda : String
+    - referencia : String
+    - estado : String
+    + esDuplicado() : Boolean
+  }
+
+  class Conciliacion {
+    - importeAsignado : Decimal
+    - tipo : String
+    - reglaAplicada : String
+    - fecha : FechaHora
+    - revertida : Boolean
+    - fechaReversion : FechaHora
+    - motivoReversion : String
+    + revertir(motivo : String) : void
+  }
+
+  class Comunicacion {
+    - tipo : String
+    - canal : String
+    - idioma : String
+    - correoDestino : String
+    - estado : String
+    - fechaEnvio : FechaHora
+    - intentos : Integer
+    + enviar() : void
+    + reenviar() : void
+  }
+  note bottom of Comunicacion
+    tipo: FACTURA, RECORDATORIO, AVISO_IMPAGO
+    estado: EN_COLA, ENVIADA, ENTREGADA, REBOTADA
+  end note
+
+  class PlantillaComunicacion {
+    - tipo : String
+    - idioma : String
+    - version : Integer
+    - asunto : String
+    - contenido : String
+    + previsualizar() : String
+  }
+
+  class SuspensionRecordatorios {
+    - motivo : String
+    - fechaRevision : Fecha
+    - activa : Boolean
+    + reanudar() : void
+  }
+}
+
+' =====================================================================
+package "Bloque E - Seguimiento, consulta e informes" {
+
+  class Notificacion {
+    - categoria : String
+    - mensaje : String
+    - fecha : FechaHora
+    - leida : Boolean
+    - requiereAccion : Boolean
+    - resuelta : Boolean
+    - entidadRelacionada : String
+    - idEntidadRelacionada : Long
+    + marcarLeida() : void
+    + marcarResuelta() : void
+  }
+
+  class ReglaAlerta {
+    - tipo : String
+    - umbral : Decimal
+    - activa : Boolean
+    + evaluar() : Boolean
+  }
+
+  class Incidencia {
+    - tipo : String
+    - descripcion : String
+    - estado : String
+    - prioridad : String
+    - fechaCreacion : FechaHora
+    - adjuntos : List<String>
+    + resolver() : void
+  }
+
+  class Comentario {
+    - texto : String
+    - fecha : FechaHora
+  }
+  note bottom of Comentario
+    Siempre interno: nunca se envía
+    al cliente (BR-20)
+  end note
+
+  class Informe {
+    - filtros : String
+    - formato : String
+    - fechaGeneracion : FechaHora
+    - fechaCaducidad : FechaHora
+    + generar() : void
+    + exportar() : String
+    + regenerar() : void
+  }
+
+  class ObjetivoFacturacion {
+    - periodo : String
+    - valor : Decimal
+    + modificar(valor : Decimal) : void
+  }
+
+  class CentroCoste {
+    - nombre : String
+    - tipo : String
+    - activo : Boolean
+  }
+}
+
+' =====================================================================
+' RELACIONES
+' =====================================================================
+
+' ---- Generalizaciones y realizaciones ----
+Usuario <|-- UsuarioOperativo
+UsuarioOperativo <|-- Administrador
+Administrador <|-- Superadministrador
+Factura <|-- FacturaRectificativa
+
+' ---- Bloque F ----
+EventoAuditoria "0..*" --> "0..1" Usuario : autor
+Administrador "1" -- "0..*" AccionMasiva : ejecuta >
+ConfiguracionSistema "1" *-- "1..*" SerieFacturacion
+ConfiguracionSistema "1" *-- "1..*" Impuesto
+ConfiguracionSistema "1" *-- "1..*" RangoTarifa
+SolicitudExterna "0..*" --> "1" Cliente : sobre
+
+' ---- Bloque A ----
+Cliente "0..*" --> "1" UsuarioOperativo : responsableInterno
+Cliente "1..*" -- "1..*" Contacto
+(Cliente, Contacto) .. ClienteContacto
+Cliente "1" *-- "0..*" Tarea
+Tarea "0..*" --> "0..1" Usuario : completadaPor
+Usuario "0..*" -- "0..*" Cliente : favoritos >
+Cliente "1" *-- "0..*" ExcepcionComercial
+UsuarioOperativo "1" -- "0..*" ImportacionCSV : realiza >
+ImportacionCSV "1" *-- "1..*" FilaImportacion
+ImportacionCSV "0..1" -- "0..*" Cliente : crea/actualiza >
+
+' ---- Bloque B ----
+Cliente "1" *-- "0..*" Suscripcion
+Cliente "1" -- "0..*" RevisionTarifaAnual
+RevisionTarifaAnual "0..*" --> "0..1" RangoTarifa : rangoPropuesto
+RevisionTarifaAnual "0..*" --> "0..1" Administrador : aprobadaPor
+ExcepcionComercial "0..1" -- "0..1" SolicitudDescuento : se aprueba mediante >
+SolicitudDescuento "0..*" --> "1" Cliente : para
+SolicitudDescuento "0..*" --> "1" UsuarioOperativo : solicitante
+SolicitudDescuento "0..*" --> "0..1" Administrador : aprobador
+Suscripcion "0..1" -- "0..*" Factura : genera >
+
+' ---- Bloque C ----
+Cliente "1" -- "0..*" Factura
+Factura "1" *-- "1..*" LineaFactura
+LineaFactura "0..*" --> "1" Impuesto
+SerieFacturacion "1" -- "0..*" Factura : numera >
+FacturaRectificativa "0..*" --> "1" Factura : rectificaA
+Factura "0..*" --> "0..1" Administrador : aprobadaPor
+Factura "1" -- "0..*" OperacionExcepcional
+OperacionExcepcional "0..*" --> "1" Administrador : solicitante
+OperacionExcepcional "0..*" --> "0..1" Administrador : aprobador
+Factura "0..*" --> "0..1" SolicitudDescuento : descuentoAplicado
+Usuario "1" *-- "0..*" FiltroGuardado
+
+' ---- Bloque D ----
+SistemaPagos ..> MovimientoCobro : notifica
+MovimientoCobro "1" -- "0..*" Conciliacion
+Factura "1" -- "0..*" Conciliacion
+Conciliacion "0..*" --> "0..1" Usuario : realizadaPor
+Conciliacion "0..*" --> "0..1" Usuario : revertidaPor
+MovimientoCobro "0..*" --> "0..1" Usuario : asignadoA
+Factura "0..1" -- "0..*" Comunicacion
+Comunicacion "0..*" --> "1" Contacto : destinatario
+Comunicacion "0..*" --> "1" PlantillaComunicacion : usa
+Comunicacion ..> CanalEnvio : se envía por
+Factura "1" -- "0..*" SuspensionRecordatorios
+
+' ---- Bloque E ----
+Administrador "1" -- "0..*" ObjetivoFacturacion : gestiona >
+Comunicacion "0..1" -- "0..*" Incidencia : rebote origina >
+Usuario "1" -- "0..*" Notificacion : recibe >
+ReglaAlerta "0..1" -- "0..*" Notificacion : genera >
+Cliente "1" -- "0..*" Incidencia
+Factura "0..1" -- "0..*" Incidencia
+Incidencia "0..*" --> "1" Usuario : responsable
+Incidencia "1" *-- "0..*" Comentario
+Comentario "0..*" --> "1" Usuario : autor
+Comentario "0..*" --> "0..*" Usuario : menciona
+Comentario "0..1" -- "0..*" Notificacion : genera >
+Usuario "1" -- "0..*" Informe : solicita >
+Factura "0..*" --> "0..1" CentroCoste
+Cliente "0..*" --> "0..1" CentroCoste
+
+@enduml
