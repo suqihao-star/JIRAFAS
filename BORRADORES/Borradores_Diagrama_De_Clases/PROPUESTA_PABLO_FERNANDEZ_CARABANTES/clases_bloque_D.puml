@@ -1,0 +1,99 @@
+@startuml clases_bloque_D
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 60
+skinparam ranksep 70
+hide empty members
+title Diagrama de clases · Bloque D - Cobros y comunicaciones\n(las clases grises pertenecen a otro bloque; su detalle está en su diagrama)
+skinparam class {
+  BackgroundColor<<otroBloque>> #EEEEEE
+  BorderColor<<otroBloque>> #999999
+  FontColor<<otroBloque>> #777777
+}
+hide <<otroBloque>> stereotype
+hide <<otroBloque>> members
+
+package "Bloque D - Cobros y comunicaciones" {
+
+  interface SistemaPagos {
+    + consultarPagos(desde : FechaHora) : List<MovimientoCobro>
+  }
+
+  interface CanalEnvio {
+    + enviar(c : Comunicacion) : Boolean
+  }
+
+  class MovimientoCobro {
+    - fuente : String
+    - idExterno : String
+    - importe : Decimal
+    - fecha : FechaHora
+    - moneda : String
+    - concepto : String
+    - referencia : String
+    - estado : String
+    + esDuplicado() : Boolean
+  }
+
+  class Conciliacion {
+    - importeAsignado : Decimal
+    - tipo : String
+    - regla : String
+    - fecha : FechaHora
+    - revertida : Boolean
+    - fechaReversion : FechaHora
+    - motivoReversion : String
+    + revertir(motivo : String) : void
+  }
+
+  class Comunicacion {
+    - tipo : String
+    - canal : String
+    - idioma : String
+    - estado : String
+    - fechaEnvio : FechaHora
+    - numeroIntento : Integer
+    + enviar() : void
+    + reenviar() : void
+  }
+  note bottom of Comunicacion
+    tipo: FACTURA, RECORDATORIO_PREVIO, VENCIMIENTO,
+    AVISO_IMPAGO, DISPUTA_RESUELTA (FR-26)
+    estado: EN_COLA, ENVIADA, ENTREGADA, REBOTADA, FALLIDA
+    Cada intento, reenvío o canal es una Comunicacion:
+    el historial queda en la factura (FR-46, CU-18)
+  end note
+
+  class PlantillaComunicacion {
+    - tipo : String
+    - idioma : String
+    - version : Integer
+    - asunto : String
+    - contenido : String
+    + previsualizar() : String
+  }
+
+  class SuspensionRecordatorios {
+    - motivo : String
+    - fechaRevision : Fecha
+    - activa : Boolean
+    + reanudar() : void
+  }
+}
+
+class Factura <<otroBloque>>
+abstract class Usuario <<otroBloque>>
+class Contacto <<otroBloque>>
+
+SistemaPagos ..> MovimientoCobro : notifica
+MovimientoCobro "1" -- "0..*" Conciliacion
+Factura "1" -- "0..*" Conciliacion
+Conciliacion "0..*" --> "0..1" Usuario : realizadaPor
+Conciliacion "0..*" --> "0..1" Usuario : revertidaPor
+MovimientoCobro "0..*" --> "0..1" Usuario : asignadoA
+Factura "0..1" -- "0..*" Comunicacion
+Comunicacion "0..*" --> "0..1" Contacto : destinatario
+Comunicacion "0..*" --> "1" PlantillaComunicacion : usa
+Comunicacion ..> CanalEnvio : se envía por
+Factura "1" -- "0..*" SuspensionRecordatorios
+@enduml
