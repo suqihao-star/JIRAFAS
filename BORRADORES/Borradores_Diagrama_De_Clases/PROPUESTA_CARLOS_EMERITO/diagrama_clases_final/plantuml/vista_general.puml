@@ -1,0 +1,152 @@
+@startuml vista_general
+skinparam backgroundColor #FFFFFF
+skinparam linetype polyline
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #3B4456
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+  HeaderBackgroundColor #E6ECF7
+}
+skinparam enum {
+  BackgroundColor #FBF6EA
+  BorderColor #8A6A2A
+}
+skinparam interface {
+  BackgroundColor #FFFFFF
+  BorderColor #2C4F94
+}
+skinparam note {
+  BackgroundColor #FFFDF3
+  BorderColor #C9B98A
+  FontSize 11
+}
+skinparam package {
+  BorderColor #9AA4B5
+  FontColor #3B4456
+}
+hide empty members
+title Vista general - clases principales de cada bloque
+
+package "Bloque A - Clientes y contactos" {
+  class Cliente
+  class Contacto
+  class ClienteContacto
+  class Tarea
+  class ExcepcionComercial
+  class ImportacionCSV
+}
+
+package "Bloque B - Suscripciones, tarifas y descuentos" {
+  class Suscripcion
+  class Pausa
+  abstract class SolicitudAprobacion
+  class SolicitudDescuento
+  class RevisionTarifa
+}
+
+package "Bloque C - Facturación" {
+  class Factura
+  class FacturaRectificativa
+  class LineaFactura
+  class ConceptoFacturable
+  class PeriodoFiscal
+  class AprobacionFactura
+  class OperacionExcepcional
+}
+
+package "Bloque D - Cobros y comunicaciones" {
+  interface SistemaPagos
+  class MovimientoCobro
+  class Conciliacion
+  class Comunicacion
+  class IntentoEnvio
+  class VersionPlantilla
+  class SuspensionRecordatorios
+}
+
+package "Bloque E - Seguimiento, consulta e informes" {
+  class Notificacion
+  class Incidencia
+  class Comentario
+  class Informe
+  class CentroCoste
+}
+
+package "Bloque F - Administración, seguridad y sistema" {
+  class Usuario
+  class EventoAuditoria
+  class ConfiguracionSistema
+  class SerieFacturacion
+  class Impuesto
+  class RangoTarifa
+  class ClienteAPI
+}
+
+' ---- Relaciones ----
+Cliente --> Usuario : responsableInterno
+Usuario -- Cliente : asignadoA
+Cliente -- Contacto
+(Cliente, Contacto) .. ClienteContacto
+Cliente *-- Tarea
+Cliente *-- ExcepcionComercial
+Usuario -- ImportacionCSV : realiza
+Cliente *-- Suscripcion
+Suscripcion *-- Pausa
+Suscripcion --> RangoTarifa
+SolicitudAprobacion <|-- SolicitudDescuento
+SolicitudAprobacion <|-- RevisionTarifa
+SolicitudAprobacion <|-- AprobacionFactura
+SolicitudAprobacion <|-- OperacionExcepcional
+SolicitudAprobacion --> Usuario : solicitante
+SolicitudDescuento --> Suscripcion
+RevisionTarifa --> RangoTarifa
+Suscripcion -- Factura
+Cliente -- Factura
+Factura *-- LineaFactura
+LineaFactura --> Impuesto
+LineaFactura --> ConceptoFacturable
+Factura <|-- FacturaRectificativa
+FacturaRectificativa --> Factura : rectificaA
+Factura --> PeriodoFiscal
+Factura --> SolicitudDescuento : descuentoAplicado
+AprobacionFactura --> Factura : retiene
+OperacionExcepcional --> Factura : sobre
+SerieFacturacion -- Factura : numera
+SistemaPagos ..> MovimientoCobro
+MovimientoCobro -- Factura
+(MovimientoCobro, Factura) .. Conciliacion
+Cliente -- Comunicacion
+Factura -- Comunicacion
+Comunicacion *-- IntentoEnvio
+Comunicacion --> VersionPlantilla
+Factura *-- SuspensionRecordatorios
+Usuario -- Notificacion : recibe
+Cliente -- Incidencia
+Factura -- Incidencia
+Incidencia --> Comunicacion : reboteDe
+Incidencia -- Comentario
+Cliente -- Comentario
+Comentario --> Usuario : autor
+Usuario -- Informe : solicita
+Cliente --> CentroCoste
+Factura --> CentroCoste
+EventoAuditoria --> Usuario : autor
+EventoAuditoria --> Cliente : clienteAfectado
+ConfiguracionSistema *-- SerieFacturacion
+ConfiguracionSistema *-- Impuesto
+ConfiguracionSistema *-- RangoTarifa
+ClienteAPI ..> Cliente : consulta
+ClienteAPI ..> Factura : consulta
+
+legend bottom right
+  Solo las clases principales. El detalle está en bloque_A ... bloque_F
+  y en diagrama_clases_completo.
+endlegend
+@enduml
