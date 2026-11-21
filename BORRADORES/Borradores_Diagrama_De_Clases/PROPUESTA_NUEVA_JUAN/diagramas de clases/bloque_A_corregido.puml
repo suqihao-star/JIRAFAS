@@ -1,0 +1,127 @@
+@startuml bloque_A
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 60
+hide empty members
+title Diagrama de clases - Bloque A - Clientes y contactos\n(CU-01, CU-03, CU-04)
+
+package "Bloque A - Clientes y contactos" {
+
+  class Cliente {
+    - id : Long
+    - fechaInicioComercial : Fecha
+    - nombreComercial : String
+    - razonSocial : String
+    - identificadorFiscal : String
+    - domicilioFiscal : String
+    - pais : String
+    - moneda : String
+    - sector : String
+    - idioma : String
+    - estado : String
+    - datosFiscalesIncompletos : Boolean
+    - condicionesPago : String
+    - vencimientoPactadoDias : Integer
+    - etiquetas : List<String>
+    + darDeAlta() : void
+    + editar() : void
+    + comprobarDuplicado() : Boolean
+    + darDeBaja(fecha : Fecha) : void
+  }
+  note right of Cliente
+    estado: ACTIVO, PENDIENTE_ACTIVACION, BAJA
+    La ficha comercial se completa con las
+    suscripciones y condiciones de pago (FR-03).
+  end note
+
+  class Contacto {
+    - id : Long
+    - nombre : String
+    - correo : String
+    - idioma : String
+    - consentimientoWhatsApp : Boolean
+    - activo : Boolean
+    + desactivar() : void
+    + anonimizar() : void
+  }
+
+  class ClienteContacto {
+    - tipo : String
+    - activo : Boolean
+    + desactivarVinculo() : void
+  }
+  note bottom of ClienteContacto
+    tipo: CONTRATACION, FACTURACION, IMPAGOS (FR-04)
+  end note
+
+  class Tarea {
+    - id : Long
+    - descripcion : String
+    - fechaPrevista : Fecha
+    - estado : String
+    + completar() : void
+  }
+
+  class ExcepcionComercial {
+    - tipo : String
+    - fechaInicioFutura : Fecha
+    - motivo : String
+    - aprobada : Boolean
+  }
+  note bottom of ExcepcionComercial
+    PRIMER_MES_GRATIS, SIN_PRORRATEO, INICIO_FUTURO.
+    Las excepciones economicas requieren aprobacion (FR-47).
+  end note
+
+  class ImportacionCSV {
+    - nombreArchivo : String
+    - fecha : FechaHora
+    - estado : String
+    - creados : Integer
+    - actualizados : Integer
+    - rechazados : Integer
+    + validar() : Boolean
+    + previsualizar() : List<FilaImportacion>
+    + confirmar() : void
+    + cancelar() : void
+  }
+
+  class FilaImportacion {
+    - numeroFila : Integer
+    - estado : String
+    - motivoError : String
+  }
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F4F4 {
+  abstract class Usuario
+  class UsuarioOperativo
+  class Administrador
+}
+
+' ---- Relaciones del bloque ----
+Cliente "0..*" --> "1" UsuarioOperativo : responsableInterno
+Cliente "1" *-- "1..*" ClienteContacto : vinculos >
+Contacto "1" -- "0..*" ClienteContacto : participa >
+Cliente "1" *-- "0..*" Tarea
+Tarea "0..*" --> "0..1" Usuario : completadaPor
+Usuario "0..*" -- "0..*" Cliente : favoritos >
+Cliente "1" *-- "0..*" ExcepcionComercial
+ExcepcionComercial "0..*" --> "0..1" Administrador : aprobadaPor
+UsuarioOperativo "1" -- "0..*" ImportacionCSV : realiza >
+ImportacionCSV "1" *-- "1..*" FilaImportacion
+ImportacionCSV "0..1" -- "0..*" Cliente : crea/actualiza >
+
+note bottom of ClienteContacto
+  Un mismo contacto puede vincularse a
+  varios clientes con distinto tipo/estado.
+end note
+
+legend bottom
+Las clases de los paquetes "(referencia)" pertenecen a otros bloques;
+su detalle completo está en su propio diagrama y en el diagrama general.
+endlegend
+@enduml

@@ -1,0 +1,134 @@
+@startuml bloque_C
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 60
+hide empty members
+title Diagrama de clases - Bloque C - Facturación\n(CU-10 a CU-15)
+
+package "Bloque C - Facturación" {
+
+  class Factura {
+    - id : Long
+    - numero : String?
+    - tipo : String
+    - estado : String
+    - fechaEmision : Fecha?
+    - fechaVencimiento : Fecha
+    - periodoFacturado : String
+    - moneda : String
+    - datosFiscalesEmision : SnapshotFiscal
+    - baseImponible : Decimal
+    - total : Decimal
+    - /saldoPendiente : Decimal
+    - retenida : Boolean
+    - motivoRetencion : String
+    + calcularTotales() : void
+    + validarDatosFiscales() : Boolean
+    + emitir() : void
+    + generarPDF() : DocumentoFiscal
+    + anular(motivo : String) : void
+  }
+  note right of Factura
+    estado: BORRADOR, APROBADA, EMITIDA, ENVIADA,
+    VENCIDA, PAGADA, PARCIALMENTE_CONCILIADA,
+    ANULADA, RECTIFICADA (FR-19)
+    BORRADOR sin numero ni fecha de emision.
+    Emitida = datos fiscales y lineas inmutables (BR-09).
+  end note
+
+  class FacturaRectificativa {
+    - motivoRectificacion : String
+  }
+
+  class LineaFactura {
+    - concepto : String
+    - cantidad : Decimal
+    - precioUnitario : Decimal
+    - descuentoPorcentaje : Decimal
+    - porcentajeImpuestoAplicado : Decimal
+    - importe : Decimal
+    + calcularImporte() : Decimal
+  }
+
+  class DocumentoFiscal {
+    - id : Long
+    - contenidoPDF : Binary
+    - huellaSHA256 : String
+    - fechaGeneracion : FechaHora
+    + verificarIntegridad() : Boolean
+  }
+
+  class AprobacionFactura {
+    - motivoRetencion : String
+    - estado : String
+    - fechaSolicitud : FechaHora
+    - fechaDecision : FechaHora
+    - motivoDecision : String
+    + aprobar() : void
+    + rechazar(motivo : String) : void
+  }
+
+  class FiltroGuardado {
+    - nombre : String
+    - criterios : String
+    + aplicar() : void
+  }
+
+  class OperacionExcepcional {
+    - tipo : String
+    - motivo : String
+    - estado : String
+    - fechaDecision : FechaHora
+    + aprobar() : void
+    + ejecutar() : void
+  }
+  note bottom of OperacionExcepcional
+    tipo: RECTIFICACION, ANULACION,
+    INCOBRABLE, CANCELACION (CU-14)
+  end note
+}
+
+package "Bloque F - Administración, seguridad y sistema (referencia)" #F4F4F4 {
+  class Administrador
+  class Impuesto
+  class SerieFacturacion
+  abstract class Usuario
+}
+package "Bloque A - Clientes y contactos (referencia)" #F4F4F4 {
+  class Cliente
+}
+
+' ---- Relaciones del bloque ----
+Factura <|-- FacturaRectificativa
+Cliente "1" -- "0..*" Factura
+Factura "1" *-- "0..*" LineaFactura
+Factura "1" *-- "0..1" DocumentoFiscal : PDF emitido
+Factura "1" *-- "0..*" AprobacionFactura : retencion
+LineaFactura "0..*" --> "0..1" Impuesto : impuestoCatalogo
+SerieFacturacion "0..1" -- "0..*" Factura : numera >
+FacturaRectificativa "0..*" --> "1" Factura : rectificaA
+Factura "1" -- "0..*" OperacionExcepcional
+OperacionExcepcional "0..*" --> "1" Administrador : solicitante
+OperacionExcepcional "0..*" --> "0..1" Administrador : aprobador
+AprobacionFactura "0..*" --> "1" Usuario : solicitante
+AprobacionFactura "0..*" --> "0..1" Administrador : aprobador
+Usuario "1" *-- "0..*" FiltroGuardado
+
+note bottom of DocumentoFiscal
+  El PDF se conserva en almacenamiento
+  privado de la base de datos (FR-12).
+end note
+note bottom of LineaFactura
+  Una factura emitida debe tener >= 1 linea;
+  un borrador puede empezar vacio.
+  El impuesto aplicado se guarda como snapshot.
+end note
+
+legend bottom
+Las clases de los paquetes "(referencia)" pertenecen a otros bloques;
+su detalle completo está en su propio diagrama y en el diagrama general.
+endlegend
+@enduml
