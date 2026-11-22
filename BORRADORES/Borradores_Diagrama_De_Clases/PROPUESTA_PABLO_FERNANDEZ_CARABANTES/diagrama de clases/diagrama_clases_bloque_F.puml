@@ -1,0 +1,181 @@
+@startuml clases_bloque_F
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 60
+skinparam ranksep 70
+hide empty members
+title Diagrama de clases · Bloque F - Administración, seguridad y sistema\n(las clases grises pertenecen a otro bloque; su detalle está en su diagrama)
+skinparam class {
+  BackgroundColor<<otroBloque>> #EEEEEE
+  BorderColor<<otroBloque>> #999999
+  FontColor<<otroBloque>> #777777
+}
+hide <<otroBloque>> stereotype
+hide <<otroBloque>> members
+
+package "Bloque F - Administración, seguridad y sistema" {
+
+  abstract class Usuario {
+    - nombre : String
+    - correoCorporativo : String
+    - hashContrasena : String
+    - estado : String
+    - dobleFactorActivo : Boolean
+    - intentosFallidos : Integer
+    - bloqueadoHasta : FechaHora
+    - preferenciasNotificacion : String
+    + iniciarSesion(correo : String, contrasena : String) : Boolean
+    + recuperarContrasena(correo : String) : void
+    + cerrarSesion() : void
+    + desactivar() : void
+  }
+
+  class UsuarioOperativo {
+    + emitirFactura(f : Factura) : void
+    + solicitarDescuento(c : Cliente) : SolicitudDescuento
+    + conciliarPago(m : MovimientoCobro, f : Factura) : Conciliacion
+  }
+
+  class Administrador {
+    - puedeGestionarUsuarios : Boolean
+    + invitarUsuario(correo : String, rol : String) : Usuario
+    + cambiarRol(u : Usuario, rol : String) : void
+    + aprobarDescuento(s : SolicitudDescuento) : void
+    + aprobarFacturaRetenida(f : Factura) : void
+  }
+
+  class Superadministrador {
+    + resolverEscalado(s : SolicitudDescuento) : void
+    + modificarConfiguracion(c : ConfiguracionSistema) : void
+    + consultarAuditoria() : List<EventoAuditoria>
+  }
+
+  class EventoAuditoria {
+    - fechaHora : FechaHora
+    - accion : String
+    - entidad : String
+    - idEntidad : Long
+    - valoresAnteriores : String
+    - valoresNuevos : String
+    - idError : String
+  }
+
+  class AccionMasiva {
+    - tipo : String
+    - numeroElementos : Integer
+    - altoImpacto : Boolean
+    - estado : String
+    + mostrarAlcance() : Integer
+    + confirmar() : void
+    + revertir() : void
+  }
+
+  class EjecucionTarea {
+    - tipo : String
+    - inicio : FechaHora
+    - fin : FechaHora
+    - estado : String
+    - resumen : String
+    - errores : String
+    + reanudar() : void
+  }
+
+  class ConfiguracionSistema {
+    - datosEmisor : String
+    - umbralDescuento : Decimal
+    - umbralImporteAlto : Decimal
+    - vencimientoGeneralDias : Integer
+    - diasRecordatorioPrevio : Integer = 3
+    - diasRecordatorioVencimiento : Integer = 5
+    - frecuenciaAvisoImpagoDias : Integer = 2
+    - funcionesInteligentesActivas : Boolean
+    - dominioCorporativo : String
+    - diasConservacionInformes : Integer
+    + validar() : Boolean
+    + admiteCorreo(correo : String) : Boolean
+  }
+
+  class SerieFacturacion {
+    - codigo : String
+    - prefijo : String
+    - ultimoNumero : Integer
+    + asignarSiguienteNumero() : String
+  }
+
+  class Impuesto {
+    - nombre : String
+    - porcentaje : Decimal
+  }
+
+  class RangoTarifa {
+    - facturacionMinima : Decimal
+    - facturacionMaxima : Decimal
+    - precio : Decimal
+    - fechaEfecto : Fecha
+  }
+
+  class SolicitudExterna {
+    - sistemaOrigen : String
+    - tipo : String
+    - datos : String
+    - estado : String
+    - fecha : FechaHora
+    + marcarPendienteRevision() : void
+  }
+  note bottom of SolicitudExterna
+    Del Sistema externo vía API (CU-37).
+    Nunca modifica datos directamente (BR-21)
+  end note
+}
+
+class Cliente <<otroBloque>>
+class Tarea <<otroBloque>>
+class ImportacionCSV <<otroBloque>>
+class RevisionTarifaAnual <<otroBloque>>
+class SolicitudDescuento <<otroBloque>>
+class LineaFactura <<otroBloque>>
+class Factura <<otroBloque>>
+class OperacionExcepcional <<otroBloque>>
+class FiltroGuardado <<otroBloque>>
+class Conciliacion <<otroBloque>>
+class MovimientoCobro <<otroBloque>>
+class Notificacion <<otroBloque>>
+class Incidencia <<otroBloque>>
+class Comentario <<otroBloque>>
+class Informe <<otroBloque>>
+
+Usuario <|-- UsuarioOperativo
+UsuarioOperativo <|-- Administrador
+Administrador <|-- Superadministrador
+EventoAuditoria "0..*" --> "0..1" Usuario : autor
+Administrador "1" -- "0..*" AccionMasiva : ejecuta >
+AccionMasiva "0..*" --> "0..1" Administrador : aprobador
+ConfiguracionSistema "1" -- "1..*" SerieFacturacion : configura
+ConfiguracionSistema "1" -- "1..*" Impuesto : configura
+ConfiguracionSistema "1" -- "1..*" RangoTarifa : configura
+SolicitudExterna "0..*" --> "1" Cliente : sobre
+Cliente "0..*" --> "1" UsuarioOperativo : responsableInterno
+Tarea "0..*" --> "0..1" Usuario : completadaPor
+Usuario "0..*" -- "0..*" Cliente : favoritos >
+UsuarioOperativo "1" -- "0..*" ImportacionCSV : realiza >
+RevisionTarifaAnual "0..*" --> "0..1" RangoTarifa : rangoPropuesto
+RevisionTarifaAnual "0..*" --> "0..1" Administrador : aprobadaPor
+SolicitudDescuento "0..*" --> "1" UsuarioOperativo : solicitante
+SolicitudDescuento "0..*" --> "0..1" Administrador : aprobador
+LineaFactura "0..*" --> "1" Impuesto
+SerieFacturacion "0..1" -- "0..*" Factura : numera >
+Factura "0..*" --> "0..1" Usuario : creadaPor
+Factura "0..*" --> "0..1" Administrador : aprobadaPor
+OperacionExcepcional "0..*" --> "1" Administrador : solicitante
+OperacionExcepcional "0..*" --> "0..1" Administrador : aprobador
+Usuario "1" *-- "0..*" FiltroGuardado
+Conciliacion "0..*" --> "0..1" Usuario : realizadaPor
+Conciliacion "0..*" --> "0..1" Usuario : revertidaPor
+MovimientoCobro "0..*" --> "0..1" Usuario : asignadoA
+Usuario "1" -- "0..*" Notificacion : recibe >
+Incidencia "0..*" --> "1" Usuario : responsable
+Comentario "0..*" --> "1" Usuario : autor
+Comentario "0..*" --> "0..*" Usuario : menciona
+Usuario "1" -- "0..*" Informe : solicita >
+EjecucionTarea "0..1" -- "0..*" Factura : genera >
+@enduml
