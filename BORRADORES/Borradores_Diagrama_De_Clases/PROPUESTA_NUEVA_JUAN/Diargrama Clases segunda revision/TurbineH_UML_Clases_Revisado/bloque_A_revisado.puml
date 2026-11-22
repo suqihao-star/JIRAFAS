@@ -1,0 +1,131 @@
+@startuml turbineh_clases_bloque_A
+skinparam backgroundColor white
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 65
+skinparam shadowing false
+skinparam linetype ortho
+hide empty members
+left to right direction
+title TurbineH - UML de clases - Bloque A (revisado)
+
+package "Bloque A - Clientes y contactos" {
+
+  class Cliente {
+    - id : Long
+    - nombreComercial : String
+    - razonSocial : String
+    - identificadorFiscal : String
+    - domicilioFiscal : String
+    - pais : String
+    - moneda : String
+    - sector : String
+    - ubicacion : String
+    - idioma : String
+    - estado : String
+    - datosFiscalesIncompletos : Boolean
+    - fechaInicio : Fecha
+    - condicionesPago : String
+    - documentoFirmado : String
+    - vencimientoPactadoDias : Integer
+    - etiquetas : List<String>
+    + darDeAlta() : void
+    + editar() : void
+    + comprobarDuplicado() : Boolean
+    + darDeBaja(fecha : Fecha) : void
+    + cambiarResponsable(u : UsuarioOperativo) : void
+  }
+  note right of Cliente
+    estado: ACTIVO, PENDIENTE_ACTIVACION, BAJA
+    Ficha comercial (FR-03); plan y tarifa en Suscripcion
+  end note
+
+  class Contacto {
+    - id : Long
+    - nombre : String
+    - correo : String
+    - idioma : String
+    - consentimientoWhatsApp : Boolean
+    - activo : Boolean
+    + desactivar() : void
+    + anonimizar() : void
+  }
+
+  class ClienteContacto {
+    - tipo : String
+    - activo : Boolean
+  }
+  note bottom of ClienteContacto
+    tipo: CONTRATACION, FACTURACION, IMPAGOS (FR-04)
+  end note
+
+  class Tarea {
+    - descripcion : String
+    - fechaPrevista : Fecha
+    - estado : String
+    - fechaCompletada : FechaHora
+    + completar() : void
+  }
+
+  class ExcepcionComercial {
+    - tipo : String
+    - motivo : String
+    - fechaInicioFutura : Fecha
+    - aprobada : Boolean
+  }
+  note bottom of ExcepcionComercial
+    tipo: INICIO_FUTURO, PRIMER_MES_GRATIS,
+    SIN_PRORRATEO (FR-47, CU-01 FA-4)
+  end note
+
+  class ImportacionCSV {
+    - nombreArchivo : String
+    - fecha : FechaHora
+    - incluyeFacturasHistoricas : Boolean
+    - estado : String
+    - creados : Integer
+    - actualizados : Integer
+    - rechazados : Integer
+    + validar() : Boolean
+    + previsualizar() : List<FilaImportacion>
+    + confirmar() : void
+    + revertir() : void
+  }
+
+  class FilaImportacion {
+    - numeroFila : Integer
+    - estado : String
+    - motivoError : String
+  }
+}
+
+package "Referencias de otros bloques" #F2F4F8 {
+  class Incidencia
+  class SolicitudDescuento
+  class Suscripcion
+  abstract class Usuario
+  class UsuarioOperativo
+}
+
+Cliente "0..*" --> "1" UsuarioOperativo : responsableInterno
+Cliente "0..*" -- "0..*" Contacto
+(Cliente, Contacto) .. ClienteContacto
+Cliente "1" *-- "0..*" Tarea
+Tarea "0..*" --> "0..1" Usuario : completadaPor
+Usuario "0..*" -- "0..*" Cliente : favoritos >
+Cliente "1" *-- "0..*" ExcepcionComercial
+UsuarioOperativo "1" -- "0..*" ImportacionCSV : realiza >
+ImportacionCSV "1" *-- "1..*" FilaImportacion
+ImportacionCSV "0..1" -- "0..*" Cliente : crea/actualiza >
+Cliente "1" *-- "0..*" Suscripcion
+ExcepcionComercial "0..1" -- "0..1" SolicitudDescuento : se aprueba mediante >
+SolicitudDescuento "0..*" --> "1" Cliente : para
+Cliente "1" -- "0..*" Incidencia
+
+legend bottom
+Las clases del bloque principal muestran sus atributos y operaciones.
+Las referencias externas son las mismas clases definidas en otros bloques.
+El fichero global contiene todas las relaciones del sistema.
+endlegend
+@enduml

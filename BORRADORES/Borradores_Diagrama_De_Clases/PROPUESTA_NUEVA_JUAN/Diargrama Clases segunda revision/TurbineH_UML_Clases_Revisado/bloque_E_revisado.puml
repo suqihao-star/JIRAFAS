@@ -1,0 +1,102 @@
+@startuml turbineh_clases_bloque_E
+skinparam backgroundColor white
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 65
+skinparam shadowing false
+skinparam linetype ortho
+hide empty members
+left to right direction
+title TurbineH - UML de clases - Bloque E (revisado)
+
+package "Bloque E - Seguimiento, consulta e informes" {
+
+  class Notificacion {
+    - categoria : String
+    - mensaje : String
+    - elementoRelacionado : String
+    - fecha : FechaHora
+    - requiereAccion : Boolean
+    - leida : Boolean
+    - resuelta : Boolean
+    + marcarLeida() : void
+    + marcarResuelta() : void
+  }
+
+  class ReglaAlerta {
+    - tipo : String
+    - umbral : Decimal
+    - activa : Boolean
+    + evaluar() : Boolean
+  }
+
+  class Incidencia {
+    - tipo : String
+    - descripcion : String
+    - estado : String
+    - prioridad : String
+    - fechaCreacion : FechaHora
+    - adjuntos : List<String>
+    + resolver(comentario : String) : void
+  }
+
+  class Comentario {
+    - texto : String
+    - fecha : FechaHora
+  }
+  note bottom of Comentario
+    Siempre interno: nunca se envía
+    al cliente (BR-20)
+  end note
+
+  class Informe {
+    - filtros : String
+    - formato : String
+    - estado : String
+    - fechaGeneracion : FechaHora
+    - fechaCaducidad : FechaHora
+    + generar() : void
+    + exportar() : String
+    + regenerar() : void
+  }
+
+  class ObjetivoFacturacion {
+    - periodo : String
+    - valor : Decimal
+    + modificar(valor : Decimal) : void
+  }
+
+  class CentroCoste {
+    - nombre : String
+    - tipo : String
+    - activo : Boolean
+  }
+}
+
+package "Referencias de otros bloques" #F2F4F8 {
+  class Cliente
+  class Factura
+  abstract class Usuario
+}
+
+Usuario "1" -- "0..*" Notificacion : recibe >
+ReglaAlerta "0..1" -- "0..*" Notificacion : genera >
+Cliente "1" -- "0..*" Incidencia
+Factura "0..1" -- "0..*" Incidencia
+Incidencia "0..*" --> "1" Usuario : responsable
+Incidencia "1" *-- "0..*" Comentario
+Comentario "0..*" --> "1" Usuario : autor
+Comentario "0..*" --> "0..*" Usuario : menciona
+Comentario "0..1" -- "0..*" Notificacion : genera >
+Usuario "1" -- "0..*" Informe : solicita >
+Factura "0..*" --> "0..1" CentroCoste
+Cliente "0..*" --> "0..1" CentroCoste
+ObjetivoFacturacion "0..*" --> "0..1" CentroCoste : asociadoA
+
+legend bottom
+Las clases del bloque principal muestran sus atributos y operaciones.
+Las referencias externas son las mismas clases definidas en otros bloques.
+El fichero global contiene todas las relaciones del sistema.
+endlegend
+@enduml

@@ -1,0 +1,151 @@
+@startuml turbineh_clases_bloque_C
+skinparam backgroundColor white
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 65
+skinparam shadowing false
+skinparam linetype ortho
+hide empty members
+left to right direction
+title TurbineH - UML de clases - Bloque C (revisado)
+
+package "Bloque C - Facturación" {
+
+  class Factura {
+    - numero : String?
+    - tipo : String
+    - estado : String
+    - fechaEmision : Fecha?
+    - fechaVencimiento : Fecha
+    - periodoFacturado : String
+    - moneda : String
+    - datosFiscalesEmision : SnapshotFiscal
+    - baseImponible : Decimal
+    - total : Decimal
+    - /saldoPendiente : Decimal
+    - retenida : Boolean
+    - motivoRetencion : String
+    - fechaAprobacion : FechaHora
+    - documentoPDF : Archivo
+    - migrada : Boolean
+    + calcularTotales() : void
+    + validarDatosFiscales() : List<String>
+    + detectarCausaRetencion() : String
+    + emitir() : void
+    + generarPDF() : void
+    + registrarCobro(importe : Decimal) : void
+    + anular(motivo : String) : void
+  }
+  note right of Factura
+    estado: BORRADOR, APROBADA, EMITIDA, ENVIADA,
+    VENCIDA, PAGADA, PARCIALMENTE_CONCILIADA,
+    ANULADA, RECTIFICADA (FR-19),
+    INCOBRABLE, CANCELADA (FR-19, CU-14)
+    retenida = pendiente de CU-13 (FR-13)
+    numero y fechaEmision son nulos en BORRADOR.
+    datosFiscalesEmision conserva los datos originales.
+    Emitida = inmutable (BR-09)
+  end note
+
+  class AprobacionFactura {
+    - motivoRetencion : String
+    - estado : String
+    - fechaSolicitud : FechaHora
+    - fechaDecision : FechaHora
+    - motivoDecision : String
+    + aprobar() : void
+    + rechazar(motivo : String) : void
+  }
+  note bottom of AprobacionFactura
+    CU-13: revision previa a la emision.
+    Solicitante y aprobador se registran por separado.
+  end note
+
+  class DocumentoFiscal {
+    - id : Long
+    - contenidoPDF : Binary
+    - huellaSHA256 : String
+    - fechaGeneracion : FechaHora
+  }
+  note bottom of DocumentoFiscal
+    PDF conservado en base de datos (FR-12).
+    Factura.documentoPDF es su referencia de acceso.
+  end note
+
+  class FacturaRectificativa {
+    - motivoRectificacion : String
+  }
+
+  class LineaFactura {
+    - concepto : String
+    - cantidad : Decimal
+    - precioUnitario : Decimal
+    - descuento : Decimal
+    - porcentajeImpuesto : Decimal
+    - importe : Decimal
+    + calcularImporte() : Decimal
+  }
+
+  note bottom of LineaFactura
+    Un borrador puede empezar sin lineas.
+    Para emitir se exige al menos una linea.
+    El porcentajeImpuesto de la linea conserva
+    el valor aplicado en la emision.
+  end note
+
+  class FiltroGuardado {
+    - nombre : String
+    - criterios : String
+    + aplicar() : void
+  }
+
+  class OperacionExcepcional {
+    - tipo : String
+    - motivo : String
+    - estado : String
+    + aprobar() : void
+    + ejecutar() : void
+  }
+  note bottom of OperacionExcepcional
+    tipo: RECTIFICACION, ANULACION,
+    INCOBRABLE, CANCELACION (CU-14)
+  end note
+}
+
+package "Referencias de otros bloques" #F2F4F8 {
+  class Administrador
+  class CentroCoste
+  class Cliente
+  class Impuesto
+  class SerieFacturacion
+  class SolicitudDescuento
+  class Suscripcion
+  abstract class Usuario
+}
+
+Factura <|-- FacturaRectificativa
+Suscripcion "0..1" -- "0..*" Factura : genera >
+Cliente "1" -- "0..*" Factura
+Factura "1" *-- "0..*" LineaFactura
+LineaFactura "0..*" --> "0..1" Impuesto
+SerieFacturacion "0..1" -- "0..*" Factura : numera >
+FacturaRectificativa "0..*" --> "1" Factura : rectificaA
+Factura "0..*" --> "0..1" Usuario : creadaPor
+Factura "1" *-- "0..1" DocumentoFiscal : PDF emitido
+Factura "1" *-- "0..*" AprobacionFactura : retenciones
+AprobacionFactura "0..*" --> "1" Usuario : solicitante
+AprobacionFactura "0..*" --> "0..1" Administrador : aprobador
+Factura "1" -- "0..*" OperacionExcepcional
+OperacionExcepcional "0..*" --> "1" Administrador : solicitante
+OperacionExcepcional "0..*" --> "0..1" Administrador : aprobador
+Factura "0..*" --> "0..1" SolicitudDescuento : descuentoAplicado
+Usuario "1" *-- "0..*" FiltroGuardado
+Factura "0..*" --> "0..1" CentroCoste
+
+legend bottom
+Las clases del bloque principal muestran sus atributos y operaciones.
+Las referencias externas son las mismas clases definidas en otros bloques.
+El fichero global contiene todas las relaciones del sistema.
+endlegend
+@enduml

@@ -1,0 +1,106 @@
+@startuml turbineh_clases_bloque_D
+skinparam backgroundColor white
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 65
+skinparam shadowing false
+skinparam linetype ortho
+hide empty members
+left to right direction
+title TurbineH - UML de clases - Bloque D (revisado)
+
+package "Bloque D - Cobros y comunicaciones" {
+
+  interface SistemaPagos {
+    + consultarPagos(desde : FechaHora) : List<MovimientoCobro>
+  }
+
+  interface CanalEnvio {
+    + enviar(c : Comunicacion) : Boolean
+  }
+
+  class MovimientoCobro {
+    - fuente : String
+    - idExterno : String
+    - importe : Decimal
+    - fecha : FechaHora
+    - moneda : String
+    - concepto : String
+    - referencia : String
+    - estado : String
+    + esDuplicado() : Boolean
+  }
+
+  class Conciliacion {
+    - importeAsignado : Decimal
+    - tipo : String
+    - regla : String
+    - fecha : FechaHora
+    - revertida : Boolean
+    - fechaReversion : FechaHora
+    - motivoReversion : String
+    + revertir(motivo : String) : void
+  }
+
+  class Comunicacion {
+    - tipo : String
+    - canal : String
+    - idioma : String
+    - estado : String
+    - fechaEnvio : FechaHora
+    - numeroIntento : Integer
+    - correoDestinatario : String
+    + enviar() : void
+    + registrarResultado(resultado : String) : void
+    + reenviar(c : Contacto) : void
+  }
+  note bottom of Comunicacion
+    tipo: FACTURA, RECORDATORIO_PREVIO, VENCIMIENTO,
+    AVISO_IMPAGO, DISPUTA_RESUELTA (FR-26)
+    estado: EN_COLA, ENVIADA, ENTREGADA, REBOTADA, FALLIDA
+    Cada intento, reenvío o canal es una Comunicacion:
+    el historial queda en la factura (FR-46, CU-18)
+  end note
+
+  class PlantillaComunicacion {
+    - tipo : String
+    - idioma : String
+    - version : Integer
+    - asunto : String
+    - contenido : String
+    + previsualizar() : String
+  }
+
+  class SuspensionRecordatorios {
+    - motivo : String
+    - fechaRevision : Fecha
+    - activa : Boolean
+    + reanudar() : void
+  }
+}
+
+package "Referencias de otros bloques" #F2F4F8 {
+  class Contacto
+  class Factura
+  abstract class Usuario
+}
+
+SistemaPagos ..> MovimientoCobro : notifica
+MovimientoCobro "1" -- "0..*" Conciliacion
+Factura "1" -- "0..*" Conciliacion
+Conciliacion "0..*" --> "0..1" Usuario : realizadaPor
+Conciliacion "0..*" --> "0..1" Usuario : revertidaPor
+MovimientoCobro "0..*" --> "0..1" Usuario : asignadoA
+Factura "0..1" -- "0..*" Comunicacion
+Comunicacion "0..*" --> "0..1" Contacto : destinatario
+Comunicacion "0..*" --> "1" PlantillaComunicacion : usa
+Comunicacion ..> CanalEnvio : se envía por
+Factura "1" -- "0..*" SuspensionRecordatorios
+
+legend bottom
+Las clases del bloque principal muestran sus atributos y operaciones.
+Las referencias externas son las mismas clases definidas en otros bloques.
+El fichero global contiene todas las relaciones del sistema.
+endlegend
+@enduml
