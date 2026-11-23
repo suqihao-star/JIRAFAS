@@ -1,0 +1,122 @@
+@startuml clases_bloque_A
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam nodesep 60
+skinparam ranksep 70
+hide empty members
+title Diagrama de clases · Bloque A - Clientes y contactos\n(las clases grises pertenecen a otro bloque; su detalle está en su diagrama)
+skinparam class {
+  BackgroundColor<<otroBloque>> #EEEEEE
+  BorderColor<<otroBloque>> #999999
+  FontColor<<otroBloque>> #777777
+}
+hide <<otroBloque>> stereotype
+hide <<otroBloque>> members
+
+package "Bloque A - Clientes y contactos" {
+
+  class Cliente {
+    - nombreComercial : String
+    - razonSocial : String
+    - identificadorFiscal : String
+    - domicilioFiscal : String
+    - pais : String
+    - moneda : String
+    - sector : String
+    - ubicacion : String
+    - idioma : String
+    - estado : String
+    - datosFiscalesIncompletos : Boolean
+    - fechaInicio : Fecha
+    - condicionesPago : String
+    - documentoFirmado : String
+    - vencimientoPactadoDias : Integer
+    - etiquetas : List<String>
+    + darDeAlta() : void
+    + editar() : void
+    + comprobarDuplicado() : Boolean
+    + darDeBaja(fecha : Fecha) : void
+    + cambiarResponsable(u : UsuarioOperativo) : void
+  }
+
+  class Contacto {
+    - nombre : String
+    - correo : String
+    - idioma : String
+    - consentimientoWhatsApp : Boolean
+    - activo : Boolean
+    + desactivar() : void
+    + anonimizar() : void
+  }
+
+  class ClienteContacto {
+    - tipo : String
+  }
+
+  class Tarea {
+    - descripcion : String
+    - fechaPrevista : Fecha
+    - estado : String
+    - fechaCompletada : FechaHora
+    + completar() : void
+  }
+
+  class ExcepcionComercial {
+    - tipo : String
+    - fechaInicioFutura : Fecha
+    - aprobada : Boolean
+  }
+
+  class ImportacionCSV {
+    - nombreArchivo : String
+    - fecha : FechaHora
+    - incluyeFacturasHistoricas : Boolean
+    - estado : String
+    - creados : Integer
+    - actualizados : Integer
+    - rechazados : Integer
+    + validar() : Boolean
+    + previsualizar() : List<FilaImportacion>
+    + confirmar() : void
+    + cancelar() : void
+  }
+
+  class FilaImportacion {
+    - numeroFila : Integer
+    - estado : String
+    - motivoError : String
+    - marcadaComoActualizacion : Boolean
+  }
+}
+
+class SolicitudExterna <<otroBloque>>
+class UsuarioOperativo <<otroBloque>>
+abstract class Usuario <<otroBloque>>
+class Suscripcion <<otroBloque>>
+class RevisionTarifaAnual <<otroBloque>>
+class SolicitudDescuento <<otroBloque>>
+class Factura <<otroBloque>>
+class Comunicacion <<otroBloque>>
+class Incidencia <<otroBloque>>
+class CentroCoste <<otroBloque>>
+
+SolicitudExterna "0..*" --> "1" Cliente : sobre
+Cliente "0..*" --> "1" UsuarioOperativo : responsableInterno
+Cliente "1..*" -- "0..*" Contacto
+(Cliente, Contacto) .. ClienteContacto
+Cliente "1" *-- "0..*" Tarea
+Tarea "0..*" --> "0..1" Usuario : completadaPor
+Usuario "0..*" -- "0..*" Cliente : favoritos >
+Cliente "1" *-- "0..*" ExcepcionComercial
+UsuarioOperativo "1" -- "0..*" ImportacionCSV : realiza >
+ImportacionCSV "1" *-- "1..*" FilaImportacion
+ImportacionCSV "0..1" -- "0..*" Cliente : crea/actualiza >
+Cliente "1" *-- "0..*" Suscripcion
+Cliente "1" -- "0..*" RevisionTarifaAnual
+ExcepcionComercial "0..1" -- "0..1" SolicitudDescuento : se aprueba mediante >
+SolicitudDescuento "0..*" --> "1" Cliente : para
+Cliente "1" -- "0..*" Factura
+Comunicacion "0..*" --> "0..1" Contacto : destinatario
+Cliente "1" -- "0..*" Incidencia
+Cliente "0..*" --> "0..1" CentroCoste
+@enduml
