@@ -1,21 +1,11 @@
 @startuml diagrama_clases_completo
-' =====================================================================
-'  DIAGRAMA UML DE CLASES (VERSIÓN SIMPLIFICADA)
-'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
-'  Basado en: Casos de uso (CU-01..CU-37), su especificación y requisitos.
-'  Estados y tipos como atributos String (valores indicados en notas).
-'  Importes con tipo Decimal (NFR-06).
-' =====================================================================
 
 skinparam classAttributeIconSize 0
 skinparam packageStyle rectangle
-skinparam nodesep 60
-skinparam ranksep 70
 hide empty members
 left to right direction
 title Diagrama de clases - Sistema de facturación de Turbine
 
-' =====================================================================
 package "Bloque F - Administración, seguridad y sistema" {
 
   abstract class Usuario {
@@ -131,7 +121,6 @@ package "Bloque F - Administración, seguridad y sistema" {
   end note
 }
 
-' =====================================================================
 package "Bloque A - Clientes y contactos" {
 
   class Cliente {
@@ -208,7 +197,6 @@ package "Bloque A - Clientes y contactos" {
   }
 }
 
-' =====================================================================
 package "Bloque B - Suscripciones, tarifas y descuentos" {
 
   class Suscripcion {
@@ -262,7 +250,6 @@ package "Bloque B - Suscripciones, tarifas y descuentos" {
   end note
 }
 
-' =====================================================================
 package "Bloque C - Facturación" {
 
   class Factura {
@@ -345,9 +332,7 @@ package "Bloque C - Facturación" {
   }
 }
 
-' =====================================================================
 package "Bloque D - Cobros y comunicaciones" {
-
   interface SistemaPagos {
     + consultarPagos(desde : FechaHora) : List<MovimientoCobro>
   }
@@ -355,7 +340,6 @@ package "Bloque D - Cobros y comunicaciones" {
   interface CanalEnvio {
     + enviar(c : Comunicacion) : Boolean
   }
-
   class MovimientoCobro {
     - fuente : String
     - idExterno : String
@@ -415,10 +399,7 @@ package "Bloque D - Cobros y comunicaciones" {
     + reanudar() : void
   }
 }
-
-' =====================================================================
 package "Bloque E - Seguimiento, consulta e informes" {
-
   class Notificacion {
     - categoria : String
     - mensaje : String
@@ -447,7 +428,6 @@ package "Bloque E - Seguimiento, consulta e informes" {
     - adjuntos : List<String>
     + resolver(comentario : String) : void
   }
-
   class Comentario {
     - texto : String
     - fecha : FechaHora
@@ -480,12 +460,6 @@ package "Bloque E - Seguimiento, consulta e informes" {
     - activo : Boolean
   }
 }
-
-' =====================================================================
-' RELACIONES
-' =====================================================================
-
-' ---- Generalizaciones y realizaciones ----
 Usuario <|-- UsuarioOperativo
 UsuarioOperativo <|-- Administrador
 Administrador <|-- Superadministrador
@@ -502,7 +476,7 @@ SolicitudExterna "0..*" --> "1" Cliente : sobre
 
 ' ---- Bloque A ----
 Cliente "0..*" --> "1" UsuarioOperativo : responsableInterno
-Cliente "1..*" -- "0..*" Contacto
+Contacto "0..*" -- "1..*" Cliente
 (Cliente, Contacto) .. ClienteContacto
 Cliente "1" *-- "0..*" Tarea
 Tarea "0..*" --> "0..1" Usuario : completadaPor
