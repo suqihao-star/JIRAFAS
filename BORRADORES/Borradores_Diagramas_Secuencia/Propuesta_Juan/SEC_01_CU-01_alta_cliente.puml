@@ -1,0 +1,103 @@
+@startuml SEC_01_CU-01_alta_cliente
+' =====================================================================
+'  DIAGRAMA DE SECUENCIA 1 - CU-01 Gestionar cliente y contactos (alta)
+'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
+'  Flujo principal + FA-4 (excepción comercial), FA-5 (datos fiscales
+'  incompletos), FE-1 (duplicado), FE-2 (formato inválido).
+'  Clases: diagrama_clases_simplificado (propuesta nueva Pablo F. C.)
+' =====================================================================
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 170
+skinparam ParticipantPadding 12
+hide footbox
+autonumber
+title CU-01 - Alta de cliente y contactos
+
+actor "Usuario operativo" as UO
+control ":Sistema" as SYS
+participant "cfg : ConfiguracionSistema" as CFG
+participant "ctExistente : Contacto" as CTE
+
+UO -> SYS : nuevoCliente()
+activate SYS
+SYS -> SYS : comprobarPermiso(u, ALTA_CLIENTE)
+break [PRE-1: el usuario no tiene permiso de gestión de clientes]
+  SYS --> UO : acceso denegado
+end
+SYS -> CFG ++ : getVencimientoGeneralDias()
+return vencimiento por defecto
+SYS --> UO : formulario con país, moneda, vencimiento\ny tarifa autocompletados (FR-30)
+deactivate SYS
+
+UO -> SYS : guardarCliente(datosFiscales, fichaComercial,\ncontactos, excepcion)
+activate SYS
+SYS -> SYS : comprobarPermiso(u, ALTA_CLIENTE)
+break [el permiso ya no está vigente al guardar]
+  SYS --> UO : acceso denegado
+end
+SYS -> SYS : validarFormato(datos, responsableInterno)
+note right of SYS : el identificador fiscal puede\nfaltar (FA-5)
+
+alt [FE-2: campos obligatorios vacíos, formato inválido\no responsable interno no válido]
+  SYS --> UO : señala los campos a corregir
+else [formato correcto]
+  create participant "c : Cliente" as C
+  SYS -->> C : <<create>> Cliente(datos)
+  note right of C : objeto candidato, aún no registrado:\nsolo se persiste al llamar a darDeAlta()
+  SYS -> C ++ : comprobarDuplicado()
+  return duplicado : Boolean
+
+  alt [FE-1: posible cliente duplicado]
+    SYS --> UO : aviso de duplicado: ofrece abrir la ficha\nexistente (sin fusionar) o corregir la actual
+    SYS -> SYS : descartar(c)
+    note right of SYS : el candidato no se registra
+  else [sin duplicado]
+    opt [FA-5: falta el identificador fiscal]
+      SYS -> C : setDatosFiscalesIncompletos(true)
+      note right of C : no se podrá emitir factura\nhasta completar los datos (CU-12 FE-1)
+    end
+    opt [alta a mitad de mes]
+      SYS -> SYS : calcularProrrateo(fechaInicio, tarifaAcordada)
+      SYS --> UO : muestra el prorrateo de la primera factura (FR-11)
+      UO -> SYS : confirmar()
+    end
+
+    SYS -> C : setResponsableInterno(responsable)
+    SYS -> C ++ : darDeAlta()
+    note right of C
+      estado = ACTIVO, o PENDIENTE_ACTIVACION
+      si la fecha de inicio es futura (FA-4):
+      no se generan facturas ni recordatorios
+    end note
+    return ok
+
+    loop [para cada contacto introducido]
+      SYS -> SYS : buscarContacto(correo)
+      alt [el contacto ya existe (puede pertenecer a varios clientes, FR-04)]
+        SYS -> CTE ++ : getActivo()
+        return activo : Boolean
+      else [contacto nuevo]
+        create participant "ct : Contacto" as CT
+        SYS -->> CT : <<create>> Contacto(nombre, correo, idioma)
+      end
+      create participant "cc : ClienteContacto" as CC
+      SYS -->> CC : <<create>> ClienteContacto(c, contacto, tipo)
+      note right of CC : tipo: CONTRATACION,\nFACTURACION, IMPAGOS
+    end
+
+    opt [FA-4: excepción comercial explícita]
+      create participant "ex : ExcepcionComercial" as EX
+      SYS -->> EX : <<create>> ExcepcionComercial(tipo, fechaInicioFutura)
+      opt [la excepción tiene efecto económico]
+        ref over SYS, EX : CU-07 Solicitar descuento\n(no se aplica hasta aprobarse en CU-08)
+      end
+    end
+
+    create participant "ev : EventoAuditoria" as EV
+    SYS -->> EV : <<create>> EventoAuditoria("ALTA", "Cliente", c.id)
+    note right of EV : alimenta la línea\ntemporal del cliente
+    SYS --> UO : muestra el cliente creado
+  end
+end
+deactivate SYS
+@enduml

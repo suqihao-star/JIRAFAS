@@ -1,0 +1,105 @@
+@startuml SEC_02_CU-08_aprobar_descuento
+' =====================================================================
+'  DIAGRAMA DE SECUENCIA 2 - CU-08 Aprobar descuento
+'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
+'  Flujo principal + FA-1 (rechazar), FA-2 (aprobación condicionada),
+'  FA-3 / FE-2 (supera el umbral: escalado a CU-09), FE-1 (ya
+'  resuelta). La solicitud procede de CU-07.
+'  Clases: diagrama_clases_simplificado (propuesta nueva Pablo F. C.)
+' =====================================================================
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 170
+skinparam ParticipantPadding 12
+hide footbox
+autonumber
+title CU-08 - Aprobar descuento
+
+actor "Administrador" as AD
+control ":Sistema" as SYS
+participant "a : Administrador" as A
+participant "s : SolicitudDescuento" as S
+
+AD -> SYS : revisarSolicitud(idSolicitud)
+activate SYS
+SYS -> SYS : comprobarAutorizacion(a, s)
+break [el usuario no tiene permiso de aprobación]
+  SYS --> AD : acceso denegado
+end
+SYS -> S ++ : getEstado()
+return estado
+
+break [FE-1: la solicitud ya fue resuelta o modificada por otra persona]
+  SYS --> AD : informa del cambio y bloquea la doble resolución
+end
+
+SYS -> S ++ : superaUmbral()
+return supera : Boolean
+SYS --> AD : detalle: cliente, importe, justificación y,\nsi procede, motivo por el que supera el umbral (FR-18)
+
+alt [FA-3 / FE-2: supera el umbral del Administrador]
+  AD -> SYS : escalar(idSolicitud)
+  critical escalado atómico
+    SYS -> SYS : revalidar permiso y estado de la solicitud
+    SYS -> S ++ : superaUmbral()
+    return superaActual : Boolean
+    alt [sin permiso, solicitud no pendiente o ya no supera el umbral]
+      SYS --> AD : escalado bloqueado; actualizar la solicitud
+    else [escalado válido]
+      SYS -> S ++ : escalar()
+      note right of S : estado = ESCALADA
+      return ok
+      create participant "n : Notificacion" as N
+      SYS -->> N : <<create>> Notificacion("DESCUENTO_ESCALADO", mensaje)
+      note right of N : para el Superadministrador, que\nresuelve en CU-09 (eventos al\nresponsable, FR-24)
+      create participant "ev : EventoAuditoria" as EV
+      SYS -->> EV : <<create>> EventoAuditoria("ESCALAR_DESCUENTO",\n"SolicitudDescuento", s.id)
+      SYS --> AD : solicitud escalada
+    end
+  end
+  opt [escalado registrado]
+    ref over SYS, S : CU-09 Escalar aprobación al Superadministrador
+  end
+
+else [no supera el umbral]
+  AD -> SYS : decidir(idSolicitud, decision, motivo, condicion)
+  critical resolución atómica
+    SYS -> SYS : revalidar autorización
+    SYS -> S ++ : getEstado(), getSolicitante(), superaUmbral()
+    return estado, solicitante y umbral actuales
+    note right of SYS : la solicitud sigue pendiente y, en importes\nsensibles, el aprobador no es el solicitante (BR-12)
+
+    alt [decisión no válida (ya resuelta, sin permiso o autoaprobación)]
+      SYS --> AD : decisión bloqueada; sin efectos
+    else [ahora supera el umbral]
+      SYS --> AD : decisión bloqueada; requiere escalado (CU-09)
+    else [decisión válida]
+      alt [FA-1: rechazar]
+        SYS -> S ++ : rechazar(motivo)
+        note right of S : estado = RECHAZADA, motivoDecision
+        return ok
+      else [aprobar]
+        SYS -> A ++ : aprobarDescuento(s)
+        A -> S ++ : aprobar()
+        note right of S : estado = APROBADA, aprobador = a
+        return ok
+        return ok
+        alt [FA-2: aprobación condicionada]
+          SYS -> S : setMotivoDecision(condicion)
+          note right of S : solo se aplica cuando se cumpla la\ncondición. El modelo no tiene un atributo\nde condición: se guarda en motivoDecision
+        else [aprobación efectiva]
+          SYS -> S ++ : getFechaVigencia()
+          return fecha de vigencia
+          note right of S : se aplicará a las facturas de los periodos\nvigentes mediante Factura.descuentoAplicado\n(CU-11); las facturas emitidas no cambian
+        end
+      end
+      create participant "n2 : Notificacion" as N2
+      SYS -->> N2 : <<create>> Notificacion("DESCUENTO_RESUELTO", resultado)
+      note right of N2 : para el usuario solicitante,\ncon el motivo de la decisión
+      create participant "ev2 : EventoAuditoria" as EV2
+      SYS -->> EV2 : <<create>> EventoAuditoria(decision, "SolicitudDescuento", s.id)
+      SYS --> AD : decisión registrada
+    end
+  end
+end
+deactivate SYS
+@enduml

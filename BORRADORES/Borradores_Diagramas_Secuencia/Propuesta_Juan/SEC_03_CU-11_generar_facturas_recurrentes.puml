@@ -1,0 +1,116 @@
+@startuml SEC_03_CU-11_generar_facturas_recurrentes
+' =====================================================================
+'  DIAGRAMA DE SECUENCIA 3 - CU-11 Generar facturas recurrentes
+'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
+'  Flujo principal + FA-1 (no facturable), FA-2 (prorrateo), FA-3
+'  (recuperación tras interrupción), FA-4 (excepción comercial),
+'  FE-1 (datos / aprobación pendiente), FE-2 (fallo en la emisión).
+'  Clases: diagrama_clases_simplificado (propuesta nueva Pablo F. C.)
+' =====================================================================
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 170
+skinparam ParticipantPadding 12
+hide footbox
+autonumber
+title CU-11 - Generar facturas recurrentes
+
+actor "Planificador del sistema" as PL
+control ":Sistema" as SYS
+participant "s : Suscripcion" as S
+participant "c : Cliente" as C
+participant "ex : ExcepcionComercial" as EX
+participant "cfg : ConfiguracionSistema" as CFG
+participant "f : Factura" as F
+
+PL -> SYS : generarRecurrentes(periodo)
+activate SYS
+create participant "ej : EjecucionTarea" as EJ
+SYS -->> EJ : <<create>> EjecucionTarea(GENERACION_RECURRENTE, inicio)
+
+loop [para cada suscripción registrada]
+  SYS -> S ++ : esFacturable(periodo)
+  return facturable : Boolean
+
+  alt [FA-1: pausada, cancelada o pendiente de activación]
+    SYS -> EJ : setResumen(resumen + "omitida: motivo")
+
+  else [facturable]
+    SYS -> C ++ : getExcepciones()
+    return excepciones : List<ExcepcionComercial>
+    opt [FA-4: existe excepción comercial]
+      SYS -> EX ++ : getAprobada()
+      return aprobada : Boolean
+    end
+
+    alt [FA-4: excepción aprobada y periodo exento\n(primer mes gratuito / mes inicial sin prorrateo)]
+      SYS -> EJ : setResumen(resumen + "periodo exento")
+
+    else [corresponde facturar la mensualidad]
+      opt [FA-4: excepción con efecto económico aún pendiente]
+        create participant "n : Notificacion" as N
+        SYS -->> N : <<create>> Notificacion("EXCEPCION_PENDIENTE", mensaje)
+        note right of N : al responsable; la excepción\nNO se aplica
+      end
+
+      critical [obligación única por suscripción y periodo]
+        SYS -> SYS : buscarFactura(s, periodo)
+        alt [FA-3: ya tiene emisión definitiva\n(EMITIDA, ENVIADA, VENCIDA, PAGADA...)]
+          SYS -> EJ : setResumen(resumen + "ya emitida")
+        else [FA-3: f quedó pendiente en una ejecución interrumpida]
+          SYS -> SYS : reutilizar f (no se crea otra ni se renumera)
+        else [no existe factura del periodo]
+          SYS -->> F : <<create>> Factura(cliente = c, suscripcion = s,\ntipo = RECURRENTE, periodoFacturado)
+          note right of F : f se declara arriba porque, según\nel caso, se reutiliza o se crea aquí
+        end
+      end
+
+      opt [la mensualidad no tiene emisión definitiva]
+        SYS -> S ++ : getPrecioVigente()
+        return tarifa aprobada
+        SYS -> C ++ : getVencimientoPactadoDias()
+        return días pactados (si existen)
+        SYS -> CFG ++ : getVencimientoGeneralDias()
+        return vencimiento general
+        SYS -> F : setFechaVencimiento(pactado o, si no hay, general)
+        SYS -> SYS : buscarDescuentoVigente(c, periodo)
+        opt [hay un descuento APROBADO y vigente (CU-08)]
+          SYS -> F : setDescuentoAplicado(solicitudDescuento)
+          note right of F : asociación Factura → SolicitudDescuento\n«descuentoAplicado» del modelo
+        end
+        opt [FA-2: primera mensualidad a mitad de mes]
+          SYS -> SYS : calcularProrrateo(fechaInicio, precioVigente)
+        end
+        create participant "lf : LineaFactura" as LF
+        SYS -->> LF : <<create>> LineaFactura(concepto = plan, cantidad,\nprecioUnitario = precio vigente o prorrateado)
+        SYS -> LF : setImpuesto(impuesto configurado)
+        SYS -> F ++ : calcularTotales()
+        F -> LF ++ : calcularImporte()
+        return importe
+        return
+
+        alt [FE-1: faltan datos fiscales o hay una condición sin aprobar]
+          create participant "i : Incidencia" as I
+          SYS -->> I : <<create>> Incidencia(tipo = FACTURACION, cliente = c, factura = f)
+          note right of I : para que una persona autorizada\nla resuelva; el lote continúa
+          SYS -> EJ : setResumen(resumen + "pendiente: cliente y causa")
+        else [mensualidad válida]
+          ref over SYS, F : CU-12 Emitir factura (FA-2: emisión automática,\nsin vista previa ni aprobación por mensualidad)
+          alt [FE-2: CU-12 devuelve un error]
+            SYS -> EJ : setErrores(errores + idError)
+            note right of EJ : el reintento reutiliza f\ny no duplica
+          else [retenida para CU-13]
+            SYS -> EJ : setResumen(resumen + "retenida")
+          else [emitida]
+            SYS -> EJ : setResumen(resumen + "emitida")
+          end
+        end
+      end
+    end
+  end
+end
+
+SYS -> EJ : setFin(ahora), setEstado(estado)
+note right of EJ : resumen disponible en la\nmonitorización (CU-33, FR-48)
+SYS --> PL : resumen de emitidas, pendientes y errores
+deactivate SYS
+@enduml

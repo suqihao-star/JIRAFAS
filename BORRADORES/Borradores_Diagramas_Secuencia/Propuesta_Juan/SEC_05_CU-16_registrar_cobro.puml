@@ -1,0 +1,99 @@
+@startuml SEC_05_CU-16_registrar_cobro
+' =====================================================================
+'  DIAGRAMA DE SECUENCIA 5 - CU-16 Registrar movimiento de cobro
+'  (+ CU-17 FA-1 conciliación automática)
+'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
+'  Flujo principal (notificación) + FA-1 (consulta periódica),
+'  FA-2 (sin referencia clara), FE-1 (duplicado), FE-2 (fallo de la
+'  integración).
+'  Clases: diagrama_clases_simplificado (propuesta nueva Pablo F. C.)
+' =====================================================================
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 170
+skinparam ParticipantPadding 12
+hide footbox
+autonumber
+title CU-16 - Registrar movimiento de cobro y conciliación automática
+
+actor "Planificador del sistema" as PL
+participant "<<interface>>\npagos : SistemaPagos" as PAG
+control ":Sistema" as SYS
+participant "f : Factura" as F
+participant "c : Cliente" as C
+
+alt [flujo principal: el sistema de pagos notifica un cobro]
+  PAG -> SYS : notificarCobro(idExterno, importe, fecha,\nmoneda, concepto, referencia)
+  note left of PAG : implementada por\nStripe / Revolut (FR-15)
+else [FA-1: consulta periódica del Planificador]
+  PL -> SYS : ejecutarTarea(CONSULTA_PAGOS)
+end
+activate SYS
+opt [FA-1: consulta periódica]
+  create participant "ej : EjecucionTarea" as EJ
+  SYS -->> EJ : <<create>> EjecucionTarea(CONSULTA_PAGOS, inicio)
+  SYS -> PAG ++ : consultarPagos(desde = última ejecución)
+  return movimientos : List<MovimientoCobro> | error
+end
+
+break [FE-2 (en FA-1): el sistema de pagos no responde o devuelve un error]
+  SYS -> EJ : setEstado(ERROR), setErrores(detalle)
+  note right of EJ : visible en la monitorización\n(CU-33, FR-48); se reintenta en\nla siguiente ejecución
+  SYS --> PL : error de integración registrado
+end
+
+loop [para cada movimiento recibido]
+  create participant "m : MovimientoCobro" as M
+  SYS -->> M : <<create>> MovimientoCobro(idExterno, importe,\nfecha, moneda, referencia)
+  critical [registro único por idExterno y actualización exclusiva del saldo de la factura]
+    SYS -> M ++ : esDuplicado()
+    return duplicado : Boolean
+
+    alt [FE-1: el evento ya estaba registrado]
+      SYS -> SYS : descartar(m)
+      note right of SYS : no se contabiliza dos veces
+
+    else [movimiento nuevo]
+      SYS -> M : setEstado(REGISTRADO)
+      note right of M : registro inmutable
+      SYS -> SYS : buscarFacturaPorReferencia(referencia)
+    SYS -> SYS : si hay factura candidata, releer su saldo,\nmoneda y estado bajo la misma exclusión
+
+      alt [factura cobrable, coincidencia clara, misma moneda\ny 0 < importe <= saldo (CU-17 FA-1)]
+        create participant "con : Conciliacion" as CON
+        SYS -->> CON : <<create>> Conciliacion(m, f, importeAsignado,\ntipo = AUTOMATICA)
+        note right of CON : guarda la regla aplicada\n(trazable si se revierte, FR-22).\nEl saldo se actualiza con la misma exclusión\nque la conciliación manual y la reversión
+        SYS -> F ++ : getSaldoPendiente()
+        return saldo
+        SYS -> F : setSaldoPendiente(saldo - importeAsignado)
+        alt [saldo resultante = 0]
+          SYS -> F : setEstado(PAGADA)
+        else [saldo resultante > 0]
+          SYS -> F : setEstado(PARCIALMENTE_CONCILIADA)
+        end
+        SYS -> M : setEstado(CONCILIADO)
+
+      else [FA-2: sin coincidencia clara, varias posibles o importe superior al saldo]
+        alt [cliente identificado]
+          SYS -> C ++ : getResponsableInterno()
+          return responsable
+        else [cliente no identificado]
+          SYS -> SYS : obtenerPersonaDesignada()
+        end
+        SYS -> M : setEstado(PENDIENTE), setAsignadoA(responsable)
+        note right of M : si no se identifica el cliente, se asigna a una\npersona designada. Aparece en su pantalla de\ntrabajo diario (CU-29) y se concilia en CU-17.\nSi el importe supera el saldo, se señala la\ndiferencia para revisión (FR-21)
+      end
+
+      create participant "ev : EventoAuditoria" as EV
+      SYS -->> EV : <<create>> EventoAuditoria("REGISTRAR_COBRO",\n"MovimientoCobro", m.id)
+    end
+  end
+end
+
+alt [origen: notificación]
+  SYS --> PAG : recibido
+else [origen: consulta periódica]
+  SYS -> EJ : setFin(ahora), setEstado(OK), setResumen(resumen)
+  SYS --> PL : resultado de la ejecución
+end
+deactivate SYS
+@enduml
