@@ -1,0 +1,527 @@
+@startuml modelo_datos
+' Generado a partir de modelo_datos.sql (41 tablas). Notación IE / pata de gallo.
+title Modelo físico de datos · Sistema de facturación de Turbine · Grupo JIRAFAS
+skinparam linetype ortho
+hide circle
+skinparam shadowing false
+skinparam nodesep 40
+skinparam ranksep 60
+skinparam defaultFontName Arial
+skinparam entity {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+}
+skinparam package {
+  BackgroundColor #F6F8FA
+  BorderColor #888888
+}
+package "Bloque A · Clientes y contactos" {
+  entity "CLIENTE" as cliente {
+    * id_cliente : BIGINT <<PK>>
+    --
+    * id_responsable : BIGINT <<FK>>
+    id_centro_coste : BIGINT <<FK>>
+    id_importacion : BIGINT <<FK>>
+    * nombre_comercial : VARCHAR(150)
+    razon_social : VARCHAR(200)
+    identificador_fiscal : VARCHAR(40)
+    domicilio_fiscal : VARCHAR(300)
+    pais : VARCHAR(60)
+    moneda : CHAR(3)
+    sector : VARCHAR(80)
+    ubicacion : VARCHAR(150)
+    * idioma : VARCHAR(10)
+    * estado : VARCHAR(25)
+    * datos_fiscales_incompletos : BOOLEAN
+    fecha_inicio : DATE
+    condiciones_pago : TEXT
+    documento_firmado : VARCHAR(500)
+    vencimiento_pactado_dias : INTEGER
+    fecha_baja : DATE
+  }
+  entity "CONTACTO" as contacto {
+    * id_contacto : BIGINT <<PK>>
+    --
+    * nombre : VARCHAR(150)
+    * correo : VARCHAR(255)
+    * idioma : VARCHAR(10)
+    * consentimiento_whatsapp : BOOLEAN
+    * activo : BOOLEAN
+  }
+  entity "CLIENTE_CONTACTO" as cliente_contacto {
+    * id_cliente : BIGINT <<PK, FK>>
+    * id_contacto : BIGINT <<PK, FK>>
+    --
+    * tipo : VARCHAR(15)
+  }
+  entity "ETIQUETA" as etiqueta {
+    * id_etiqueta : BIGINT <<PK>>
+    --
+    * nombre : VARCHAR(60)
+  }
+  entity "CLIENTE_ETIQUETA" as cliente_etiqueta {
+    * id_cliente : BIGINT <<PK, FK>>
+    * id_etiqueta : BIGINT <<PK, FK>>
+  }
+  entity "FAVORITO" as favorito {
+    * id_usuario : BIGINT <<PK, FK>>
+    * id_cliente : BIGINT <<PK, FK>>
+  }
+  entity "TAREA" as tarea {
+    * id_tarea : BIGINT <<PK>>
+    --
+    * id_cliente : BIGINT <<FK>>
+    id_completada_por : BIGINT <<FK>>
+    * descripcion : TEXT
+    * fecha_prevista : DATE
+    * estado : VARCHAR(15)
+    fecha_completada : TIMESTAMPTZ
+  }
+  entity "EXCEPCION_COMERCIAL" as excepcion_comercial {
+    * id_excepcion : BIGINT <<PK>>
+    --
+    * id_cliente : BIGINT <<FK>>
+    id_solicitud : BIGINT <<FK>>
+    * tipo : VARCHAR(20)
+    fecha_inicio_futura : DATE
+    * aprobada : BOOLEAN
+  }
+  entity "IMPORTACION_CSV" as importacion_csv {
+    * id_importacion : BIGINT <<PK>>
+    --
+    * id_usuario : BIGINT <<FK>>
+    * nombre_archivo : VARCHAR(255)
+    * fecha : TIMESTAMPTZ
+    * incluye_facturas_historicas : BOOLEAN
+    * estado : VARCHAR(15)
+    * creados : INTEGER
+    * actualizados : INTEGER
+    * rechazados : INTEGER
+  }
+  entity "FILA_IMPORTACION" as fila_importacion {
+    * id_importacion : BIGINT <<PK, FK>>
+    * numero_fila : INTEGER <<PK>>
+    --
+    * estado : VARCHAR(20)
+    motivo_error : TEXT
+    * marcada_como_actualizacion : BOOLEAN
+  }
+}
+package "Bloque B · Suscripciones, tarifas y descuentos" {
+  entity "SUSCRIPCION" as suscripcion {
+    * id_suscripcion : BIGINT <<PK>>
+    --
+    * id_cliente : BIGINT <<FK>>
+    * plan : VARCHAR(100)
+    * precio_vigente : NUMERIC(14,2)
+    * fecha_inicio : DATE
+    * estado : VARCHAR(25)
+    motivo_pausa : TEXT
+    fecha_inicio_pausa : DATE
+    fecha_reactivacion_prevista : DATE
+    fecha_baja : DATE
+    motivo_baja : TEXT
+  }
+  entity "REVISION_TARIFA_ANUAL" as revision_tarifa_anual {
+    * id_revision : BIGINT <<PK>>
+    --
+    * id_cliente : BIGINT <<FK>>
+    id_rango_propuesto : BIGINT <<FK>>
+    id_aprobador : BIGINT <<FK>>
+    * fecha_revision : DATE
+    * facturacion_anual_verificada : NUMERIC(14,2)
+    * precio_anterior : NUMERIC(14,2)
+    * precio_nuevo : NUMERIC(14,2)
+    fecha_decision : TIMESTAMPTZ
+    * estado : VARCHAR(15)
+    motivo_rechazo : TEXT
+  }
+  entity "SOLICITUD_DESCUENTO" as solicitud_descuento {
+    * id_solicitud : BIGINT <<PK>>
+    --
+    * id_cliente : BIGINT <<FK>>
+    id_suscripcion : BIGINT <<FK>>
+    * id_solicitante : BIGINT <<FK>>
+    id_aprobador : BIGINT <<FK>>
+    * tipo : VARCHAR(12)
+    * valor : NUMERIC(14,2)
+    * motivo : TEXT
+    fecha_vigencia : DATE
+    * estado : VARCHAR(25)
+    motivo_decision : TEXT
+    fecha_decision : TIMESTAMPTZ
+  }
+}
+package "Bloque C · Facturación" {
+  entity "FACTURA" as factura {
+    * id_factura : BIGINT <<PK>>
+    --
+    * id_cliente : BIGINT <<FK>>
+    id_suscripcion : BIGINT <<FK>>
+    id_serie : BIGINT <<FK>>
+    id_ejecucion : BIGINT <<FK>>
+    id_creada_por : BIGINT <<FK>>
+    id_centro_coste : BIGINT <<FK>>
+    id_descuento_aplicado : BIGINT <<FK>>
+    id_factura_original : BIGINT <<FK>>
+    numero : VARCHAR(40)
+    * tipo : VARCHAR(15)
+    * estado : VARCHAR(25)
+    fecha_emision : DATE
+    * fecha_vencimiento : DATE
+    periodo_facturado : VARCHAR(7)
+    * moneda : CHAR(3)
+    datos_fiscales_emision : JSONB
+    * base_imponible : NUMERIC(14,2)
+    * total : NUMERIC(14,2)
+    * saldo_pendiente : NUMERIC(14,2)
+    * retenida : BOOLEAN
+    documento_pdf : BYTEA
+    * migrada : BOOLEAN
+    motivo_rectificacion : TEXT
+  }
+  entity "LINEA_FACTURA" as linea_factura {
+    * id_linea : BIGINT <<PK>>
+    --
+    * id_factura : BIGINT <<FK>>
+    * id_impuesto : BIGINT <<FK>>
+    * concepto : VARCHAR(255)
+    * cantidad : NUMERIC(12,3)
+    * precio_unitario : NUMERIC(14,2)
+    * descuento : NUMERIC(14,2)
+    * porcentaje_impuesto : NUMERIC(5,2)
+    * importe : NUMERIC(14,2)
+  }
+  entity "APROBACION_FACTURA" as aprobacion_factura {
+    * id_aprobacion : BIGINT <<PK>>
+    --
+    * id_factura : BIGINT <<FK>>
+    * id_solicitante : BIGINT <<FK>>
+    id_aprobador : BIGINT <<FK>>
+    * motivo_retencion : TEXT
+    * estado : VARCHAR(25)
+    * fecha_solicitud : TIMESTAMPTZ
+    fecha_decision : TIMESTAMPTZ
+    motivo_decision : TEXT
+  }
+  entity "OPERACION_EXCEPCIONAL" as operacion_excepcional {
+    * id_operacion : BIGINT <<PK>>
+    --
+    * id_factura : BIGINT <<FK>>
+    * id_solicitante : BIGINT <<FK>>
+    id_aprobador : BIGINT <<FK>>
+    * tipo : VARCHAR(15)
+    * motivo : TEXT
+    * estado : VARCHAR(15)
+  }
+  entity "FILTRO_GUARDADO" as filtro_guardado {
+    * id_filtro : BIGINT <<PK>>
+    --
+    * id_usuario : BIGINT <<FK>>
+    * nombre : VARCHAR(100)
+    * criterios : JSONB
+  }
+}
+package "Bloque D · Cobros y comunicaciones" {
+  entity "MOVIMIENTO_COBRO" as movimiento_cobro {
+    * id_movimiento : BIGINT <<PK>>
+    --
+    id_asignado_a : BIGINT <<FK>>
+    * fuente : VARCHAR(10)
+    * id_externo : VARCHAR(100)
+    * importe : NUMERIC(14,2)
+    * fecha : TIMESTAMPTZ
+    * moneda : CHAR(3)
+    concepto : VARCHAR(255)
+    referencia : VARCHAR(100)
+    * estado : VARCHAR(25)
+  }
+  entity "CONCILIACION" as conciliacion {
+    * id_conciliacion : BIGINT <<PK>>
+    --
+    * id_movimiento : BIGINT <<FK>>
+    * id_factura : BIGINT <<FK>>
+    id_realizada_por : BIGINT <<FK>>
+    id_revertida_por : BIGINT <<FK>>
+    * importe_asignado : NUMERIC(14,2)
+    * tipo : VARCHAR(10)
+    regla : VARCHAR(100)
+    * fecha : TIMESTAMPTZ
+    * revertida : BOOLEAN
+    fecha_reversion : TIMESTAMPTZ
+    motivo_reversion : TEXT
+  }
+  entity "COMUNICACION" as comunicacion {
+    * id_comunicacion : BIGINT <<PK>>
+    --
+    id_factura : BIGINT <<FK>>
+    id_contacto : BIGINT <<FK>>
+    * id_plantilla : BIGINT <<FK>>
+    * tipo : VARCHAR(25)
+    * canal : VARCHAR(20)
+    * idioma : VARCHAR(10)
+    * estado : VARCHAR(15)
+    fecha_envio : TIMESTAMPTZ
+    * numero_intento : INTEGER
+    correo_destinatario : VARCHAR(255)
+  }
+  entity "PLANTILLA_COMUNICACION" as plantilla_comunicacion {
+    * id_plantilla : BIGINT <<PK>>
+    --
+    * tipo : VARCHAR(25)
+    * idioma : VARCHAR(10)
+    * version : INTEGER
+    * asunto : VARCHAR(255)
+    * contenido : TEXT
+  }
+  entity "SUSPENSION_RECORDATORIOS" as suspension_recordatorios {
+    * id_suspension : BIGINT <<PK>>
+    --
+    * id_factura : BIGINT <<FK>>
+    * motivo : TEXT
+    * fecha_revision : DATE
+    * activa : BOOLEAN
+  }
+}
+package "Bloque E · Seguimiento, consulta e informes" {
+  entity "INCIDENCIA" as incidencia {
+    * id_incidencia : BIGINT <<PK>>
+    --
+    * id_cliente : BIGINT <<FK>>
+    id_factura : BIGINT <<FK>>
+    * id_responsable : BIGINT <<FK>>
+    * tipo : VARCHAR(15)
+    * descripcion : TEXT
+    * estado : VARCHAR(15)
+    * prioridad : VARCHAR(10)
+    * fecha_creacion : TIMESTAMPTZ
+  }
+  entity "ADJUNTO" as adjunto {
+    * id_adjunto : BIGINT <<PK>>
+    --
+    * id_incidencia : BIGINT <<FK>>
+    * referencia : VARCHAR(500)
+  }
+  entity "COMENTARIO" as comentario {
+    * id_comentario : BIGINT <<PK>>
+    --
+    * id_incidencia : BIGINT <<FK>>
+    * id_autor : BIGINT <<FK>>
+    * texto : TEXT
+    * fecha : TIMESTAMPTZ
+  }
+  entity "MENCION" as mencion {
+    * id_comentario : BIGINT <<PK, FK>>
+    * id_usuario : BIGINT <<PK, FK>>
+  }
+  entity "NOTIFICACION" as notificacion {
+    * id_notificacion : BIGINT <<PK>>
+    --
+    * id_usuario : BIGINT <<FK>>
+    id_regla : BIGINT <<FK>>
+    id_comentario : BIGINT <<FK>>
+    * categoria : VARCHAR(40)
+    * mensaje : TEXT
+    elemento_relacionado : VARCHAR(100)
+    * fecha : TIMESTAMPTZ
+    * requiere_accion : BOOLEAN
+    * leida : BOOLEAN
+    * resuelta : BOOLEAN
+  }
+  entity "REGLA_ALERTA" as regla_alerta {
+    * id_regla : BIGINT <<PK>>
+    --
+    * tipo : VARCHAR(20)
+    * umbral : NUMERIC(14,2)
+    * activa : BOOLEAN
+  }
+  entity "INFORME" as informe {
+    * id_informe : BIGINT <<PK>>
+    --
+    * id_usuario : BIGINT <<FK>>
+    filtros : JSONB
+    * formato : VARCHAR(5)
+    * estado : VARCHAR(25)
+    fecha_generacion : TIMESTAMPTZ
+    fecha_caducidad : TIMESTAMPTZ
+  }
+  entity "OBJETIVO_FACTURACION" as objetivo_facturacion {
+    * id_objetivo : BIGINT <<PK>>
+    --
+    * id_administrador : BIGINT <<FK>>
+    * periodo : VARCHAR(10)
+    * valor : NUMERIC(14,2)
+  }
+  entity "CENTRO_COSTE" as centro_coste {
+    * id_centro_coste : BIGINT <<PK>>
+    --
+    * nombre : VARCHAR(100)
+    * tipo : VARCHAR(15)
+    * activo : BOOLEAN
+  }
+}
+package "Bloque F · Administración, seguridad y sistema" {
+  entity "USUARIO" as usuario {
+    * id_usuario : BIGINT <<PK>>
+    --
+    * nombre : VARCHAR(150)
+    * correo_corporativo : VARCHAR(255)
+    hash_contrasena : VARCHAR(255)
+    * rol : VARCHAR(20)
+    * estado : VARCHAR(15)
+    * doble_factor_activo : BOOLEAN
+    * intentos_fallidos : INTEGER
+    bloqueado_hasta : TIMESTAMPTZ
+    preferencias_notificacion : TEXT
+    * puede_gestionar_usuarios : BOOLEAN
+  }
+  entity "CONFIGURACION_SISTEMA" as configuracion_sistema {
+    * id_configuracion : SMALLINT <<PK>>
+    --
+    * datos_emisor : TEXT
+    * umbral_descuento : NUMERIC(14,2)
+    * umbral_importe_alto : NUMERIC(14,2)
+    * vencimiento_general_dias : INTEGER
+    * dias_recordatorio_previo : INTEGER
+    * dias_recordatorio_vencimiento : INTEGER
+    * frecuencia_aviso_impago_dias : INTEGER
+    * funciones_inteligentes_activas : BOOLEAN
+    * dominio_corporativo : VARCHAR(255)
+    * dias_conservacion_informes : INTEGER
+  }
+  entity "SERIE_FACTURACION" as serie_facturacion {
+    * id_serie : BIGINT <<PK>>
+    --
+    * codigo : VARCHAR(20)
+    * prefijo : VARCHAR(20)
+    * ultimo_numero : INTEGER
+  }
+  entity "IMPUESTO" as impuesto {
+    * id_impuesto : BIGINT <<PK>>
+    --
+    * nombre : VARCHAR(60)
+    * porcentaje : NUMERIC(5,2)
+  }
+  entity "RANGO_TARIFA" as rango_tarifa {
+    * id_rango : BIGINT <<PK>>
+    --
+    * facturacion_minima : NUMERIC(14,2)
+    * facturacion_maxima : NUMERIC(14,2)
+    * precio : NUMERIC(14,2)
+    * fecha_efecto : DATE
+  }
+  entity "EJECUCION_TAREA" as ejecucion_tarea {
+    * id_ejecucion : BIGINT <<PK>>
+    --
+    * tipo : VARCHAR(30)
+    * inicio : TIMESTAMPTZ
+    fin : TIMESTAMPTZ
+    * estado : VARCHAR(25)
+    resumen : TEXT
+    errores : TEXT
+  }
+  entity "EVENTO_AUDITORIA" as evento_auditoria {
+    * id_evento : BIGINT <<PK>>
+    --
+    id_autor : BIGINT <<FK>>
+    * fecha_hora : TIMESTAMPTZ
+    * accion : VARCHAR(80)
+    * entidad : VARCHAR(60)
+    id_entidad : BIGINT
+    valores_anteriores : JSONB
+    valores_nuevos : JSONB
+    id_error : VARCHAR(60)
+  }
+  entity "ACCION_MASIVA" as accion_masiva {
+    * id_accion : BIGINT <<PK>>
+    --
+    * id_administrador : BIGINT <<FK>>
+    id_aprobador : BIGINT <<FK>>
+    * tipo : VARCHAR(60)
+    * numero_elementos : INTEGER
+    * alto_impacto : BOOLEAN
+    * estado : VARCHAR(15)
+  }
+  entity "SOLICITUD_EXTERNA" as solicitud_externa {
+    * id_solicitud_externa : BIGINT <<PK>>
+    --
+    * id_cliente : BIGINT <<FK>>
+    * sistema_origen : VARCHAR(80)
+    * tipo : VARCHAR(60)
+    * datos : JSONB
+    * estado : VARCHAR(20)
+    * fecha : TIMESTAMPTZ
+  }
+}
+usuario ||--o{ importacion_csv : "realiza"
+importacion_csv ||--o{ fila_importacion : "contiene"
+usuario ||--o{ cliente : "responsable de"
+centro_coste |o--o{ cliente : "clasifica"
+importacion_csv |o--o{ cliente : "crea/actualiza"
+cliente ||--o{ cliente_etiqueta : "tiene"
+etiqueta ||--o{ cliente_etiqueta : "etiqueta a"
+cliente ||--o{ cliente_contacto : "se relaciona con"
+contacto ||--o{ cliente_contacto : "participa en"
+usuario ||--o{ favorito : "marca"
+cliente ||--o{ favorito : "es favorito de"
+cliente ||--o{ tarea : "tiene"
+usuario |o--o{ tarea : "completa"
+cliente ||--o{ suscripcion : "contrata"
+cliente ||--o{ revision_tarifa_anual : "se revisa en"
+rango_tarifa |o--o{ revision_tarifa_anual : "propone"
+usuario |o--o{ revision_tarifa_anual : "aprueba"
+cliente ||--o{ solicitud_descuento : "para"
+suscripcion |o--o{ solicitud_descuento : "sobre"
+usuario ||--o{ solicitud_descuento : "solicita"
+usuario |o--o{ solicitud_descuento : "decide"
+cliente ||--o{ excepcion_comercial : "tiene"
+solicitud_descuento |o--o| excepcion_comercial : "se aprueba mediante"
+cliente ||--o{ factura : "recibe"
+suscripcion |o--o{ factura : "genera"
+serie_facturacion |o--o{ factura : "numera"
+ejecucion_tarea |o--o{ factura : "genera"
+usuario |o--o{ factura : "crea"
+centro_coste |o--o{ factura : "clasifica"
+solicitud_descuento |o--o{ factura : "aplica"
+factura |o--o{ factura : "rectifica a"
+factura ||--o{ linea_factura : "contiene"
+impuesto ||--o{ linea_factura : "grava con"
+factura ||--o{ aprobacion_factura : "retenciones"
+usuario ||--o{ aprobacion_factura : "solicita"
+usuario |o--o{ aprobacion_factura : "aprueba"
+factura ||--o{ operacion_excepcional : "afecta a"
+usuario ||--o{ operacion_excepcional : "solicita"
+usuario |o--o{ operacion_excepcional : "aprueba"
+usuario ||--o{ filtro_guardado : "guarda"
+usuario |o--o{ movimiento_cobro : "se asigna a"
+movimiento_cobro ||--o{ conciliacion : "se reparte en"
+factura ||--o{ conciliacion : "se cobra con"
+usuario |o--o{ conciliacion : "realiza"
+usuario |o--o{ conciliacion : "revierte"
+factura |o--o{ comunicacion : "historial de"
+contacto |o--o{ comunicacion : "destinatario"
+plantilla_comunicacion ||--o{ comunicacion : "usa"
+factura ||--o{ suspension_recordatorios : "suspende avisos de"
+cliente ||--o{ incidencia : "abre"
+factura |o--o{ incidencia : "sobre"
+usuario ||--o{ incidencia : "responsable de"
+incidencia ||--o{ adjunto : "adjunta"
+incidencia ||--o{ comentario : "comentarios"
+usuario ||--o{ comentario : "escribe"
+comentario ||--o{ mencion : "menciona"
+usuario ||--o{ mencion : "es mencionado en"
+usuario ||--o{ notificacion : "recibe"
+regla_alerta |o--o{ notificacion : "genera"
+comentario |o--o{ notificacion : "genera"
+usuario ||--o{ informe : "solicita"
+usuario ||--o{ objetivo_facturacion : "gestiona"
+usuario |o--o{ evento_auditoria : "autor de"
+usuario ||--o{ accion_masiva : "ejecuta"
+usuario |o--o{ accion_masiva : "aprueba"
+cliente ||--o{ solicitud_externa : "sobre"
+legend bottom right
+  Notación IE (patas de gallo) · * = obligatorio · PK = clave primaria · FK = clave foránea
+  ||  exactamente uno   |o  cero o uno   o{  cero o varios   (1..*) lo valida la aplicación
+  Importes NUMERIC (NFR-06) · Estados y tipos: VARCHAR + CHECK (ver modelo_datos.sql)
+endlegend
+@enduml
