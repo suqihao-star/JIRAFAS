@@ -1,0 +1,83 @@
+@startuml secuencia_bloque_E_seguimiento
+title Secuencia - Bloque E: Seguimiento, consulta e informes (Turbine)
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "UsuarioOperativo" as UO
+actor "Usuario mencionado" as UM
+actor "Administrador" as ADM
+participant "Incidencia" as INC
+participant "Comentario" as COM
+participant "Notificacion" as N
+participant "ReglaAlerta" as RA
+participant "Factura" as F
+participant "Informe" as INF
+participant "ObjetivoFacturacion" as OBJ
+participant "CentroCoste" as CC
+participant "ConfiguracionSistema" as CFG
+participant "EventoAuditoria" as AUD
+
+== 1. Alta y seguimiento de una incidencia ==
+UO -> INC : crear (tipo, descripcion, prioridad, adjuntos)\nasociada a Cliente y, opcionalmente, a Factura
+INC -> INC : estado = ABIERTA\nfechaCreacion = ahora\nresponsable = usuario asignado
+INC -> N : notificar al responsable
+INC -> INC : estado = EN_CURSO
+
+== 2. Comentarios internos y menciones ==
+UO -> COM : añadir comentario (texto, menciona @usuario)
+COM -> N : generar notificación para cada mencionado
+N --> UM : "Te han mencionado en una incidencia"
+note right of COM : Siempre interno: nunca se envía\nal cliente (BR-20)
+
+== 3. Resolución y cierre ==
+UO -> INC : resolver(comentario)
+INC -> INC : estado = RESUELTA
+INC -> AUD : registrar (INCIDENCIA_RESUELTA)
+UO -> INC : cerrar
+INC -> INC : estado = CERRADA
+
+== 4. Alertas automáticas ==
+loop evaluación periódica de reglas activas
+  RA -> F : evaluar()
+  alt tipo = DIAS_VENCIDA y días de vencimiento > umbral
+    RA -> N : generar notificación (requiereAccion = true)
+  else tipo = IMPORTE_PENDIENTE y saldoPendiente > umbral
+    RA -> N : generar notificación (requiereAccion = true)
+  else No se cumple la regla
+    RA -> RA : sin acción
+  end
+end
+
+== 5. Gestión de notificaciones ==
+UO -> N : marcarLeida()
+N -> N : leida = true
+opt requiereAccion = true
+  UO -> N : marcarResuelta()
+  N -> N : resuelta = true
+end
+note right of N : Se respetan las preferenciasNotificacion\ndel usuario
+
+== 6. Solicitud y generación de informes ==
+UO -> INC : (filtros opcionales por cliente, estado, centro de coste)
+UO -> INF : solicitar (filtros, formato CSV / PDF)
+INF -> INF : estado = PENDIENTE
+INF -> INF : generar()\nestado = PROCESANDO
+INF -> F : consultar facturas según filtros
+INF -> CC : agrupar por centro de coste / proyecto
+alt Generación correcta
+  INF -> INF : estado = COMPLETADO\nfechaGeneracion = ahora
+  INF -> CFG : leer diasConservacionInformes
+  INF -> INF : fechaCaducidad = fechaGeneracion + días
+  INF --> UO : exportar() → archivo
+else Errores parciales
+  INF -> INF : estado = COMPLETADO_CON_ERRORES
+  INF --> UO : aviso con detalle de errores
+end
+opt Informe caducado
+  UO -> INF : regenerar()
+end
+
+== 7. Objetivos de facturación ==
+ADM -> OBJ : modificar(valor)\n(periodo, valor)
+OBJ -> AUD : registrar (CAMBIO_OBJETIVO, valoresAnteriores, valoresNuevos)
+@enduml

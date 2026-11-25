@@ -1,0 +1,109 @@
+@startuml secuencia_bloque_A_clientes
+title Secuencia - Bloque A: Clientes y contactos (Turbine)
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "UsuarioOperativo" as UO
+participant "Cliente" as C
+participant "Contacto" as CT
+participant "ClienteContacto" as CC
+participant "ExcepcionComercial" as EX
+participant "Tarea" as T
+participant "ImportacionCSV" as IMP
+participant "FilaImportacion" as FI
+participant "Suscripcion" as S
+participant "EventoAuditoria" as AUD
+
+== 1. Alta de un cliente ==
+UO -> C : darDeAlta()
+activate C
+C -> C : comprobarDuplicado()\n(identificadorFiscal, razonSocial)
+opt Posible duplicado
+  C --> UO : aviso de duplicado
+  UO -> C : confirmar alta o cancelar
+end
+alt datosFiscalesIncompletos = true
+  C -> C : estado = PENDIENTE_ACTIVACION
+else Datos fiscales completos
+  C -> C : estado = ACTIVO
+end
+C -> C : responsableInterno = UO
+C -> AUD : registrar (ALTA_CLIENTE)
+deactivate C
+
+== 2. Contactos y condiciones comerciales ==
+UO -> CT : crear contacto\n(nombre, correo, idioma, consentimientoWhatsApp)
+UO -> CC : asociar al cliente\n[tipo = CONTRATACION / FACTURACION / IMPAGOS]
+note right of CC : Un contacto puede pertenecer a varios\nclientes y un cliente tiene varios contactos
+UO -> EX : crear excepción comercial\n[INICIO_FUTURO / PRIMER_MES_GRATIS / SIN_PRORRATEO]
+note right of EX : Si requiere aprobación se tramita como\nSolicitudDescuento (Bloque B)
+
+== 3. Seguimiento interno ==
+UO -> T : crear tarea (descripcion, fechaPrevista)
+UO -> T : completar()
+T -> T : estado = COMPLETADA\nfechaCompletada = ahora\ncompletadaPor = UO
+
+== 4. Edición y reasignación ==
+UO -> C : editar()
+C -> AUD : registrar (EDICION_CLIENTE, valoresAnteriores, valoresNuevos)
+UO -> C : cambiarResponsable(u)
+C -> AUD : registrar (CAMBIO_RESPONSABLE)
+
+== 5. Importación masiva por CSV ==
+UO -> IMP : subir archivo\n(nombreArchivo, incluyeFacturasHistoricas)
+activate IMP
+IMP -> IMP : validar()
+loop por cada fila del archivo
+  IMP -> FI : crear (numeroFila)
+  FI -> C : comprobarDuplicado()
+  alt Formato inválido
+    FI -> FI : estado = ERROR (motivoError)
+  else Cliente ya existente
+    FI -> FI : estado = DUPLICADO\nmarcadaComoActualizacion = true / false
+  else Faltan datos fiscales
+    FI -> FI : estado = DATOS_INCOMPLETOS
+  else Fila correcta
+    FI -> FI : estado = VALIDA
+  end
+end
+IMP -> IMP : estado = PREVISUALIZADA
+IMP --> UO : previsualizar() → List<FilaImportacion>
+deactivate IMP
+
+UO -> FI : excluir filas problemáticas [estado = EXCLUIDA]
+alt Confirma
+  UO -> IMP : confirmar()
+  activate IMP
+  loop filas aceptadas
+    alt Fila nueva
+      IMP -> C : darDeAlta()
+      IMP -> IMP : creados++
+    else Actualización
+      IMP -> C : editar()
+      IMP -> IMP : actualizados++
+    end
+  end
+  IMP -> IMP : rechazados = filas ERROR + EXCLUIDA\nestado = CONFIRMADA
+  opt incluyeFacturasHistoricas = true
+    IMP -> IMP : crear facturas históricas [migrada = true]
+  end
+  IMP -> AUD : registrar (IMPORTACION_CSV, creados / actualizados / rechazados)
+  deactivate IMP
+else Cancela
+  UO -> IMP : cancelar()
+  IMP -> IMP : estado = CANCELADA (no se modifica ningún dato)
+end
+
+== 6. Baja del cliente y de contactos ==
+UO -> C : darDeBaja(fecha)
+activate C
+loop por cada suscripción vigente
+  C -> S : darDeBaja(fecha)
+end
+C -> C : estado = BAJA
+C -> AUD : registrar (BAJA_CLIENTE)
+deactivate C
+UO -> CT : desactivar()
+UO -> CT : anonimizar()
+CT -> CT : activo = false\ndatos personales anonimizados
+@enduml

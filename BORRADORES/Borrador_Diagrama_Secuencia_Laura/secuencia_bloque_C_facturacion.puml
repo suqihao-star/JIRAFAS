@@ -1,0 +1,120 @@
+@startuml secuencia_bloque_C_facturacion
+title Secuencia - Bloque C: Facturación (Turbine)
+skinparam sequenceMessageAlign center
+autonumber
+
+participant "EjecucionTarea" as ET
+actor "UsuarioOperativo" as UO
+actor "Administrador\n(solicitante)" as SOL
+actor "Administrador\n(aprobador)" as ADM
+participant "Suscripcion" as S
+participant "Factura" as F
+participant "LineaFactura" as L
+participant "Impuesto" as I
+participant "SerieFacturacion" as SER
+participant "AprobacionFactura" as AP
+participant "OperacionExcepcional" as OP
+participant "FacturaRectificativa" as FR
+participant "Notificacion" as N
+participant "EventoAuditoria" as AUD
+
+== 1. Generación automática de facturas recurrentes ==
+ET -> ET : tipo = GENERACION_RECURRENTE\nestado = EN_CURSO
+loop por cada suscripción
+  ET -> S : esFacturable(periodo)
+  alt Facturable (ACTIVA, no EN_PAUSA)
+    ET -> S : calcularProrrateo(periodo)
+    S --> ET : importe
+    ET -> F : crear [tipo = RECURRENTE, estado = BORRADOR]\n(numero y fechaEmision vacíos)
+    F -> L : crear línea (concepto, cantidad, precioUnitario, descuento)
+    L -> I : leer porcentaje
+    L -> L : calcularImporte()
+    F -> F : calcularTotales()\n(baseImponible, total, saldoPendiente)
+    note right of F : Si hay descuento aprobado se vincula\ncomo descuentoAplicado
+  else No facturable
+    ET -> ET : omitir y anotar en resumen
+  end
+end
+ET -> ET : fin = ahora\nestado = COMPLETADA / COMPLETADA_CON_ERRORES\n(resumen, errores)
+opt Ejecución interrumpida
+  ET -> ET : estado = INTERRUMPIDA
+  UO -> ET : reanudar()
+end
+
+== 2. Factura puntual manual ==
+UO -> F : crear [tipo = PUNTUAL, estado = BORRADOR]
+UO -> F : añadir líneas → calcularTotales()
+
+== 3. Emisión con control de retención ==
+UO -> F : emitirFactura(f)
+activate F
+F -> F : validarDatosFiscales() → lista de errores
+F -> F : detectarCausaRetencion()\n(datos incompletos, importe > umbralImporteAlto...)
+alt Sin causa de retención
+  F -> SER : asignarSiguienteNumero()
+  SER --> F : numero (prefijo + correlativo)
+  F -> F : emitir()\nestado = EMITIDA\nfechaEmision = hoy\ndatosFiscalesEmision = copia de datos del cliente
+  F -> F : generarPDF() → documentoPDF
+  F -> AUD : registrar (EMISION)
+  note right of F : Emitida = inmutable (BR-09)
+else Con causa de retención (FR-13)
+  F -> AP : crear [estado = PENDIENTE]\nmotivoRetencion, fechaSolicitud, solicitante = UO
+  F -> F : retenida = true
+  F -> N : notificar a Administradores (requiereAccion = true)
+  F --> UO : factura retenida pendiente de aprobación
+end
+deactivate F
+
+== 4. Resolución de la retención (CU-13) ==
+ADM -> AP : revisar
+note right of AP : Aprobador distinto del solicitante (BR-12)
+alt Aprueba
+  ADM -> AP : aprobar()
+  AP -> AP : estado = APROBADA\nfechaDecision = ahora
+  AP -> F : retenida = false → emitir()
+  F -> SER : asignarSiguienteNumero()
+  F -> F : generarPDF()
+else Rechaza
+  ADM -> AP : rechazar(motivo)
+  AP -> AP : estado = RECHAZADA
+  AP -> N : notificar al solicitante
+else Pide información
+  ADM -> AP : solicitarInformacion(motivo)
+  AP -> AP : estado = PENDIENTE_INFORMACION
+  AP -> N : notificar al solicitante
+  UO -> F : corregir datos y reenviar a revisión
+  F -> AP : nueva AprobacionFactura (una por cada retención, FA-1)
+end
+AP -> AUD : registrar (DECISION_RETENCION)
+
+== 5. Operaciones excepcionales sobre facturas emitidas ==
+SOL -> OP : crear (tipo, motivo, factura)\n[RECTIFICACION / ANULACION / INCOBRABLE / CANCELACION]
+OP -> OP : estado = PENDIENTE
+ADM -> OP : revisar
+note right of OP : Aprobador distinto del solicitante (BR-12)
+alt Rechaza
+  ADM -> OP : rechazar
+  OP -> OP : estado = RECHAZADA
+else Aprueba
+  ADM -> OP : aprobar()
+  OP -> OP : estado = APROBADA
+  ADM -> OP : ejecutar()
+  activate OP
+  alt RECTIFICACION
+    OP -> FR : crear (motivoRectificacion, rectificaA = F)
+    FR -> SER : asignarSiguienteNumero()
+    FR -> FR : emitir() + generarPDF()
+    OP -> F : estado = RECTIFICADA
+  else ANULACION
+    OP -> F : anular(motivo) → estado = ANULADA
+  else INCOBRABLE
+    OP -> F : estado = INCOBRABLE
+  else CANCELACION (solo borradores)
+    OP -> F : estado = CANCELADA
+  end
+  OP -> OP : estado = EJECUTADA
+  OP -> AUD : registrar (OPERACION_EXCEPCIONAL,\nvaloresAnteriores, valoresNuevos)
+  deactivate OP
+end
+note over F : Una factura emitida nunca se edita (BR-09):\nse corrige solo con estas operaciones
+@enduml

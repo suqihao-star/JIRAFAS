@@ -1,0 +1,117 @@
+@startuml secuencia_bloque_D_cobros_comunicaciones
+title Secuencia - Bloque D: Cobros y comunicaciones (Turbine)
+skinparam sequenceMessageAlign center
+autonumber
+
+participant "EjecucionTarea" as ET
+actor "UsuarioOperativo" as UO
+participant "ConfiguracionSistema" as CFG
+participant "Factura" as F
+participant "SuspensionRecordatorios" as SR
+participant "PlantillaComunicacion" as PL
+participant "Contacto" as CT
+participant "Comunicacion" as COM
+participant "CanalEnvio" as CE
+participant "SistemaPagos\n(Stripe / Revolut / otra)" as SP
+participant "MovimientoCobro" as MC
+participant "Conciliacion" as CON
+participant "Notificacion" as N
+participant "EventoAuditoria" as AUD
+
+== 1. Envío de la factura emitida ==
+F -> PL : buscar plantilla\n(tipo = FACTURA, idioma del cliente)
+F -> CT : seleccionar contacto (tipo FACTURACION)
+F -> COM : crear [tipo = FACTURA, canal = EMAIL]\nestado = EN_COLA, numeroIntento = 1
+COM -> CE : enviar(c)
+alt Entrega correcta
+  CE --> COM : true
+  COM -> COM : registrarResultado("ENTREGADA")\nfechaEnvio = ahora
+  COM -> F : estado = ENVIADA
+else Rebote o fallo
+  CE --> COM : false
+  COM -> COM : registrarResultado("REBOTADA" / "FALLIDA")
+  COM -> N : notificar al responsable (requiereAccion = true)
+  UO -> COM : reenviar(contacto alternativo)
+  COM -> COM : nueva Comunicacion (numeroIntento + 1)
+end
+note right of COM : Cada intento, reenvío o canal es una\nComunicacion: historial en la factura (FR-46)
+
+== 2. Recordatorios automáticos ==
+ET -> ET : tipo = RECORDATORIOS, estado = EN_CURSO
+ET -> CFG : leer diasRecordatorioPrevio (3),\ndiasRecordatorioVencimiento (5),\nfrecuenciaAvisoImpagoDias (2)
+loop por cada factura pendiente de cobro
+  ET -> SR : ¿existe suspensión activa?
+  alt Recordatorios suspendidos
+    ET -> ET : omitir factura
+  else Sin suspensión
+    alt faltan diasRecordatorioPrevio para el vencimiento
+      ET -> COM : crear [RECORDATORIO_PREVIO]
+    else día de vencimiento
+      ET -> COM : crear [VENCIMIENTO]
+    else vencida y pasaron frecuenciaAvisoImpagoDias
+      ET -> F : estado = VENCIDA
+      ET -> COM : crear [AVISO_IMPAGO] (contacto tipo IMPAGOS)
+    end
+    COM -> PL : cargar plantilla (tipo, idioma, version)
+    PL --> COM : previsualizar() → asunto + contenido
+    opt consentimientoWhatsApp = true
+      COM -> CE : enviar por WHATSAPP_SIMULADO
+    end
+    COM -> CE : enviar por EMAIL
+    CE --> COM : registrarResultado()
+  end
+end
+ET -> ET : estado = COMPLETADA / COMPLETADA_CON_ERRORES
+
+== 3. Suspensión de recordatorios y disputa ==
+UO -> SR : crear (motivo, fechaRevision)\nactiva = true
+UO -> SR : reanudar() → activa = false
+UO -> COM : crear [DISPUTA_RESUELTA]
+COM -> CE : enviar(c)
+
+== 4. Consulta periódica de pagos ==
+ET -> ET : tipo = CONSULTA_PAGOS, estado = EN_CURSO
+ET -> SP : consultarPagos(desde)
+SP --> ET : List<MovimientoCobro>
+loop por cada movimiento recibido
+  ET -> MC : crear (fuente, idExterno, importe,\nfecha, moneda, concepto, referencia)
+  MC -> MC : esDuplicado()  (fuente + idExterno)
+  alt Duplicado
+    MC -> MC : descartar
+  else Nuevo
+    MC -> MC : estado = PENDIENTE_CONCILIACION
+  end
+end
+
+== 5. Conciliación automática ==
+loop por cada movimiento PENDIENTE_CONCILIACION
+  MC -> F : buscar factura por referencia / concepto / importe y moneda
+  alt Coincidencia única
+    MC -> CON : crear [tipo = AUTOMATICA, regla]\nimporteAsignado
+    CON -> F : registrarCobro(importe)
+    alt importe cubre el saldoPendiente
+      F -> F : estado = PAGADA
+      MC -> MC : estado = CONCILIADO
+    else importe parcial
+      F -> F : estado = PARCIALMENTE_CONCILIADA
+      MC -> MC : estado = PARCIAL
+    end
+    CON -> AUD : registrar (CONCILIACION_AUTOMATICA)
+  else Sin coincidencia o ambigua
+    MC -> N : notificar al equipo (requiereAccion = true)
+  end
+end
+ET -> ET : estado = COMPLETADA / COMPLETADA_CON_ERRORES
+
+== 6. Conciliación manual y reversión ==
+UO -> MC : asignarA(usuario)
+UO -> MC : conciliarPago(m, f)
+MC -> CON : crear [tipo = MANUAL]\nimporteAsignado, realizadaPor = UO
+CON -> F : registrarCobro(importe)
+CON -> AUD : registrar (CONCILIACION_MANUAL)
+UO -> CON : revertir(motivo)
+CON -> CON : revertida = true\nfechaReversion = ahora\nrevertidaPor = UO
+CON -> F : recalcular saldoPendiente y estado
+CON -> MC : estado = PENDIENTE_CONCILIACION / PARCIAL
+CON -> AUD : registrar (REVERSION_CONCILIACION)
+@enduml

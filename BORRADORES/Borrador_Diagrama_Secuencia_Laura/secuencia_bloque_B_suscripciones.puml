@@ -1,0 +1,101 @@
+@startuml secuencia_bloque_B_suscripciones
+title Secuencia - Bloque B: Suscripciones, tarifas y descuentos (Turbine)
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "UsuarioOperativo" as UO
+actor "Administrador" as ADM
+actor "Superadministrador" as SUP
+participant "Cliente" as C
+participant "Suscripcion" as S
+participant "RevisionTarifaAnual" as REV
+participant "RangoTarifa" as RT
+participant "SolicitudDescuento" as SD
+participant "ConfiguracionSistema" as CFG
+participant "ExcepcionComercial" as EX
+participant "Notificacion" as N
+participant "EventoAuditoria" as AUD
+
+== 1. Contratación de una suscripción ==
+UO -> S : crear (plan, precioVigente, fechaInicio)
+alt fechaInicio futura o cliente PENDIENTE_ACTIVACION
+  S -> S : estado = PENDIENTE_ACTIVACION
+else
+  S -> S : estado = ACTIVA
+end
+S -> AUD : registrar (ALTA_SUSCRIPCION)
+
+== 2. Pausa y reactivación ==
+UO -> S : pausar(motivo, reactivacion)
+S -> S : estado = EN_PAUSA\nfechaInicioPausa = hoy\nfechaReactivacionPrevista = reactivacion
+note right of S : Durante la pausa esFacturable(periodo)\ndevuelve false
+UO -> S : reactivar()
+S -> S : estado = ACTIVA
+S -> AUD : registrar (PAUSA / REACTIVACION)
+
+== 3. Baja de la suscripción ==
+UO -> S : darDeBaja(fecha)
+S -> S : calcularProrrateo(periodo)
+S -> S : fechaBaja = fecha, motivoBaja\nestado = CANCELADA
+S -> AUD : registrar (BAJA_SUSCRIPCION)
+
+== 4. Revisión anual de tarifa ==
+note over REV : Se dispara en la fechaRevision del cliente
+REV -> C : obtener facturacionAnualVerificada
+REV -> RT : buscar rango donde\nfacturacionMinima ≤ facturación ≤ facturacionMaxima
+RT --> REV : rangoPropuesto (precio, fechaEfecto)
+REV -> REV : precioAnterior = S.precioVigente\nprecioNuevo = RT.precio\nestado = PENDIENTE
+REV -> N : notificar al Administrador (requiereAccion = true)
+ADM -> REV : revisar propuesta
+alt Aprueba
+  ADM -> REV : aprobar()
+  REV -> REV : estado = APROBADA\nfechaDecision = ahora\naprobadaPor = ADM
+  REV -> S : precioVigente = precioNuevo (desde fechaEfecto)
+else Rechaza
+  ADM -> REV : rechazar(motivo)
+  REV -> REV : estado = RECHAZADA\nmotivoRechazo = motivo
+  note right of S : El precio vigente no cambia
+end
+REV -> AUD : registrar (REVISION_TARIFA, valoresAnteriores, valoresNuevos)
+
+== 5. Solicitud de descuento ==
+UO -> SD : solicitarDescuento(c)\n(tipo PORCENTAJE / IMPORTE, valor, motivo, fechaVigencia)
+activate SD
+SD -> SD : estado = PENDIENTE\nsolicitante = UO
+SD -> CFG : leer umbralDescuento
+SD -> SD : superaUmbral()
+alt No supera el umbral
+  SD -> N : notificar a Administradores
+  ADM -> SD : revisar
+  note right of SD : Aprobador distinto del solicitante (BR-12)
+  alt Aprueba
+    ADM -> SD : aprobar()
+    SD -> SD : estado = APROBADA
+  else Aprueba con condiciones
+    ADM -> SD : aprobar() con condiciones
+    SD -> SD : estado = APROBADA_CONDICIONADA
+  else Rechaza
+    ADM -> SD : rechazar(motivo)
+    SD -> SD : estado = RECHAZADA\nmotivoDecision = motivo
+  end
+else Supera el umbral (FR-18)
+  SD -> SD : escalar()\nestado = ESCALADA
+  SD -> N : notificar al Superadministrador
+  SUP -> SD : resolverEscalado(s)
+  alt Aprueba
+    SUP -> SD : aprobar()
+    SD -> SD : estado = APROBADA
+  else Rechaza
+    SUP -> SD : rechazar(motivo)
+    SD -> SD : estado = RECHAZADA
+  end
+end
+opt Aprobada y vinculada a una excepción comercial
+  SD -> EX : aprobada = true
+end
+SD -> SD : fechaDecision = ahora
+SD -> N : notificar resultado al solicitante
+SD -> AUD : registrar (DECISION_DESCUENTO)
+deactivate SD
+note over SD : Una vez aprobado, la Factura lo referencia\ncomo descuentoAplicado (Bloque C)
+@enduml

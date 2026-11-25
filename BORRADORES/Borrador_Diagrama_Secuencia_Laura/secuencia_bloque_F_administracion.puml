@@ -1,0 +1,126 @@
+@startuml secuencia_bloque_F_administracion
+title Secuencia - Bloque F: Administración, seguridad y sistema (Turbine)
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Persona usuaria" as P
+actor "Administrador" as ADM
+actor "Superadministrador" as SUP
+participant "Usuario" as U
+participant "ConfiguracionSistema" as CFG
+participant "AccionMasiva" as AM
+participant "Sistema externo\n(vía API)" as EXT
+participant "SolicitudExterna" as SE
+participant "EjecucionTarea" as ET
+participant "EventoAuditoria" as AUD
+
+== 1. Invitación y activación de usuarios ==
+ADM -> U : invitarUsuario(correo, rol)
+activate U
+U -> CFG : admiteCorreo(correo)
+CFG --> U : true / false
+alt Correo del dominio corporativo
+  U -> U : crear usuario [estado = INVITADO]
+  U --> P : enlace de activación por correo
+  U -> AUD : registrar (INVITACION)
+else Dominio no permitido
+  U --> ADM : error: correo fuera de dominioCorporativo
+end
+deactivate U
+P -> U : definir contraseña (se guarda hashContrasena)
+U -> U : estado = ACTIVO
+U -> AUD : registrar (ACTIVACION)
+
+== 2. Inicio de sesión y bloqueo ==
+P -> U : iniciarSesion(correo, contrasena)
+activate U
+alt estado = BLOQUEADO y ahora < bloqueadoHasta
+  U --> P : acceso denegado (cuenta bloqueada temporalmente)
+else estado = DESACTIVADO
+  U --> P : acceso denegado
+else Credenciales correctas
+  opt dobleFactorActivo = true
+    U --> P : solicitar código de segundo factor
+    P -> U : código
+    U -> U : verificar código
+  end
+  U -> U : intentosFallidos = 0
+  U -> AUD : registrar (INICIO_SESION)
+  U --> P : true (sesión iniciada)
+else Credenciales incorrectas
+  U -> U : intentosFallidos++
+  opt intentosFallidos supera el máximo
+    U -> U : estado = BLOQUEADO\nbloqueadoHasta = ahora + tiempo de bloqueo
+    U -> AUD : registrar (BLOQUEO_CUENTA)
+  end
+  U --> P : false
+end
+deactivate U
+
+== 3. Recuperación de contraseña, roles y cierre de sesión ==
+P -> U : recuperarContrasena(correo)
+U --> P : correo con enlace de restablecimiento\n(respuesta neutra exista o no la cuenta)
+ADM -> U : cambiarRol(u, rol)
+U -> AUD : registrar (CAMBIO_ROL, valoresAnteriores, valoresNuevos)
+ADM -> U : desactivar()
+U -> U : estado = DESACTIVADO
+U -> AUD : registrar (DESACTIVACION)
+P -> U : cerrarSesion()
+U -> AUD : registrar (CIERRE_SESION)
+
+== 4. Configuración del sistema ==
+SUP -> CFG : modificarConfiguracion(c)
+CFG -> CFG : validar()
+alt Valores válidos
+  CFG -> CFG : aplicar cambios\n(umbrales, días de recordatorio, vencimientoGeneralDias,\ndominioCorporativo, series, impuestos, rangos de tarifa)
+  CFG -> AUD : registrar (CAMBIO_CONFIGURACION,\nvaloresAnteriores, valoresNuevos)
+else Valores inválidos
+  CFG --> SUP : error de validación
+end
+
+== 5. Acciones masivas ==
+ADM -> AM : crear (tipo, numeroElementos)
+AM -> AM : mostrarAlcance()\naltoImpacto = (alcance supera el límite)
+alt altoImpacto = true
+  AM --> ADM : exigir confirmación explícita\ny aprobación de otro administrador
+end
+alt Confirmada
+  ADM -> AM : confirmar()
+  AM -> AM : estado = EJECUTADA
+  AM -> AUD : registrar (ACCION_MASIVA)
+  opt Se detecta un error
+    ADM -> AM : revertir()
+    AM -> AM : estado = REVERTIDA
+  end
+else Cancelada
+  AM -> AM : estado = CANCELADA
+end
+
+== 6. Solicitudes desde el sistema externo (CU-37) ==
+EXT -> SE : petición vía API (sistemaOrigen, tipo, datos)
+SE -> SE : marcarPendienteRevision()\nestado = PENDIENTE_REVISION
+note right of SE : Nunca modifica datos directamente (BR-21)
+ADM -> SE : revisar solicitud
+alt Acepta
+  ADM -> SE : aceptar → estado = ACEPTADA
+  note right of ADM : El cambio se aplica con el flujo normal\ndel módulo afectado
+else Rechaza
+  ADM -> SE : rechazar → estado = RECHAZADA
+end
+SE -> AUD : registrar (SOLICITUD_EXTERNA)
+
+== 7. Tareas programadas y copia de seguridad ==
+ET -> ET : tipo = COPIA_SEGURIDAD / RESUMEN_DIARIO\nestado = EN_CURSO
+alt Sin incidencias
+  ET -> ET : estado = COMPLETADA
+else Con errores
+  ET -> ET : estado = COMPLETADA_CON_ERRORES\n(resumen, errores)
+else Corte durante la ejecución
+  ET -> ET : estado = INTERRUMPIDA
+  ADM -> ET : reanudar()
+end
+
+== 8. Consulta de auditoría ==
+SUP -> AUD : consultarAuditoria()
+AUD --> SUP : List<EventoAuditoria>\n(fechaHora, accion, entidad, idEntidad,\nvaloresAnteriores, valoresNuevos, idError)
+@enduml
