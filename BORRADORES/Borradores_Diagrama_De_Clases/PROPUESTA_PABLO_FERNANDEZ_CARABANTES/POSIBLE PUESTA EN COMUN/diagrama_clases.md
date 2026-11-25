@@ -98,7 +98,7 @@ Los atributos de estado y tipo son `String`; estos son los valores que admiten.
 | `SolicitudDescuento.tipo` | PORCENTAJE, IMPORTE | CU-07 |
 | `SolicitudDescuento.estado` | PENDIENTE, ESCALADA, APROBADA, APROBADA_CONDICIONADA, RECHAZADA | CU-08, CU-09 |
 | `AprobacionFactura.estado` | PENDIENTE, PENDIENTE_INFORMACION, APROBADA, RECHAZADA | CU-13 (flujo principal, FA-1, FA-2) |
-| `Factura.tipo` | PUNTUAL, RECURRENTE, RECTIFICATIVA | FR-02, FR-45 |
+| `Factura.tipo` | PUNTUAL, RECURRENTE| FR-02, FR-45 |
 | `Factura.estado` | BORRADOR, APROBADA, EMITIDA, ENVIADA, VENCIDA, PAGADA, PARCIALMENTE_CONCILIADA, ANULADA, RECTIFICADA, INCOBRABLE, CANCELADA | FR-19, CU-14 |
 | `OperacionExcepcional.tipo` | RECTIFICACION, ANULACION, INCOBRABLE, CANCELACION | CU-14 |
 | `OperacionExcepcional.estado` | PENDIENTE, APROBADA, RECHAZADA, EJECUTADA | CU-14 |
@@ -131,12 +131,12 @@ Los atributos de estado y tipo son `String`; estos son los valores que admiten.
 | Planificador del sistema | Clase `EjecucionTarea`, que registra cada ejecución |
 | Sistema externo (API) | Clase `SolicitudExterna` |
 
-**Con el modelo entidad-relación** (pendiente de revisar cuando se cierre el ER). No toda clase es una tabla ni toda tabla sale de una clase. La correspondencia actual es:
+**Con el modelo entidad-relación**. No toda clase es una tabla ni toda tabla sale de una clase. La correspondencia actual es:
 
 | En el diagrama de clases | En el ER | Por qué |
 |---|---|---|
 | `Usuario`, `UsuarioOperativo`, `Administrador`, `Superadministrador` | Una tabla `USUARIO` con columna `rol` | Las subclases casi no añaden atributos; cambiar de rol es cambiar una columna. |
-| `Factura`, `FacturaRectificativa` | Una tabla `FACTURA` con `tipo = RECTIFICATIVA` e `id_factura_original` | La rectificativa comparte numeración, PDF y cobros con el resto de facturas. |
+| `Factura`, `FacturaRectificativa` | Una tabla `FACTURA`; es rectificativa si tiene `id_factura_original` y `motivo_rectificacion` | La rectificativa comparte numeración, PDF y cobros con el resto de facturas. |
 | `SistemaPagos`, `CanalEnvio` | Sin tabla | Son comportamiento, no datos. |
 | `ClienteContacto` (clase asociación) | Tabla intermedia `CLIENTE_CONTACTO` con `tipo` | Relación N:M con atributo propio. |
 | `Conciliacion` | Tabla `CONCILIACION`, que une `MOVIMIENTO_COBRO` y `FACTURA` | Relación N:M con importe, regla y reversión. |
@@ -148,4 +148,4 @@ Los atributos de estado y tipo son `String`; estos son los valores que admiten.
 | Atributo derivado `/saldoPendiente` | Columna `FACTURA.saldo_pendiente` | Se guarda para consultar rápido (NFR-12); la aplicación la recalcula con cada cobro. |
 | Operaciones de las clases | Sin reflejo en tablas | Son comportamiento; solo las reglas que protegen datos pasan a restricciones. |
 | Resto de clases | Una tabla cada una (p. ej. `SolicitudDescuento` → `SOLICITUD_DESCUENTO`) | Atributos → columnas; asociaciones → claves ajenas. |
-| Reglas en notas (BR-09, BR-10, BR-12, FR-18…) | Restricciones CHECK, índices únicos y disparadores | La base de datos también impide los estados que prohíbe la Entrega 1. |
+| Reglas en notas (BR-09, BR-10, BR-12, FR-18…) | Restricciones CHECK e índices únicos | La base de datos también impide los estados que prohíbe la Entrega 1. |
