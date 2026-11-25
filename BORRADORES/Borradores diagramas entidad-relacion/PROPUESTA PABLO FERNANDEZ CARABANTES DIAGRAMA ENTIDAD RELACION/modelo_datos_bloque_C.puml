@@ -1,0 +1,120 @@
+@startuml modelo_datos_bloque_C
+title Modelo físico de datos ER - Bloque C Facturación
+hide circle
+hide empty members
+skinparam packageStyle rectangle
+
+package "Bloque C - Facturación" {
+  entity "FACTURA" as factura {
+    * id_factura : NUMBER(10) <<PK>>
+    --
+    * id_cliente : NUMBER(10) <<FK>>
+      id_serie : NUMBER(10) <<FK>>
+      id_suscripcion : NUMBER(10) <<FK>>
+      id_factura_original : NUMBER(10) <<FK>>
+      id_creada_por : NUMBER(10) <<FK>>
+      id_ejecucion : NUMBER(10) <<FK>>
+      id_solicitud_descuento : NUMBER(10) <<FK>>
+      id_centro_coste : NUMBER(10) <<FK>>
+      numero : VARCHAR2(30 CHAR)
+    * tipo : VARCHAR2(15 CHAR)
+    * estado : VARCHAR2(25 CHAR)
+      fecha_emision : DATE
+      fecha_vencimiento : DATE
+      periodo_facturado : CHAR(7)
+    * moneda : CHAR(3)
+      datos_fiscales_emision : VARCHAR2(1000 CHAR)
+    * base_imponible : NUMBER(15,2)
+    * total : NUMBER(15,2)
+    * saldo_pendiente : NUMBER(15,2)
+    * retenida : NUMBER(1)
+      documento_pdf : BLOB
+    * migrada : NUMBER(1)
+      motivo_rectificacion : VARCHAR2(300 CHAR)
+  }
+  entity "APROBACION_FACTURA" as aprobacion_factura {
+    * id_aprobacion : NUMBER(10) <<PK>>
+    --
+    * id_factura : NUMBER(10) <<FK>>
+    * id_solicitante : NUMBER(10) <<FK>>
+      id_aprobador : NUMBER(10) <<FK>>
+    * motivo_retencion : VARCHAR2(300 CHAR)
+    * estado : VARCHAR2(25 CHAR)
+    * fecha_solicitud : TIMESTAMP
+      fecha_decision : TIMESTAMP
+      motivo_decision : VARCHAR2(300 CHAR)
+  }
+  entity "LINEA_FACTURA" as linea_factura {
+    * id_linea : NUMBER(10) <<PK>>
+    --
+    * id_factura : NUMBER(10) <<FK>>
+    * id_impuesto : NUMBER(10) <<FK>>
+    * concepto : VARCHAR2(300 CHAR)
+    * cantidad : NUMBER(12,3)
+    * precio_unitario : NUMBER(15,2)
+    * descuento : NUMBER(5,2)
+    * porcentaje_impuesto : NUMBER(5,2)
+    * importe : NUMBER(15,2)
+  }
+  entity "FILTRO_GUARDADO" as filtro_guardado {
+    * id_filtro : NUMBER(10) <<PK>>
+    --
+    * id_usuario : NUMBER(10) <<FK>>
+    * nombre : VARCHAR2(80 CHAR)
+    * criterios : CLOB
+  }
+  entity "OPERACION_EXCEPCIONAL" as operacion_excepcional {
+    * id_operacion : NUMBER(10) <<PK>>
+    --
+    * id_factura : NUMBER(10) <<FK>>
+    * id_solicitante : NUMBER(10) <<FK>>
+      id_aprobador : NUMBER(10) <<FK>>
+    * tipo : VARCHAR2(15 CHAR)
+    * motivo : VARCHAR2(300 CHAR)
+    * estado : VARCHAR2(15 CHAR)
+  }
+}
+
+entity "CLIENTE" as cliente {
+  * id_cliente : NUMBER(10) <<PK>>
+}
+entity "SERIE_FACTURACION" as serie_facturacion {
+  * id_serie : NUMBER(10) <<PK>>
+}
+entity "SUSCRIPCION" as suscripcion {
+  * id_suscripcion : NUMBER(10) <<PK>>
+}
+entity "USUARIO" as usuario {
+  * id_usuario : NUMBER(10) <<PK>>
+}
+entity "EJECUCION_TAREA" as ejecucion_tarea {
+  * id_ejecucion : NUMBER(10) <<PK>>
+}
+entity "SOLICITUD_DESCUENTO" as solicitud_descuento {
+  * id_solicitud : NUMBER(10) <<PK>>
+}
+entity "CENTRO_COSTE" as centro_coste {
+  * id_centro_coste : NUMBER(10) <<PK>>
+}
+entity "IMPUESTO" as impuesto {
+  * id_impuesto : NUMBER(10) <<PK>>
+}
+
+cliente ||--o{ factura : id_cliente
+serie_facturacion |o--o{ factura : id_serie
+suscripcion |o--o{ factura : id_suscripcion
+factura |o--o{ factura : id_factura_original
+usuario |o--o{ factura : id_creada_por
+ejecucion_tarea |o--o{ factura : id_ejecucion
+solicitud_descuento |o--o{ factura : id_solicitud_descuento
+centro_coste |o--o{ factura : id_centro_coste
+factura ||--o{ aprobacion_factura : id_factura
+usuario ||--o{ aprobacion_factura : id_solicitante
+usuario |o--o{ aprobacion_factura : id_aprobador
+factura ||--o{ linea_factura : id_factura
+impuesto ||--o{ linea_factura : id_impuesto
+usuario ||--o{ filtro_guardado : id_usuario
+factura ||--o{ operacion_excepcional : id_factura
+usuario ||--o{ operacion_excepcional : id_solicitante
+usuario |o--o{ operacion_excepcional : id_aprobador
+@enduml

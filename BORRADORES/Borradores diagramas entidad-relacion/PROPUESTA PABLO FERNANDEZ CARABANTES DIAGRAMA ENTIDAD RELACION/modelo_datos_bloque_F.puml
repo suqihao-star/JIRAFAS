@@ -1,0 +1,106 @@
+@startuml modelo_datos_bloque_F
+title Modelo físico de datos ER - Bloque F Administración, seguridad y sistema
+hide circle
+hide empty members
+skinparam packageStyle rectangle
+package "Bloque F - Administración, seguridad y sistema" {
+  entity "USUARIO" as usuario {
+    * id_usuario : NUMBER(10) <<PK>>
+    --
+      nombre : VARCHAR2(100 CHAR)
+    * correo_corporativo : VARCHAR2(150 CHAR) <<UK>>
+      hash_contrasena : VARCHAR2(255 CHAR)
+    * rol : VARCHAR2(15 CHAR)
+    * estado : VARCHAR2(15 CHAR)
+    * doble_factor_activo : NUMBER(1)
+    * intentos_fallidos : NUMBER(10)
+      bloqueado_hasta : TIMESTAMP
+      preferencias_notificacion : CLOB
+    * puede_gestionar_usuarios : NUMBER(1)
+  }
+  entity "EVENTO_AUDITORIA" as evento_auditoria {
+    * id_evento : NUMBER(10) <<PK>>
+    --
+      id_usuario : NUMBER(10) <<FK>>
+    * fecha_hora : TIMESTAMP
+    * accion : VARCHAR2(60 CHAR)
+    * entidad : VARCHAR2(40 CHAR)
+      id_entidad : NUMBER(10)
+      valores_anteriores : CLOB
+      valores_nuevos : CLOB
+      id_error : VARCHAR2(40 CHAR)
+  }
+  entity "ACCION_MASIVA" as accion_masiva {
+    * id_accion : NUMBER(10) <<PK>>
+    --
+    * id_ejecutor : NUMBER(10) <<FK>>
+      id_aprobador : NUMBER(10) <<FK>>
+    * tipo : VARCHAR2(40 CHAR)
+    * numero_elementos : NUMBER(10)
+    * alto_impacto : NUMBER(1)
+    * estado : VARCHAR2(15 CHAR)
+  }
+  entity "EJECUCION_TAREA" as ejecucion_tarea {
+    * id_ejecucion : NUMBER(10) <<PK>>
+    --
+    * tipo : VARCHAR2(30 CHAR)
+    * inicio : TIMESTAMP
+      fin : TIMESTAMP
+    * estado : VARCHAR2(30 CHAR)
+      resumen : VARCHAR2(1000 CHAR)
+      errores : CLOB
+  }
+  entity "CONFIGURACION_SISTEMA" as configuracion_sistema {
+    * id_configuracion : NUMBER(10) <<PK>>
+    --
+      datos_emisor : VARCHAR2(1000 CHAR)
+    * umbral_descuento : NUMBER(15,2)
+    * umbral_importe_alto : NUMBER(15,2)
+    * vencimiento_general_dias : NUMBER(10)
+    * dias_recordatorio_previo : NUMBER(10)
+    * dias_recordatorio_vencimiento : NUMBER(10)
+    * frecuencia_aviso_impago_dias : NUMBER(10)
+    * funciones_inteligentes_activas : NUMBER(1)
+    * dominio_corporativo : VARCHAR2(100 CHAR)
+      dias_conservacion_informes : NUMBER(10)
+  }
+  entity "SERIE_FACTURACION" as serie_facturacion {
+    * id_serie : NUMBER(10) <<PK>>
+    --
+    * codigo : VARCHAR2(10 CHAR) <<UK>>
+      prefijo : VARCHAR2(10 CHAR)
+    * ultimo_numero : NUMBER(10)
+  }
+  entity "IMPUESTO" as impuesto {
+    * id_impuesto : NUMBER(10) <<PK>>
+    --
+    * nombre : VARCHAR2(60 CHAR) <<UK>>
+    * porcentaje : NUMBER(5,2)
+  }
+  entity "RANGO_TARIFA" as rango_tarifa {
+    * id_rango : NUMBER(10) <<PK>>
+    --
+    * facturacion_minima : NUMBER(15,2)
+      facturacion_maxima : NUMBER(15,2)
+    * precio : NUMBER(15,2)
+    * fecha_efecto : DATE
+  }
+  entity "SOLICITUD_EXTERNA" as solicitud_externa {
+    * id_solicitud_externa : NUMBER(10) <<PK>>
+    --
+    * id_cliente : NUMBER(10) <<FK>>
+    * sistema_origen : VARCHAR2(80 CHAR)
+    * tipo : VARCHAR2(30 CHAR)
+      datos : CLOB
+    * estado : VARCHAR2(20 CHAR)
+    * fecha : TIMESTAMP
+  }
+}
+entity "CLIENTE" as cliente {
+  * id_cliente : NUMBER(10) <<PK>>
+}
+usuario |o--o{ evento_auditoria : id_usuario
+usuario ||--o{ accion_masiva : id_ejecutor
+usuario |o--o{ accion_masiva : id_aprobador
+cliente ||--o{ solicitud_externa : id_cliente
+@enduml

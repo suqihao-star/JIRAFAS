@@ -1,0 +1,128 @@
+@startuml modelo_datos_bloque_A
+title Modelo físico de datos ER - Bloque A Clientes y contactos
+hide circle
+hide empty members
+skinparam packageStyle rectangle
+
+package "Bloque A - Clientes y contactos" {
+  entity "IMPORTACION_CSV" as importacion_csv {
+    * id_importacion : NUMBER(10) <<PK>>
+    --
+    * id_usuario : NUMBER(10) <<FK>>
+    * nombre_archivo : VARCHAR2(200 CHAR)
+    * fecha : TIMESTAMP
+    * incluye_facturas_historicas : NUMBER(1)
+    * estado : VARCHAR2(15 CHAR)
+    * creados : NUMBER(10)
+    * actualizados : NUMBER(10)
+    * rechazados : NUMBER(10)
+  }
+  entity "CLIENTE" as cliente {
+    * id_cliente : NUMBER(10) <<PK>>
+    --
+    * id_responsable : NUMBER(10) <<FK>>
+      id_centro_coste : NUMBER(10) <<FK>>
+      id_importacion : NUMBER(10) <<FK>>
+    * nombre_comercial : VARCHAR2(150 CHAR)
+    * razon_social : VARCHAR2(200 CHAR)
+      identificador_fiscal : VARCHAR2(30 CHAR)
+      domicilio_fiscal : VARCHAR2(300 CHAR)
+    * pais : CHAR(2)
+    * moneda : CHAR(3)
+      sector : VARCHAR2(80 CHAR)
+      ubicacion : VARCHAR2(100 CHAR)
+      idioma : VARCHAR2(5 CHAR)
+    * estado : VARCHAR2(25 CHAR)
+    * datos_fiscales_incompletos : NUMBER(1)
+    * fecha_inicio : DATE
+      condiciones_pago : VARCHAR2(300 CHAR)
+      documento_firmado : VARCHAR2(300 CHAR)
+      vencimiento_pactado_dias : NUMBER(10)
+  }
+  entity "CONTACTO" as contacto {
+    * id_contacto : NUMBER(10) <<PK>>
+    --
+    * nombre : VARCHAR2(150 CHAR)
+      correo : VARCHAR2(150 CHAR)
+      idioma : VARCHAR2(5 CHAR)
+    * consentimiento_whatsapp : NUMBER(1)
+    * activo : NUMBER(1)
+  }
+  entity "CLIENTE_CONTACTO" as cliente_contacto {
+    * id_cliente : NUMBER(10) <<PK>> <<FK>>
+    * id_contacto : NUMBER(10) <<PK>> <<FK>>
+    --
+    * tipo : VARCHAR2(15 CHAR)
+  }
+  entity "ETIQUETA" as etiqueta {
+    * id_etiqueta : NUMBER(10) <<PK>>
+    --
+    * nombre : VARCHAR2(50 CHAR) <<UK>>
+  }
+  entity "CLIENTE_ETIQUETA" as cliente_etiqueta {
+    * id_cliente : NUMBER(10) <<PK>> <<FK>>
+    * id_etiqueta : NUMBER(10) <<PK>> <<FK>>
+    --
+  }
+  entity "FAVORITO" as favorito {
+    * id_usuario : NUMBER(10) <<PK>> <<FK>>
+    * id_cliente : NUMBER(10) <<PK>> <<FK>>
+    --
+  }
+  entity "TAREA" as tarea {
+    * id_tarea : NUMBER(10) <<PK>>
+    --
+    * id_cliente : NUMBER(10) <<FK>>
+      id_completada_por : NUMBER(10) <<FK>>
+    * descripcion : VARCHAR2(500 CHAR)
+      fecha_prevista : DATE
+    * estado : VARCHAR2(15 CHAR)
+      fecha_completada : TIMESTAMP
+  }
+  entity "EXCEPCION_COMERCIAL" as excepcion_comercial {
+    * id_excepcion : NUMBER(10) <<PK>>
+    --
+    * id_cliente : NUMBER(10) <<FK>>
+      id_solicitud_descuento : NUMBER(10) <<FK>> <<UK>>
+    * tipo : VARCHAR2(20 CHAR)
+      fecha_inicio_futura : DATE
+    * aprobada : NUMBER(1)
+  }
+  entity "FILA_IMPORTACION" as fila_importacion {
+    * id_fila : NUMBER(10) <<PK>>
+    --
+    * id_importacion : NUMBER(10) <<FK>>
+    * numero_fila : NUMBER(10)
+    * estado : VARCHAR2(20 CHAR)
+      motivo_error : VARCHAR2(500 CHAR)
+    * marcada_como_actualizacion : NUMBER(1)
+  }
+}
+
+entity "USUARIO" as usuario {
+  * id_usuario : NUMBER(10) <<PK>>
+}
+entity "CENTRO_COSTE" as centro_coste {
+  * id_centro_coste : NUMBER(10) <<PK>>
+}
+entity "SOLICITUD_DESCUENTO" as solicitud_descuento {
+  * id_solicitud : NUMBER(10) <<PK>>
+}
+
+usuario ||--o{ importacion_csv : id_usuario
+usuario ||--o{ cliente : id_responsable
+centro_coste |o--o{ cliente : id_centro_coste
+importacion_csv |o--o{ cliente : id_importacion
+cliente ||--o{ cliente_contacto : id_cliente
+contacto ||--o{ cliente_contacto : id_contacto
+cliente ||--o{ cliente_etiqueta : id_cliente
+etiqueta ||--o{ cliente_etiqueta : id_etiqueta
+usuario ||--o{ favorito : id_usuario
+cliente ||--o{ favorito : id_cliente
+cliente ||--o{ tarea : id_cliente
+usuario |o--o{ tarea : id_completada_por
+cliente ||--o{ excepcion_comercial : id_cliente
+solicitud_descuento |o--o| excepcion_comercial : id_solicitud_descuento
+importacion_csv ||--o{ fila_importacion : id_importacion
+
+@enduml
