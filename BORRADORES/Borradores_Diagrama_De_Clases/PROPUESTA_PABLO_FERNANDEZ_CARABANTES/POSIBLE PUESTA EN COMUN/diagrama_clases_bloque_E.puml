@@ -1,20 +1,9 @@
-@startuml clases_bloque_E
+@startuml diagrama_clases_bloque_E
+title Diagrama de clases Bloque E - Seguimiento, consulta e informes
 skinparam classAttributeIconSize 0
 skinparam packageStyle rectangle
-skinparam nodesep 60
-skinparam ranksep 70
-hide empty members
-title Diagrama de clases · Bloque E - Seguimiento, consulta e informes\n(las clases grises pertenecen a otro bloque; su detalle está en su diagrama)
-skinparam class {
-  BackgroundColor<<otroBloque>> #EEEEEE
-  BorderColor<<otroBloque>> #999999
-  FontColor<<otroBloque>> #777777
-}
-hide <<otroBloque>> stereotype
-hide <<otroBloque>> members
 
 package "Bloque E - Seguimiento, consulta e informes" {
-
   class Notificacion {
     - categoria : String
     - mensaje : String
@@ -28,22 +17,21 @@ package "Bloque E - Seguimiento, consulta e informes" {
   }
 
   class ReglaAlerta {
-    - tipo : String
+    - tipo : TipoAlerta
     - umbral : Decimal
     - activa : Boolean
     + evaluar() : Boolean
   }
 
   class Incidencia {
-    - tipo : String
+    - tipo : TipoIncidencia
     - descripcion : String
-    - estado : String
-    - prioridad : String
+    - estado : EstadoIncidencia
+    - prioridad : Prioridad
     - fechaCreacion : FechaHora
     - adjuntos : List<String>
     + resolver(comentario : String) : void
   }
-
   class Comentario {
     - texto : String
     - fecha : FechaHora
@@ -52,11 +40,10 @@ package "Bloque E - Seguimiento, consulta e informes" {
     Siempre interno: nunca se envía
     al cliente (BR-20)
   end note
-
   class Informe {
     - filtros : String
-    - formato : String
-    - estado : String
+    - formato : FormatoInforme
+    - estado : EstadoInforme
     - fechaGeneracion : FechaHora
     - fechaCaducidad : FechaHora
     + generar() : void
@@ -72,15 +59,51 @@ package "Bloque E - Seguimiento, consulta e informes" {
 
   class CentroCoste {
     - nombre : String
-    - tipo : String
+    - tipo : TipoCentroCoste
     - activo : Boolean
+  }
+
+  enum TipoAlerta {
+    DIAS_VENCIDA
+    IMPORTE_PENDIENTE
+  }
+  enum TipoIncidencia {
+    ENTREGA
+    COBRO
+    FACTURACION
+    OTRA
+  }
+  enum EstadoIncidencia {
+    ABIERTA
+    EN_CURSO
+    RESUELTA
+    CERRADA
+  }
+  enum Prioridad {
+    BAJA
+    MEDIA
+    ALTA
+  }
+  enum FormatoInforme {
+    CSV
+    PDF
+  }
+  enum EstadoInforme {
+    PENDIENTE
+    PROCESANDO
+    COMPLETADO
+    COMPLETADO_CON_ERRORES
+  }
+  enum TipoCentroCoste {
+    CENTRO_COSTE
+    PROYECTO
   }
 }
 
-abstract class Usuario <<otroBloque>>
-class Cliente <<otroBloque>>
-class Factura <<otroBloque>>
-class Administrador <<otroBloque>>
+abstract class Usuario
+class Cliente 
+class Factura 
+class Administrador 
 
 Usuario "1" -- "0..*" Notificacion : recibe >
 ReglaAlerta "0..1" -- "0..*" Notificacion : genera >
@@ -95,4 +118,11 @@ Usuario "1" -- "0..*" Informe : solicita >
 Factura "0..*" --> "0..1" CentroCoste
 Cliente "0..*" --> "0..1" CentroCoste
 Administrador "1" -- "0..*" ObjetivoFacturacion : gestiona >
+ReglaAlerta ..> TipoAlerta
+Incidencia ..> TipoIncidencia
+Incidencia ..> EstadoIncidencia
+Incidencia ..> Prioridad
+Informe ..> FormatoInforme
+Informe ..> EstadoInforme
+CentroCoste ..> TipoCentroCoste
 @enduml

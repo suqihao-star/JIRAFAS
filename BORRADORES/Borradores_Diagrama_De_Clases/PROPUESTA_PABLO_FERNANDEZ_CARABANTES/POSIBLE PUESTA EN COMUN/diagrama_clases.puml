@@ -1,10 +1,13 @@
 @startuml diagrama_clases_completo
-title Diagrama de clases - Sistema de facturación de Turbine
+
 skinparam classAttributeIconSize 0
 skinparam packageStyle rectangle
+hide empty members
 left to right direction
+title Diagrama de clases - Sistema de facturación de Turbine
 
 package "Bloque F - Administración, seguridad y sistema" {
+
   abstract class Usuario {
     - nombre : String
     - correoCorporativo : String
@@ -19,11 +22,13 @@ package "Bloque F - Administración, seguridad y sistema" {
     + cerrarSesion() : void
     + desactivar() : void
   }
+
   class UsuarioOperativo {
     + emitirFactura(f : Factura) : void
     + solicitarDescuento(c : Cliente) : SolicitudDescuento
     + conciliarPago(m : MovimientoCobro, f : Factura) : Conciliacion
   }
+
   class Administrador {
     - puedeGestionarUsuarios : Boolean
     + invitarUsuario(correo : String, rol : String) : Usuario
@@ -31,11 +36,13 @@ package "Bloque F - Administración, seguridad y sistema" {
     + aprobarDescuento(s : SolicitudDescuento) : void
     + aprobarFacturaRetenida(a : AprobacionFactura) : void
   }
+
   class Superadministrador {
     + resolverEscalado(s : SolicitudDescuento) : void
     + modificarConfiguracion(c : ConfiguracionSistema) : void
     + consultarAuditoria() : List<EventoAuditoria>
   }
+
   class EventoAuditoria {
     - fechaHora : FechaHora
     - accion : String
@@ -146,6 +153,7 @@ package "Bloque F - Administración, seguridad y sistema" {
 }
 
 package "Bloque A - Clientes y contactos" {
+
   class Cliente {
     - nombreComercial : String
     - razonSocial : String
@@ -169,6 +177,7 @@ package "Bloque A - Clientes y contactos" {
     + darDeBaja(fecha : Fecha) : void
     + cambiarResponsable(u : UsuarioOperativo) : void
   }
+
   class Contacto {
     - nombre : String
     - correo : String
@@ -190,6 +199,7 @@ package "Bloque A - Clientes y contactos" {
     - fechaCompletada : FechaHora
     + completar() : void
   }
+
   class ExcepcionComercial {
     - tipo : TipoExcepcion
     - fechaInicioFutura : Fecha
@@ -249,7 +259,9 @@ package "Bloque A - Clientes y contactos" {
     EXCLUIDA
   }
 }
+
 package "Bloque B - Suscripciones, tarifas y descuentos" {
+
   class Suscripcion {
     - plan : String
     - precioVigente : Decimal
@@ -321,6 +333,7 @@ package "Bloque B - Suscripciones, tarifas y descuentos" {
     RECHAZADA
   }
 }
+
 package "Bloque C - Facturación" {
 
   class Factura {
@@ -371,6 +384,7 @@ package "Bloque C - Facturación" {
   class FacturaRectificativa {
     - motivoRectificacion : String
   }
+
   class LineaFactura {
     - concepto : String
     - cantidad : Decimal
@@ -380,6 +394,7 @@ package "Bloque C - Facturación" {
     - importe : Decimal
     + calcularImporte() : Decimal
   }
+
   class FiltroGuardado {
     - nombre : String
     - criterios : String
@@ -430,6 +445,7 @@ package "Bloque C - Facturación" {
     EJECUTADA
   }
 }
+
 package "Bloque D - Cobros y comunicaciones" {
   interface SistemaPagos {
     + consultarPagos(desde : FechaHora) : List<MovimientoCobro>
@@ -486,6 +502,7 @@ package "Bloque D - Cobros y comunicaciones" {
     - contenido : String
     + previsualizar() : String
   }
+
   class SuspensionRecordatorios {
     - motivo : String
     - fechaRevision : Fecha
@@ -628,6 +645,7 @@ UsuarioOperativo <|-- Administrador
 Administrador <|-- Superadministrador
 Factura <|-- FacturaRectificativa
 
+' ---- Bloque F ----
 EventoAuditoria "0..*" --> "0..1" Usuario : autor
 Administrador "1" -- "0..*" AccionMasiva : ejecuta >
 AccionMasiva "0..*" --> "0..1" Administrador : aprobador
@@ -636,6 +654,7 @@ ConfiguracionSistema "1" -- "1..*" Impuesto : configura
 ConfiguracionSistema "1" -- "1..*" RangoTarifa : configura
 SolicitudExterna "0..*" --> "1" Cliente : sobre
 
+' ---- Bloque A ----
 Cliente "0..*" --> "1" UsuarioOperativo : responsableInterno
 Contacto "0..*" -- "1..*" Cliente
 (Cliente, Contacto) .. ClienteContacto
@@ -647,6 +666,7 @@ UsuarioOperativo "1" -- "0..*" ImportacionCSV : realiza >
 ImportacionCSV "1" *-- "1..*" FilaImportacion
 ImportacionCSV "0..1" -- "0..*" Cliente : crea/actualiza >
 
+' ---- Bloque B ----
 Cliente "1" *-- "0..*" Suscripcion
 Cliente "1" -- "0..*" RevisionTarifaAnual
 RevisionTarifaAnual "0..*" --> "0..1" RangoTarifa : rangoPropuesto
@@ -658,6 +678,7 @@ SolicitudDescuento "0..*" --> "1" UsuarioOperativo : solicitante
 SolicitudDescuento "0..*" --> "0..1" Administrador : aprobador
 Suscripcion "0..1" -- "0..*" Factura : genera >
 
+' ---- Bloque C ----
 Cliente "1" -- "0..*" Factura
 Factura "1" *-- "0..*" LineaFactura
 LineaFactura "0..*" --> "1" Impuesto
@@ -673,6 +694,7 @@ OperacionExcepcional "0..*" --> "0..1" Administrador : aprobador
 Factura "0..*" --> "0..1" SolicitudDescuento : descuentoAplicado
 Usuario "1" *-- "0..*" FiltroGuardado
 
+' ---- Bloque D ----
 SistemaPagos ..> MovimientoCobro : notifica
 MovimientoCobro "1" -- "0..*" Conciliacion
 Factura "1" -- "0..*" Conciliacion
@@ -685,6 +707,7 @@ Comunicacion "0..*" --> "1" PlantillaComunicacion : usa
 Comunicacion ..> CanalEnvio : se envía por
 Factura "1" -- "0..*" SuspensionRecordatorios
 
+' ---- Bloque E ----
 Usuario "1" -- "0..*" Notificacion : recibe >
 ReglaAlerta "0..1" -- "0..*" Notificacion : genera >
 Cliente "1" -- "0..*" Incidencia
@@ -700,6 +723,7 @@ Cliente "0..*" --> "0..1" CentroCoste
 Administrador "1" -- "0..*" ObjetivoFacturacion : gestiona >
 EjecucionTarea "0..1" -- "0..*" Factura : genera >
 
+' ---- Enumeraciones ----
 Usuario ..> EstadoUsuario
 AccionMasiva ..> EstadoAccionMasiva
 EjecucionTarea ..> TipoEjecucion

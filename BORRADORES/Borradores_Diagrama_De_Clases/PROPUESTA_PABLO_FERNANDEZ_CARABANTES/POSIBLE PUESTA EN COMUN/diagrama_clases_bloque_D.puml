@@ -1,43 +1,29 @@
-@startuml clases_bloque_D
+@startuml diagrama_clases_bloque_D
+title Diagrama de clases · Bloque D - Cobros y comunicaciones
 skinparam classAttributeIconSize 0
 skinparam packageStyle rectangle
-skinparam nodesep 60
-skinparam ranksep 70
-hide empty members
-title Diagrama de clases · Bloque D - Cobros y comunicaciones\n(las clases grises pertenecen a otro bloque; su detalle está en su diagrama)
-skinparam class {
-  BackgroundColor<<otroBloque>> #EEEEEE
-  BorderColor<<otroBloque>> #999999
-  FontColor<<otroBloque>> #777777
-}
-hide <<otroBloque>> stereotype
-hide <<otroBloque>> members
-
 package "Bloque D - Cobros y comunicaciones" {
-
   interface SistemaPagos {
     + consultarPagos(desde : FechaHora) : List<MovimientoCobro>
   }
-
   interface CanalEnvio {
     + enviar(c : Comunicacion) : Boolean
   }
-
   class MovimientoCobro {
-    - fuente : String
+    - fuente : FuenteCobro
     - idExterno : String
     - importe : Decimal
     - fecha : FechaHora
     - moneda : String
     - concepto : String
     - referencia : String
-    - estado : String
+    - estado : EstadoMovimiento
     + esDuplicado() : Boolean
   }
 
   class Conciliacion {
     - importeAsignado : Decimal
-    - tipo : String
+    - tipo : TipoConciliacion
     - regla : String
     - fecha : FechaHora
     - revertida : Boolean
@@ -47,10 +33,10 @@ package "Bloque D - Cobros y comunicaciones" {
   }
 
   class Comunicacion {
-    - tipo : String
-    - canal : String
+    - tipo : TipoComunicacion
+    - canal : CanalComunicacion
     - idioma : String
-    - estado : String
+    - estado : EstadoComunicacion
     - fechaEnvio : FechaHora
     - numeroIntento : Integer
     - correoDestinatario : String
@@ -59,15 +45,11 @@ package "Bloque D - Cobros y comunicaciones" {
     + reenviar(c : Contacto) : Comunicacion
   }
   note bottom of Comunicacion
-    tipo: FACTURA, RECORDATORIO_PREVIO, VENCIMIENTO,
-    AVISO_IMPAGO, DISPUTA_RESUELTA (FR-26)
-    estado: EN_COLA, ENVIADA, ENTREGADA, REBOTADA, FALLIDA
     Cada intento, reenvío o canal es una Comunicacion:
     el historial queda en la factura (FR-46, CU-18)
   end note
-
   class PlantillaComunicacion {
-    - tipo : String
+    - tipo : TipoComunicacion
     - idioma : String
     - version : Integer
     - asunto : String
@@ -81,11 +63,44 @@ package "Bloque D - Cobros y comunicaciones" {
     - activa : Boolean
     + reanudar() : void
   }
+
+  enum FuenteCobro {
+    STRIPE
+    REVOLUT
+    OTRA
+  }
+  enum EstadoMovimiento {
+    PENDIENTE_CONCILIACION
+    PARCIAL
+    CONCILIADO
+  }
+  enum TipoConciliacion {
+    AUTOMATICA
+    MANUAL
+  }
+  enum TipoComunicacion {
+    FACTURA
+    RECORDATORIO_PREVIO
+    VENCIMIENTO
+    AVISO_IMPAGO
+    DISPUTA_RESUELTA
+  }
+  enum CanalComunicacion {
+    EMAIL
+    WHATSAPP_SIMULADO
+  }
+  enum EstadoComunicacion {
+    EN_COLA
+    ENVIADA
+    ENTREGADA
+    REBOTADA
+    FALLIDA
+  }
 }
 
-class Factura <<otroBloque>>
-abstract class Usuario <<otroBloque>>
-class Contacto <<otroBloque>>
+class Factura 
+abstract class Usuario 
+class Contacto 
 
 SistemaPagos ..> MovimientoCobro : notifica
 MovimientoCobro "1" -- "0..*" Conciliacion
@@ -98,4 +113,11 @@ Comunicacion "0..*" --> "0..1" Contacto : destinatario
 Comunicacion "0..*" --> "1" PlantillaComunicacion : usa
 Comunicacion ..> CanalEnvio : se envía por
 Factura "1" -- "0..*" SuspensionRecordatorios
+MovimientoCobro ..> FuenteCobro
+MovimientoCobro ..> EstadoMovimiento
+Conciliacion ..> TipoConciliacion
+Comunicacion ..> TipoComunicacion
+Comunicacion ..> CanalComunicacion
+Comunicacion ..> EstadoComunicacion
+PlantillaComunicacion ..> TipoComunicacion
 @enduml

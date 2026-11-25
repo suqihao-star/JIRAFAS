@@ -1,25 +1,13 @@
-@startuml clases_bloque_B
+@startuml diagrama_clases_bloque_B
+title Diagrama de clases Bloque B - Suscripciones, tarifas y descuentos
 skinparam classAttributeIconSize 0
 skinparam packageStyle rectangle
-skinparam nodesep 60
-skinparam ranksep 70
-hide empty members
-title Diagrama de clases · Bloque B - Suscripciones, tarifas y descuentos\n(las clases grises pertenecen a otro bloque; su detalle está en su diagrama)
-skinparam class {
-  BackgroundColor<<otroBloque>> #EEEEEE
-  BorderColor<<otroBloque>> #999999
-  FontColor<<otroBloque>> #777777
-}
-hide <<otroBloque>> stereotype
-hide <<otroBloque>> members
-
 package "Bloque B - Suscripciones, tarifas y descuentos" {
-
   class Suscripcion {
     - plan : String
     - precioVigente : Decimal
     - fechaInicio : Fecha
-    - estado : String
+    - estado : EstadoSuscripcion
     - motivoPausa : String
     - fechaInicioPausa : Fecha
     - fechaReactivacionPrevista : Fecha
@@ -38,18 +26,18 @@ package "Bloque B - Suscripciones, tarifas y descuentos" {
     - precioAnterior : Decimal
     - precioNuevo : Decimal
     - fechaDecision : FechaHora
-    - estado : String
+    - estado : EstadoRevision
     - motivoRechazo : String
     + aprobar() : void
     + rechazar(motivo : String) : void
   }
 
   class SolicitudDescuento {
-    - tipo : String
+    - tipo : TipoDescuento
     - valor : Decimal
     - motivo : String
     - fechaVigencia : Fecha
-    - estado : String
+    - estado : EstadoDescuento
     - motivoDecision : String
     - fechaDecision : FechaHora
     + superaUmbral() : Boolean
@@ -58,20 +46,41 @@ package "Bloque B - Suscripciones, tarifas y descuentos" {
     + escalar() : void
   }
   note right of SolicitudDescuento
-    estado: PENDIENTE, ESCALADA, APROBADA,
-    APROBADA_CONDICIONADA, RECHAZADA (CU-08, CU-09)
     Si superaUmbral() decide el Superadministrador
     (FR-18, CU-08 FA-3, CU-09)
     Aprobador distinto del solicitante (BR-12)
   end note
+
+  enum EstadoSuscripcion {
+    PENDIENTE_ACTIVACION
+    ACTIVA
+    EN_PAUSA
+    CANCELADA
+  }
+  enum EstadoRevision {
+    PENDIENTE
+    APROBADA
+    RECHAZADA
+  }
+  enum TipoDescuento {
+    PORCENTAJE
+    IMPORTE
+  }
+  enum EstadoDescuento {
+    PENDIENTE
+    ESCALADA
+    APROBADA
+    APROBADA_CONDICIONADA
+    RECHAZADA
+  }
 }
 
-class Cliente <<otroBloque>>
-class RangoTarifa <<otroBloque>>
-class Administrador <<otroBloque>>
-class ExcepcionComercial <<otroBloque>>
-class UsuarioOperativo <<otroBloque>>
-class Factura <<otroBloque>>
+class Cliente 
+class RangoTarifa
+class Administrador
+class ExcepcionComercial
+class UsuarioOperativo 
+class Factura 
 
 Cliente "1" *-- "0..*" Suscripcion
 Cliente "1" -- "0..*" RevisionTarifaAnual
@@ -84,4 +93,8 @@ SolicitudDescuento "0..*" --> "1" UsuarioOperativo : solicitante
 SolicitudDescuento "0..*" --> "0..1" Administrador : aprobador
 Suscripcion "0..1" -- "0..*" Factura : genera >
 Factura "0..*" --> "0..1" SolicitudDescuento : descuentoAplicado
+EstadoSuscripcion <.. Suscripcion
+EstadoRevision <.. RevisionTarifaAnual
+TipoDescuento <.. SolicitudDescuento
+EstadoDescuento <.. SolicitudDescuento
 @enduml

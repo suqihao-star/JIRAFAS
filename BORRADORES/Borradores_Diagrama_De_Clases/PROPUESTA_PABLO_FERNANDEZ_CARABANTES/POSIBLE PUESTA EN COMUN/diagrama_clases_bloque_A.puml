@@ -1,18 +1,7 @@
-@startuml clases_bloque_A
+@startuml diagrama_clases_bloque_A
+title Diagrama de clases Bloque A - Clientes y contactos
 skinparam classAttributeIconSize 0
 skinparam packageStyle rectangle
-skinparam nodesep 60
-skinparam ranksep 70
-hide empty members
-title Diagrama de clases · Bloque A - Clientes y contactos\n(las clases grises pertenecen a otro bloque; su detalle está en su diagrama)
-skinparam class {
-  BackgroundColor<<otroBloque>> #EEEEEE
-  BorderColor<<otroBloque>> #999999
-  FontColor<<otroBloque>> #777777
-}
-hide <<otroBloque>> stereotype
-hide <<otroBloque>> members
-
 package "Bloque A - Clientes y contactos" {
 
   class Cliente {
@@ -25,7 +14,7 @@ package "Bloque A - Clientes y contactos" {
     - sector : String
     - ubicacion : String
     - idioma : String
-    - estado : String
+    - estado : EstadoCliente
     - datosFiscalesIncompletos : Boolean
     - fechaInicio : Fecha
     - condicionesPago : String
@@ -48,21 +37,20 @@ package "Bloque A - Clientes y contactos" {
     + desactivar() : void
     + anonimizar() : void
   }
-
   class ClienteContacto {
-    - tipo : String
+    - tipo : TipoContacto
   }
 
   class Tarea {
     - descripcion : String
     - fechaPrevista : Fecha
-    - estado : String
+    - estado : EstadoTarea
     - fechaCompletada : FechaHora
     + completar() : void
   }
 
   class ExcepcionComercial {
-    - tipo : String
+    - tipo : TipoExcepcion
     - fechaInicioFutura : Fecha
     - aprobada : Boolean
   }
@@ -71,7 +59,7 @@ package "Bloque A - Clientes y contactos" {
     - nombreArchivo : String
     - fecha : FechaHora
     - incluyeFacturasHistoricas : Boolean
-    - estado : String
+    - estado : EstadoImportacion
     - creados : Integer
     - actualizados : Integer
     - rechazados : Integer
@@ -83,26 +71,58 @@ package "Bloque A - Clientes y contactos" {
 
   class FilaImportacion {
     - numeroFila : Integer
-    - estado : String
+    - estado : EstadoFila
     - motivoError : String
     - marcadaComoActualizacion : Boolean
   }
+
+  enum EstadoCliente {
+    ACTIVO
+    PENDIENTE_ACTIVACION
+    BAJA
+  }
+  enum TipoContacto {
+    CONTRATACION
+    FACTURACION
+    IMPAGOS
+  }
+  enum EstadoTarea {
+    PENDIENTE
+    COMPLETADA
+  }
+  enum TipoExcepcion {
+    INICIO_FUTURO
+    PRIMER_MES_GRATIS
+    SIN_PRORRATEO
+  }
+  enum EstadoImportacion {
+    PREVISUALIZADA
+    CONFIRMADA
+    CANCELADA
+  }
+  enum EstadoFila {
+    VALIDA
+    ERROR
+    DUPLICADO
+    DATOS_INCOMPLETOS
+    EXCLUIDA
+  }
 }
 
-class SolicitudExterna <<otroBloque>>
-class UsuarioOperativo <<otroBloque>>
-abstract class Usuario <<otroBloque>>
-class Suscripcion <<otroBloque>>
-class RevisionTarifaAnual <<otroBloque>>
-class SolicitudDescuento <<otroBloque>>
-class Factura <<otroBloque>>
-class Comunicacion <<otroBloque>>
-class Incidencia <<otroBloque>>
-class CentroCoste <<otroBloque>>
+class SolicitudExterna
+class UsuarioOperativo 
+abstract class Usuario 
+class Suscripcion 
+class RevisionTarifaAnual 
+class SolicitudDescuento 
+class Factura 
+class Comunicacion 
+class Incidencia 
+class CentroCoste 
 
 SolicitudExterna "0..*" --> "1" Cliente : sobre
 Cliente "0..*" --> "1" UsuarioOperativo : responsableInterno
-Cliente "1..*" -- "0..*" Contacto
+Contacto "0..*" -- "1..*" Cliente
 (Cliente, Contacto) .. ClienteContacto
 Cliente "1" *-- "0..*" Tarea
 Tarea "0..*" --> "0..1" Usuario : completadaPor
@@ -119,4 +139,10 @@ Cliente "1" -- "0..*" Factura
 Comunicacion "0..*" --> "0..1" Contacto : destinatario
 Cliente "1" -- "0..*" Incidencia
 Cliente "0..*" --> "0..1" CentroCoste
+EstadoCliente <.. Cliente
+TipoContacto <.. ClienteContacto
+EstadoTarea <.. Tarea
+TipoExcepcion <.. ExcepcionComercial
+EstadoImportacion <.. ImportacionCSV
+EstadoFila <.. FilaImportacion
 @enduml

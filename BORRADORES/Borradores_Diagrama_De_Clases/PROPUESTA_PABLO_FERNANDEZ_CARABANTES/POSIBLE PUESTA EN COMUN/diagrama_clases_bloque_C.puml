@@ -1,24 +1,12 @@
-@startuml clases_bloque_C
+@startuml diagrama_clases_bloque_C
+title Diagrama de clases Bloque C - Facturación
 skinparam classAttributeIconSize 0
 skinparam packageStyle rectangle
-skinparam nodesep 60
-skinparam ranksep 70
-hide empty members
-title Diagrama de clases · Bloque C - Facturación\n(las clases grises pertenecen a otro bloque; su detalle está en su diagrama)
-skinparam class {
-  BackgroundColor<<otroBloque>> #EEEEEE
-  BorderColor<<otroBloque>> #999999
-  FontColor<<otroBloque>> #777777
-}
-hide <<otroBloque>> stereotype
-hide <<otroBloque>> members
-
 package "Bloque C - Facturación" {
-
   class Factura {
     - numero : String [0..1]
-    - tipo : String
-    - estado : String
+    - tipo : TipoFactura
+    - estado : EstadoFactura
     - fechaEmision : Fecha [0..1]
     - fechaVencimiento : Fecha
     - periodoFacturado : String
@@ -39,10 +27,6 @@ package "Bloque C - Facturación" {
     + anular(motivo : String) : void
   }
   note right of Factura
-    estado: BORRADOR, APROBADA, EMITIDA, ENVIADA,
-    VENCIDA, PAGADA, PARCIALMENTE_CONCILIADA,
-    ANULADA, RECTIFICADA (FR-19),
-    INCOBRABLE, CANCELADA (FR-19, CU-14)
     retenida = tiene una AprobacionFactura PENDIENTE (FR-13)
     En BORRADOR numero y fechaEmision están vacíos.
     datosFiscalesEmision conserva los datos al emitir.
@@ -51,7 +35,7 @@ package "Bloque C - Facturación" {
 
   class AprobacionFactura {
     - motivoRetencion : String
-    - estado : String
+    - estado : EstadoAprobacion
     - fechaSolicitud : FechaHora
     - fechaDecision : FechaHora [0..1]
     - motivoDecision : String
@@ -61,8 +45,6 @@ package "Bloque C - Facturación" {
   }
   note bottom of AprobacionFactura
     Una por cada retención (CU-13 FA-1).
-    estado: PENDIENTE, PENDIENTE_INFORMACION,
-    APROBADA, RECHAZADA (CU-13).
     Aprobador distinto del solicitante (BR-12).
   end note
 
@@ -87,27 +69,63 @@ package "Bloque C - Facturación" {
   }
 
   class OperacionExcepcional {
-    - tipo : String
+    - tipo : TipoOperacion
     - motivo : String
-    - estado : String
+    - estado : EstadoOperacion
     + aprobar() : void
     + ejecutar() : void
   }
+
+  enum TipoFactura {
+    PUNTUAL
+    RECURRENTE
+  }
+  enum EstadoFactura {
+    BORRADOR
+    APROBADA
+    EMITIDA
+    ENVIADA
+    VENCIDA
+    PAGADA
+    PARCIALMENTE_CONCILIADA
+    ANULADA
+    RECTIFICADA
+    INCOBRABLE
+    CANCELADA
+  }
+  enum EstadoAprobacion {
+    PENDIENTE
+    PENDIENTE_INFORMACION
+    APROBADA
+    RECHAZADA
+  }
+  enum TipoOperacion {
+    RECTIFICACION
+    ANULACION
+    INCOBRABLE
+    CANCELACION
+  }
+  enum EstadoOperacion {
+    PENDIENTE
+    APROBADA
+    RECHAZADA
+    EJECUTADA
+  }
 }
 
-class Suscripcion <<otroBloque>>
-class Cliente <<otroBloque>>
-class Impuesto <<otroBloque>>
-class SerieFacturacion <<otroBloque>>
-abstract class Usuario <<otroBloque>>
-class Administrador <<otroBloque>>
-class SolicitudDescuento <<otroBloque>>
-class Conciliacion <<otroBloque>>
-class Comunicacion <<otroBloque>>
-class SuspensionRecordatorios <<otroBloque>>
-class Incidencia <<otroBloque>>
-class CentroCoste <<otroBloque>>
-class EjecucionTarea <<otroBloque>>
+class Suscripcion 
+class Cliente 
+class Impuesto
+class SerieFacturacion 
+abstract class Usuario 
+class Administrador 
+class SolicitudDescuento 
+class Conciliacion 
+class Comunicacion 
+class SuspensionRecordatorios 
+class Incidencia 
+class CentroCoste 
+class EjecucionTarea
 
 Factura <|-- FacturaRectificativa
 Suscripcion "0..1" -- "0..*" Factura : genera >
@@ -131,4 +149,9 @@ Factura "1" -- "0..*" SuspensionRecordatorios
 Factura "0..1" -- "0..*" Incidencia
 Factura "0..*" --> "0..1" CentroCoste
 EjecucionTarea "0..1" -- "0..*" Factura : genera >
+Factura ..> TipoFactura
+Factura ..> EstadoFactura
+AprobacionFactura ..> EstadoAprobacion
+OperacionExcepcional ..> TipoOperacion
+OperacionExcepcional ..> EstadoOperacion
 @enduml
