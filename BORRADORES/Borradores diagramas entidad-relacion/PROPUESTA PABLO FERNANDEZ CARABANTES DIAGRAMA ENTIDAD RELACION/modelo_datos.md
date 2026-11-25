@@ -3,6 +3,16 @@
 ## Alcance
 Diagrama entidad-relación (modelo físico) del sistema de facturación de Turbine (Grupo Jirafas, Entrega 2), hecho en sql developer. Se hace teniendo en cuenta el diagrama de clases una vez acordado y puesto en comun, y la Entrega 1. Este recoge las entidades, atributos y relaciones necesarios para los 36 casos de uso.
 
+| Bloque | Tablas |
+|---|---|
+| A · Clientes y contactos | CLIENTE, CONTACTO, CLIENTE_CONTACTO, ETIQUETA, CLIENTE_ETIQUETA, FAVORITO, TAREA, EXCEPCION_COMERCIAL, IMPORTACION_CSV, FILA_IMPORTACION |
+| B · Suscripciones, tarifas y descuentos | SUSCRIPCION, REVISION_TARIFA_ANUAL, SOLICITUD_DESCUENTO |
+| C · Facturación | FACTURA, APROBACION_FACTURA, LINEA_FACTURA, FILTRO_GUARDADO, OPERACION_EXCEPCIONAL |
+| D · Cobros y comunicaciones | MOVIMIENTO_COBRO, CONCILIACION, PLANTILLA_COMUNICACION, COMUNICACION, SUSPENSION_RECORDATORIOS |
+| E · Seguimiento, consulta e informes | CENTRO_COSTE, REGLA_ALERTA, INCIDENCIA, ADJUNTO, COMENTARIO, MENCION, NOTIFICACION, INFORME, OBJETIVO_FACTURACION |
+| F · Administración, seguridad y sistema | USUARIO, EVENTO_AUDITORIA, ACCION_MASIVA, EJECUCION_TAREA, CONFIGURACION_SISTEMA, SERIE_FACTURACION, IMPUESTO, RANGO_TARIFA, SOLICITUD_EXTERNA |
+
+
 ## Justificación del modelo
 Paso del diagrama de clases a tablas.
 - Cada clase es una tabla y cada atributo una columna (SolicitudDescuento → SOLICITUD_DESCUENTO, fechaEmision → fecha_emision). Cada tabla tiene una clave primaria técnica id_<tabla> autonumérica; las tablas intermedias usan como clave las dos foráneas.
