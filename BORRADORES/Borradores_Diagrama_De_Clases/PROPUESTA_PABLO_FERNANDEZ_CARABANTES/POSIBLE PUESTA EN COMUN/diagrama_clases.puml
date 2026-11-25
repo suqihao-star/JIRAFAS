@@ -1,11 +1,8 @@
 @startuml diagrama_clases_completo
-
+title Diagrama de clases - Sistema de facturación de Turbine
 skinparam classAttributeIconSize 0
 skinparam packageStyle rectangle
-hide empty members
 left to right direction
-title Diagrama de clases - Sistema de facturación de Turbine
-
 package "Bloque F - Administración, seguridad y sistema" {
 
   abstract class Usuario {
@@ -645,7 +642,6 @@ UsuarioOperativo <|-- Administrador
 Administrador <|-- Superadministrador
 Factura <|-- FacturaRectificativa
 
-' ---- Bloque F ----
 EventoAuditoria "0..*" --> "0..1" Usuario : autor
 Administrador "1" -- "0..*" AccionMasiva : ejecuta >
 AccionMasiva "0..*" --> "0..1" Administrador : aprobador
@@ -654,7 +650,6 @@ ConfiguracionSistema "1" -- "1..*" Impuesto : configura
 ConfiguracionSistema "1" -- "1..*" RangoTarifa : configura
 SolicitudExterna "0..*" --> "1" Cliente : sobre
 
-' ---- Bloque A ----
 Cliente "0..*" --> "1" UsuarioOperativo : responsableInterno
 Contacto "0..*" -- "1..*" Cliente
 (Cliente, Contacto) .. ClienteContacto
@@ -666,7 +661,6 @@ UsuarioOperativo "1" -- "0..*" ImportacionCSV : realiza >
 ImportacionCSV "1" *-- "1..*" FilaImportacion
 ImportacionCSV "0..1" -- "0..*" Cliente : crea/actualiza >
 
-' ---- Bloque B ----
 Cliente "1" *-- "0..*" Suscripcion
 Cliente "1" -- "0..*" RevisionTarifaAnual
 RevisionTarifaAnual "0..*" --> "0..1" RangoTarifa : rangoPropuesto
@@ -678,7 +672,6 @@ SolicitudDescuento "0..*" --> "1" UsuarioOperativo : solicitante
 SolicitudDescuento "0..*" --> "0..1" Administrador : aprobador
 Suscripcion "0..1" -- "0..*" Factura : genera >
 
-' ---- Bloque C ----
 Cliente "1" -- "0..*" Factura
 Factura "1" *-- "0..*" LineaFactura
 LineaFactura "0..*" --> "1" Impuesto
@@ -694,7 +687,6 @@ OperacionExcepcional "0..*" --> "0..1" Administrador : aprobador
 Factura "0..*" --> "0..1" SolicitudDescuento : descuentoAplicado
 Usuario "1" *-- "0..*" FiltroGuardado
 
-' ---- Bloque D ----
 SistemaPagos ..> MovimientoCobro : notifica
 MovimientoCobro "1" -- "0..*" Conciliacion
 Factura "1" -- "0..*" Conciliacion
@@ -707,7 +699,6 @@ Comunicacion "0..*" --> "1" PlantillaComunicacion : usa
 Comunicacion ..> CanalEnvio : se envía por
 Factura "1" -- "0..*" SuspensionRecordatorios
 
-' ---- Bloque E ----
 Usuario "1" -- "0..*" Notificacion : recibe >
 ReglaAlerta "0..1" -- "0..*" Notificacion : genera >
 Cliente "1" -- "0..*" Incidencia
@@ -723,7 +714,6 @@ Cliente "0..*" --> "0..1" CentroCoste
 Administrador "1" -- "0..*" ObjetivoFacturacion : gestiona >
 EjecucionTarea "0..1" -- "0..*" Factura : genera >
 
-' ---- Enumeraciones ----
 Usuario ..> EstadoUsuario
 AccionMasiva ..> EstadoAccionMasiva
 EjecucionTarea ..> TipoEjecucion
