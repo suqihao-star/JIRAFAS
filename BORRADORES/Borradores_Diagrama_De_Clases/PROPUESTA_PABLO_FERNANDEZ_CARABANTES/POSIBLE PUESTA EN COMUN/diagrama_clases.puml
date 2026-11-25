@@ -12,7 +12,7 @@ package "Bloque F - Administración, seguridad y sistema" {
     - nombre : String
     - correoCorporativo : String
     - hashContrasena : String
-    - estado : String
+    - estado : EstadoUsuario
     - dobleFactorActivo : Boolean
     - intentosFallidos : Integer
     - bloqueadoHasta : FechaHora
@@ -57,17 +57,17 @@ package "Bloque F - Administración, seguridad y sistema" {
     - tipo : String
     - numeroElementos : Integer
     - altoImpacto : Boolean
-    - estado : String
+    - estado : EstadoAccionMasiva
     + mostrarAlcance() : Integer
     + confirmar() : void
     + revertir() : void
   }
 
   class EjecucionTarea {
-    - tipo : String
+    - tipo : TipoEjecucion
     - inicio : FechaHora
     - fin : FechaHora
-    - estado : String
+    - estado : EstadoEjecucion
     - resumen : String
     - errores : String
     + reanudar() : void
@@ -111,7 +111,7 @@ package "Bloque F - Administración, seguridad y sistema" {
     - sistemaOrigen : String
     - tipo : String
     - datos : String
-    - estado : String
+    - estado : EstadoSolicitudExterna
     - fecha : FechaHora
     + marcarPendienteRevision() : void
   }
@@ -119,6 +119,37 @@ package "Bloque F - Administración, seguridad y sistema" {
     Del Sistema externo vía API (CU-37).
     Nunca modifica datos directamente (BR-21)
   end note
+
+  enum EstadoUsuario {
+    INVITADO
+    ACTIVO
+    BLOQUEADO
+    DESACTIVADO
+  }
+  enum EstadoAccionMasiva {
+    PENDIENTE
+    EJECUTADA
+    CANCELADA
+    REVERTIDA
+  }
+  enum TipoEjecucion {
+    GENERACION_RECURRENTE
+    RECORDATORIOS
+    CONSULTA_PAGOS
+    RESUMEN_DIARIO
+    COPIA_SEGURIDAD
+  }
+  enum EstadoEjecucion {
+    EN_CURSO
+    COMPLETADA
+    COMPLETADA_CON_ERRORES
+    INTERRUMPIDA
+  }
+  enum EstadoSolicitudExterna {
+    PENDIENTE_REVISION
+    ACEPTADA
+    RECHAZADA
+  }
 }
 
 package "Bloque A - Clientes y contactos" {
@@ -133,7 +164,7 @@ package "Bloque A - Clientes y contactos" {
     - sector : String
     - ubicacion : String
     - idioma : String
-    - estado : String
+    - estado : EstadoCliente
     - datosFiscalesIncompletos : Boolean
     - fechaInicio : Fecha
     - condicionesPago : String
@@ -158,19 +189,19 @@ package "Bloque A - Clientes y contactos" {
   }
 
   class ClienteContacto {
-    - tipo : String
+    - tipo : TipoContacto
   }
 
   class Tarea {
     - descripcion : String
     - fechaPrevista : Fecha
-    - estado : String
+    - estado : EstadoTarea
     - fechaCompletada : FechaHora
     + completar() : void
   }
 
   class ExcepcionComercial {
-    - tipo : String
+    - tipo : TipoExcepcion
     - fechaInicioFutura : Fecha
     - aprobada : Boolean
   }
@@ -179,7 +210,7 @@ package "Bloque A - Clientes y contactos" {
     - nombreArchivo : String
     - fecha : FechaHora
     - incluyeFacturasHistoricas : Boolean
-    - estado : String
+    - estado : EstadoImportacion
     - creados : Integer
     - actualizados : Integer
     - rechazados : Integer
@@ -191,9 +222,41 @@ package "Bloque A - Clientes y contactos" {
 
   class FilaImportacion {
     - numeroFila : Integer
-    - estado : String
+    - estado : EstadoFila
     - motivoError : String
     - marcadaComoActualizacion : Boolean
+  }
+
+  enum EstadoCliente {
+    ACTIVO
+    PENDIENTE_ACTIVACION
+    BAJA
+  }
+  enum TipoContacto {
+    CONTRATACION
+    FACTURACION
+    IMPAGOS
+  }
+  enum EstadoTarea {
+    PENDIENTE
+    COMPLETADA
+  }
+  enum TipoExcepcion {
+    INICIO_FUTURO
+    PRIMER_MES_GRATIS
+    SIN_PRORRATEO
+  }
+  enum EstadoImportacion {
+    PREVISUALIZADA
+    CONFIRMADA
+    CANCELADA
+  }
+  enum EstadoFila {
+    VALIDA
+    ERROR
+    DUPLICADO
+    DATOS_INCOMPLETOS
+    EXCLUIDA
   }
 }
 
@@ -203,7 +266,7 @@ package "Bloque B - Suscripciones, tarifas y descuentos" {
     - plan : String
     - precioVigente : Decimal
     - fechaInicio : Fecha
-    - estado : String
+    - estado : EstadoSuscripcion
     - motivoPausa : String
     - fechaInicioPausa : Fecha
     - fechaReactivacionPrevista : Fecha
@@ -222,18 +285,18 @@ package "Bloque B - Suscripciones, tarifas y descuentos" {
     - precioAnterior : Decimal
     - precioNuevo : Decimal
     - fechaDecision : FechaHora
-    - estado : String
+    - estado : EstadoRevision
     - motivoRechazo : String
     + aprobar() : void
     + rechazar(motivo : String) : void
   }
 
   class SolicitudDescuento {
-    - tipo : String
+    - tipo : TipoDescuento
     - valor : Decimal
     - motivo : String
     - fechaVigencia : Fecha
-    - estado : String
+    - estado : EstadoDescuento
     - motivoDecision : String
     - fechaDecision : FechaHora
     + superaUmbral() : Boolean
@@ -242,20 +305,41 @@ package "Bloque B - Suscripciones, tarifas y descuentos" {
     + escalar() : void
   }
   note right of SolicitudDescuento
-    estado: PENDIENTE, ESCALADA, APROBADA,
-    APROBADA_CONDICIONADA, RECHAZADA (CU-08, CU-09)
     Si superaUmbral() decide el Superadministrador
     (FR-18, CU-08 FA-3, CU-09)
     Aprobador distinto del solicitante (BR-12)
   end note
+
+  enum EstadoSuscripcion {
+    PENDIENTE_ACTIVACION
+    ACTIVA
+    EN_PAUSA
+    CANCELADA
+  }
+  enum EstadoRevision {
+    PENDIENTE
+    APROBADA
+    RECHAZADA
+  }
+  enum TipoDescuento {
+    PORCENTAJE
+    IMPORTE
+  }
+  enum EstadoDescuento {
+    PENDIENTE
+    ESCALADA
+    APROBADA
+    APROBADA_CONDICIONADA
+    RECHAZADA
+  }
 }
 
 package "Bloque C - Facturación" {
 
   class Factura {
     - numero : String [0..1]
-    - tipo : String
-    - estado : String
+    - tipo : TipoFactura
+    - estado : EstadoFactura
     - fechaEmision : Fecha [0..1]
     - fechaVencimiento : Fecha
     - periodoFacturado : String
@@ -276,10 +360,6 @@ package "Bloque C - Facturación" {
     + anular(motivo : String) : void
   }
   note right of Factura
-    estado: BORRADOR, APROBADA, EMITIDA, ENVIADA,
-    VENCIDA, PAGADA, PARCIALMENTE_CONCILIADA,
-    ANULADA, RECTIFICADA (FR-19),
-    INCOBRABLE, CANCELADA (FR-19, CU-14)
     retenida = tiene una AprobacionFactura PENDIENTE (FR-13)
     En BORRADOR numero y fechaEmision están vacíos.
     datosFiscalesEmision conserva los datos al emitir.
@@ -288,7 +368,7 @@ package "Bloque C - Facturación" {
 
   class AprobacionFactura {
     - motivoRetencion : String
-    - estado : String
+    - estado : EstadoAprobacion
     - fechaSolicitud : FechaHora
     - fechaDecision : FechaHora [0..1]
     - motivoDecision : String
@@ -298,8 +378,6 @@ package "Bloque C - Facturación" {
   }
   note bottom of AprobacionFactura
     Una por cada retención (CU-13 FA-1).
-    estado: PENDIENTE, PENDIENTE_INFORMACION,
-    APROBADA, RECHAZADA (CU-13).
     Aprobador distinto del solicitante (BR-12).
   end note
 
@@ -324,11 +402,47 @@ package "Bloque C - Facturación" {
   }
 
   class OperacionExcepcional {
-    - tipo : String
+    - tipo : TipoOperacion
     - motivo : String
-    - estado : String
+    - estado : EstadoOperacion
     + aprobar() : void
     + ejecutar() : void
+  }
+
+  enum TipoFactura {
+    PUNTUAL
+    RECURRENTE
+  }
+  enum EstadoFactura {
+    BORRADOR
+    APROBADA
+    EMITIDA
+    ENVIADA
+    VENCIDA
+    PAGADA
+    PARCIALMENTE_CONCILIADA
+    ANULADA
+    RECTIFICADA
+    INCOBRABLE
+    CANCELADA
+  }
+  enum EstadoAprobacion {
+    PENDIENTE
+    PENDIENTE_INFORMACION
+    APROBADA
+    RECHAZADA
+  }
+  enum TipoOperacion {
+    RECTIFICACION
+    ANULACION
+    INCOBRABLE
+    CANCELACION
+  }
+  enum EstadoOperacion {
+    PENDIENTE
+    APROBADA
+    RECHAZADA
+    EJECUTADA
   }
 }
 
@@ -341,20 +455,20 @@ package "Bloque D - Cobros y comunicaciones" {
     + enviar(c : Comunicacion) : Boolean
   }
   class MovimientoCobro {
-    - fuente : String
+    - fuente : FuenteCobro
     - idExterno : String
     - importe : Decimal
     - fecha : FechaHora
     - moneda : String
     - concepto : String
     - referencia : String
-    - estado : String
+    - estado : EstadoMovimiento
     + esDuplicado() : Boolean
   }
 
   class Conciliacion {
     - importeAsignado : Decimal
-    - tipo : String
+    - tipo : TipoConciliacion
     - regla : String
     - fecha : FechaHora
     - revertida : Boolean
@@ -364,10 +478,10 @@ package "Bloque D - Cobros y comunicaciones" {
   }
 
   class Comunicacion {
-    - tipo : String
-    - canal : String
+    - tipo : TipoComunicacion
+    - canal : CanalComunicacion
     - idioma : String
-    - estado : String
+    - estado : EstadoComunicacion
     - fechaEnvio : FechaHora
     - numeroIntento : Integer
     - correoDestinatario : String
@@ -376,15 +490,12 @@ package "Bloque D - Cobros y comunicaciones" {
     + reenviar(c : Contacto) : Comunicacion
   }
   note bottom of Comunicacion
-    tipo: FACTURA, RECORDATORIO_PREVIO, VENCIMIENTO,
-    AVISO_IMPAGO, DISPUTA_RESUELTA (FR-26)
-    estado: EN_COLA, ENVIADA, ENTREGADA, REBOTADA, FALLIDA
     Cada intento, reenvío o canal es una Comunicacion:
     el historial queda en la factura (FR-46, CU-18)
   end note
 
   class PlantillaComunicacion {
-    - tipo : String
+    - tipo : TipoComunicacion
     - idioma : String
     - version : Integer
     - asunto : String
@@ -397,6 +508,39 @@ package "Bloque D - Cobros y comunicaciones" {
     - fechaRevision : Fecha
     - activa : Boolean
     + reanudar() : void
+  }
+
+  enum FuenteCobro {
+    STRIPE
+    REVOLUT
+    OTRA
+  }
+  enum EstadoMovimiento {
+    PENDIENTE_CONCILIACION
+    PARCIAL
+    CONCILIADO
+  }
+  enum TipoConciliacion {
+    AUTOMATICA
+    MANUAL
+  }
+  enum TipoComunicacion {
+    FACTURA
+    RECORDATORIO_PREVIO
+    VENCIMIENTO
+    AVISO_IMPAGO
+    DISPUTA_RESUELTA
+  }
+  enum CanalComunicacion {
+    EMAIL
+    WHATSAPP_SIMULADO
+  }
+  enum EstadoComunicacion {
+    EN_COLA
+    ENVIADA
+    ENTREGADA
+    REBOTADA
+    FALLIDA
   }
 }
 package "Bloque E - Seguimiento, consulta e informes" {
@@ -413,17 +557,17 @@ package "Bloque E - Seguimiento, consulta e informes" {
   }
 
   class ReglaAlerta {
-    - tipo : String
+    - tipo : TipoAlerta
     - umbral : Decimal
     - activa : Boolean
     + evaluar() : Boolean
   }
 
   class Incidencia {
-    - tipo : String
+    - tipo : TipoIncidencia
     - descripcion : String
-    - estado : String
-    - prioridad : String
+    - estado : EstadoIncidencia
+    - prioridad : Prioridad
     - fechaCreacion : FechaHora
     - adjuntos : List<String>
     + resolver(comentario : String) : void
@@ -439,8 +583,8 @@ package "Bloque E - Seguimiento, consulta e informes" {
 
   class Informe {
     - filtros : String
-    - formato : String
-    - estado : String
+    - formato : FormatoInforme
+    - estado : EstadoInforme
     - fechaGeneracion : FechaHora
     - fechaCaducidad : FechaHora
     + generar() : void
@@ -456,8 +600,44 @@ package "Bloque E - Seguimiento, consulta e informes" {
 
   class CentroCoste {
     - nombre : String
-    - tipo : String
+    - tipo : TipoCentroCoste
     - activo : Boolean
+  }
+
+  enum TipoAlerta {
+    DIAS_VENCIDA
+    IMPORTE_PENDIENTE
+  }
+  enum TipoIncidencia {
+    ENTREGA
+    COBRO
+    FACTURACION
+    OTRA
+  }
+  enum EstadoIncidencia {
+    ABIERTA
+    EN_CURSO
+    RESUELTA
+    CERRADA
+  }
+  enum Prioridad {
+    BAJA
+    MEDIA
+    ALTA
+  }
+  enum FormatoInforme {
+    CSV
+    PDF
+  }
+  enum EstadoInforme {
+    PENDIENTE
+    PROCESANDO
+    COMPLETADO
+    COMPLETADO_CON_ERRORES
+  }
+  enum TipoCentroCoste {
+    CENTRO_COSTE
+    PROYECTO
   }
 }
 Usuario <|-- UsuarioOperativo
@@ -542,6 +722,42 @@ Factura "0..*" --> "0..1" CentroCoste
 Cliente "0..*" --> "0..1" CentroCoste
 Administrador "1" -- "0..*" ObjetivoFacturacion : gestiona >
 EjecucionTarea "0..1" -- "0..*" Factura : genera >
+
+' ---- Enumeraciones ----
+Usuario ..> EstadoUsuario
+AccionMasiva ..> EstadoAccionMasiva
+EjecucionTarea ..> TipoEjecucion
+EjecucionTarea ..> EstadoEjecucion
+SolicitudExterna ..> EstadoSolicitudExterna
+EstadoCliente <.. Cliente
+TipoContacto <.. ClienteContacto
+EstadoTarea <.. Tarea
+TipoExcepcion <.. ExcepcionComercial
+EstadoImportacion <.. ImportacionCSV
+EstadoFila <.. FilaImportacion
+EstadoSuscripcion <.. Suscripcion
+EstadoRevision <.. RevisionTarifaAnual
+TipoDescuento <.. SolicitudDescuento
+EstadoDescuento <.. SolicitudDescuento
+Factura ..> TipoFactura
+Factura ..> EstadoFactura
+AprobacionFactura ..> EstadoAprobacion
+OperacionExcepcional ..> TipoOperacion
+OperacionExcepcional ..> EstadoOperacion
+MovimientoCobro ..> FuenteCobro
+MovimientoCobro ..> EstadoMovimiento
+Conciliacion ..> TipoConciliacion
+Comunicacion ..> TipoComunicacion
+Comunicacion ..> CanalComunicacion
+Comunicacion ..> EstadoComunicacion
+PlantillaComunicacion ..> TipoComunicacion
+ReglaAlerta ..> TipoAlerta
+Incidencia ..> TipoIncidencia
+Incidencia ..> EstadoIncidencia
+Incidencia ..> Prioridad
+Informe ..> FormatoInforme
+Informe ..> EstadoInforme
+CentroCoste ..> TipoCentroCoste
 
 legend bottom right
   Tipos: Fecha = día · FechaHora = día y hora · Decimal = importe exacto, nunca float (NFR-06)
