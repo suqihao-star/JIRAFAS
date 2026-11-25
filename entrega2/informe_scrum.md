@@ -1,21 +1,31 @@
 # Informe Scrum · Entrega 2
 
-> Ejemplo ficticio **mínimo**: sustituir todos los datos y añadir evidencias reales.
-
 ## Identificación del equipo
 
 | Nombre y apellidos | Rol en esta entrega |
 |---|---|
-| Ana Ejemplo | Scrum Master |
-| Luis Ejemplo | Miembro del equipo |
+| Pablo Fernández Carabantes      | Scrum Master | 
+| Carlos “Emérito” López Lovera   | Dev | 
+| Juan Romero Cobos               | Dev | 
+| Laura Santiago Medina           | Dev | 
+| Andrés Felipe Jaramillo Ranzini | Dev | 
+| Su Qihao                        | Dev |
+| Pablo Roldán Coll               | Dev |
+| Pablo Ferreiro Romero           | Dev |
 
 ## Reuniones del periodo
 
 | Fecha | Inicio | Duración | Participantes | Temas y acuerdos |
 |---|---|---|---|---|
-| 05/11/2026 | 10:00 | 30 min | Ana, Luis | Planificación; reparto del ER y clases (ejemplo). |
+| 29/10/2026 | 08:45 | 30 min | Todos los integrantes menos Juan Romero Cobos| Planificación; Revisión informes Entrega 1 entregados por el profesor |
+| 05/11/2026 | 08:45 | 30 min | Todos los integrantes | Planificación para la elaboración del diagrama de clases |
+| 12/11/2026 | 08:45 | 30 min | Todos los integrantes menos Carlos “Emérito” López Lovera y Laura Santiago Medina | Presentación de los diagramas de clases elaborados y planificación de una puesta en común conjunta. |
+| 23/11/2026 | 17:00 | 15 min | Todos los integrantes | Puesta en común del diagrama de clases y reparto de los diagramas restantes |
+| 26/11/2026 | 08:45 | 30 min | Todos los integrantes |  |
+
 
 ## Estado del product backlog y Sprint backlog
+En Trello aparecen siglas en lugar de nombres: PFC = Pablo Fernández Carabantes, E = Carlos “Emérito” López Lovera, JC = Juan Romero Cobos, LS = Laura Santiago Medina, AR = Andrés Felipe Jaramillo Ranzini, SQ = Su Qihao, PC = Pablo Roldán Coll, PR = Pablo Ferreiro Romero.
 
 **Tablero:** [sustituir por URL real](https://example.org/REEMPLAZAR).
 
@@ -28,7 +38,20 @@ Añadir **capturas reales legibles** del estado del tablero en Sprint Planning y
 
 | Tarea | Responsable | Milestone | Prioridad | Etiqueta | Descripción / estado |
 |---|---|---|---|---|---|
-| Definir tablas de pedidos | Ana | Entrega 2 | Alta | diagrama | Completar y revisar el ER (ejemplo). |
+| Revisar las correcciones de la Entrega 1 | Todo el equipo | Entrega 2 | Alta | documentación | COMPLETADO |
+| Corregir las correcciones de la Entrega 1 | Pablo Fernández Carabantes | Entrega 2 | Alta | documentación | COMPLETADO |
+| Diagrama de Clases | Pablo Fernández Carabantes, Carlos “Emérito” López Lovera, Juan Romero Cobos, Su Qihao, Pablo Roldán Coll, Pablo Ferreiro Romero | Entrega 2 | Alta | diagrama | Realización de diagramas de clases. COMPLETADO|
+| Puesta en común diagrama de clases | Todos los integrantes | Entrega 2 | Alta | diagrama | Puesta en común utilizando todos los diagramas realizados por los miembros del equipo. COMPLETADO |
+| Documentación del diagrama de clases | [COMPLETAR] | Entrega 2 | Media | documentación | diagrama_clases.md con decisiones de diseño, trazabilidad y consistencia con el ER. COMPLETADO. |
+| Modelo entidad-relación | Pablo Fernández Carabantes, Su Qihao, Pablo Ferreiro Romero | Entrega 2 | Alta | diagrama | Realización del diagrama ER. COMPLETADO. |
+| Documentación del ER | Pablo Fernández Carabantes, Su Qihao, Pablo Ferreiro Romero | Entrega 2 | Alta | documentación | modelo_datos.md con reglas, trazabilidad y decisiones abiertas. COMPLETADO. |
+| Presentación y validación del diagrama ER | Todos los integrantes del grupo | Entrega 2 | Alta | documentación | Presentación del diagrama ER a los demás miembros del grupo para su validación. EN CURSO. |
+| Diagramas de secuencia | Juan Romero Cobos, Laura Santiago Medina | Entrega 2 | Alta | diagrama | Diagramas de Secuencias. EN CURSO |
+| Presentación y validación de los diagramas de secuencia | Todos los integrantes | Entrega 2 | Media | revisión | Presentación de los diagramas de secuencia a los demás miembros del grupo para su validación. EN CURSO.|
+| Diagrama de arquitectura | Pablo Roldán Coll, ] | Entrega 2 | Alta | diagrama | Realización del diagrama de arquitectura. EN CURSO |
+| Presentación y validación del diagrama de arquitectura | Todos los integrantes | Entrega 2 | Media | revisión | Presentación de los diagramas de arquitectura a los demás miembros del grupo para su validación. EN CURSO.|
+| Informe Scrum | Pablo Fernández Carabantes | Entrega 2 | Media | gestión | Este documento y las capturas del tablero. En curso. |
+| Informe final y repositorio |  | Entrega 2 | Alta | documentación | Organizar el repositorio según la plantilla y generar el PDF de la entrega. Pendiente. |
 
 ## Problemas y riesgos
 
