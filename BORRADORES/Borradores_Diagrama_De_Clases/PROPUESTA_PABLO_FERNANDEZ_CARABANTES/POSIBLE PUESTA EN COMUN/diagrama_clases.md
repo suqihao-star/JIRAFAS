@@ -1,8 +1,7 @@
 # Diagrama UML de clases
 
 ## Alcance
-Estructura estática del sistema de facturación de Turbine (Grupo Jirafas, Entrega 2). El diagrama tiene **42 elementos: 40 clases (una de ellas abstracta, `Usuario`) y 2 interfaces**, con 202 atributos y 76 operaciones, repartidos en **6 paquetes**, que son los mismos bloques del diagrama de casos de uso de la Entrega 1:
-
+Estructura estática del sistema de facturación de Turbine (Grupo Jirafas, Entrega 2). El diagrama tiene **75 elementos: 40 clases (una de ellas abstracta, `Usuario`), 2 interfaces y 33 enumeraciones**, con 202 atributos y 76 operaciones, repartidos en **6 paquetes**, que son los mismos bloques del diagrama de casos de uso de la Entrega 1. La tabla recoge las clases; las enumeraciones de cada paquete están en el apartado «Enumeraciones»:
 | Paquete | Clases |
 |---|---|
 | A · Clientes y contactos | `Cliente`, `Contacto`, `ClienteContacto`, `Tarea`, `ExcepcionComercial`, `ImportacionCSV`, `FilaImportacion` |
@@ -14,7 +13,7 @@ Estructura estática del sistema de facturación de Turbine (Grupo Jirafas, Entr
 
 Cubre los 36 casos de uso de la Entrega 1 (CU-01 y CU-03 a CU-37; CU-02 se absorbió como flujo de excepción de CU-01). Quedan fuera las pantallas, los controladores y la persistencia: el diagrama modela el dominio, no la implementación.
 
-Ficheros: `diagramas/diagrama_clases.puml` (diagrama completo) y `diagramas/diagrama_clases_bloque_A.puml` … `_F.puml` (un diagrama por paquete; las clases de otros bloques aparecen en gris, solo con su nombre).
+Ficheros: `diagramas/diagrama_clases.puml` (diagrama completo) y `diagramas/diagrama_clases_bloque_A.puml` … `_F.puml` (un diagrama por paquete; las clases fuera del recuadro pertenecen a otros bloques y solo se muestra su nombre; su detalle está en su diagrama).
 
 ## Decisiones de diseño
 - **Herencia de roles.** `Usuario` (abstracta) ◁ `UsuarioOperativo` ◁ `Administrador` ◁ `Superadministrador` repite la herencia de actores del UML de casos de uso: cada rol puede hacer todo lo del anterior. Por eso el Superadministrador no repite `aprobarDescuento()`: la hereda de `Administrador`.
@@ -23,7 +22,7 @@ Ficheros: `diagramas/diagrama_clases.puml` (diagrama completo) y `diagramas/diag
 - **Clase asociación.** `ClienteContacto` guarda el tipo de contacto (contratación, facturación o impagos) de cada pareja cliente–contacto, que es una relación muchos a muchos (FR-04).
 - **Factura rectificativa como subclase.** `FacturaRectificativa` hereda de `Factura` y se vincula a la original con `rectificaA` (FR-45). Es una factura más: tiene número, serie y PDF.
 - **Integraciones encapsuladas.** Stripe, Revolut y el proveedor de correo no son clases: se accede a ellos con las interfaces `SistemaPagos` y `CanalEnvio` (BR-06). De dónde vino cada cobro se guarda en `MovimientoCobro.fuente`, y así se pueden añadir otras fuentes de pago (FR-15).
-- **Estados y tipos como `String`.** Los valores permitidos de cada estado y tipo están en la tabla «Valores permitidos» de este documento, para que el diagrama no se llene de notas ni de enumeraciones. En el diagrama solo quedan los de `Factura`, `AprobacionFactura`, `SolicitudDescuento` y `Comunicacion`, porque van junto a una regla de negocio.
+- **Estados y tipos como enumeraciones.** Cada estado o tipo con valores cerrados es una enumeración (`<<enumeration>>`) dentro del paquete de su clase, y el atributo usa ese tipo en lugar de `String` (p. ej. `estado : EstadoFactura`). Cada clase tiene una dependencia (línea discontinua) hacia las enumeraciones que usan sus atributos. Las notas solo conservan las reglas de negocio. Los atributos sin valores cerrados (`Notificacion.categoria`, `AccionMasiva.tipo`, `SolicitudExterna.tipo`, idiomas) siguen siendo `String`.
 - **Tipos de datos.** `Decimal` para importes, nunca `Float`, para no perder céntimos (NFR-06); `Fecha` (día), `FechaHora` (día y hora) y `Archivo` (documento binario, como el PDF de la factura, FR-12). `[0..1]` marca un atributo opcional y `/` un atributo derivado. Está resumido en la leyenda del diagrama.
 - **Aprobación de facturas retenidas como clase.** Cada retención es un objeto `AprobacionFactura` (composición con `Factura`) con su motivo (FR-18), estado, fechas, motivo de la decisión, solicitante y aprobador. Así se recogen todos los casos de CU-13: una nueva retención tras un rechazo (FA-1), la aprobación pendiente por falta de información con su motivo (FA-2, `solicitarInformacion()`), evitar decisiones contradictorias comprobando el estado (FE-2) y conservar la aprobación si la emisión falla (FE-3). `Factura` solo guarda `retenida` para saber si ahora mismo está retenida; el resto no se duplica. Sigue el mismo patrón que `SolicitudDescuento`, `RevisionTarifaAnual` y `OperacionExcepcional`.
 - **Creador de la factura.** `creadaPor` es `0..1` porque las facturas recurrentes las genera el Planificador, no una persona (CU-11).
@@ -80,46 +79,6 @@ Ficheros: `diagramas/diagrama_clases.puml` (diagrama completo) y `diagramas/diag
 | FR-05, FR-39 · CU-36 | `ConfiguracionSistema` (días de recordatorio, `funcionesInteligentesActivas`, `diasConservacionInformes`) | Cadencia de recordatorios configurable; funciones inteligentes opcionales. |
 | FR-49, BR-21 · CU-37 | `SolicitudExterna.marcarPendienteRevision` | Lo que llega por la API se registra para revisión; nunca modifica datos directamente. |
 
-## Valores permitidos de estados y tipos
-
-Los atributos de estado y tipo son `String`; estos son los valores que admiten.
-
-| Clase.atributo | Valores | Origen |
-|---|---|---|
-| `Usuario.estado` | INVITADO, ACTIVO, BLOQUEADO, DESACTIVADO | CU-30, CU-31 |
-| `Cliente.estado` | ACTIVO, PENDIENTE_ACTIVACION, BAJA | FR-09, FR-47 |
-| `ClienteContacto.tipo` | CONTRATACION, FACTURACION, IMPAGOS | FR-04 |
-| `Tarea.estado` | PENDIENTE, COMPLETADA | CU-04 |
-| `ExcepcionComercial.tipo` | INICIO_FUTURO, PRIMER_MES_GRATIS, SIN_PRORRATEO | FR-47 |
-| `ImportacionCSV.estado` | PREVISUALIZADA, CONFIRMADA, CANCELADA | CU-03 (FA-2: cancelar antes de confirmar) |
-| `FilaImportacion.estado` | VALIDA, ERROR, DUPLICADO, DATOS_INCOMPLETOS, EXCLUIDA | CU-03 pasos 3–5, FA-3 |
-| `Suscripcion.estado` | PENDIENTE_ACTIVACION, ACTIVA, EN_PAUSA, CANCELADA | CU-05, FR-16, FR-47 |
-| `RevisionTarifaAnual.estado` | PENDIENTE, APROBADA, RECHAZADA | CU-06 |
-| `SolicitudDescuento.tipo` | PORCENTAJE, IMPORTE | CU-07 |
-| `SolicitudDescuento.estado` | PENDIENTE, ESCALADA, APROBADA, APROBADA_CONDICIONADA, RECHAZADA | CU-08, CU-09 |
-| `AprobacionFactura.estado` | PENDIENTE, PENDIENTE_INFORMACION, APROBADA, RECHAZADA | CU-13 (flujo principal, FA-1, FA-2) |
-| `Factura.tipo` | PUNTUAL, RECURRENTE| FR-02, FR-45 |
-| `Factura.estado` | BORRADOR, APROBADA, EMITIDA, ENVIADA, VENCIDA, PAGADA, PARCIALMENTE_CONCILIADA, ANULADA, RECTIFICADA, INCOBRABLE, CANCELADA | FR-19, CU-14 |
-| `OperacionExcepcional.tipo` | RECTIFICACION, ANULACION, INCOBRABLE, CANCELACION | CU-14 |
-| `OperacionExcepcional.estado` | PENDIENTE, APROBADA, RECHAZADA, EJECUTADA | CU-14 |
-| `MovimientoCobro.fuente` | STRIPE, REVOLUT, OTRA | FR-15 |
-| `MovimientoCobro.estado` | PENDIENTE_CONCILIACION, PARCIAL, CONCILIADO | CU-16, CU-17 |
-| `Conciliacion.tipo` | AUTOMATICA, MANUAL | CU-17 FA-1 |
-| `Comunicacion.tipo` y `PlantillaComunicacion.tipo` | FACTURA, RECORDATORIO_PREVIO, VENCIMIENTO, AVISO_IMPAGO, DISPUTA_RESUELTA | FR-26 |
-| `Comunicacion.canal` | EMAIL, WHATSAPP_SIMULADO | FR-46 |
-| `Comunicacion.estado` | EN_COLA, ENVIADA, ENTREGADA, REBOTADA, FALLIDA | CU-18, CU-19 |
-| `ReglaAlerta.tipo` | DIAS_VENCIDA, IMPORTE_PENDIENTE | FR-42 |
-| `Incidencia.tipo` | ENTREGA, COBRO, FACTURACION, OTRA | FR-34, CU-19 |
-| `Incidencia.estado` | ABIERTA, EN_CURSO, RESUELTA, CERRADA | CU-25 |
-| `Incidencia.prioridad` | BAJA, MEDIA, ALTA | FR-34 |
-| `Informe.formato` | CSV, PDF | FR-25 |
-| `Informe.estado` | PENDIENTE, PROCESANDO, COMPLETADO, COMPLETADO_CON_ERRORES | CU-26 FA-4 |
-| `CentroCoste.tipo` | CENTRO_COSTE, PROYECTO | FR-40 |
-| `AccionMasiva.estado` | PENDIENTE, EJECUTADA, CANCELADA, REVERTIDA | CU-32 |
-| `EjecucionTarea.tipo` | GENERACION_RECURRENTE, RECORDATORIOS, CONSULTA_PAGOS, RESUMEN_DIARIO, COPIA_SEGURIDAD | CU-33, FR-48 |
-| `EjecucionTarea.estado` | EN_CURSO, COMPLETADA, COMPLETADA_CON_ERRORES, INTERRUMPIDA | FR-48, NFR-15 |
-| `SolicitudExterna.estado` | PENDIENTE_REVISION, ACEPTADA, RECHAZADA | CU-37, BR-21 |
-
 ## Consistencia con otros modelos
 
 **Con el diagrama de casos de uso (Entrega 1).** Cada paquete corresponde a un bloque (A–F) y la herencia de roles es la misma que la de los actores. Los actores externos no son clases:
@@ -149,3 +108,4 @@ Los atributos de estado y tipo son `String`; estos son los valores que admiten.
 | Operaciones de las clases | Sin reflejo en tablas | Son comportamiento; solo las reglas que protegen datos pasan a restricciones. |
 | Resto de clases | Una tabla cada una (p. ej. `SolicitudDescuento` → `SOLICITUD_DESCUENTO`) | Atributos → columnas; asociaciones → claves ajenas. |
 | Reglas en notas (BR-09, BR-10, BR-12, FR-18…) | Restricciones CHECK e índices únicos del ER; las que necesitan lógica, en la aplicación | El ER impide los estados que prohíbe la Entrega 1 cuando se pueden expresar como restricción. |
+| Enumeraciones (`EstadoFactura`, `TipoFactura`…) | Columna con `CHECK (… IN (…))` | No son tablas: los valores son fijos y se comprueban con la restricción. |
