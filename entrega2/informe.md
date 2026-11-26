@@ -1,10 +1,10 @@
 # Entrega 2 · Diseño del sistema
 
 **Asignatura:** Análisis y Diseño de Aplicaciones · Grupo A · 2026–27  
-**Equipo:** [nombre del equipo]  
-**Integrantes:** [nombres y apellidos]  
-**Fecha:** [dd/mm/aaaa]  
-**Repositorio:** [URL]
+**Equipo:** Jirafas 
+**Integrantes:** Pablo Fernández Carabantes (Scrum Master), Carlos “Emérito” López Lovera, Juan Romero Cobos, Laura Santiago Medina, Andrés Felipe Jaramillo Ranzini, Su Qihao, Pablo Roldán Coll, Pablo Ferreiro Romero.
+**Fecha:** 26/11/2026 
+**Repositorio:** https://github.com/suqihao-star/JIRAFAS
 
 > **Plantilla de índice para componer el PDF manualmente.** Sustituid el texto de ejemplo por vuestro trabajo e incorporad manualmente los diagramas renderizados y el contenido de los archivos de documentación. El archivo Markdown no se transforma automáticamente en PDF.
 
