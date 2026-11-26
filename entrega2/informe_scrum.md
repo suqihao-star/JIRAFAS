@@ -27,7 +27,7 @@
 ## Estado del product backlog y Sprint backlog
 En Trello aparecen siglas en lugar de nombres: PFC = Pablo Fernández Carabantes, E = Carlos “Emérito” López Lovera, JC = Juan Romero Cobos, LS = Laura Santiago Medina, AR = Andrés Felipe Jaramillo Ranzini, SQ = Su Qihao, PC = Pablo Roldán Coll, PR = Pablo Ferreiro Romero.
 
-**Tablero:** [sustituir por URL real](https://example.org/REEMPLAZAR).
+**Tablero:** https://trello.com/b/hA6VZlaG/mi-tablero-de-trello
 
 Añadir **capturas reales legibles** del estado del tablero en Sprint Planning y Sprint Retrospective. Copiar las imágenes a `entrega2/evidencias/` y enlazarlas así (descomentar con archivos existentes):
 
