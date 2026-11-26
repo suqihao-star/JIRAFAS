@@ -7,6 +7,7 @@ actor "Administrador" as ADMIN
 actor "Superadministrador" as SADMIN
 UO <|-- ADMIN
 ADMIN <|-- SADMIN
+
 rectangle "Sistema de facturación de Turbine" {
   usecase "CU-05 Gestionar baja y pausa de suscripción" as CU05
   usecase "CU-06 Revisar y aprobar rango de tarifa anual" as CU06
