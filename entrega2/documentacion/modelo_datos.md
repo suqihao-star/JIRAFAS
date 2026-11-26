@@ -3,7 +3,11 @@
 ## Alcance
 Almacenar los datos del sistema de facturación de Turbine (Grupo Jirafas, Entrega 2): clientes y contactos, suscripciones, tarifas y descuentos, facturas, cobros y comunicaciones, seguimiento e informes, y administración del sistema, para dar soporte a los 36 casos de uso de la Entrega 1 (CU-01 y CU-03 a CU-37). El modelo parte del diagrama de clases acordado y puesto en común por el grupo y tiene 41 tablas.
 
-El diagrama completo está en `modelo_datos.puml` y dividido por bloques en `modelo_datos_bloque_A.puml` … `modelo_datos_bloque_F.puml`. Notación: ● columna obligatoria (NOT NULL); `<<PK>>` clave primaria, `<<FK>>` clave foránea, `<<UK>>` valor único; en las relaciones, `||` uno obligatorio, `|o` cero o uno, `o{` cero o muchos y `o|` cero o uno, y la etiqueta es la columna FK. En los diagramas por bloque, las tablas fuera del recuadro son de otros bloques y solo muestran su clave primaria; cada relación aparece en el bloque de la tabla que tiene la clave foránea.
+El diagrama completo está en `modelo_datos.puml` y también lo hemos dividido en seis diagramas, uno por bloque (`modelo_datos_bloque_A.puml` hasta `modelo_datos_bloque_F.puml`), para que se lea mejor.
+
+Para leer el diagrama: las columnas con un punto negro delante son obligatorias (NOT NULL). PK indica la clave primaria, FK una clave foránea y UK un valor que no se puede repetir. En las relaciones, `||` significa uno obligatorio, `|o` cero o uno, `o{` cero o muchos y `o|` cero o uno. El texto de cada línea es el nombre de la columna que hace de clave foranea.
+
+En los diagramas por bloque, las tablas que están fuera del recuadro pertenecen a otros bloques y solo muestran su clave primaria. Cada relación aparece en el bloque de la tabla que tiene la clave foranea.
 
 ## Justificación del modelo
 - `CLIENTE (1)` — `SUSCRIPCION`, `FACTURA`, `TAREA`, `EXCEPCION_COMERCIAL`, `INCIDENCIA`, `REVISION_TARIFA_ANUAL`, `SOLICITUD_DESCUENTO (0..N)`: un cliente puede no tener ninguno; cada uno pertenece a un cliente concreto.
