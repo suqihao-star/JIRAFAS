@@ -31,8 +31,9 @@ En Trello aparecen siglas en lugar de nombres: PFC = Pablo Fernández Carabantes
 
 Añadir **capturas reales legibles** del estado del tablero en Sprint Planning y Sprint Retrospective. Copiar las imágenes a `entrega2/evidencias/` y enlazarlas así (descomentar con archivos existentes):
 
-<!-- ![Tablero en Sprint Planning](evidencias/sprint-planning.png) -->
-<!-- ![Tablero en Sprint Retrospective](evidencias/sprint-retrospective.png) -->
+![Tablero en Sprint Planning](evidencias/sprint-planning.png)
+
+![Tablero en Sprint Retrospective](evidencias/sprint-retrospective.png)
 
 ## Información de tareas
 
