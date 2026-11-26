@@ -30,7 +30,7 @@ Insertad los diagramas exportados de `diagramas/secuencias/` y la explicación d
 
 ## 6. Arquitectura y componentes
 
-Insertad el diagrama exportado de `diagramas/arquitectura.puml` y la explicación de `documentacion/arquitectura.md`.
+Insertad los diagramas exportados de `diagramas/arquitectura.puml` y `diagramas/arquitectura_dominio.puml`, junto con la explicación de `documentacion/arquitectura.md`.
 
 ## 7. Informe Scrum
 

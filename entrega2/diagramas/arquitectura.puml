@@ -1,172 +1,116 @@
-@startuml arquitectura_turbine_definitiva
-title Arquitectura Software - Sistema de Facturación de TurbineH
+@startuml diagrama_arquitectura_turbine_refinado
+title Arquitectura del sistema de facturación de TurbineH
 skinparam componentStyle rectangle
 skinparam packageStyle rectangle
 skinparam shadowing false
 skinparam defaultTextAlignment center
+skinparam nodesep 45
+skinparam ranksep 55
 top to bottom direction
 
-actor "Usuario Operativo" as OpUser
-actor "Administrador" as AdminUser
-actor "Superadministrador" as SuperAdminUser
-OpUser <|-- AdminUser
-AdminUser <|-- SuperAdminUser
+actor "Usuario operativo" as UO
+actor "Administrador" as ADM
+actor "Superadministrador" as SADM
+UO <|-- ADM
+ADM <|-- SADM
 
-
-package "Capa de Presentación" {
-  [Aplicación Web Responsive\n(Ordenador, Móvil y Tablet - NFR-04)\nTrabajo diario, dashboard, buscador, informes] as WebApp
+package "Capa de presentación" {
+  [Aplicación web responsive\n(escritorio, tablet, móvil - NFR-04)\nTrabajo diario, dashboard,\nbuscador e informes] as WEB
 }
 
+package "Capa de aplicación (servidor)" {
+  [API REST documentada y autenticada\n(misma lógica de negocio que la web - BR-07)] as API
+  [Seguridad transversal\nSesiones, 2FA opcional,\nRBAC en servidor (NFR-07/08/09)] as SEG
 
-package "Capa de Aplicación y Núcleo de Dominio (Servidor)" {
+  package "Módulos de negocio (núcleo de dominio)" as DOMINIO {
+    [Bloque A\nClientes y contactos\n(Cliente, Contacto, Tarea,\nImportacionCSV)] as MA
+    [Bloque B\nSuscripciones y descuentos\n(Suscripcion, RevisionTarifaAnual,\nSolicitudDescuento)] as MB
+    [Bloque C\nFacturación\n(Factura, FacturaRectificativa,\nAprobacionFactura, OperacionExcepcional)] as MC
+    [Bloque D\nCobros y comunicaciones\n(MovimientoCobro, Conciliacion,\nComunicacion)] as MD
+    [Bloque E\nSeguimiento e informes\n(Notificacion, Incidencia, Informe,\nObjetivoFacturacion, CentroCoste)] as ME
+    [Bloque F\nAdministración y sistema\n(Usuario, UsuarioOperativo, AccionMasiva,\nConfiguracionSistema, SerieFacturacion,\nImpuesto, RangoTarifa, SolicitudExterna)] as MF
 
-  [API REST Documentada y Autenticada\n(Misma lógica de negocio para Web y Externos - BR-07)] as PublicAPI
-  [Seguridad Transversal (NFR-07 / NFR-08)\nSesiones, 2FA opcional y RBAC en servidor] as AuthSec
-
-  package "Módulos de Negocio (Bloques A - F)" as Dominio {
-
-    package "Bloque A · Clientes y Contactos" as BloqueA {
-      [Gestión Clientes y Contactos\n(Cliente, Contacto, ClienteContacto,\nDuplicados, Favoritos, Línea Temporal)] as ClientMgmt
-      [Tareas y Excepciones Comerciales\n(Tarea, ExcepcionComercial)] as TasksExc
-      [Importador Masivo CSV\n(ImportacionCSV, FilaImportacion)] as CSVImport
-    }
-
-    package "Bloque B · Suscripciones, Tarifas y Descuentos" as BloqueB {
-      [Gestión de Suscripciones y Prorrateo\n(Suscripcion, RevisionTarifaAnual)] as SubMgmt
-      [Flujo de Descuentos Escalonados\n(SolicitudDescuento - BR-12)] as PricingDisc
-    }
-
-    package "Bloque C · Facturación" as BloqueC {
-      [Motor de Facturación y Numeración\n(Factura, LineaFactura, FiltroGuardado - BR-10)] as BillingEngine
-      [Retenciones y Rectificativas\n(AprobacionFactura, OperacionExcepcional,\nFacturaRectificativa - BR-09)] as ApprovalsRect
-      [Generador de Facturas PDF (FR-12)] as PDFGen
-    }
-
-    package "Bloque D · Cobros y Comunicaciones" as BloqueD {
-      [Seguimiento y Conciliación de Cobros\n(MovimientoCobro, Conciliacion)] as Reconcil
-      [Envíos, Recordatorios y Plantillas\n(Comunicacion, PlantillaComunicacion,\nSuspensionRecordatorios)] as CommsMgr
-    }
-
-    package "Bloque E · Seguimiento, Consulta e Informes" as BloqueE {
-      [Trabajo Diario y Alertas\n(Notificacion, ReglaAlerta)] as DailyWork
-      [Incidencias y Comentarios Internos\n(Incidencia, Comentario - BR-20)] as IssuesMgr
-      [Dashboard Financiero e Informes\n(Informe, ObjetivoFacturacion, CentroCoste)] as ReportsDash
-    }
-
-    package "Bloque F · Administración y Sistema" as BloqueF {
-      [Usuarios, Roles y Acciones Masivas\n(Usuario, Administrador, Superadministrador,\nAccionMasiva)] as UserAdmin
-      [Configuración Global\n(ConfiguracionSistema, SerieFacturacion,\nImpuesto, RangoTarifa)] as SysConfig
-      [Control Solicitudes API Externas\n(SolicitudExterna - BR-21)] as ExtControl
-    }
+    ' Rejilla 2x3: A-B-C / F-D-E
+    MA -[hidden]right- MB
+    MB -[hidden]right- MC
+    MF -[hidden]right- MD
+    MD -[hidden]right- ME
+    MA -[hidden]down- MF
+    MB -[hidden]down- MD
+    MC -[hidden]down- ME
   }
 
-  [Auditoría Inmutable\n(EventoAuditoria solo lectura - NFR-09)] as AuditService
-  [Monitorización y Métricas\n(EjecucionTarea, colas, errores con ID - CU-33)] as MonitorService
+  [Auditoría\nEventoAuditoria (solo lectura - NFR-09)] as AUD
+  [Monitorización y métricas\nEjecucionTarea, colas y errores (CU-33)] as MON
 }
 
-
-package "Planificador del Sistema (Tareas Asíncronas)" as SchedulerPkg {
-  [Generación recurrente\n(Día 1, idempotente - NFR-15)] as J1
-  [Recordatorios e impago\n(Diario - CU-20)] as J2
-  [Consulta periódica\nde pagos (CU-16)] as J3
-  [Resumen diario\nnotificaciones (CU-23)] as J4
-  [Copia de seguridad\nautomática (NFR-14)] as J5
+package "Procesamiento asíncrono" as ASYNC {
+  package "Planificador del sistema (Cron)" as PLAN {
+    [Generación recurrente\n(día 1, idempotente - NFR-15)] as J1
+    [Recordatorios e impago\n(diario - CU-20)] as J2
+    [Consulta periódica\nde pagos (CU-16)] as J3
+    [Resumen diario\nde notificaciones (CU-23)] as J4
+    [Copia de seguridad\nautomática (NFR-14)] as J5
+  }
+  [Workers en segundo plano\nInformes pesados (CU-26) y\nreintentos de envío (NFR-12)] as WRK
 }
 
-
-package "Capa de Integración (Puertos y Adaptadores - BR-06)" {
-  interface "SistemaPagos" as IPagos
-  interface "CanalEnvio" as ICanal
-
-  [Adaptador Pasarelas Pago\n(Stripe, Revolut, Otras)] as PayConnector
-  [Adaptador Correo Electrónico] as MailConnector
-  [Adaptador WhatsApp\n(Simulado, con consentimiento)] as WAConnector
-  [Adaptador IA Opcional\n(Sugerencias con supervisión - BR-22)] as AIConnector
+package "Capa de integración y servicios documentales" as INTEGRACION {
+  interface "SistemaPagos" as IPAGOS
+  interface "CanalEnvio" as ICANAL
+  [Adaptador Stripe / Revolut\n/ otra fuente] as APAG
+  [Adaptador correo electrónico] as AMAIL
+  [Adaptador WhatsApp\n(simulado, con consentimiento)] as AWA
+  [Motor documental\nGenerador PDF legal / Parser CSV] as DOCS
+  [Adaptador IA opcional\n(Brain)] as AIA
 }
 
-
-package "Almacenamiento de Datos y Documentos" {
-  database "Base de Datos Relacional\nPrecisión Decimal exacta (NFR-06),\nsecuencias atómicas y entidades A-F" as MainDB
-  folder "Almacén Seguro de Archivos\nPDFs facturas inmutables, contratos,\nadjuntos e informes (enlaces 1h - NFR-17)" as FileRepo
-  database "Copias de Seguridad\n(Respaldos automáticos y\nrestauración validada - NFR-14)" as BackupRepo
+package "Persistencia" {
+  database "Base de datos relacional\nDecimal exacto (NFR-06),\nsecuencias atómicas, entidades A-F\ny PDF de facturas (FR-12)" as DB
+  folder "Almacén de documentos\nInformes y adjuntos\n(enlaces temporales 1h - NFR-17, A-03)" as FS
+  folder "Copias de seguridad\n(restauración validada - NFR-14)" as BK
 }
 
-cloud "Sistema Externo\n(CRM / ERP)" as ExtSys
-cloud "Pasarelas de Pago\n(Stripe / Revolut)" as ExtPay
-cloud "Proveedor de Correo" as ExtMail
-cloud "Servicio IA (Brain)\n[No crítico - RB-03]" as ExtAI
+cloud "Sistemas externos\nStripe / Revolut, correo, WhatsApp,\nBrain, CRM / ERP" as EXT
 
+' Entrada y seguridad
+UO --> WEB
+ADM --> WEB
+SADM --> WEB
+WEB --> API : HTTPS
+EXT --> API : consulta y solicitudes\ncontroladas (CU-37)
+API --> SEG
+SEG ..> MF : usuarios, roles,\nclientes asignados
+API --> DOMINIO : delega casos de uso\ny reglas de negocio
 
-OpUser --> WebApp
-AdminUser --> WebApp
-SuperAdminUser --> WebApp
-WebApp --> PublicAPI : HTTPS
-ExtSys --> PublicAPI : HTTPS / Token (CU-37)
+' Servicios transversales y persistencia
+DOMINIO --> AUD : registra eventos
+DOMINIO --> DB : CRUD transaccional
+AUD --> DB : append-only
+MON --> DB
+MON ..> MF : EjecucionTarea
 
-PublicAPI --> AuthSec : Valida sesión, 2FA y permisos
-AuthSec ..> UserAdmin : Consulta roles y asignaciones
-PublicAPI --> ExtControl : Registra solicitud pendiente\n(nunca modifica directo)
+' Planificador y workers
+ASYNC --> DOMINIO : J1-J4 procesos periódicos\n(CU-11/12, CU-16, CU-20, CU-23)
+J5 --> BK : backup programado
+WRK --> DOMINIO : informes (CU-26)\ny reintentos de envío (CU-18)
+ASYNC --> MON : registra estado y errores
 
-PublicAPI --> BloqueA
-PublicAPI --> BloqueB
-PublicAPI --> BloqueC
-PublicAPI --> BloqueD
-PublicAPI --> BloqueE
-PublicAPI --> BloqueF
+' Integración: puertos, adaptadores y documentos
+DOMINIO --> INTEGRACION : puertos y adaptadores (BR-06),\nCSV (CU-03), PDF (FR-12), envíos (CU-18)\ny sugerencias IA opcionales
+INTEGRACION --> DB : guarda PDF factura (FR-12)
+INTEGRACION --> FS : guarda informes y adjuntos
+INTEGRACION --> EXT : pasarelas, correo, IA\ny sistemas externos
 
+' Copias de seguridad
+DB --> BK : copia
+FS --> BK : copia documental
+BK ..> DB : restauración validada
+BK ..> FS : restauración validada
 
-BloqueA --> BloqueB : Cliente activo y excepciones
-BloqueB --> BloqueC : Cuotas, prorrateos y descuentos
-BloqueC --> BloqueD : Facturas emitidas para envío/cobro
-BloqueD --> BloqueE : Rebotes crean Incidencia / Notificación
-BloqueC --> BloqueE : Datos para dashboard e informes
-SysConfig ..> BloqueB : Tarifas y umbrales
-SysConfig ..> BloqueC : Series e impuestos
-SysConfig ..> BloqueD : Plazos de recordatorio
-ExtControl --> BloqueA : Solicitud revisión humana
-
-
-Dominio ..> AuditService : Registra acciones
-AuditService --> MainDB : Append-only
-MonitorService --> MainDB
-
-Dominio --> MainDB : CRUD transaccional
-PDFGen --> FileRepo : PDFs inmutables
-ClientMgmt --> FileRepo : Contratos firmados
-IssuesMgr --> FileRepo : Adjuntos
-ReportsDash --> FileRepo : Informes CSV/PDF
-
-MainDB --> BackupRepo : Respaldo datos
-FileRepo --> BackupRepo : Respaldo documental
-
-
-J1 --> BloqueC : Emite mensualidades (CU-11/12)
-J2 --> BloqueD : Flujo impagos (CU-20)
-J3 --> BloqueD : Polling cobros (CU-16)
-J4 --> BloqueE : Resumen diario (CU-23)
-J5 --> BackupRepo : Ejecuta backup
-SchedulerPkg ..> MonitorService : Registra EjecucionTarea
-
-
-Reconcil ..> IPagos : consultarPagos()
-IPagos <|.. PayConnector
-PayConnector --> ExtPay
-
-CommsMgr ..> ICanal : enviar(Comunicacion)
-ICanal <|.. MailConnector
-ICanal <|.. WAConnector
-MailConnector --> ExtMail
-ExtMail ..> CommsMgr : Entregado / Rebotado
-
-BloqueB ..> AIConnector : Sugerencias tarifa/descuento
-BloqueE ..> AIConnector : Apoyo seguimiento
-AIConnector --> ExtAI
-
-note right of PublicAPI
-  Reglas críticas en servidor:
-  - Factura emitida inmutable (BR-09)
-  - Numeración única e idempotente (BR-10)
-  - Aprobador distinto del solicitante (BR-12)
-  - Externos sin escritura directa (BR-21)
+note bottom of AIA
+  Opcional: el sistema opera sin ella
+  y toda sugerencia económica requiere
+  confirmación humana (RB-03, BR-22).
 end note
 @enduml
