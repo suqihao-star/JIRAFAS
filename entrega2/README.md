@@ -2,7 +2,8 @@
 
 - `informe.md`: índice y portada orientativos para preparar manualmente el informe PDF.
 - `documentacion/*.md`: explicación y justificación de cada diagrama.
-- `diagramas/*.puml`: fuentes PlantUML; exportad manualmente sus diagramas e insertadlos en el informe.
+- `diagramas/*.puml`: fuentes PlantUML. Los PNG exportados se guardan en
+  `BORRADORES/Diagramas_Entrega2/`; insertadlos en el informe.
 - `informe_scrum.md`: trabajo del equipo y evidencias de Scrum.
 - `cambios_entrega1.md`: cambios de análisis y su impacto en el diseño.
 - `evidencias/`: capturas reales del tablero de gestión.
