@@ -10,22 +10,22 @@ Para leer el diagrama: las columnas con un punto negro delante son obligatorias 
 En los diagramas por bloque, las tablas que están fuera del recuadro pertenecen a otros bloques y solo muestran su clave primaria. Cada relación aparece en el bloque de la tabla que tiene la clave foranea.
 
 ## Justificación del modelo
-- `CLIENTE (1)` — `SUSCRIPCION`, `FACTURA`, `TAREA`, `EXCEPCION_COMERCIAL`, `INCIDENCIA`, `REVISION_TARIFA_ANUAL`, `SOLICITUD_DESCUENTO (0..N)`: un cliente puede no tener ninguno; cada uno pertenece a un cliente concreto.
-- `USUARIO (1)` — `CLIENTE (0..N)` mediante `id_responsable`: cada cliente tiene un responsable interno.
-- `CLIENTE (N)` — `CONTACTO (N)` mediante `CLIENTE_CONTACTO` (con `tipo`): un contacto puede ser de varios clientes con un papel distinto en cada uno (FR-04).
-- `USUARIO (N)` — `CLIENTE (N)` mediante `FAVORITO`, y `COMENTARIO (N)` — `USUARIO (N)` mediante `MENCION`
-- `CLIENTE (N)` — `ETIQUETA (N)` mediante `CLIENTE_ETIQUETA`: las etiquetas del cliente son una lista y no caben en una columna.
-- `IMPORTACION_CSV (1)` — `FILA_IMPORTACION (1..N)`; `IMPORTACION_CSV (0..1)` — `CLIENTE (0..N)`: cliente creado o actualizado en una importación.
-- `FACTURA (1)` — `LINEA_FACTURA (0..N)`: un borrador puede no tener líneas todavía (CU-10); para emitir se exige al menos una (CU-12)
-- `SERIE_FACTURACION (0..1)` — `FACTURA (0..N)`: un borrador aún no tiene serie.
-- `SUSCRIPCION (0..1)` — `FACTURA (0..N)` y `EJECUCION_TAREA (0..1)` — `FACTURA (0..N)`: solo las recurrentes tienen suscripcion y ejecución del planificador.
-- `FACTURA (0..1)` — `FACTURA (0..N)` mediante `id_factura_original`: rectificativas de una factura.
-- `FACTURA (1)` — `APROBACION_FACTURA (0..N)`: cada retención es una fila (CU-13 FA-1).
-- `MOVIMIENTO_COBRO (N)` — `FACTURA (N)` mediante `CONCILIACION`, con importe, regla y reversión: un cobro puede repartirse entre facturas y una factura cobrarse en varios pagos (FR-21).
-- `FACTURA (0..1)` — `COMUNICACION (0..N)`; `PLANTILLA_COMUNICACION (1)` — `COMUNICACION (0..N)`; `CONTACTO (0..1)` — `COMUNICACION (0..N)`.
-- `INCIDENCIA (1)` — `COMENTARIO (0..N)` y `ADJUNTO (0..N)`; `FACTURA (0..1)` — `INCIDENCIA (0..N)`.
-- `EXCEPCION_COMERCIAL (0..1)` — `SOLICITUD_DESCUENTO (0..1)`: clave foránea única, relación 1:1 (CU-01 FA-4).
-- `USUARIO (1)` — `OBJETIVO_FACTURACION (0..N)`: lo gestiona un Administrador (CU-28)
+- `CLIENTE (1)` -- `SUSCRIPCION`, `FACTURA`, `TAREA`, `EXCEPCION_COMERCIAL`, `INCIDENCIA`, `REVISION_TARIFA_ANUAL`, `SOLICITUD_DESCUENTO (0..N)`: un cliente puede no tener ninguno; cada uno pertenece a un cliente concreto.
+- `USUARIO (1)` -- `CLIENTE (0..N)` mediante `id_responsable`: cada cliente tiene un responsable interno.
+- `CLIENTE (N)` -- `CONTACTO (N)` mediante `CLIENTE_CONTACTO` (con `tipo`): un contacto puede ser de varios clientes con un papel distinto en cada uno (FR-04).
+- `USUARIO (N)` -- `CLIENTE (N)` mediante `FAVORITO`, y `COMENTARIO (N)` -- `USUARIO (N)` mediante `MENCION`
+- `CLIENTE (N)` -- `ETIQUETA (N)` mediante `CLIENTE_ETIQUETA`: las etiquetas del cliente son una lista y no caben en una columna.
+- `IMPORTACION_CSV (1)` -- `FILA_IMPORTACION (1..N)`; `IMPORTACION_CSV (0..1)` -- `CLIENTE (0..N)`: cliente creado o actualizado en una importación.
+- `FACTURA (1)` -- `LINEA_FACTURA (0..N)`: un borrador puede no tener líneas todavía (CU-10); para emitir se exige al menos una (CU-12)
+- `SERIE_FACTURACION (0..1)` -- `FACTURA (0..N)`: un borrador aún no tiene serie.
+- `SUSCRIPCION (0..1)` -- `FACTURA (0..N)` y `EJECUCION_TAREA (0..1)` -- `FACTURA (0..N)`: solo las recurrentes tienen suscripcion y ejecución del planificador.
+- `FACTURA (0..1)` -- `FACTURA (0..N)` mediante `id_factura_original`: rectificativas de una factura.
+- `FACTURA (1)` -- `APROBACION_FACTURA (0..N)`: cada retención es una fila (CU-13 FA-1).
+- `MOVIMIENTO_COBRO (N)` -- `FACTURA (N)` mediante `CONCILIACION`, con importe, regla y reversión: un cobro puede repartirse entre facturas y una factura cobrarse en varios pagos (FR-21).
+- `FACTURA (0..1)` -- `COMUNICACION (0..N)`; `PLANTILLA_COMUNICACION (1)` -- `COMUNICACION (0..N)`; `CONTACTO (0..1)` -- `COMUNICACION (0..N)`.
+- `INCIDENCIA (1)` -- `COMENTARIO (0..N)` y `ADJUNTO (0..N)`; `FACTURA (0..1)` -- `INCIDENCIA (0..N)`.
+- `EXCEPCION_COMERCIAL (0..1)` -- `SOLICITUD_DESCUENTO (0..1)`: clave foránea única, relación 1:1 (CU-01 FA-4).
+- `USUARIO (1)` -- `OBJETIVO_FACTURACION (0..N)`: lo gestiona un Administrador (CU-28)
 - `CONFIGURACION_SISTEMA` no tiene claves foráneas: es una tabla de una sola fila y una clave hacia ella desde series, impuestos o rangos siempre valdria 1.
 - Cada tabla tiene como clave primaria `id_tabla` (`id_cliente`, `id_factura`…); las tablas intermedias usan como clave las dos foráneas. Las columnas `id_cliente`, `id_factura`, `id_usuario`… actuan como claves foraneas donde corresponda
 
