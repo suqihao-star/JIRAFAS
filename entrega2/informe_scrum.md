@@ -43,17 +43,18 @@ Añadir **capturas reales legibles** del estado del tablero en Sprint Planning y
 | Aplicar las correcciones de la Entrega 1 | Pablo Fernández Carabantes, Juan Romero Cobos, Su Qihao | Entrega 2 | Alta | documentación | COMPLETADO |
 | Diagrama de Clases | Pablo Fernández Carabantes, Carlos “Emérito” López Lovera, Juan Romero Cobos, Su Qihao, Pablo Roldán Coll, Pablo Ferreiro Romero | Entrega 2 | Alta | diagrama | Realización de diagramas de clases. COMPLETADO|
 | Puesta en común diagrama de clases | Todos los integrantes | Entrega 2 | Alta | diagrama | Puesta en común utilizando todos los diagramas realizados por los miembros del equipo. COMPLETADO |
-| Documentación del diagrama de clases | [COMPLETAR] | Entrega 2 | Media | documentación | diagrama_clases.md con decisiones de diseño, trazabilidad y consistencia con el ER. COMPLETADO. |
+| Documentación del diagrama de clases |  Pablo Fernández Carabantes | Entrega 2 | Media | documentación | diagrama_clases.md con decisiones de diseño, trazabilidad y consistencia con el ER. COMPLETADO. |
 | Modelo entidad-relación | Pablo Fernández Carabantes, Su Qihao, Pablo Ferreiro Romero | Entrega 2 | Alta | diagrama | Realización del diagrama ER. COMPLETADO. |
-| Documentación del ER | Pablo Fernández Carabantes, Su Qihao, Pablo Ferreiro Romero | Entrega 2 | Alta | documentación | modelo_datos.md con reglas, trazabilidad y decisiones abiertas. COMPLETADO. |
+| Documentación del ER | Pablo Fernández Carabantes, Su Qihao | Entrega 2 | Alta | documentación | modelo_datos.md con reglas, trazabilidad y decisiones abiertas. COMPLETADO. |
 | Presentación y validación del diagrama ER | Todos los integrantes del grupo | Entrega 2 | Alta | documentación | Presentación del diagrama ER a los demás miembros del grupo para su validación. COMPLETADO. |
-| Realización diagramas de secuencia | Juan Romero Cobos, Laura Santiago Medina | Entrega 2 | Alta | diagrama | Diagramas de Secuencias. EN CURSO |
-| Presentación y validación de los diagramas de secuencia | Todos los integrantes | Entrega 2 | Media | revisión | Presentación de los diagramas de secuencia a los demás miembros del grupo para su validación. EN CURSO.|
-| Diagrama de arquitectura | Pablo Roldán Coll, Carlos “Emérito” López Lovera, Andrés Felipe Jaramillo Ranzini,   | Entrega 2 | Alta | diagrama | Realización del diagrama de arquitectura. COMPLETADO |
-| Documentación del Diagrama de arquitectura | Pablo Roldán Coll, Carlos “Emérito” López Lovera, Andrés Felipe Jaramillo Ranzini,   | Entrega 2 | Alta | diagrama | Documentación del diagrama de arquitectura. COMPLETADO |
+| Realización diagramas de secuencia | Juan Romero Cobos, Laura Santiago Medina | Entrega 2 | Alta | diagrama | Diagramas de Secuencias. COMPLETADO |
+| Documentación diagramas de secuencia | Juan Romero Cobos | Entrega 2 | Alta | documentación | Documentación del Diagramas de Secuencias. COMPLETADO |
+| Presentación y validación de los diagramas de secuencia | Todos los integrantes | Entrega 2 | Media | revisión | Presentación de los diagramas de secuencia a los demás miembros del grupo para su validación. COMPLETADO.|
+| Diagrama de arquitectura | Pablo Roldán Coll, Carlos “Emérito” López Lovera, Andrés Felipe Jaramillo Ranzini | Entrega 2 | Alta | diagrama | Realización del diagrama de arquitectura. COMPLETADO |
+| Documentación del Diagrama de arquitectura | Pablo Roldán Coll, Carlos “Emérito” López Lovera, Andrés Felipe Jaramillo Ranzini | Entrega 2 | Alta | documentación | Documentación del diagrama de arquitectura. COMPLETADO |
 | Presentación y validación del diagrama de arquitectura | Todos los integrantes | Entrega 2 | Media | revisión | Presentación de los diagramas de arquitectura a los demás miembros del grupo para su validación. COMPLETADO.|
-| Informe Scrum | Pablo Fernández Carabantes | Entrega 2 | Media | gestión | Este documento y las capturas del tablero. En curso. |
-| Informe final | Pablo Fernández Carabantes | Entrega 2 | Alta | documentación | Realización del informe final gracias a los informes de todos los diagramas. Pendiente. |
+| Informe Scrum | Pablo Fernández Carabantes | Entrega 2 | Media | gestión | Este documento y las capturas del tablero. COMPLETADO. |
+| Informe final | Pablo Fernández Carabantes | Entrega 2 | Alta | documentación | Realización del informe final gracias a los informes de todos los diagramas. COMPLETADO. |
 | Organización Repositorio Plantilla entrega 2 | Pablo Fernández Carabantes, Juan Romero Cobos, Su Qihao | Entrega 2 | Alta | documentación | Organizar el repositorio según la plantilla y generar el PDF de la entrega. COMPLETADO. |
 
 ## Problemas y riesgos
@@ -61,7 +62,7 @@ Añadir **capturas reales legibles** del estado del tablero en Sprint Planning y
 | Sprint | Problema/riesgo | Impacto | Medida aplicada | Estado |
 |---|---|---|---|---|
 | Entrega 2 | Duda sobre por qué diagrama empezar. | Sin un orden claro no se podía repartir el trabajo, porque el ER y los diagramas de secuencia dependen de las clases y sus operaciones. | Tras comentar el profesor en clase el orden recomendado, se hizo primero el diagrama de clases entre todos y se validó en grupo antes de repartir el resto de diagramas en subgrupos. | Resuelto |
-| Entrega 2 | Corrección pendiente de la Entrega 1: numeración del bloque B. | Los identificadores de casos de uso no coincidían entre documentos. | Renumeración a CU-05…CU-09 y comprobación del resto de documentos. | Resuelto |
+| Entrega 2 | Corrección pendiente de la Entrega 1: numeración del bloque B. | Los identificadores de casos de uso no coincidían entre documentos. | Renumeración a CU-05 a CU-09 y comprobación del resto de documentos. | Resuelto |
 
 
 ## Revisión y retrospectiva
