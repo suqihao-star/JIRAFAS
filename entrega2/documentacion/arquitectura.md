@@ -111,3 +111,6 @@ Alternativas descartadas:
 | `BR-09`, `BR-10`, `BR-12` | Bloques C y F, API y base de datos. |
 | `BR-21` | API, `SolicitudExterna` y ausencia de escritura directa externa. |
 | `BR-22`, `RB-03` | Adaptador IA opcional. |
+
+Los PNG exportados de las vistas por bloque están en
+`BORRADORES/Diagramas_Entrega2/`.

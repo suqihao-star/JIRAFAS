@@ -30,7 +30,7 @@ Insertad los diagramas exportados de `diagramas/secuencias/` y la explicación d
 
 ## 6. Arquitectura y componentes
 
-Insertad los diagramas exportados de `diagramas/arquitectura.puml` y `diagramas/arquitectura_dominio.puml`, además de los PNG por bloque `diagramas/arquitectura_bloque_A.png` a `diagramas/arquitectura_bloque_F.png`, junto con la explicación de `documentacion/arquitectura.md`.
+Insertad los diagramas exportados de `diagramas/arquitectura.puml` y `diagramas/arquitectura_dominio.puml`, además de los PNG por bloque en `../BORRADORES/Diagramas_Entrega2/arquitectura_bloque_A.png` a `../BORRADORES/Diagramas_Entrega2/arquitectura_bloque_F.png`, junto con la explicación de `documentacion/arquitectura.md`.
 
 ## 7. Informe Scrum
 
