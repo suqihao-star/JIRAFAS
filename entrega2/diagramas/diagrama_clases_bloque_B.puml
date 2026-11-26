@@ -1,0 +1,100 @@
+@startuml diagrama_clases_bloque_B
+title Diagrama de clases Bloque B - Suscripciones, tarifas y descuentos
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+package "Bloque B - Suscripciones, tarifas y descuentos" {
+  class Suscripcion {
+    - plan : String
+    - precioVigente : Decimal
+    - fechaInicio : Fecha
+    - estado : EstadoSuscripcion
+    - motivoPausa : String
+    - fechaInicioPausa : Fecha
+    - fechaReactivacionPrevista : Fecha
+    - fechaBaja : Fecha
+    - motivoBaja : String
+    + pausar(motivo : String, reactivacion : Fecha) : void
+    + reactivar() : void
+    + darDeBaja(fecha : Fecha) : void
+    + esFacturable(periodo : String) : Boolean
+    + calcularProrrateo(periodo : String) : Decimal
+  }
+
+  class RevisionTarifaAnual {
+    - fechaRevision : Fecha
+    - facturacionAnualVerificada : Decimal
+    - precioAnterior : Decimal
+    - precioNuevo : Decimal
+    - fechaDecision : FechaHora
+    - estado : EstadoRevision
+    - motivoRechazo : String
+    + aprobar() : void
+    + rechazar(motivo : String) : void
+  }
+
+  class SolicitudDescuento {
+    - tipo : TipoDescuento
+    - valor : Decimal
+    - motivo : String
+    - fechaVigencia : Fecha
+    - estado : EstadoDescuento
+    - motivoDecision : String
+    - fechaDecision : FechaHora
+    + superaUmbral() : Boolean
+    + aprobar() : void
+    + rechazar(motivo : String) : void
+    + escalar() : void
+  }
+  note right of SolicitudDescuento
+    Si superaUmbral() decide el Superadministrador
+    (FR-18, CU-08 FA-3, CU-09)
+    Aprobador distinto del solicitante (BR-12)
+  end note
+
+  enum EstadoSuscripcion {
+    PENDIENTE_ACTIVACION
+    ACTIVA
+    EN_PAUSA
+    CANCELADA
+  }
+  enum EstadoRevision {
+    PENDIENTE
+    APROBADA
+    RECHAZADA
+  }
+  enum TipoDescuento {
+    PORCENTAJE
+    IMPORTE
+  }
+  enum EstadoDescuento {
+    PENDIENTE
+    ESCALADA
+    APROBADA
+    APROBADA_CONDICIONADA
+    RECHAZADA
+  }
+}
+
+class Cliente 
+class RangoTarifa
+class Administrador
+class ExcepcionComercial
+class UsuarioOperativo 
+class Factura 
+
+Cliente "1" *-- "0..*" Suscripcion
+Cliente "1" -- "0..*" RevisionTarifaAnual
+RevisionTarifaAnual "0..*" --> "0..1" RangoTarifa : rangoPropuesto
+RevisionTarifaAnual "0..*" --> "0..1" Administrador : aprobadaPor
+ExcepcionComercial "0..1" -- "0..1" SolicitudDescuento : se aprueba mediante >
+SolicitudDescuento "0..*" --> "1" Cliente : para
+SolicitudDescuento "0..*" --> "0..1" Suscripcion : sobre
+SolicitudDescuento "0..*" --> "1" UsuarioOperativo : solicitante
+SolicitudDescuento "0..*" --> "0..1" Administrador : aprobador
+Suscripcion "0..1" -- "0..*" Factura : genera >
+Factura "0..*" --> "0..1" SolicitudDescuento : descuentoAplicado
+EstadoSuscripcion <.. Suscripcion
+EstadoRevision <.. RevisionTarifaAnual
+TipoDescuento <.. SolicitudDescuento
+EstadoDescuento <.. SolicitudDescuento
+@enduml

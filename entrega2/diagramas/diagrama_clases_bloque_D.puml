@@ -1,0 +1,123 @@
+@startuml diagrama_clases_bloque_D
+title Diagrama de clases · Bloque D - Cobros y comunicaciones
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+package "Bloque D - Cobros y comunicaciones" {
+  interface SistemaPagos {
+    + consultarPagos(desde : FechaHora) : List<MovimientoCobro>
+  }
+  interface CanalEnvio {
+    + enviar(c : Comunicacion) : Boolean
+  }
+  class MovimientoCobro {
+    - fuente : FuenteCobro
+    - idExterno : String
+    - importe : Decimal
+    - fecha : FechaHora
+    - moneda : String
+    - concepto : String
+    - referencia : String
+    - estado : EstadoMovimiento
+    + esDuplicado() : Boolean
+  }
+
+  class Conciliacion {
+    - importeAsignado : Decimal
+    - tipo : TipoConciliacion
+    - regla : String
+    - fecha : FechaHora
+    - revertida : Boolean
+    - fechaReversion : FechaHora
+    - motivoReversion : String
+    + revertir(motivo : String) : void
+  }
+
+  class Comunicacion {
+    - tipo : TipoComunicacion
+    - canal : CanalComunicacion
+    - idioma : String
+    - estado : EstadoComunicacion
+    - fechaEnvio : FechaHora
+    - numeroIntento : Integer
+    - correoDestinatario : String
+    + enviar() : void
+    + registrarResultado(resultado : String) : void
+    + reenviar(c : Contacto) : Comunicacion
+  }
+  note bottom of Comunicacion
+    Cada intento, reenvío o canal es una Comunicacion:
+    el historial queda en la factura (FR-46, CU-18)
+  end note
+  class PlantillaComunicacion {
+    - tipo : TipoComunicacion
+    - idioma : String
+    - version : Integer
+    - asunto : String
+    - contenido : String
+    + previsualizar() : String
+  }
+
+  class SuspensionRecordatorios {
+    - motivo : String
+    - fechaRevision : Fecha
+    - activa : Boolean
+    + reanudar() : void
+  }
+
+  enum FuenteCobro {
+    STRIPE
+    REVOLUT
+    OTRA
+  }
+  enum EstadoMovimiento {
+    PENDIENTE_CONCILIACION
+    PARCIAL
+    CONCILIADO
+  }
+  enum TipoConciliacion {
+    AUTOMATICA
+    MANUAL
+  }
+  enum TipoComunicacion {
+    FACTURA
+    RECORDATORIO_PREVIO
+    VENCIMIENTO
+    AVISO_IMPAGO
+    DISPUTA_RESUELTA
+  }
+  enum CanalComunicacion {
+    EMAIL
+    WHATSAPP_SIMULADO
+  }
+  enum EstadoComunicacion {
+    EN_COLA
+    ENVIADA
+    ENTREGADA
+    REBOTADA
+    FALLIDA
+  }
+}
+
+class Factura 
+abstract class Usuario 
+class Contacto 
+
+SistemaPagos ..> MovimientoCobro : notifica
+MovimientoCobro "1" -- "0..*" Conciliacion
+Factura "1" -- "0..*" Conciliacion
+Conciliacion "0..*" --> "0..1" Usuario : realizadaPor
+Conciliacion "0..*" --> "0..1" Usuario : revertidaPor
+MovimientoCobro "0..*" --> "0..1" Usuario : asignadoA
+Factura "0..1" -- "0..*" Comunicacion
+Comunicacion "0..*" --> "0..1" Contacto : destinatario
+Comunicacion "0..*" --> "1" PlantillaComunicacion : usa
+Comunicacion ..> CanalEnvio : se envía por
+Factura "1" -- "0..*" SuspensionRecordatorios
+MovimientoCobro ..> FuenteCobro
+MovimientoCobro ..> EstadoMovimiento
+Conciliacion ..> TipoConciliacion
+Comunicacion ..> TipoComunicacion
+Comunicacion ..> CanalComunicacion
+Comunicacion ..> EstadoComunicacion
+PlantillaComunicacion ..> TipoComunicacion
+@enduml
