@@ -17,7 +17,7 @@
 
 | Fecha | Inicio | Duración | Participantes | Temas y acuerdos |
 |---|---|---|---|---|
-| 29/10/2026 | 08:45 | 45 min | Todos los integrantes menos Juan Romero Cobos| Planificación; Revisión informes Entrega 1 entregados por el profesor |
+| 29/10/2026 | 08:45 | 45 min | Todos los integrantes menos Juan Romero Cobos por motivos justificados al profesor| Planificación; Revisión informes Entrega 1 entregados por el profesor |
 | 05/11/2026 | 08:45 | 30 min | Todos los integrantes | Planificación para la elaboración del diagrama de clases |
 | 12/11/2026 | 08:45 | 30 min | Todos los integrantes menos Carlos “Emérito” López Lovera y Laura Santiago Medina | Presentación de los diagramas de clases elaborados y planificación de una puesta en común conjunta. |
 | 23/11/2026 | 17:00 | 15 min | Todos los integrantes | Puesta en común del diagrama de clases y reparto de los diagramas restantes |
