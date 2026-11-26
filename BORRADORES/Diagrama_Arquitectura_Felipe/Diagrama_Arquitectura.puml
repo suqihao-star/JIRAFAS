@@ -1,0 +1,144 @@
+@startuml arquitectura_turbine_bloques_backup
+title Arquitectura Software - Sistema de Facturación de TurbineH
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+top to bottom direction
+
+' === ACTORES ===
+actor "Usuario Operativo" as OpUser
+actor "Administrador" as AdminUser
+actor "Superadministrador" as SuperAdminUser
+cloud "Sistema Externo\n(CRM / ERP)" as ExtSys
+
+' === CAPA DE PRESENTACIÓN Y ACCESO ===
+package "Capa de Acceso e Interfaz" {
+  [Aplicación Web Responsive\n(Ordenador, Móvil y Tablet)] as WebApp
+  [API Documentada y Segura\n(Consultas y Solicitudes Externas)] as PublicAPI
+}
+
+' === NÚCLEO DE LA APLICACIÓN (BLOQUES A - F) ===
+package "Núcleo de la Aplicación - TurbineH" {
+
+  package "Bloque F - Administración, seguridad y sistema" as BloqueF {
+    [Control de Acceso y Roles\n(Login Corporativo, 2FA, Permisos)] as AuthSec
+    [Configuración del Sistema\n(Series, Impuestos, Tarifas, Plazos)] as SysConfig
+    [Auditoría y Monitorización\n(Historial Inmutable, Colas, Errores\ny Última Copia de Seguridad)] as AuditMon
+    [Control de Solicitudes Externas\ny Acciones Masivas] as ExtAndBulk
+  }
+
+  package "Bloque A - Clientes y contactos" as BloqueA {
+    [Gestión de Clientes y Contactos\n(Fichas, Duplicados, Favoritos, Línea Temporal)] as ClientMgmt
+    [Tareas y Excepciones Comerciales\n(Inicio Futuro, Mes Gratis, Sin Prorrateo)] as TasksExc
+    [Importador Masivo CSV\n(Previsualización y Carga Histórica)] as CSVImport
+  }
+
+  package "Bloque B - Suscripciones, tarifas y descuentos" as BloqueB {
+    [Gestión de Suscripciones\n(Altas, Pausas, Bajas y Prorrateo)] as SubMgmt
+    [Revisión de Tarifas y Descuentos\n(Aprobaciones Escalonadas por Umbral)] as PricingDisc
+  }
+
+  package "Bloque C - Facturación" as BloqueC {
+    [Motor de Facturación\n(Puntual, Recurrente, Series e Impuestos)] as BillingEngine
+    [Aprobaciones y Rectificativas\n(Retenciones, Anulaciones e Inmutabilidad)] as ApprovalsRect
+    [Generador de Facturas PDF] as PDFGen
+  }
+
+  package "Bloque D - Cobros y comunicaciones" as BloqueD {
+    [Seguimiento y Conciliación de Cobros\n(Automática, Manual y Reversiones)] as Reconcil
+    [Gestor de Envíos y Recordatorios\n(Facturas, Impagos, Plantillas e Idiomas)] as CommsMgr
+  }
+
+  package "Bloque E - Seguimiento, consulta e informes" as BloqueE {
+    [Pantalla de Trabajo Diario y Alertas\n(Vencimientos, Tareas, Notificaciones)] as DailyWork
+    [Incidencias y Comentarios Internos\n(Rebotes de Correo, Adjuntos)] as IssuesMgr
+    [Dashboard Financiero e Informes\n(Métricas, Objetivos, Centros de Coste, CSV/PDF)] as ReportsDash
+  }
+
+  ' === SERVICIOS AUTOMÁTICOS Y DE APOYO ===
+  [Planificador de Tareas Programadas\n(Facturación Día 1, Recordatorios,\nConsulta de Pagos, Resúmenes y Backups)] as Scheduler
+  [Módulo de IA Opcional (Brain)\n(Asistente Desactivable con Supervisión)] as OptionalAI
+}
+
+' === CONECTORES AISLADOS (SERVICIOS EXTERNOS) ===
+package "Conectores de Integración Externa" {
+  [Conector de Pasarelas de Pago\n(Stripe, Revolut y Otras Fuentes)] as PayConnector
+  [Conector de Mensajería\n(Correo Electrónico y WhatsApp Simulado)] as MsgConnector
+}
+
+' === PERSISTENCIA, ARCHIVOS Y COPIAS DE SEGURIDAD ===
+package "Almacenamiento de Datos y Documentos" {
+  database "Base de Datos Principal\n(Precisión Decimal Exacta e Historial)" as MainDB
+  folder "Almacén Seguro de Archivos\n(PDFs Facturas, Contratos, Adjuntos,\nInformes con Enlaces Temporales)" as FileRepo
+  database "Copias de Seguridad\n(Respaldos Automáticos y\nValidación de Restauración)" as BackupRepo
+}
+
+cloud "Pasarelas de Pago\n(Stripe / Revolut)" as ExtPay
+cloud "Proveedores de Correo\ny WhatsApp" as ExtMsg
+
+' === RELACIONES DE ENTRADA ===
+OpUser --> WebApp
+AdminUser --> WebApp
+SuperAdminUser --> WebApp
+ExtSys --> PublicAPI : HTTPS / Token
+
+WebApp --> AuthSec : Valida sesión y permisos
+PublicAPI --> AuthSec : Valida permisos
+PublicAPI --> ExtAndBulk : Crea solicitud pendiente\n(Nunca modifica directo)
+
+' === FLUJO ENTRE BLOQUES ===
+AuthSec --> BloqueA
+AuthSec --> BloqueB
+AuthSec --> BloqueC
+AuthSec --> BloqueD
+AuthSec --> BloqueE
+
+BloqueA --> BloqueB : Cliente activo y excepciones
+BloqueB --> BloqueC : Cuotas, prorrateos y descuentos aprobados
+BloqueC --> BloqueD : Facturas emitidas para envío y cobro
+BloqueD --> BloqueE : Rebotes, impagos y alertas
+BloqueC --> BloqueE : Datos para dashboard e informes
+
+SysConfig --> BloqueB : Tabla de tarifas y umbrales
+SysConfig --> BloqueC : Series e impuestos
+SysConfig --> BloqueD : Plazos de recordatorio y plantillas
+
+BloqueA ..> AuditMon : Registra cambios
+BloqueB ..> AuditMon : Registra aprobaciones
+BloqueC ..> AuditMon : Registra emisiones
+BloqueD ..> AuditMon : Registra conciliaciones
+BloqueE ..> AuditMon : Registra objetivos
+
+' === PROCESOS AUTOMÁTICOS E IA ===
+Scheduler --> BloqueC : Emisión mensual (Día 1)
+Scheduler --> BloqueD : Consulta cobros y envía avisos
+Scheduler --> BloqueE : Resumen diario y alertas
+Scheduler --> BackupRepo : Ejecuta copia de seguridad
+Scheduler ..> AuditMon : Reporta resultado de tareas
+
+OptionalAI ..> BloqueB : Sugerencias económicas\n(Requieren aprobación)
+OptionalAI ..> BloqueE : Apoyo en seguimiento
+
+' === SALIDAS E INFRAESTRUCTURA ===
+Reconcil --> PayConnector
+PayConnector --> ExtPay : Consulta movimientos
+
+CommsMgr --> MsgConnector
+MsgConnector --> ExtMsg : Envía notificaciones\ny recibe rebotes
+
+BloqueA --> MainDB
+BloqueB --> MainDB
+BloqueC --> MainDB
+BloqueD --> MainDB
+BloqueE --> MainDB
+BloqueF --> MainDB
+
+PDFGen --> FileRepo : Guarda PDFs inmutables
+ClientMgmt --> FileRepo : Guarda contratos firmados
+IssuesMgr --> FileRepo : Guarda adjuntos
+ReportsDash --> FileRepo : Exporta informes CSV/PDF
+
+MainDB --> BackupRepo : Respaldo periódico de datos
+FileRepo --> BackupRepo : Respaldo periódico de documentos
+
+@enduml
