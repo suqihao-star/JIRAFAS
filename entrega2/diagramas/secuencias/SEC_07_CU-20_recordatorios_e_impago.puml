@@ -1,0 +1,109 @@
+@startuml SEC_07_CU-20_recordatorios_e_impago
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 170
+skinparam ParticipantPadding 12
+hide footbox
+autonumber
+title CU-20 - Ejecutar flujo de recordatorios e impago
+
+actor "Planificador del sistema" as PL
+control ":Sistema" as SYS
+participant "cfg : ConfiguracionSistema" as CFG
+participant "f : Factura" as F
+participant "c : Cliente" as C
+participant "ej : EjecucionTarea" as EJ
+
+PL -> SYS : ejecutarTarea(RECORDATORIOS)
+activate SYS
+SYS -> SYS : ej = obtenerEjecucion(RECORDATORIOS)
+note right of SYS : devuelve la ejecución INTERRUMPIDA\no crea una nueva (EN_CURSO)
+opt [FE-2: ej estaba INTERRUMPIDA]
+  SYS -> EJ ++ : reanudar()
+  note right of EJ : la interrupción queda registrada y\nvisible en monitorización (CU-33)
+  return
+  loop [para cada reserva abierta (caída entre enviar y marcar)]
+    SYS -> SYS : comprobarResultadoEnvio(claveAviso)
+    note right of SYS : consulta el historial de Comunicacion de la\nfactura (tipo y fechaEnvio). La reserva y su\nclave las guarda la aplicación (ver Diferencias)
+    alt [consta una Comunicacion del tipo de la fase,\nposterior a la reserva]
+      SYS -> SYS : marcarAvisoEnviado(claveAviso)
+    else [no consta ninguna Comunicacion posterior a la reserva\ny CU-18 no tiene el envío EN_COLA]
+      SYS -> SYS : liberarReserva(claveAviso)
+    else [el historial no permite correlacionar el envío\ncon la reserva: resultado incierto]
+      SYS -> SYS : dejar pendiente de revisión; no reenviar a ciegas
+    end
+  end
+end
+SYS -> CFG ++ : getDiasRecordatorioPrevio()
+return diasPrevio
+SYS -> CFG ++ : getDiasRecordatorioVencimiento()
+return diasVencimiento
+SYS -> CFG ++ : getFrecuenciaAvisoImpagoDias()
+return frecuenciaImpago
+SYS -> SYS : seleccionarFacturasConDeuda()
+note right of SYS
+  EMITIDA, ENVIADA, VENCIDA o
+  PARCIALMENTE_CONCILIADA con saldo.
+  FA-1: incluye las de clientes dados
+  de baja (el recobro sigue, FR-09).
+end note
+
+loop [para cada factura seleccionada]
+  SYS -> F ++ : getSuspensiones()
+  return suspensiones
+  SYS -> F ++ : getSaldoPendiente()
+  return saldo
+  SYS -> F ++ : getFechaVencimiento()
+  return fechaVencimiento
+  SYS -> C ++ : getContactos()
+  return contactos con su tipo y si están activos
+  SYS -> SYS : calcularAvisoPendiente(f, cadencia)
+  note right of SYS
+    aviso = (factura, fase, fechaProgramada).
+    fechaVencimiento se fijó al emitir con el
+    vencimiento pactado o, si no hay, el general.
+    En AVISO_IMPAGO hay un aviso cada
+    frecuenciaAvisoImpagoDias (FR-05).
+    Pendiente = fechaProgramada <= hoy y no
+    enviado. La clave impide enviar dos veces
+    el mismo aviso; tras una interrupción se
+    completan los pendientes (FE-2).
+  end note
+
+  alt [FA-3: tiene una SuspensionRecordatorios activa]
+    SYS -> SYS : omitir(f)
+  else [no suspendida y FA-2: pago total detectado]
+    SYS -> SYS : detenerFlujo(f)
+  else [no suspendida, con deuda y sin aviso pendiente]
+    SYS -> SYS : omitir sin duplicar
+  else [no suspendida, con deuda, aviso pendiente y\nFE-3: sin contacto activo de tipo IMPAGOS]
+    create participant "i : Incidencia" as I
+    SYS -->> I : <<create>> Incidencia(tipo = OTRA, cliente = c, factura = f,\ndescripcion = "sin contacto de impagos")
+    create participant "n : Notificacion" as N
+    SYS -->> N : <<create>> Notificacion("SIN_CONTACTO_IMPAGOS", mensaje)
+    note right of N : al responsable del cliente
+  else [no suspendida, con deuda, aviso pendiente\ny contacto activo de tipo IMPAGOS]
+    critical reserva atómica del aviso
+      SYS -> SYS : revalidar saldo y suspensión;\nreservar(claveAviso = (f, fase, fechaProgramada))
+    end
+    opt [reserva obtenida (ni saldada, ni suspendida, ni reservada por otro proceso)]
+      ref over SYS, F : CU-18 Enviar comunicación (RECORDATORIO_PREVIO,\nVENCIMIENTO o AVISO_IMPAGO)\ncon la clave del aviso; queda enlazada a la factura\ny en la línea temporal del cliente
+      alt [envío completado]
+        SYS -> SYS : marcarAvisoEnviado(f, fase, fechaProgramada)
+      else [FE-1: fallo técnico del proveedor (EN_COLA)]
+        SYS -> EJ : setErrores(errores + f.numero)
+        note right of EJ : la reserva queda recuperable y\nCU-18 reintenta; se continúa\ncon las demás facturas
+      else [FE-1: rebote del correo (REBOTADA)]
+        SYS -> EJ : setErrores(errores + f.numero + "rebotado")
+        note right of EJ : CU-18 (FE-1) ya continúa en CU-19\n(Gestionar rebote): aquí solo se registra\nel resultado y se sigue con la siguiente\nfactura, sin gestionarlo dos veces
+      end
+    end
+  end
+end
+
+SYS -> EJ : setFin(ahora)
+SYS -> EJ : setEstado(COMPLETADA o COMPLETADA_CON_ERRORES)
+SYS -> EJ : setResumen(resumen)
+note right of EJ : resultado en la\nmonitorización (CU-33, FR-48)
+SYS --> PL : resumen de la ejecución
+deactivate SYS
+@enduml
