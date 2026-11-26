@@ -29,8 +29,6 @@ En Trello aparecen siglas en lugar de nombres: PFC = Pablo Fernández Carabantes
 
 **Tablero:** https://trello.com/b/hA6VZlaG/tablero-entrega-2
 
-Añadir **capturas reales legibles** del estado del tablero en Sprint Planning y Sprint Retrospective. Copiar las imágenes a `entrega2/evidencias/` y enlazarlas así (descomentar con archivos existentes):
-
 ![Tablero en Sprint Planning](evidencias/sprint-planning.png)
 
 ![Tablero en Sprint Retrospective](evidencias/sprint-retrospective.png)
@@ -48,7 +46,7 @@ Añadir **capturas reales legibles** del estado del tablero en Sprint Planning y
 | Documentación del ER | Pablo Fernández Carabantes, Su Qihao | Entrega 2 | Alta | documentación | modelo_datos.md con reglas, trazabilidad y decisiones abiertas. COMPLETADO. |
 | Presentación y validación del diagrama ER | Todos los integrantes del grupo | Entrega 2 | Alta | documentación | Presentación del diagrama ER a los demás miembros del grupo para su validación. COMPLETADO. |
 | Realización diagramas de secuencia | Juan Romero Cobos, Laura Santiago Medina | Entrega 2 | Alta | diagrama | Diagramas de Secuencias. COMPLETADO |
-| Documentación diagramas de secuencia | Juan Romero Cobos | Entrega 2 | Alta | documentación | Documentación del Diagramas de Secuencias. COMPLETADO |
+| Documentación de los diagramas de secuencia | Juan Romero Cobos | Entrega 2 | Alta | documentación | Documentación del Diagramas de Secuencias. COMPLETADO |
 | Presentación y validación de los diagramas de secuencia | Todos los integrantes | Entrega 2 | Media | revisión | Presentación de los diagramas de secuencia a los demás miembros del grupo para su validación. COMPLETADO.|
 | Diagrama de arquitectura | Pablo Roldán Coll, Carlos “Emérito” López Lovera, Andrés Felipe Jaramillo Ranzini | Entrega 2 | Alta | diagrama | Realización del diagrama de arquitectura. COMPLETADO |
 | Documentación del Diagrama de arquitectura | Pablo Roldán Coll, Carlos “Emérito” López Lovera, Andrés Felipe Jaramillo Ranzini | Entrega 2 | Alta | documentación | Documentación del diagrama de arquitectura. COMPLETADO |
@@ -67,7 +65,7 @@ Añadir **capturas reales legibles** del estado del tablero en Sprint Planning y
 
 ## Revisión y retrospectiva
 
-- **Logros:** se han terminado los diagramas de clases, ER, secuencia y arquitectura con su documentación, y se han validado y presentado con todo el grupo por lo tanto todos los miembros tienen conocimiento de los diagramas. Además se ha corregido la numeración del bloque B de la Entrega 1.
+- **Logros:** se han terminado los diagramas de clases, ER, secuencia y arquitectura con su documentación, y se han validado y presentado con todo el grupo, por lo que todos los miembros tienen conocimiento de los diagramas y del trabajo realizado. Además se ha corregido la numeración del bloque B de la Entrega 1.
 - **Aspectos positivos:** hacer primero el diagrama de clases entre todos y validarlo antes de repartir el resto ayudó a que los demas diagramas partieran de la misma base. El trabajo en subgrupos permitió avanzar varios diagramas a la vez.
 - **Mejoras:** acordar para la siguiente entrega desde el inicio el orden en que se hacen las tareas, para poder repartir el trabajo antes, de todas formas en esta entrega se han realizado todos los diagramas e informes validandolos entre todos los miembros del grupo.
 - **Acciones siguientes:** contrastar hipótesis con el cliente y preparar Entrega 3.
