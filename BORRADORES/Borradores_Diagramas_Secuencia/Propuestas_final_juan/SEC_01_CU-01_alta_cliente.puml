@@ -4,7 +4,7 @@
 '  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
 '  Flujo principal + FA-4 (excepción comercial), FA-5 (datos fiscales
 '  incompletos), FE-1 (duplicado), FE-2 (formato inválido).
-'  Clases: diagrama_clases_simplificado (propuesta nueva Pablo F. C.)
+'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
 ' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
@@ -42,27 +42,34 @@ alt [FE-2: campos obligatorios vacíos, formato inválido\no responsable interno
   SYS --> UO : señala los campos a corregir
 else [formato correcto]
   create participant "c : Cliente" as C
-  SYS -->> C : <<create>> Cliente(datos)
-  note right of C : objeto candidato, aún no registrado:\nsolo se persiste al llamar a darDeAlta()
+  SYS -->> C : <<create>> Cliente(datosFiscales, condicionesPago,\ndocumentoFirmado, vencimientoPactadoDias, fechaInicio)
+  note right of C : objeto candidato, aún no registrado:\nsolo se persiste al llamar a darDeAlta().\nLa ficha comercial se reparte: condiciones\nde pago y documento en Cliente; plan y\ntarifa en Suscripcion
   SYS -> C ++ : comprobarDuplicado()
   return duplicado : Boolean
 
+  note right of C : por identificador fiscal (FR-27); si aún\nfalta (FA-5) no hay coincidencia posible\ny devuelve false
   alt [FE-1: posible cliente duplicado]
     SYS --> UO : aviso de duplicado: ofrece abrir la ficha\nexistente (sin fusionar) o corregir la actual
     SYS -> SYS : descartar(c)
-    note right of SYS : el candidato no se registra
+    note right of SYS : el candidato no se registra; el formulario\nconserva los datos para corregirlos y\nvolver a guardarCliente()
   else [sin duplicado]
     opt [FA-5: falta el identificador fiscal]
       SYS -> C : setDatosFiscalesIncompletos(true)
-      note right of C : no se podrá emitir factura\nhasta completar los datos (CU-12 FE-1)
+      SYS --> UO : aviso: falta el identificador fiscal;\nno se podrá facturar hasta completarlo
+      note right of C : CU-12 FE-1 bloqueará la emisión\nmientras falte
     end
+    create participant "s : Suscripcion" as S
+    SYS -->> S : <<create>> Suscripcion(plan, precioVigente = tarifa acordada,\nfechaInicio)
+    note right of S : la ficha comercial (plan y tarifa)\nse guarda en la Suscripcion del cliente\n(composición Cliente ◆ Suscripcion)
     opt [alta a mitad de mes]
-      SYS -> SYS : calcularProrrateo(fechaInicio, tarifaAcordada)
+      SYS -> S ++ : calcularProrrateo(periodo)
+      return importe prorrateado
       SYS --> UO : muestra el prorrateo de la primera factura (FR-11)
       UO -> SYS : confirmar()
     end
 
-    SYS -> C : setResponsableInterno(responsable)
+    SYS -> C : cambiarResponsable(responsable)
+    SYS -> C : addSuscripcion(s)
     SYS -> C ++ : darDeAlta()
     note right of C
       estado = ACTIVO, o PENDIENTE_ACTIVACION
@@ -76,9 +83,14 @@ else [formato correcto]
       alt [el contacto ya existe (puede pertenecer a varios clientes, FR-04)]
         SYS -> CTE ++ : getActivo()
         return activo : Boolean
+        opt [el contacto existente está inactivo]
+          SYS --> UO : aviso: contacto inactivo; se vincula,\npero no recibirá comunicaciones
+        end
+        SYS -> SYS : contacto = ctExistente
       else [contacto nuevo]
         create participant "ct : Contacto" as CT
         SYS -->> CT : <<create>> Contacto(nombre, correo, idioma)
+        SYS -> SYS : contacto = ct
       end
       create participant "cc : ClienteContacto" as CC
       SYS -->> CC : <<create>> ClienteContacto(c, contacto, tipo)
@@ -87,9 +99,11 @@ else [formato correcto]
 
     opt [FA-4: excepción comercial explícita]
       create participant "ex : ExcepcionComercial" as EX
-      SYS -->> EX : <<create>> ExcepcionComercial(tipo, fechaInicioFutura)
-      opt [la excepción tiene efecto económico]
-        ref over SYS, EX : CU-07 Solicitar descuento\n(no se aplica hasta aprobarse en CU-08)
+      SYS -->> EX : <<create>> ExcepcionComercial(tipo, fechaInicioFutura,\naprobada = false si tiene efecto económico)
+      SYS -> C : addExcepcion(ex)
+      note right of EX : composición Cliente ◆ ExcepcionComercial
+      opt [la excepción tiene efecto económico\n(PRIMER_MES_GRATIS o SIN_PRORRATEO)]
+        ref over SYS, EX : CU-07 Solicitar descuento: la SolicitudDescuento creada\nqueda enlazada con ex («se aprueba mediante»);\nno se aplica hasta aprobarse en CU-08
       end
     end
 

@@ -5,7 +5,7 @@
 '  Flujo principal (manual) + FA-1 (retención -> CU-13), FA-2 (emisión
 '  recurrente desde CU-11), FA-3 (fallo de envío), FE-1 (dato fiscal),
 '  FE-2 (duplicidad / concurrencia), FE-3 (no se puede generar el PDF).
-'  Clases: diagrama_clases_simplificado (propuesta nueva Pablo F. C.)
+'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
 ' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
@@ -19,7 +19,6 @@ control ":Sistema" as SYS
 participant "f : Factura" as F
 participant "lf : LineaFactura" as LF
 participant "c : Cliente" as C
-participant "cfg : ConfiguracionSistema" as CFG
 participant "s : SerieFacturacion" as SER
 
 alt [emisión manual]
@@ -34,7 +33,7 @@ break [el actor no tiene permiso sobre el cliente o la factura]
   alt [origen manual]
     SYS --> UO : acceso denegado
   else [origen recurrente]
-    [<-- SYS : emisión no autorizada
+    [<-- SYS : ERROR (emisión no autorizada)
   end
 end
 
@@ -44,19 +43,21 @@ break [FE-2: la factura ya tiene emisión definitiva]
   alt [origen manual]
     SYS --> UO : devuelve la factura ya emitida (no se duplica)
   else [origen recurrente]
-    [<-- SYS : ya emitida: no se duplica
+    [<-- SYS : EMITIDA (ya existía; no se duplica)
   end
 end
 
 SYS -> F ++ : validarDatosFiscales()
-F -> C ++ : getIdentificadorFiscal(), getDomicilioFiscal()
-return datos fiscales
-return valido : Boolean
-break [FE-1: falta un dato fiscal imprescindible]
+F -> C ++ : getIdentificadorFiscal()
+return identificadorFiscal
+F -> C ++ : getDomicilioFiscal()
+return domicilioFiscal
+return faltan : List<String>
+break [FE-1: la lista de datos fiscales que faltan no está vacía]
   alt [origen manual]
     SYS --> UO : bloquea la emisión ANTES de numerar\ne indica los datos a corregir
   else [origen recurrente]
-    [<-- SYS : pendiente: datos fiscales incompletos
+    [<-- SYS : ERROR (datos fiscales incompletos)
   end
 end
 
@@ -71,34 +72,44 @@ opt [emisión manual]
   UO -> SYS : confirmarEmision()
 end
 
-SYS -> CFG ++ : getUmbralImporteAlto()
-return umbral
-SYS -> SYS : comprobarRetencion(f, umbral, aprobación vigente)
+SYS -> F ++ : detectarCausaRetencion()
+note right of F
+  importe modificado, descuento extraordinario,
+  vencimiento atípico o, solo en facturas PUNTUALES,
+  importe superior a umbralImporteAlto (FR-13).
+  Una mensualidad igual a la suscripción
+  aprobada no se retiene.
+end note
+return causa : String (vacía si no hay)
 
-alt [FA-1: cambio sensible o importe elevado sin aprobación]
-  SYS -> F : setRetenida(true), setMotivoRetencion(motivo)
+alt [FA-1: hay causa de retención sin aprobación vigente]
+  create participant "ap : AprobacionFactura" as AP
+  SYS -->> AP : <<create>> AprobacionFactura(motivoRetencion = causa,\nestado = PENDIENTE, solicitante = u)
+  note right of AP : composición Factura ◆ AprobacionFactura\n«retenciones». En la emisión recurrente no hay\nsolicitante humano (ver Diferencias)
+  SYS -> F : setRetenida(true)
   create participant "n : Notificacion" as N
   SYS -->> N : <<create>> Notificacion("FACTURA_RETENIDA", motivo)
   note right of N : para el Administrador; se explica\nel motivo de la retención (FR-18)
-  ref over SYS, F : CU-13 Aprobar factura retenida («extend»)
-  note right of F : si CU-13 la aprueba, la emisión se retoma\nen la sección crítica de numeración (paso 6);\nsi la rechaza, vuelve a BORRADOR para corregirla
   alt [origen manual]
     SYS --> UO : factura retenida pendiente de aprobación
   else [origen recurrente]
-    [<-- SYS : mensualidad retenida
+    [<-- SYS : RETENIDA
   end
+  ref over SYS, AP : interacción posterior: CU-13 Aprobar factura retenida («extend»),\nAdministrador.aprobarFacturaRetenida(ap). Si se aprueba, la emisión se\nretoma en la sección crítica de abajo (revalida los datos fiscales ANTES\nde numerar, CU-13 FE-3); si se rechaza, vuelve a BORRADOR
 
 else [sin retención]
   critical emisión única por obligación y serie
-    SYS -> SYS : revalidar autorización, estado, datos fiscales\ny condiciones económicas aprobadas
+    SYS -> F ++ : validarDatosFiscales()
+    return faltan : List<String>
+    SYS -> SYS : revalidar autorización, estado\ny condiciones económicas aprobadas
     note right of SYS : segunda comprobación de FE-1 / FE-2 dentro\nde la sección crítica: otro intento concurrente\npudo emitirla o cambiar los datos
     alt [FE-2: otro intento ya la emitió]
-      SYS -> SYS : recuperar la factura existente (sin numerar otra vez)
-    else [FE-1: los datos fiscales ya no son válidos]
-      SYS -> SYS : bloquear ANTES de numerar
-    else [permiso revocado o condiciones económicas modificadas]
-      SYS -> SYS : bloquear la emisión y pedir nueva revisión
-    else [emisión pendiente y autorizada]
+      SYS -> SYS : resultado = EMITIDA (ya existía; sin numerar otra vez)
+    else [no emitida y FE-1: faltan datos fiscales]
+      SYS -> SYS : resultado = ERROR(datos que faltan); bloqueo ANTES de numerar
+    else [no emitida, datos completos y (permiso revocado\no condiciones económicas modificadas)]
+      SYS -> SYS : resultado = ERROR(requiere nueva revisión)
+    else [no emitida, datos completos, autorizada\ny condiciones vigentes]
       SYS -> F ++ : emitir()
       F -> F : getNumero()
       alt [FE-3: ya tiene número reservado (reintento tras fallo del PDF)]
@@ -112,19 +123,23 @@ else [sin retención]
       F -> F : generarPDF()
       alt [FE-3: fallo al generar o conservar el PDF]
         F --> SYS : emisión no confirmada
-        note right of F : se registra el error. El número queda\nligado a ESTA factura para el reintento:\nno se crea otra ni se consume otro número
+        note right of F : el número queda ligado a ESTA factura\npara el reintento: no se crea otra ni\nse consume otro número
+        create participant "evErr : EventoAuditoria" as EVE
+        SYS -->> EVE : <<create>> EventoAuditoria("EMITIR", "Factura", f.id, idError)
+        SYS -> SYS : resultado = ERROR(idError: fallo del PDF)
       else [PDF válido y conservado]
         F -> F : setEstado(EMITIDA)
-        note right of F : inmutable (BR-09, FR-14)
+        note right of F : conserva datosFiscalesEmision y copia el\nporcentajeImpuesto de cada línea; inmutable\n(BR-09, BR-11, FR-14)
         F --> SYS : factura emitida
         create participant "ev : EventoAuditoria" as EV
         SYS -->> EV : <<create>> EventoAuditoria("EMITIR", "Factura", f.id)
+        SYS -> SYS : resultado = EMITIDA
       end
       deactivate F
     end
   end
 
-  opt [emisión nueva confirmada]
+  opt [resultado = EMITIDA por esta emisión (no por un intento anterior)]
     ref over SYS, F : CU-18 Enviar comunicación al cliente\n(tipo FACTURA, contacto de facturación)
     alt [envío completado]
       critical [paso a ENVIADA sin interferir con un cobro concurrente]
@@ -141,9 +156,9 @@ else [sin retención]
     end
   end
   alt [origen manual]
-    SYS --> UO : resultado de la emisión y del envío
+    SYS --> UO : resultado (si es ERROR, su causa y los\ndatos a corregir) y resultado del envío
   else [origen recurrente]
-    [<-- SYS : resultado para el resumen de CU-11
+    [<-- SYS : resultado (EMITIDA o ERROR(causa, idError))
   end
 end
 deactivate SYS

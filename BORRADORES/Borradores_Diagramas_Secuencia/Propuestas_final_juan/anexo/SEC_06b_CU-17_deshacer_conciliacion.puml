@@ -4,7 +4,7 @@
 '  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
 '  Interacción independiente: sirve para conciliaciones manuales
 '  (SEC_06) y automáticas (SEC_05). Cubre FR-22.
-'  Clases: diagrama_clases_simplificado (propuesta nueva Pablo F. C.)
+'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
 ' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
@@ -45,11 +45,28 @@ critical reversión y recálculo atómicos
     return ok
     SYS -> CON : setRevertidaPor(u)
     SYS -> F ++ : getSaldoPendiente()
-    return saldo
-    SYS -> F : setSaldoPendiente(saldo + con.importeAsignado),\nsetEstado(según el nuevo saldo y el vencimiento)
+    note right of F : /saldoPendiente es derivado: al quedar la\nconciliación revertida vuelve a incluir su importe
+    return saldo recalculado
+    SYS -> F ++ : getEstado()
+    return estado actual
+    opt [estado de cobro (PAGADA o PARCIALMENTE_CONCILIADA)]
+      SYS -> F ++ : getFechaVencimiento()
+      return fechaVencimiento
+      SYS -> F ++ : getComunicaciones()
+      return historial de envíos
+      SYS -> F : setEstado(nuevoEstado)
+      note right of F
+        PARCIALMENTE_CONCILIADA si aún tiene cobros vigentes;
+        si no: VENCIDA si fechaVencimiento < hoy;
+        si no, ENVIADA si consta una Comunicacion FACTURA
+        enviada, y EMITIDA en otro caso.
+        ANULADA, RECTIFICADA, INCOBRABLE o CANCELADA
+        no se tocan: la reversión no reabre la factura.
+      end note
+    end
     SYS -> M ++ : getConciliaciones()
     return conciliaciones aún vigentes
-    SYS -> M : setEstado(CONCILIADO si todo su importe sigue\nasignado; si no, PENDIENTE por la parte libre)
+    SYS -> M : setEstado(CONCILIADO si todo su importe sigue asignado;\nPARCIAL si queda una parte; PENDIENTE_CONCILIACION si nada)
     note right of M : no pasa entero a PENDIENTE si conserva\notras asociaciones válidas
     create participant "ev : EventoAuditoria" as EV
     SYS -->> EV : <<create>> EventoAuditoria("REVERTIR_CONCILIACION",\n"Conciliacion", idConciliacion)

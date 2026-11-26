@@ -5,7 +5,7 @@
 '  Flujo principal + FA-2 (un cobro para varias facturas),
 '  FE-1 (importe superior), FE-2 (movimiento ya conciliado).
 '  FA-1 (automática) está en SEC_05; FA-3 (deshacer) en anexo/SEC_06b.
-'  Clases: diagrama_clases_simplificado (propuesta nueva Pablo F. C.)
+'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
 ' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
@@ -29,23 +29,30 @@ SYS -> M ++ : getEstado()
 return estado
 
 break [FE-2: el movimiento ya está conciliado]
-  SYS --> UO : impide asociarlo de nuevo
+  SYS --> UO : impide asociarlo de nuevo;\npuede elegir otro movimiento
 end
 
 SYS -> SYS : filtrarPorAmbitoAutorizado(u, facturas)
 SYS --> UO : facturas pendientes autorizadas
 UO -> SYS : asociar(m, facturas[], importes[])
 SYS -> SYS : comprobarAsignacion(u, cliente)
+break [PRE-3: cliente no asignado y el usuario no es Administrador]
+  SYS --> UO : acceso denegado; sin cambios
+end
+break [alguna factura no es del cliente del movimiento\n(FA-2: el reparto es entre facturas del mismo cliente)]
+  SYS --> UO : asociación rechazada; sin cambios
+end
 SYS -> SYS : validarImportes(m, facturas, importes)
 
-alt [PRE-3: cliente no asignado y el usuario no es Administrador]
-  SYS --> UO : acceso denegado; sin cambios
-else [FE-1: un importe supera el saldo pendiente de la factura]
+alt [FE-1: algún importe supera el saldo pendiente de su factura]
   SYS --> UO : señala la diferencia; la factura NO\nse marca como pagada (FR-21)
-  note right of UO : corrige la asociación (vuelve al paso 4)\no deja la diferencia pendiente de revisión
-else [FA-2: la suma repartida no coincide con el importe disponible del movimiento]
+  opt [el usuario deja la diferencia pendiente de revisión]
+    SYS -> SYS : registrarDiferenciaPendiente(m, f, diferencia)
+  end
+  note right of UO : si no, corrige la asociación\n(vuelve a asociar())
+else [sin excesos, pero la suma no coincide con el importe\ndisponible del movimiento (validación de FA-2)]
   SYS --> UO : la suma no coincide; corregir el reparto
-else [moneda incompatible, importe no positivo o factura no cobrable]
+else [suma correcta, pero moneda incompatible,\nimporte no positivo o factura no cobrable]
   SYS --> UO : corregir los datos; sin cambios
 else [importes válidos]
   critical conciliación atómica
@@ -60,18 +67,12 @@ else [importes válidos]
         return con
         SYS -> CON : setImporteAsignado(importe validado)
         note right of CON : conciliarPago(m, f) no recibe el importe\n(diferencia con el modelo, ver .md): se fija\naquí, dentro de la misma transacción
-        SYS -> F ++ : getSaldoPendiente()
-        return saldo
-        SYS -> F : setSaldoPendiente(saldo - importeAsignado)
-        alt [saldo resultante = 0]
-          SYS -> F : setEstado(PAGADA)
-        else [saldo resultante > 0]
-          SYS -> F : setEstado(PARCIALMENTE_CONCILIADA)
-        end
+        SYS -> F ++ : registrarCobro(importe validado)
+        note right of F : /saldoPendiente es derivado. Estado:\nPAGADA si queda a 0; si no,\nPARCIALMENTE_CONCILIADA
+        return ok
       end
-      SYS -> M ++ : getConciliaciones()
-      return conciliaciones vigentes
-      SYS -> M : setEstado(CONCILIADO si todo su importe está asignado;\nsi no, PENDIENTE por la parte libre)
+      SYS -> M : setEstado(CONCILIADO)
+      note right of M : la suma validada coincide con el importe\ndisponible: el movimiento queda asignado\nentero (PARCIAL solo surge al revertir, SEC_06b)
       create participant "ev : EventoAuditoria" as EV
       SYS -->> EV : <<create>> EventoAuditoria("CONCILIAR", "MovimientoCobro", m.id)
       SYS --> UO : conciliación confirmada (quién y cuándo)
