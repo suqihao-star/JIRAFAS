@@ -25,10 +25,10 @@ package "Módulos de negocio (núcleo de dominio)" as DOMINIO {
   MC -[hidden]down- ME
 }
 
-MA --> MB : Cliente 1 — 0..* Suscripcion
-MB --> MC : Suscripcion 0..1 — 0..* Factura
-MA --> MC : Cliente 1 — 0..* Factura
-MC --> MD : Factura 1 — 0..* Conciliacion\nFactura 0..1 — 0..* Comunicacion
+MA --> MB : Cliente 1 - 0..* Suscripcion
+MB --> MC : Suscripcion 0..1 - 0..* Factura
+MA --> MC : Cliente 1 - 0..* Factura
+MC --> MD : Factura 1 - 0..* Conciliacion\nFactura 0..1 - 0..* Comunicacion
 MD --> ME : rebote crea Incidencia /\nNotificacion
 MC --> ME : CentroCoste, Informes
 MF ..> MC : SerieFacturacion, Impuesto

@@ -48,15 +48,15 @@ La vista `arquitectura_dominio.puml` resume las dependencias entre bloques. Las 
 
 | Relación | Cardinalidad | Motivo |
 |---|---|---|
-| A → B | Cliente 1 — 0..* Suscripción | Un cliente puede no tener suscripciones o tener varias. |
-| B → C | Suscripción 0..1 — 0..* Factura | Una suscripción genera facturas, pero una factura puntual no necesita suscripción. |
-| A → C | Cliente 1 — 0..* Factura | El cliente es el titular de sus facturas. |
-| C → D | Factura 1 — 0..* Conciliación | Una factura puede tener varios movimientos de conciliación, o ninguno. |
-| C → D | Factura 0..1 — 0..* Comunicación | Una comunicación puede no estar asociada a una factura. |
-| D → E | Rebote crea incidencia / notificación | Los eventos de cobro y envío alimentan el seguimiento. |
-| C → E | Centro de coste e informes | Los datos de facturación alimentan el dashboard y los informes. |
-| F → B, C y D | Parámetros de configuración | Series, impuestos, tarifas, umbrales y cadencia de recordatorios. |
-| F → A | Solicitud externa pendiente | Las peticiones externas se revisan antes de modificar clientes o recurrencias. |
+| A -> B | Cliente 1 - 0..* Suscripción | Un cliente puede no tener suscripciones o tener varias. |
+| B -> C | Suscripción 0..1 - 0..* Factura | Una suscripción genera facturas, pero una factura puntual no necesita suscripción. |
+| A -> C | Cliente 1 - 0..* Factura | El cliente es el titular de sus facturas. |
+| C -> D | Factura 1 - 0..* Conciliación | Una factura puede tener varios movimientos de conciliación, o ninguno. |
+| C -> D | Factura 0..1 - 0..* Comunicación | Una comunicación puede no estar asociada a una factura. |
+| D -> E | Rebote crea incidencia / notificación | Los eventos de cobro y envío alimentan el seguimiento. |
+| C -> E | Centro de coste e informes | Los datos de facturación alimentan el dashboard y los informes. |
+| F -> B, C y D | Parámetros de configuración | Series, impuestos, tarifas, umbrales y cadencia de recordatorios. |
+| F -> A | Solicitud externa pendiente | Las peticiones externas se revisan antes de modificar clientes o recurrencias. |
 
 ## Justificación y alternativas
 
