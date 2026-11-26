@@ -1,0 +1,150 @@
+@startuml diagrama_arquitectura_turbine_refinado
+title Arquitectura del sistema de facturación de Turbine
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam linetype ortho
+
+actor "Usuario operativo" as UO
+actor "Administrador" as ADM
+actor "Superadministrador" as SADM
+UO <|-- ADM
+ADM <|-- SADM
+
+package "Capa de presentación" {
+  [Aplicación web responsive\n(escritorio, tablet, móvil - NFR-04)\nPantalla trabajo diario, dashboard,\nbuscador, informes] as WEB
+}
+
+package "Capa de aplicación (servidor)" {
+  [API REST documentada y autenticada\n(misma lógica de negocio que la web - BR-07)] as API
+  [Seguridad transversal\nSesiones, 2FA opcional,\nRBAC comprobado en servidor (NFR-07/08)] as SEG
+
+  package "Módulos de negocio (núcleo de dominio)" as DOMINIO {
+    [Bloque A · Clientes y contactos\nCliente, Contacto, ClienteContacto,\nTarea, ExcepcionComercial,\nImportacionCSV, FilaImportacion] as MA
+    [Bloque B · Suscripciones y descuentos\nSuscripcion, RevisionTarifaAnual,\nSolicitudDescuento] as MB
+    [Bloque C · Facturación\nFactura, FacturaRectificativa, LineaFactura,\nAprobacionFactura, OperacionExcepcional,\nFiltroGuardado] as MC
+    [Bloque D · Cobros y comunicaciones\nMovimientoCobro, Conciliacion, Comunicacion,\nPlantillaComunicacion, SuspensionRecordatorios] as MD
+    [Bloque E · Seguimiento e informes\nNotificacion, ReglaAlerta, Incidencia,\nComentario, Informe, ObjetivoFacturacion,\nCentroCoste] as ME
+    [Bloque F · Administración y sistema\nUsuario, Administrador, Superadministrador,\nAccionMasiva, ConfiguracionSistema,\nSerieFacturacion, Impuesto, RangoTarifa,\nSolicitudExterna] as MF
+  }
+
+  [Auditoría\nEventoAuditoria (solo lectura - NFR-09)] as AUD
+  [Monitorización y métricas\nEjecucionTarea, colas y errores con ID (CU-33)] as MON
+}
+
+package "Procesamiento asíncrono" as ASYNC {
+  package "Planificador del sistema (Cron)" as PLAN {
+    [Generación recurrente\n(día 1, idempotente)] as J1
+    [Recordatorios e impago\n(diario)] as J2
+    [Consulta periódica\nde pagos] as J3
+    [Resumen diario\nde notificaciones] as J4
+    [Copia de seguridad\nautomática] as J5
+  }
+  [Workers en segundo plano\nInformes pesados (CU-26) y\ncola de reintentos de envío (NFR-12)] as WRK
+}
+
+package "Capa de integración y servicios documentales (BR-06)" {
+  interface "SistemaPagos" as IPAGOS
+  interface "CanalEnvio" as ICANAL
+  [Adaptador Stripe / Revolut\n/ otra fuente] as APAG
+  [Adaptador correo electrónico] as AMAIL
+  [Adaptador WhatsApp\n(simulado, con consentimiento)] as AWA
+  [Motor documental\nGenerador PDF legal / Parser CSV] as DOCS
+  [Adaptador IA opcional\n(Brain)] as AIA
+}
+
+package "Persistencia" {
+  database "Base de datos relacional\nDecimal exacto (NFR-06),\nsecuencias atómicas y entidades A-F" as DB
+  database "Almacén de documentos\nPDF facturas inmutables e informes\n(enlaces temporales 1h - NFR-17)" as FS
+  database "Copias de seguridad\n(restauración validada - NFR-14)" as BK
+}
+
+cloud "Stripe / Revolut" as STRIPE
+cloud "Proveedor de correo" as SMTP
+cloud "Servicio IA (Brain)" as BRAIN
+cloud "Sistema externo" as EXT
+
+' Entrada y seguridad
+UO --> WEB
+ADM --> WEB
+SADM --> WEB
+WEB --> API : HTTPS
+EXT --> API : consulta y solicitudes\ncontroladas (CU-37)
+API --> SEG
+SEG ..> MF : usuarios, roles,\nclientes asignados
+
+' API hacia módulos
+API --> MA
+API --> MB
+API --> MC
+API --> MD
+API --> ME
+API --> MF
+
+' Relaciones clave entre módulos de dominio
+MA --> MB : Cliente 1..* Suscripcion
+MB --> MC : Suscripcion genera Factura
+MA --> MC : Cliente 1..* Factura
+MC --> MD : Factura 1..* Conciliacion /\nComunicacion
+MD --> ME : rebote crea Incidencia /\nNotificacion
+MC --> ME : CentroCoste, Informes
+MF ..> MC : SerieFacturacion, Impuesto
+MF ..> MB : RangoTarifa, umbral descuento
+MF ..> MD : cadencia recordatorios
+MF --> MA : SolicitudExterna\n(pendiente revisión)
+
+' Conexiones agrupadas a servicios transversales y persistencia (evita cruces)
+DOMINIO --> AUD : registra eventos
+DOMINIO --> DB : CRUD transaccional
+AUD --> DB : append-only
+MON --> MF : EjecucionTarea
+MON --> DB
+
+' Planificador y workers
+J1 --> MC : emite mensualidades (CU-11/12)
+J2 --> MD : flujo impagos (CU-20)
+J3 --> MD : polling cobros (CU-16)
+J4 --> ME : resumen diario (CU-23)
+J5 --> BK : backup programado
+WRK --> ME : genera informes (CU-26)
+WRK --> MD : reintenta envíos (CU-18)
+ASYNC --> MON : registra estado y errores
+
+' Integraciones y documentos
+MD ..> IPAGOS : consultarPagos()
+IPAGOS <|.. APAG
+APAG --> STRIPE
+
+MD ..> ICANAL : enviar(Comunicacion)
+ICANAL <|.. AMAIL
+ICANAL <|.. AWA
+AMAIL --> SMTP
+SMTP ..> MD : entregado / rebotado
+
+MA ..> DOCS : parsea CSV (CU-03)
+MC ..> DOCS : genera PDF factura (FR-12)
+ME ..> DOCS : exporta CSV/PDF (CU-26)
+DOCS --> FS : guarda archivos
+
+MB ..> AIA : sugerencias tarifa/descuento
+ME ..> AIA : alertas/análisis opcional
+AIA --> BRAIN
+
+BK ..> DB : copia y restauración
+BK ..> FS : respaldo documental
+
+note right of API
+  Reglas clave: factura emitida inmutable (BR-09),
+  numeración única e idempotente (BR-10),
+  aprobador distinto del solicitante (BR-12),
+  sistema externo nunca modifica datos
+  directamente (BR-21).
+end note
+
+note bottom of AIA
+  Opcional: el sistema opera sin ella
+  y toda sugerencia económica requiere
+  confirmación humana (RB-03, BR-22).
+end note
+@enduml
