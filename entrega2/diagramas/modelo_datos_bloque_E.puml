@@ -1,0 +1,109 @@
+@startuml modelo_datos_bloque_E
+title Modelo físico de datos ER - Bloque E Seguimiento, consulta e informes
+hide circle
+hide empty members
+skinparam packageStyle rectangle
+package "Bloque E - Seguimiento, consulta e informes" {
+  entity "CENTRO_COSTE" as centro_coste {
+    * id_centro_coste : NUMBER(10) <<PK>>
+    --
+    * nombre : VARCHAR2(100 CHAR) <<UK>>
+    * tipo : VARCHAR2(15 CHAR)
+    * activo : NUMBER(1)
+  }
+  entity "REGLA_ALERTA" as regla_alerta {
+    * id_regla : NUMBER(10) <<PK>>
+    --
+    * tipo : VARCHAR2(30 CHAR)
+    * umbral : NUMBER(15,2)
+    * activa : NUMBER(1)
+  }
+  entity "INCIDENCIA" as incidencia {
+    * id_incidencia : NUMBER(10) <<PK>>
+    --
+    * id_cliente : NUMBER(10) <<FK>>
+      id_factura : NUMBER(10) <<FK>>
+    * id_responsable : NUMBER(10) <<FK>>
+    * tipo : VARCHAR2(20 CHAR)
+    * descripcion : VARCHAR2(1000 CHAR)
+    * estado : VARCHAR2(15 CHAR)
+    * prioridad : VARCHAR2(10 CHAR)
+    * fecha_creacion : TIMESTAMP
+  }
+  entity "ADJUNTO" as adjunto {
+    * id_adjunto : NUMBER(10) <<PK>>
+    --
+    * id_incidencia : NUMBER(10) <<FK>>
+    * nombre_archivo : VARCHAR2(200 CHAR)
+    * contenido : BLOB
+  }
+  entity "COMENTARIO" as comentario {
+    * id_comentario : NUMBER(10) <<PK>>
+    --
+    * id_incidencia : NUMBER(10) <<FK>>
+    * id_autor : NUMBER(10) <<FK>>
+    * texto : CLOB
+    * fecha : TIMESTAMP
+  }
+  entity "MENCION" as mencion {
+    * id_comentario : NUMBER(10) <<PK>> <<FK>>
+    * id_usuario : NUMBER(10) <<PK>> <<FK>>
+    --
+  }
+  entity "NOTIFICACION" as notificacion {
+    * id_notificacion : NUMBER(10) <<PK>>
+    --
+    * id_usuario : NUMBER(10) <<FK>>
+      id_regla : NUMBER(10) <<FK>>
+      id_comentario : NUMBER(10) <<FK>>
+    * categoria : VARCHAR2(30 CHAR)
+    * mensaje : VARCHAR2(500 CHAR)
+      elemento_relacionado : VARCHAR2(100 CHAR)
+    * fecha : TIMESTAMP
+    * requiere_accion : NUMBER(1)
+    * leida : NUMBER(1)
+    * resuelta : NUMBER(1)
+  }
+  entity "INFORME" as informe {
+    * id_informe : NUMBER(10) <<PK>>
+    --
+    * id_usuario : NUMBER(10) <<FK>>
+    * filtros : CLOB
+    * formato : VARCHAR2(5 CHAR)
+    * estado : VARCHAR2(25 CHAR)
+    * fecha_generacion : TIMESTAMP
+      fecha_caducidad : TIMESTAMP
+  }
+  entity "OBJETIVO_FACTURACION" as objetivo_facturacion {
+    * id_objetivo : NUMBER(10) <<PK>>
+    --
+    * id_administrador : NUMBER(10) <<FK>>
+    * periodo : CHAR(7) <<UK>>
+    * valor : NUMBER(15,2)
+  }
+}
+
+entity "CLIENTE" as cliente {
+  * id_cliente : NUMBER(10) <<PK>>
+}
+entity "FACTURA" as factura {
+  * id_factura : NUMBER(10) <<PK>>
+}
+entity "USUARIO" as usuario {
+  * id_usuario : NUMBER(10) <<PK>>
+}
+
+cliente ||--o{ incidencia : id_cliente
+factura |o--o{ incidencia : id_factura
+usuario ||--o{ incidencia : id_responsable
+incidencia ||--o{ adjunto : id_incidencia
+incidencia ||--o{ comentario : id_incidencia
+usuario ||--o{ comentario : id_autor
+comentario ||--o{ mencion : id_comentario
+usuario ||--o{ mencion : id_usuario
+usuario ||--o{ notificacion : id_usuario
+regla_alerta |o--o{ notificacion : id_regla
+comentario |o--o{ notificacion : id_comentario
+usuario ||--o{ informe : id_usuario
+usuario ||--o{ objetivo_facturacion : id_administrador
+@enduml
