@@ -1,4 +1,4 @@
-@startuml diagrama_arquitectura_turbine_refinado
+@startuml arquitectura
 title Arquitectura del sistema de facturación de TurbineH
 skinparam componentStyle rectangle
 skinparam packageStyle rectangle
@@ -24,11 +24,11 @@ package "Capa de aplicación (servidor)" {
 
   package "Módulos de negocio (núcleo de dominio)" as DOMINIO {
     [Bloque A\nClientes y contactos\n(Cliente, Contacto, Tarea,\nImportacionCSV)] as MA
-    [Bloque B\nSuscripciones y descuentos\n(Suscripcion, RevisionTarifaAnual,\nSolicitudDescuento)] as MB
+    [Bloque B\nSuscripciones, tarifas y descuentos\n(Suscripcion, RevisionTarifaAnual,\nSolicitudDescuento)] as MB
     [Bloque C\nFacturación\n(Factura, FacturaRectificativa,\nAprobacionFactura, OperacionExcepcional)] as MC
     [Bloque D\nCobros y comunicaciones\n(MovimientoCobro, Conciliacion,\nComunicacion)] as MD
-    [Bloque E\nSeguimiento e informes\n(Notificacion, Incidencia, Informe,\nObjetivoFacturacion, CentroCoste)] as ME
-    [Bloque F\nAdministración y sistema\n(Usuario, UsuarioOperativo, AccionMasiva,\nConfiguracionSistema, SerieFacturacion,\nImpuesto, RangoTarifa, SolicitudExterna)] as MF
+    [Bloque E\nSeguimiento, consulta e informes\n(Notificacion, Incidencia, Informe,\nObjetivoFacturacion, CentroCoste)] as ME
+    [Bloque F\nAdministración, seguridad y sistema\n(Usuario, UsuarioOperativo, AccionMasiva,\nConfiguracionSistema, SerieFacturacion,\nImpuesto, RangoTarifa, SolicitudExterna)] as MF
 
     ' Rejilla 2x3: A-B-C / F-D-E
     MA -[hidden]right- MB
@@ -66,8 +66,8 @@ package "Capa de integración y servicios documentales" as INTEGRACION {
 }
 
 package "Persistencia" {
-  database "Base de datos relacional\nDecimal exacto (NFR-06),\nsecuencias atómicas, entidades A-F\ny PDF de facturas (FR-12)" as DB
-  folder "Almacén de documentos\nInformes y adjuntos\n(enlaces temporales 1h - NFR-17, A-03)" as FS
+  database "Base de datos relacional\nDecimal exacto (NFR-06),\nsecuencias atómicas, entidades A-F,\nPDF de facturas (FR-12) y adjuntos" as DB
+  folder "Almacén de documentos\nInformes exportados\n(enlaces temporales 1h - NFR-17, A-03)" as FS
   folder "Copias de seguridad\n(restauración validada - NFR-14)" as BK
 }
 
@@ -99,7 +99,7 @@ ASYNC --> MON : registra estado y errores
 ' Integración: puertos, adaptadores y documentos
 DOMINIO --> INTEGRACION : puertos y adaptadores (BR-06),\nCSV (CU-03), PDF (FR-12), envíos (CU-18)\ny sugerencias IA opcionales
 INTEGRACION --> DB : guarda PDF factura (FR-12)
-INTEGRACION --> FS : guarda informes y adjuntos
+INTEGRACION --> FS : guarda informes exportados
 INTEGRACION --> EXT : pasarelas, correo, IA\ny sistemas externos
 
 ' Copias de seguridad
