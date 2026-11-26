@@ -1,0 +1,507 @@
+@startuml modelo_datos
+title Modelo físico de datos ER - Sistema de facturación de Turbine
+hide circle
+hide empty members
+entity "USUARIO" as usuario {
+  * id_usuario : NUMBER(10) <<PK>>
+  --
+    nombre : VARCHAR2(100 CHAR)
+  * correo_corporativo : VARCHAR2(150 CHAR) <<UK>>
+    hash_contrasena : VARCHAR2(255 CHAR)
+  * rol : VARCHAR2(15 CHAR)
+  * estado : VARCHAR2(15 CHAR)
+  * doble_factor_activo : NUMBER(1)
+  * intentos_fallidos : NUMBER(10)
+    bloqueado_hasta : TIMESTAMP
+    preferencias_notificacion : CLOB
+  * puede_gestionar_usuarios : NUMBER(1)
+}
+entity "EVENTO_AUDITORIA" as evento_auditoria {
+  * id_evento : NUMBER(10) <<PK>>
+  --
+    id_usuario : NUMBER(10) <<FK>>
+  * fecha_hora : TIMESTAMP
+  * accion : VARCHAR2(60 CHAR)
+  * entidad : VARCHAR2(40 CHAR)
+    id_entidad : NUMBER(10)
+    valores_anteriores : CLOB
+    valores_nuevos : CLOB
+    id_error : VARCHAR2(40 CHAR)
+}
+entity "ACCION_MASIVA" as accion_masiva {
+  * id_accion : NUMBER(10) <<PK>>
+  --
+  * id_ejecutor : NUMBER(10) <<FK>>
+    id_aprobador : NUMBER(10) <<FK>>
+  * tipo : VARCHAR2(40 CHAR)
+  * numero_elementos : NUMBER(10)
+  * alto_impacto : NUMBER(1)
+  * estado : VARCHAR2(15 CHAR)
+}
+entity "EJECUCION_TAREA" as ejecucion_tarea {
+  * id_ejecucion : NUMBER(10) <<PK>>
+  --
+  * tipo : VARCHAR2(30 CHAR)
+  * inicio : TIMESTAMP
+    fin : TIMESTAMP
+  * estado : VARCHAR2(30 CHAR)
+    resumen : VARCHAR2(1000 CHAR)
+    errores : CLOB
+}
+entity "CONFIGURACION_SISTEMA" as configuracion_sistema {
+  * id_configuracion : NUMBER(10) <<PK>>
+  --
+    datos_emisor : VARCHAR2(1000 CHAR)
+  * umbral_descuento : NUMBER(15,2)
+  * umbral_importe_alto : NUMBER(15,2)
+  * vencimiento_general_dias : NUMBER(10)
+  * dias_recordatorio_previo : NUMBER(10)
+  * dias_recordatorio_vencimiento : NUMBER(10)
+  * frecuencia_aviso_impago_dias : NUMBER(10)
+  * funciones_inteligentes_activas : NUMBER(1)
+  * dominio_corporativo : VARCHAR2(100 CHAR)
+    dias_conservacion_informes : NUMBER(10)
+}
+entity "SERIE_FACTURACION" as serie_facturacion {
+  * id_serie : NUMBER(10) <<PK>>
+  --
+  * codigo : VARCHAR2(10 CHAR) <<UK>>
+    prefijo : VARCHAR2(10 CHAR)
+  * ultimo_numero : NUMBER(10)
+}
+entity "IMPUESTO" as impuesto {
+  * id_impuesto : NUMBER(10) <<PK>>
+  --
+  * nombre : VARCHAR2(60 CHAR) <<UK>>
+  * porcentaje : NUMBER(5,2)
+}
+entity "RANGO_TARIFA" as rango_tarifa {
+  * id_rango : NUMBER(10) <<PK>>
+  --
+  * facturacion_minima : NUMBER(15,2)
+    facturacion_maxima : NUMBER(15,2)
+  * precio : NUMBER(15,2)
+  * fecha_efecto : DATE
+}
+entity "SOLICITUD_EXTERNA" as solicitud_externa {
+  * id_solicitud_externa : NUMBER(10) <<PK>>
+  --
+  * id_cliente : NUMBER(10) <<FK>>
+  * sistema_origen : VARCHAR2(80 CHAR)
+  * tipo : VARCHAR2(30 CHAR)
+    datos : CLOB
+  * estado : VARCHAR2(20 CHAR)
+  * fecha : TIMESTAMP
+}
+
+entity "IMPORTACION_CSV" as importacion_csv {
+  * id_importacion : NUMBER(10) <<PK>>
+  --
+  * id_usuario : NUMBER(10) <<FK>>
+  * nombre_archivo : VARCHAR2(200 CHAR)
+  * fecha : TIMESTAMP
+  * incluye_facturas_historicas : NUMBER(1)
+  * estado : VARCHAR2(15 CHAR)
+  * creados : NUMBER(10)
+  * actualizados : NUMBER(10)
+  * rechazados : NUMBER(10)
+}
+entity "CLIENTE" as cliente {
+  * id_cliente : NUMBER(10) <<PK>>
+  --
+  * id_responsable : NUMBER(10) <<FK>>
+    id_centro_coste : NUMBER(10) <<FK>>
+    id_importacion : NUMBER(10) <<FK>>
+  * nombre_comercial : VARCHAR2(150 CHAR)
+  * razon_social : VARCHAR2(200 CHAR)
+    identificador_fiscal : VARCHAR2(30 CHAR)
+    domicilio_fiscal : VARCHAR2(300 CHAR)
+  * pais : CHAR(2)
+  * moneda : CHAR(3)
+    sector : VARCHAR2(80 CHAR)
+    ubicacion : VARCHAR2(100 CHAR)
+    idioma : VARCHAR2(5 CHAR)
+  * estado : VARCHAR2(25 CHAR)
+  * datos_fiscales_incompletos : NUMBER(1)
+  * fecha_inicio : DATE
+    condiciones_pago : VARCHAR2(300 CHAR)
+    documento_firmado : VARCHAR2(300 CHAR)
+    vencimiento_pactado_dias : NUMBER(10)
+}
+entity "CONTACTO" as contacto {
+  * id_contacto : NUMBER(10) <<PK>>
+  --
+  * nombre : VARCHAR2(150 CHAR)
+    correo : VARCHAR2(150 CHAR)
+    idioma : VARCHAR2(5 CHAR)
+  * consentimiento_whatsapp : NUMBER(1)
+  * activo : NUMBER(1)
+}
+entity "CLIENTE_CONTACTO" as cliente_contacto {
+  * id_cliente : NUMBER(10) <<PK>> <<FK>>
+  * id_contacto : NUMBER(10) <<PK>> <<FK>>
+  --
+  * tipo : VARCHAR2(15 CHAR)
+}
+entity "ETIQUETA" as etiqueta {
+  * id_etiqueta : NUMBER(10) <<PK>>
+  --
+  * nombre : VARCHAR2(50 CHAR) <<UK>>
+}
+entity "CLIENTE_ETIQUETA" as cliente_etiqueta {
+  * id_cliente : NUMBER(10) <<PK>> <<FK>>
+  * id_etiqueta : NUMBER(10) <<PK>> <<FK>>
+  --
+}
+entity "FAVORITO" as favorito {
+  * id_usuario : NUMBER(10) <<PK>> <<FK>>
+  * id_cliente : NUMBER(10) <<PK>> <<FK>>
+  --
+}
+entity "TAREA" as tarea {
+  * id_tarea : NUMBER(10) <<PK>>
+  --
+  * id_cliente : NUMBER(10) <<FK>>
+    id_completada_por : NUMBER(10) <<FK>>
+  * descripcion : VARCHAR2(500 CHAR)
+    fecha_prevista : DATE
+  * estado : VARCHAR2(15 CHAR)
+    fecha_completada : TIMESTAMP
+}
+entity "EXCEPCION_COMERCIAL" as excepcion_comercial {
+  * id_excepcion : NUMBER(10) <<PK>>
+  --
+  * id_cliente : NUMBER(10) <<FK>>
+    id_solicitud_descuento : NUMBER(10) <<FK>> <<UK>>
+  * tipo : VARCHAR2(20 CHAR)
+    fecha_inicio_futura : DATE
+  * aprobada : NUMBER(1)
+}
+entity "FILA_IMPORTACION" as fila_importacion {
+  * id_fila : NUMBER(10) <<PK>>
+  --
+  * id_importacion : NUMBER(10) <<FK>>
+  * numero_fila : NUMBER(10)
+  * estado : VARCHAR2(20 CHAR)
+    motivo_error : VARCHAR2(500 CHAR)
+  * marcada_como_actualizacion : NUMBER(1)
+}
+
+entity "SUSCRIPCION" as suscripcion {
+  * id_suscripcion : NUMBER(10) <<PK>>
+  --
+  * id_cliente : NUMBER(10) <<FK>>
+  * plan : VARCHAR2(100 CHAR)
+  * precio_vigente : NUMBER(15,2)
+  * fecha_inicio : DATE
+  * estado : VARCHAR2(25 CHAR)
+    motivo_pausa : VARCHAR2(300 CHAR)
+    fecha_inicio_pausa : DATE
+    fecha_reactivacion_prevista : DATE
+    fecha_baja : DATE
+    motivo_baja : VARCHAR2(300 CHAR)
+}
+entity "SOLICITUD_DESCUENTO" as solicitud_descuento {
+  * id_solicitud : NUMBER(10) <<PK>>
+  --
+  * id_cliente : NUMBER(10) <<FK>>
+    id_suscripcion : NUMBER(10) <<FK>>
+  * id_solicitante : NUMBER(10) <<FK>>
+    id_aprobador : NUMBER(10) <<FK>>
+  * tipo : VARCHAR2(15 CHAR)
+  * valor : NUMBER(15,2)
+  * motivo : VARCHAR2(300 CHAR)
+    fecha_vigencia : DATE
+  * estado : VARCHAR2(25 CHAR)
+    motivo_decision : VARCHAR2(300 CHAR)
+    fecha_decision : TIMESTAMP
+}
+entity "REVISION_TARIFA_ANUAL" as revision_tarifa_anual {
+  * id_revision : NUMBER(10) <<PK>>
+  --
+  * id_cliente : NUMBER(10) <<FK>>
+    id_rango_propuesto : NUMBER(10) <<FK>>
+    id_aprobador : NUMBER(10) <<FK>>
+  * fecha_revision : DATE
+  * facturacion_anual_verificada : NUMBER(15,2)
+  * precio_anterior : NUMBER(15,2)
+    precio_nuevo : NUMBER(15,2)
+    fecha_decision : TIMESTAMP
+  * estado : VARCHAR2(15 CHAR)
+    motivo_rechazo : VARCHAR2(300 CHAR)
+}
+
+entity "FACTURA" as factura {
+  * id_factura : NUMBER(10) <<PK>>
+  --
+  * id_cliente : NUMBER(10) <<FK>>
+    id_serie : NUMBER(10) <<FK>>
+    id_suscripcion : NUMBER(10) <<FK>>
+    id_factura_original : NUMBER(10) <<FK>>
+    id_creada_por : NUMBER(10) <<FK>>
+    id_ejecucion : NUMBER(10) <<FK>>
+    id_solicitud_descuento : NUMBER(10) <<FK>>
+    id_centro_coste : NUMBER(10) <<FK>>
+    numero : VARCHAR2(30 CHAR)
+  * tipo : VARCHAR2(15 CHAR)
+  * estado : VARCHAR2(25 CHAR)
+    fecha_emision : DATE
+    fecha_vencimiento : DATE
+    periodo_facturado : CHAR(7)
+  * moneda : CHAR(3)
+    datos_fiscales_emision : VARCHAR2(1000 CHAR)
+  * base_imponible : NUMBER(15,2)
+  * total : NUMBER(15,2)
+  * saldo_pendiente : NUMBER(15,2)
+  * retenida : NUMBER(1)
+    documento_pdf : BLOB
+  * migrada : NUMBER(1)
+    motivo_rectificacion : VARCHAR2(300 CHAR)
+}
+entity "APROBACION_FACTURA" as aprobacion_factura {
+  * id_aprobacion : NUMBER(10) <<PK>>
+  --
+  * id_factura : NUMBER(10) <<FK>>
+  * id_solicitante : NUMBER(10) <<FK>>
+    id_aprobador : NUMBER(10) <<FK>>
+  * motivo_retencion : VARCHAR2(300 CHAR)
+  * estado : VARCHAR2(25 CHAR)
+  * fecha_solicitud : TIMESTAMP
+    fecha_decision : TIMESTAMP
+    motivo_decision : VARCHAR2(300 CHAR)
+}
+entity "LINEA_FACTURA" as linea_factura {
+  * id_linea : NUMBER(10) <<PK>>
+  --
+  * id_factura : NUMBER(10) <<FK>>
+  * id_impuesto : NUMBER(10) <<FK>>
+  * concepto : VARCHAR2(300 CHAR)
+  * cantidad : NUMBER(12,3)
+  * precio_unitario : NUMBER(15,2)
+  * descuento : NUMBER(5,2)
+  * porcentaje_impuesto : NUMBER(5,2)
+  * importe : NUMBER(15,2)
+}
+entity "FILTRO_GUARDADO" as filtro_guardado {
+  * id_filtro : NUMBER(10) <<PK>>
+  --
+  * id_usuario : NUMBER(10) <<FK>>
+  * nombre : VARCHAR2(80 CHAR)
+  * criterios : CLOB
+}
+entity "OPERACION_EXCEPCIONAL" as operacion_excepcional {
+  * id_operacion : NUMBER(10) <<PK>>
+  --
+  * id_factura : NUMBER(10) <<FK>>
+  * id_solicitante : NUMBER(10) <<FK>>
+    id_aprobador : NUMBER(10) <<FK>>
+  * tipo : VARCHAR2(15 CHAR)
+  * motivo : VARCHAR2(300 CHAR)
+  * estado : VARCHAR2(15 CHAR)
+}
+
+entity "MOVIMIENTO_COBRO" as movimiento_cobro {
+  * id_movimiento : NUMBER(10) <<PK>>
+  --
+    id_asignado_a : NUMBER(10) <<FK>>
+  * fuente : VARCHAR2(15 CHAR)
+  * id_externo : VARCHAR2(100 CHAR)
+  * importe : NUMBER(15,2)
+  * fecha : TIMESTAMP
+  * moneda : CHAR(3)
+    concepto : VARCHAR2(300 CHAR)
+    referencia : VARCHAR2(100 CHAR)
+  * estado : VARCHAR2(25 CHAR)
+}
+entity "CONCILIACION" as conciliacion {
+  * id_conciliacion : NUMBER(10) <<PK>>
+  --
+  * id_movimiento : NUMBER(10) <<FK>>
+  * id_factura : NUMBER(10) <<FK>>
+    id_realizada_por : NUMBER(10) <<FK>>
+    id_revertida_por : NUMBER(10) <<FK>>
+  * importe_asignado : NUMBER(15,2)
+  * tipo : VARCHAR2(15 CHAR)
+    regla : VARCHAR2(80 CHAR)
+  * fecha : TIMESTAMP
+  * revertida : NUMBER(1)
+    fecha_reversion : TIMESTAMP
+    motivo_reversion : VARCHAR2(300 CHAR)
+}
+entity "PLANTILLA_COMUNICACION" as plantilla_comunicacion {
+  * id_plantilla : NUMBER(10) <<PK>>
+  --
+  * tipo : VARCHAR2(25 CHAR)
+  * idioma : VARCHAR2(5 CHAR)
+  * version : NUMBER(10)
+  * asunto : VARCHAR2(200 CHAR)
+  * contenido : CLOB
+}
+entity "COMUNICACION" as comunicacion {
+  * id_comunicacion : NUMBER(10) <<PK>>
+  --
+    id_factura : NUMBER(10) <<FK>>
+    id_destinatario : NUMBER(10) <<FK>>
+  * id_plantilla : NUMBER(10) <<FK>>
+  * tipo : VARCHAR2(25 CHAR)
+  * canal : VARCHAR2(20 CHAR)
+  * idioma : VARCHAR2(5 CHAR)
+  * estado : VARCHAR2(15 CHAR)
+    fecha_envio : TIMESTAMP
+  * numero_intento : NUMBER(10)
+    correo_destinatario : VARCHAR2(150 CHAR)
+}
+entity "SUSPENSION_RECORDATORIOS" as suspension_recordatorios {
+  * id_suspension : NUMBER(10) <<PK>>
+  --
+  * id_factura : NUMBER(10) <<FK>>
+  * motivo : VARCHAR2(300 CHAR)
+  * fecha_revision : DATE
+  * activa : NUMBER(1)
+}
+
+entity "CENTRO_COSTE" as centro_coste {
+  * id_centro_coste : NUMBER(10) <<PK>>
+  --
+  * nombre : VARCHAR2(100 CHAR) <<UK>>
+  * tipo : VARCHAR2(15 CHAR)
+  * activo : NUMBER(1)
+}
+entity "REGLA_ALERTA" as regla_alerta {
+  * id_regla : NUMBER(10) <<PK>>
+  --
+  * tipo : VARCHAR2(30 CHAR)
+  * umbral : NUMBER(15,2)
+  * activa : NUMBER(1)
+}
+entity "INCIDENCIA" as incidencia {
+  * id_incidencia : NUMBER(10) <<PK>>
+  --
+  * id_cliente : NUMBER(10) <<FK>>
+    id_factura : NUMBER(10) <<FK>>
+  * id_responsable : NUMBER(10) <<FK>>
+  * tipo : VARCHAR2(20 CHAR)
+  * descripcion : VARCHAR2(1000 CHAR)
+  * estado : VARCHAR2(15 CHAR)
+  * prioridad : VARCHAR2(10 CHAR)
+  * fecha_creacion : TIMESTAMP
+}
+entity "ADJUNTO" as adjunto {
+  * id_adjunto : NUMBER(10) <<PK>>
+  --
+  * id_incidencia : NUMBER(10) <<FK>>
+  * nombre_archivo : VARCHAR2(200 CHAR)
+  * contenido : BLOB
+}
+entity "COMENTARIO" as comentario {
+  * id_comentario : NUMBER(10) <<PK>>
+  --
+  * id_incidencia : NUMBER(10) <<FK>>
+  * id_autor : NUMBER(10) <<FK>>
+  * texto : CLOB
+  * fecha : TIMESTAMP
+}
+entity "MENCION" as mencion {
+  * id_comentario : NUMBER(10) <<PK>> <<FK>>
+  * id_usuario : NUMBER(10) <<PK>> <<FK>>
+  --
+}
+entity "NOTIFICACION" as notificacion {
+  * id_notificacion : NUMBER(10) <<PK>>
+  --
+  * id_usuario : NUMBER(10) <<FK>>
+    id_regla : NUMBER(10) <<FK>>
+    id_comentario : NUMBER(10) <<FK>>
+  * categoria : VARCHAR2(30 CHAR)
+  * mensaje : VARCHAR2(500 CHAR)
+    elemento_relacionado : VARCHAR2(100 CHAR)
+  * fecha : TIMESTAMP
+  * requiere_accion : NUMBER(1)
+  * leida : NUMBER(1)
+  * resuelta : NUMBER(1)
+}
+entity "INFORME" as informe {
+  * id_informe : NUMBER(10) <<PK>>
+  --
+  * id_usuario : NUMBER(10) <<FK>>
+  * filtros : CLOB
+  * formato : VARCHAR2(5 CHAR)
+  * estado : VARCHAR2(25 CHAR)
+  * fecha_generacion : TIMESTAMP
+    fecha_caducidad : TIMESTAMP
+}
+entity "OBJETIVO_FACTURACION" as objetivo_facturacion {
+  * id_objetivo : NUMBER(10) <<PK>>
+  --
+  * id_administrador : NUMBER(10) <<FK>>
+  * periodo : CHAR(7) <<UK>>
+  * valor : NUMBER(15,2)
+}
+
+usuario |o--o{ evento_auditoria : id_usuario
+usuario ||--o{ accion_masiva : id_ejecutor
+usuario |o--o{ accion_masiva : id_aprobador
+usuario ||--o{ importacion_csv : id_usuario
+usuario ||--o{ cliente : id_responsable
+centro_coste |o--o{ cliente : id_centro_coste
+importacion_csv |o--o{ cliente : id_importacion
+cliente ||--o{ solicitud_externa : id_cliente
+cliente ||--o{ cliente_contacto : id_cliente
+contacto ||--o{ cliente_contacto : id_contacto
+cliente ||--o{ cliente_etiqueta : id_cliente
+etiqueta ||--o{ cliente_etiqueta : id_etiqueta
+usuario ||--o{ favorito : id_usuario
+cliente ||--o{ favorito : id_cliente
+cliente ||--o{ tarea : id_cliente
+usuario |o--o{ tarea : id_completada_por
+cliente ||--o{ suscripcion : id_cliente
+cliente ||--o{ solicitud_descuento : id_cliente
+suscripcion |o--o{ solicitud_descuento : id_suscripcion
+usuario ||--o{ solicitud_descuento : id_solicitante
+usuario |o--o{ solicitud_descuento : id_aprobador
+cliente ||--o{ excepcion_comercial : id_cliente
+solicitud_descuento |o--o| excepcion_comercial : id_solicitud_descuento
+importacion_csv ||--o{ fila_importacion : id_importacion
+cliente ||--o{ revision_tarifa_anual : id_cliente
+rango_tarifa |o--o{ revision_tarifa_anual : id_rango_propuesto
+usuario |o--o{ revision_tarifa_anual : id_aprobador
+cliente ||--o{ factura : id_cliente
+serie_facturacion |o--o{ factura : id_serie
+suscripcion |o--o{ factura : id_suscripcion
+factura |o--o{ factura : id_factura_original
+usuario |o--o{ factura : id_creada_por
+ejecucion_tarea |o--o{ factura : id_ejecucion
+solicitud_descuento |o--o{ factura : id_solicitud_descuento
+centro_coste |o--o{ factura : id_centro_coste
+factura ||--o{ aprobacion_factura : id_factura
+usuario ||--o{ aprobacion_factura : id_solicitante
+usuario |o--o{ aprobacion_factura : id_aprobador
+factura ||--o{ linea_factura : id_factura
+impuesto ||--o{ linea_factura : id_impuesto
+usuario ||--o{ filtro_guardado : id_usuario
+factura ||--o{ operacion_excepcional : id_factura
+usuario ||--o{ operacion_excepcional : id_solicitante
+usuario |o--o{ operacion_excepcional : id_aprobador
+usuario |o--o{ movimiento_cobro : id_asignado_a
+movimiento_cobro ||--o{ conciliacion : id_movimiento
+factura ||--o{ conciliacion : id_factura
+usuario |o--o{ conciliacion : id_realizada_por
+usuario |o--o{ conciliacion : id_revertida_por
+factura |o--o{ comunicacion : id_factura
+contacto |o--o{ comunicacion : id_destinatario
+plantilla_comunicacion ||--o{ comunicacion : id_plantilla
+factura ||--o{ suspension_recordatorios : id_factura
+cliente ||--o{ incidencia : id_cliente
+factura |o--o{ incidencia : id_factura
+usuario ||--o{ incidencia : id_responsable
+incidencia ||--o{ adjunto : id_incidencia
+incidencia ||--o{ comentario : id_incidencia
+usuario ||--o{ comentario : id_autor
+comentario ||--o{ mencion : id_comentario
+usuario ||--o{ mencion : id_usuario
+usuario ||--o{ notificacion : id_usuario
+regla_alerta |o--o{ notificacion : id_regla
+comentario |o--o{ notificacion : id_comentario
+usuario ||--o{ informe : id_usuario
+usuario ||--o{ objetivo_facturacion : id_administrador
+@enduml
