@@ -1,0 +1,157 @@
+@startuml diagrama_clases_bloque_C
+title Diagrama de clases Bloque C - Facturación
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+package "Bloque C - Facturación" {
+  class Factura {
+    - numero : String [0..1]
+    - tipo : TipoFactura
+    - estado : EstadoFactura
+    - fechaEmision : Fecha [0..1]
+    - fechaVencimiento : Fecha
+    - periodoFacturado : String
+    - moneda : String
+    - datosFiscalesEmision : String
+    - baseImponible : Decimal
+    - total : Decimal
+    - /saldoPendiente : Decimal
+    - retenida : Boolean
+    - documentoPDF : Archivo
+    - migrada : Boolean
+    + calcularTotales() : void
+    + validarDatosFiscales() : List<String>
+    + detectarCausaRetencion() : String
+    + emitir() : void
+    + generarPDF() : void
+    + registrarCobro(importe : Decimal) : void
+    + anular(motivo : String) : void
+  }
+  note right of Factura
+    retenida = tiene una AprobacionFactura PENDIENTE (FR-13)
+    En BORRADOR numero y fechaEmision están vacíos.
+    datosFiscalesEmision conserva los datos al emitir.
+    Emitida = inmutable (BR-09)
+  end note
+
+  class AprobacionFactura {
+    - motivoRetencion : String
+    - estado : EstadoAprobacion
+    - fechaSolicitud : FechaHora
+    - fechaDecision : FechaHora [0..1]
+    - motivoDecision : String
+    + aprobar() : void
+    + rechazar(motivo : String) : void
+    + solicitarInformacion(motivo : String) : void
+  }
+  note bottom of AprobacionFactura
+    Una por cada retención (CU-13 FA-1).
+    Aprobador distinto del solicitante (BR-12).
+  end note
+
+  class FacturaRectificativa {
+    - motivoRectificacion : String
+  }
+
+  class LineaFactura {
+    - concepto : String
+    - cantidad : Decimal
+    - precioUnitario : Decimal
+    - descuento : Decimal
+    - porcentajeImpuesto : Decimal
+    - importe : Decimal
+    + calcularImporte() : Decimal
+  }
+
+  class FiltroGuardado {
+    - nombre : String
+    - criterios : String
+    + aplicar() : void
+  }
+
+  class OperacionExcepcional {
+    - tipo : TipoOperacion
+    - motivo : String
+    - estado : EstadoOperacion
+    + aprobar() : void
+    + ejecutar() : void
+  }
+
+  enum TipoFactura {
+    PUNTUAL
+    RECURRENTE
+  }
+  enum EstadoFactura {
+    BORRADOR
+    APROBADA
+    EMITIDA
+    ENVIADA
+    VENCIDA
+    PAGADA
+    PARCIALMENTE_CONCILIADA
+    ANULADA
+    RECTIFICADA
+    INCOBRABLE
+    CANCELADA
+  }
+  enum EstadoAprobacion {
+    PENDIENTE
+    PENDIENTE_INFORMACION
+    APROBADA
+    RECHAZADA
+  }
+  enum TipoOperacion {
+    RECTIFICACION
+    ANULACION
+    INCOBRABLE
+    CANCELACION
+  }
+  enum EstadoOperacion {
+    PENDIENTE
+    APROBADA
+    RECHAZADA
+    EJECUTADA
+  }
+}
+
+class Suscripcion 
+class Cliente 
+class Impuesto
+class SerieFacturacion 
+abstract class Usuario 
+class Administrador 
+class SolicitudDescuento 
+class Conciliacion 
+class Comunicacion 
+class SuspensionRecordatorios 
+class Incidencia 
+class CentroCoste 
+class EjecucionTarea
+
+Factura <|-- FacturaRectificativa
+Suscripcion "0..1" -- "0..*" Factura : genera >
+Cliente "1" -- "0..*" Factura
+Factura "1" *-- "0..*" LineaFactura
+LineaFactura "0..*" --> "1" Impuesto
+SerieFacturacion "0..1" -- "0..*" Factura : numera >
+FacturaRectificativa "0..*" --> "1" Factura : rectificaA
+Factura "0..*" --> "0..1" Usuario : creadaPor
+Factura "1" *-- "0..*" AprobacionFactura : retenciones
+AprobacionFactura "0..*" --> "1" Usuario : solicitante
+AprobacionFactura "0..*" --> "0..1" Administrador : aprobador
+Factura "1" -- "0..*" OperacionExcepcional
+OperacionExcepcional "0..*" --> "1" Administrador : solicitante
+OperacionExcepcional "0..*" --> "0..1" Administrador : aprobador
+Factura "0..*" --> "0..1" SolicitudDescuento : descuentoAplicado
+Usuario "1" *-- "0..*" FiltroGuardado
+Factura "1" -- "0..*" Conciliacion
+Factura "0..1" -- "0..*" Comunicacion
+Factura "1" -- "0..*" SuspensionRecordatorios
+Factura "0..1" -- "0..*" Incidencia
+Factura "0..*" --> "0..1" CentroCoste
+EjecucionTarea "0..1" -- "0..*" Factura : genera >
+Factura ..> TipoFactura
+Factura ..> EstadoFactura
+AprobacionFactura ..> EstadoAprobacion
+OperacionExcepcional ..> TipoOperacion
+OperacionExcepcional ..> EstadoOperacion
+@enduml

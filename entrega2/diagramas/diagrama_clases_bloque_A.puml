@@ -1,0 +1,148 @@
+@startuml diagrama_clases_bloque_A
+title Diagrama de clases Bloque A - Clientes y contactos
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+package "Bloque A - Clientes y contactos" {
+
+  class Cliente {
+    - nombreComercial : String
+    - razonSocial : String
+    - identificadorFiscal : String
+    - domicilioFiscal : String
+    - pais : String
+    - moneda : String
+    - sector : String
+    - ubicacion : String
+    - idioma : String
+    - estado : EstadoCliente
+    - datosFiscalesIncompletos : Boolean
+    - fechaInicio : Fecha
+    - condicionesPago : String
+    - documentoFirmado : String
+    - vencimientoPactadoDias : Integer
+    - etiquetas : List<String>
+    + darDeAlta() : void
+    + editar() : void
+    + comprobarDuplicado() : Boolean
+    + darDeBaja(fecha : Fecha) : void
+    + cambiarResponsable(u : UsuarioOperativo) : void
+  }
+
+  class Contacto {
+    - nombre : String
+    - correo : String
+    - idioma : String
+    - consentimientoWhatsApp : Boolean
+    - activo : Boolean
+    + desactivar() : void
+    + anonimizar() : void
+  }
+  class ClienteContacto {
+    - tipo : TipoContacto
+  }
+
+  class Tarea {
+    - descripcion : String
+    - fechaPrevista : Fecha
+    - estado : EstadoTarea
+    - fechaCompletada : FechaHora
+    + completar() : void
+  }
+
+  class ExcepcionComercial {
+    - tipo : TipoExcepcion
+    - fechaInicioFutura : Fecha
+    - aprobada : Boolean
+  }
+
+  class ImportacionCSV {
+    - nombreArchivo : String
+    - fecha : FechaHora
+    - incluyeFacturasHistoricas : Boolean
+    - estado : EstadoImportacion
+    - creados : Integer
+    - actualizados : Integer
+    - rechazados : Integer
+    + validar() : Boolean
+    + previsualizar() : List<FilaImportacion>
+    + confirmar() : void
+    + cancelar() : void
+  }
+
+  class FilaImportacion {
+    - numeroFila : Integer
+    - estado : EstadoFila
+    - motivoError : String
+    - marcadaComoActualizacion : Boolean
+  }
+
+  enum EstadoCliente {
+    ACTIVO
+    PENDIENTE_ACTIVACION
+    BAJA
+  }
+  enum TipoContacto {
+    CONTRATACION
+    FACTURACION
+    IMPAGOS
+  }
+  enum EstadoTarea {
+    PENDIENTE
+    COMPLETADA
+  }
+  enum TipoExcepcion {
+    INICIO_FUTURO
+    PRIMER_MES_GRATIS
+    SIN_PRORRATEO
+  }
+  enum EstadoImportacion {
+    PREVISUALIZADA
+    CONFIRMADA
+    CANCELADA
+  }
+  enum EstadoFila {
+    VALIDA
+    ERROR
+    DUPLICADO
+    DATOS_INCOMPLETOS
+    EXCLUIDA
+  }
+}
+
+class SolicitudExterna
+class UsuarioOperativo 
+abstract class Usuario 
+class Suscripcion 
+class RevisionTarifaAnual 
+class SolicitudDescuento 
+class Factura 
+class Comunicacion 
+class Incidencia 
+class CentroCoste 
+
+SolicitudExterna "0..*" --> "1" Cliente : sobre
+Cliente "0..*" --> "1" UsuarioOperativo : responsableInterno
+Contacto "0..*" -- "1..*" Cliente
+(Cliente, Contacto) .. ClienteContacto
+Cliente "1" *-- "0..*" Tarea
+Tarea "0..*" --> "0..1" Usuario : completadaPor
+Usuario "0..*" -- "0..*" Cliente : favoritos >
+Cliente "1" *-- "0..*" ExcepcionComercial
+UsuarioOperativo "1" -- "0..*" ImportacionCSV : realiza >
+ImportacionCSV "1" *-- "1..*" FilaImportacion
+ImportacionCSV "0..1" -- "0..*" Cliente : crea/actualiza >
+Cliente "1" *-- "0..*" Suscripcion
+Cliente "1" -- "0..*" RevisionTarifaAnual
+ExcepcionComercial "0..1" -- "0..1" SolicitudDescuento : se aprueba mediante >
+SolicitudDescuento "0..*" --> "1" Cliente : para
+Cliente "1" -- "0..*" Factura
+Comunicacion "0..*" --> "0..1" Contacto : destinatario
+Cliente "1" -- "0..*" Incidencia
+Cliente "0..*" --> "0..1" CentroCoste
+EstadoCliente <.. Cliente
+TipoContacto <.. ClienteContacto
+EstadoTarea <.. Tarea
+TipoExcepcion <.. ExcepcionComercial
+EstadoImportacion <.. ImportacionCSV
+EstadoFila <.. FilaImportacion
+@enduml
