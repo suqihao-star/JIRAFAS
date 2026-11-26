@@ -17,11 +17,11 @@
 
 | Fecha | Inicio | Duración | Participantes | Temas y acuerdos |
 |---|---|---|---|---|
-| 29/10/2026 | 08:45 | 30 min | Todos los integrantes menos Juan Romero Cobos| Planificación; Revisión informes Entrega 1 entregados por el profesor |
+| 29/10/2026 | 08:45 | 45 min | Todos los integrantes menos Juan Romero Cobos| Planificación; Revisión informes Entrega 1 entregados por el profesor |
 | 05/11/2026 | 08:45 | 30 min | Todos los integrantes | Planificación para la elaboración del diagrama de clases |
 | 12/11/2026 | 08:45 | 30 min | Todos los integrantes menos Carlos “Emérito” López Lovera y Laura Santiago Medina | Presentación de los diagramas de clases elaborados y planificación de una puesta en común conjunta. |
 | 23/11/2026 | 17:00 | 15 min | Todos los integrantes | Puesta en común del diagrama de clases y reparto de los diagramas restantes |
-| 26/11/2026 | 08:45 | 30 min | Todos los integrantes |  |
+| 26/11/2026 | 08:45 | 1h:45 min | Todos los integrantes | Puestas en común diagramas ER, Secuencia y Arquitectura, y preparación del github para la entrga |
 
 
 ## Estado del product backlog y Sprint backlog
@@ -39,7 +39,7 @@ Añadir **capturas reales legibles** del estado del tablero en Sprint Planning y
 | Tarea | Responsable | Milestone | Prioridad | Etiqueta | Descripción / estado |
 |---|---|---|---|---|---|
 | Revisar las correcciones de la Entrega 1 | Todo el equipo | Entrega 2 | Alta | documentación | COMPLETADO |
-| Aplicar las correcciones de la Entrega 1 | Pablo Fernández Carabantes | Entrega 2 | Alta | documentación | COMPLETADO |
+| Aplicar las correcciones de la Entrega 1 | Pablo Fernández Carabantes, Juan Romero Cobos, Su Qihao | Entrega 2 | Alta | documentación | COMPLETADO |
 | Diagrama de Clases | Pablo Fernández Carabantes, Carlos “Emérito” López Lovera, Juan Romero Cobos, Su Qihao, Pablo Roldán Coll, Pablo Ferreiro Romero | Entrega 2 | Alta | diagrama | Realización de diagramas de clases. COMPLETADO|
 | Puesta en común diagrama de clases | Todos los integrantes | Entrega 2 | Alta | diagrama | Puesta en común utilizando todos los diagramas realizados por los miembros del equipo. COMPLETADO |
 | Documentación del diagrama de clases | [COMPLETAR] | Entrega 2 | Media | documentación | diagrama_clases.md con decisiones de diseño, trazabilidad y consistencia con el ER. COMPLETADO. |
@@ -48,10 +48,11 @@ Añadir **capturas reales legibles** del estado del tablero en Sprint Planning y
 | Presentación y validación del diagrama ER | Todos los integrantes del grupo | Entrega 2 | Alta | documentación | Presentación del diagrama ER a los demás miembros del grupo para su validación. EN CURSO. |
 | Realización diagramas de secuencia | Juan Romero Cobos, Laura Santiago Medina | Entrega 2 | Alta | diagrama | Diagramas de Secuencias. EN CURSO |
 | Presentación y validación de los diagramas de secuencia | Todos los integrantes | Entrega 2 | Media | revisión | Presentación de los diagramas de secuencia a los demás miembros del grupo para su validación. EN CURSO.|
-| Diagrama de arquitectura | Pablo Roldán Coll, ] | Entrega 2 | Alta | diagrama | Realización del diagrama de arquitectura. EN CURSO |
+| Diagrama de arquitectura | Pablo Roldán Coll, Carlos “Emérito” López Lovera, Andrés Felipe Jaramillo Ranzini,   | Entrega 2 | Alta | diagrama | Realización del diagrama de arquitectura. EN CURSO |
 | Presentación y validación del diagrama de arquitectura | Todos los integrantes | Entrega 2 | Media | revisión | Presentación de los diagramas de arquitectura a los demás miembros del grupo para su validación. EN CURSO.|
 | Informe Scrum | Pablo Fernández Carabantes | Entrega 2 | Media | gestión | Este documento y las capturas del tablero. En curso. |
-| Informe final y repositorio |  | Entrega 2 | Alta | documentación | Organizar el repositorio según la plantilla y generar el PDF de la entrega. Pendiente. |
+| Informe final | Entrega 2 | Alta | documentación | Organizar el repositorio según la plantilla y generar el PDF de la entrega. Pendiente. |
+| Organización Repositorio Plantilla entrega 2 | Pablo Fernández Carabantes, Juan Romero Cobos, Su Qihao | Entrega 2 | Alta | documentación | Organizar el repositorio según la plantilla y generar el PDF de la entrega. Pendiente. |
 
 ## Problemas y riesgos
 
