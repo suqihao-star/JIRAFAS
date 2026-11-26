@@ -4,7 +4,7 @@ Proyecto de la asignatura **Análisis y Diseño de Aplicaciones** · Grupo A · 
 
 ## Equipo Jirafas
 
-| Nombre y apellidos | Rol | Siglas en Trello | Usuario de GitHub |
+| Nombre y apellidos | Rol | Siglas en Trello | Nombre de GitHub |
 |---|---|---|---|
 | Pablo Fernández Carabantes | Scrum Master | PFC | Pablofyc |
 | Carlos López Lovera | Dev | E | CarlosEmerito |
