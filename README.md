@@ -1,4 +1,4 @@
-# TurbineH · Sistema de facturación de Turbine
+# TurbineH Sistema de facturación de Turbine
 
 Proyecto de la asignatura **Análisis y Diseño de Aplicaciones** · Grupo A · Curso 2026–27.
 
