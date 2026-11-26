@@ -1,0 +1,41 @@
+@startuml arquitectura_bloque_E
+title Arquitectura - Bloque E · Seguimiento, consulta e informes
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam nodesep 40
+skinparam ranksep 50
+top to bottom direction
+
+package "Bloque E · Seguimiento, consulta e informes" as E {
+  [DailyWork\nNotificaciones y alertas] as E1
+  [IssuesMgr\nIncidencias y comentarios] as E2
+  [ReportsDash\nDashboard, informes y objetivos] as E3
+  E1 -[hidden]right- E2
+  E1 -[hidden]down- E3
+  E2 -[hidden]down- E3
+}
+
+[API REST] as API
+[Planificador J4] as J4
+[Bloque C\nFacturación] as C
+[Bloque D\nCobros y comunicaciones] as D
+[Workers en segundo plano] as WRK
+[Motor documental\nGenerador de informes] as DOCS
+folder "Almacén de documentos\nInformes exportados" as FS
+database "Base de datos relacional\nEntidades A-F y adjuntos" as DB
+[Auditoría] as AUD
+[Adaptador IA opcional] as AIA
+
+API --> E : casos de uso
+J4 --> E : resumen diario
+C --> E : datos de facturación
+D --> E : cobros y rebotes
+WRK --> E : informes pesados
+E --> DB : datos y adjuntos
+E ..> DOCS : genera informes
+DOCS --> FS : guarda exportaciones
+E --> AUD : eventos
+E ..> AIA : análisis opcional
+@enduml

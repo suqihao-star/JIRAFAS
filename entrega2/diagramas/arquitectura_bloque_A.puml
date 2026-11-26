@@ -1,0 +1,31 @@
+@startuml arquitectura_bloque_A
+title Arquitectura - Bloque A · Clientes y contactos
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam nodesep 40
+skinparam ranksep 50
+top to bottom direction
+
+package "Bloque A · Clientes y contactos" as A {
+  [ClientMgmt\nClientes, contactos y duplicados] as A1
+  [TasksExc\nTareas y excepciones] as A2
+  [CSVImport\nImportación CSV] as A3
+  A1 -[hidden]right- A2
+  A1 -[hidden]down- A3
+  A2 -[hidden]down- A3
+}
+
+[API REST] as API
+database "Base de datos relacional\nEntidades A-F" as DB
+[Auditoría] as AUD
+[Bloque B\nSuscripciones, tarifas y descuentos] as B
+[Bloque C\nFacturación] as C
+
+API --> A : casos de uso
+A --> DB : CRUD
+A --> AUD : eventos
+A --> B : clientes y excepciones
+A --> C : clientes
+@enduml
