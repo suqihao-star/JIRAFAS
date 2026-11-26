@@ -1,0 +1,87 @@
+@startuml modelo_datos_bloque_D
+title Modelo físico de datos ER - Bloque D Cobros y comunicaciones
+hide circle
+hide empty members
+skinparam packageStyle rectangle
+package "Bloque D - Cobros y comunicaciones" {
+  entity "MOVIMIENTO_COBRO" as movimiento_cobro {
+    * id_movimiento : NUMBER(10) <<PK>>
+    --
+      id_asignado_a : NUMBER(10) <<FK>>
+    * fuente : VARCHAR2(15 CHAR)
+    * id_externo : VARCHAR2(100 CHAR)
+    * importe : NUMBER(15,2)
+    * fecha : TIMESTAMP
+    * moneda : CHAR(3)
+      concepto : VARCHAR2(300 CHAR)
+      referencia : VARCHAR2(100 CHAR)
+    * estado : VARCHAR2(25 CHAR)
+  }
+  entity "CONCILIACION" as conciliacion {
+    * id_conciliacion : NUMBER(10) <<PK>>
+    --
+    * id_movimiento : NUMBER(10) <<FK>>
+    * id_factura : NUMBER(10) <<FK>>
+      id_realizada_por : NUMBER(10) <<FK>>
+      id_revertida_por : NUMBER(10) <<FK>>
+    * importe_asignado : NUMBER(15,2)
+    * tipo : VARCHAR2(15 CHAR)
+      regla : VARCHAR2(80 CHAR)
+    * fecha : TIMESTAMP
+    * revertida : NUMBER(1)
+      fecha_reversion : TIMESTAMP
+      motivo_reversion : VARCHAR2(300 CHAR)
+  }
+  entity "PLANTILLA_COMUNICACION" as plantilla_comunicacion {
+    * id_plantilla : NUMBER(10) <<PK>>
+    --
+    * tipo : VARCHAR2(25 CHAR)
+    * idioma : VARCHAR2(5 CHAR)
+    * version : NUMBER(10)
+    * asunto : VARCHAR2(200 CHAR)
+    * contenido : CLOB
+  }
+  entity "COMUNICACION" as comunicacion {
+    * id_comunicacion : NUMBER(10) <<PK>>
+    --
+      id_factura : NUMBER(10) <<FK>>
+      id_destinatario : NUMBER(10) <<FK>>
+    * id_plantilla : NUMBER(10) <<FK>>
+    * tipo : VARCHAR2(25 CHAR)
+    * canal : VARCHAR2(20 CHAR)
+    * idioma : VARCHAR2(5 CHAR)
+    * estado : VARCHAR2(15 CHAR)
+      fecha_envio : TIMESTAMP
+    * numero_intento : NUMBER(10)
+      correo_destinatario : VARCHAR2(150 CHAR)
+  }
+  entity "SUSPENSION_RECORDATORIOS" as suspension_recordatorios {
+    * id_suspension : NUMBER(10) <<PK>>
+    --
+    * id_factura : NUMBER(10) <<FK>>
+    * motivo : VARCHAR2(300 CHAR)
+    * fecha_revision : DATE
+    * activa : NUMBER(1)
+  }
+}
+entity "USUARIO" as usuario {
+  * id_usuario : NUMBER(10) <<PK>>
+}
+entity "FACTURA" as factura {
+  * id_factura : NUMBER(10) <<PK>>
+}
+entity "CONTACTO" as contacto {
+  * id_contacto : NUMBER(10) <<PK>>
+}
+
+usuario |o--o{ movimiento_cobro : id_asignado_a
+movimiento_cobro ||--o{ conciliacion : id_movimiento
+factura ||--o{ conciliacion : id_factura
+usuario |o--o{ conciliacion : id_realizada_por
+usuario |o--o{ conciliacion : id_revertida_por
+factura |o--o{ comunicacion : id_factura
+contacto |o--o{ comunicacion : id_destinatario
+plantilla_comunicacion ||--o{ comunicacion : id_plantilla
+factura ||--o{ suspension_recordatorios : id_factura
+
+@enduml

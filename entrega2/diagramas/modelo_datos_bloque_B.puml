@@ -1,0 +1,70 @@
+@startuml modelo_datos_bloque_B
+title Modelo físico de datos ER - Bloque B Suscripciones, tarifas y descuentos
+hide circle
+hide empty members
+skinparam packageStyle rectangle
+package "Bloque B - Suscripciones, tarifas y descuentos" {
+  entity "SUSCRIPCION" as suscripcion {
+    * id_suscripcion : NUMBER(10) <<PK>>
+    --
+    * id_cliente : NUMBER(10) <<FK>>
+    * plan : VARCHAR2(100 CHAR)
+    * precio_vigente : NUMBER(15,2)
+    * fecha_inicio : DATE
+    * estado : VARCHAR2(25 CHAR)
+      motivo_pausa : VARCHAR2(300 CHAR)
+      fecha_inicio_pausa : DATE
+      fecha_reactivacion_prevista : DATE
+      fecha_baja : DATE
+      motivo_baja : VARCHAR2(300 CHAR)
+  }
+  entity "SOLICITUD_DESCUENTO" as solicitud_descuento {
+    * id_solicitud : NUMBER(10) <<PK>>
+    --
+    * id_cliente : NUMBER(10) <<FK>>
+      id_suscripcion : NUMBER(10) <<FK>>
+    * id_solicitante : NUMBER(10) <<FK>>
+      id_aprobador : NUMBER(10) <<FK>>
+    * tipo : VARCHAR2(15 CHAR)
+    * valor : NUMBER(15,2)
+    * motivo : VARCHAR2(300 CHAR)
+      fecha_vigencia : DATE
+    * estado : VARCHAR2(25 CHAR)
+      motivo_decision : VARCHAR2(300 CHAR)
+      fecha_decision : TIMESTAMP
+  }
+  entity "REVISION_TARIFA_ANUAL" as revision_tarifa_anual {
+    * id_revision : NUMBER(10) <<PK>>
+    --
+    * id_cliente : NUMBER(10) <<FK>>
+      id_rango_propuesto : NUMBER(10) <<FK>>
+      id_aprobador : NUMBER(10) <<FK>>
+    * fecha_revision : DATE
+    * facturacion_anual_verificada : NUMBER(15,2)
+    * precio_anterior : NUMBER(15,2)
+      precio_nuevo : NUMBER(15,2)
+      fecha_decision : TIMESTAMP
+    * estado : VARCHAR2(15 CHAR)
+      motivo_rechazo : VARCHAR2(300 CHAR)
+  }
+}
+
+entity "CLIENTE" as cliente {
+  * id_cliente : NUMBER(10) <<PK>>
+}
+entity "USUARIO" as usuario {
+  * id_usuario : NUMBER(10) <<PK>>
+}
+entity "RANGO_TARIFA" as rango_tarifa {
+  * id_rango : NUMBER(10) <<PK>>
+}
+cliente ||--o{ suscripcion : id_cliente
+cliente ||--o{ solicitud_descuento : id_cliente
+suscripcion |o--o{ solicitud_descuento : id_suscripcion
+usuario ||--o{ solicitud_descuento : id_solicitante
+usuario |o--o{ solicitud_descuento : id_aprobador
+cliente ||--o{ revision_tarifa_anual : id_cliente
+rango_tarifa |o--o{ revision_tarifa_anual : id_rango_propuesto
+usuario |o--o{ revision_tarifa_anual : id_aprobador
+
+@enduml
