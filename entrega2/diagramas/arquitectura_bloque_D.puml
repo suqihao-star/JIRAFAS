@@ -1,0 +1,39 @@
+@startuml arquitectura_bloque_D
+title Arquitectura - Bloque D · Cobros y comunicaciones
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam nodesep 40
+skinparam ranksep 50
+top to bottom direction
+
+package "Bloque D · Cobros y comunicaciones" as D {
+  [Reconcil\nMovimientos y conciliación] as D1
+  [CommsMgr\nEnvíos, recordatorios y plantillas] as D2
+  D1 -[hidden]right- D2
+}
+
+[API REST] as API
+[Planificador J2] as J2
+[Planificador J3] as J3
+[Bloque C\nFacturación] as C
+[Bloque E\nSeguimiento, consulta e informes] as E
+interface "SistemaPagos" as IPAGOS
+interface "CanalEnvio" as ICANAL
+[Adaptadores externos\nStripe / Revolut, correo y WhatsApp] as EXT
+database "Base de datos relacional\nEntidades A-F" as DB
+[Auditoría] as AUD
+
+API --> D : casos de uso
+J2 --> D : recordatorios e impago
+J3 --> D : consulta de pagos
+C --> D : facturas emitidas
+D --> E : rebotes e impagos
+D ..> IPAGOS : consultarPagos()
+D ..> ICANAL : enviar(Comunicacion)
+IPAGOS <|.. EXT
+ICANAL <|.. EXT
+D --> DB : CRUD
+D --> AUD : eventos
+@enduml

@@ -1,0 +1,36 @@
+@startuml arquitectura_bloque_C
+title Arquitectura - Bloque C · Facturación
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam nodesep 40
+skinparam ranksep 50
+top to bottom direction
+
+package "Bloque C · Facturación" as C {
+  [BillingEngine\nBorradores, emisión y numeración] as C1
+  [ApprovalsRect\nRetenciones y rectificativas] as C2
+}
+
+[API REST] as API
+[Planificador J1] as J1
+[Bloque B\nSuscripciones, tarifas y descuentos] as B
+[Bloque D\nCobros y comunicaciones] as D
+[Bloque E\nSeguimiento, consulta e informes] as E
+[Motor documental\nGenerador PDF legal] as DOCS
+database "Base de datos relacional\nPDF de facturas (FR-12)" as DB
+[Auditoría] as AUD
+[Monitorización] as MON
+
+API --> C : casos de uso
+J1 --> C : facturación recurrente
+B --> C : cuotas y descuentos
+C --> D : facturas emitidas
+C --> E : datos para informes
+C ..> DOCS : genera PDF (FR-12)
+DOCS --> DB : guarda PDF
+C --> DB : CRUD
+C --> AUD : eventos
+C --> MON : métricas
+@enduml

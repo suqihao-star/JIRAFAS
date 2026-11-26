@@ -2,7 +2,7 @@
 
 ## Vista representada
 
-El sistema de facturación de TurbineH se representa como una **arquitectura lógica en capas y componentes**, no como una topología de despliegue. La vista principal (`diagramas/arquitectura.puml`) muestra la separación entre presentación, aplicación, procesamiento asíncrono, integración y persistencia. La vista de descomposición (`diagramas/arquitectura_dominio.puml`) detalla las dependencias entre los seis bloques del núcleo de dominio.
+El sistema de facturación de TurbineH se representa como una **arquitectura lógica en capas y componentes**, no como una topología de despliegue. La vista principal (`diagramas/arquitectura.puml`) muestra la separación entre presentación, aplicación, procesamiento asíncrono, integración y persistencia. La vista de descomposición (`diagramas/arquitectura_dominio.puml`) detalla las dependencias entre los seis bloques del núcleo de dominio. Las vistas `arquitectura_bloque_A.puml` a `arquitectura_bloque_F.puml` desglosan los subcomponentes y conexiones de cada bloque.
 
 La solución es un **monolito modular**: una única aplicación desplegable, con un punto de entrada REST y seis módulos de negocio cohesivos (A–F). Alrededor del núcleo se sitúan los servicios transversales de seguridad, auditoría y monitorización, el planificador de tareas, los adaptadores externos y los almacenes de datos y documentos.
 

@@ -1,0 +1,39 @@
+@startuml arquitectura_bloque_F
+title Arquitectura - Bloque F · Administración, seguridad y sistema
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam nodesep 40
+skinparam ranksep 50
+top to bottom direction
+
+package "Bloque F · Administración, seguridad y sistema" as F {
+  [UserAdmin\nUsuarios, roles y acciones masivas] as F1
+  [SysConfig\nSeries, impuestos y tarifas] as F2
+  [ExtControl\nSolicitudes externas] as F3
+  F1 -[hidden]right- F2
+  F1 -[hidden]down- F3
+  F2 -[hidden]down- F3
+}
+
+[API REST] as API
+[Seguridad transversal] as SEG
+[Bloque A\nClientes y contactos] as A
+[Bloque B\nSuscripciones, tarifas y descuentos] as B
+[Bloque C\nFacturación] as C
+[Bloque D\nCobros y comunicaciones] as D
+[Monitorización] as MON
+database "Base de datos relacional\nEntidades A-F" as DB
+[Auditoría] as AUD
+
+API --> F : casos de uso
+SEG ..> F : roles y asignaciones
+F --> B : tarifas y umbrales
+F --> C : series e impuestos
+F --> D : cadencia de recordatorios
+F --> A : solicitud revisada
+F --> DB : CRUD
+F --> AUD : eventos
+MON ..> F : ejecución de tareas
+@enduml

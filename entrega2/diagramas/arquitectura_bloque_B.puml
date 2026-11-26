@@ -1,0 +1,32 @@
+@startuml arquitectura_bloque_B
+title Arquitectura - Bloque B · Suscripciones, tarifas y descuentos
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam nodesep 40
+skinparam ranksep 50
+top to bottom direction
+
+package "Bloque B · Suscripciones, tarifas y descuentos" as B {
+  [SubMgmt\nSuscripciones y prorrateo] as B1
+  [PricingDisc\nDescuentos escalonados] as B2
+  B1 -[hidden]right- B2
+}
+
+[API REST] as API
+[Bloque A\nClientes y contactos] as A
+[Bloque C\nFacturación] as C
+[Bloque F\nAdministración, seguridad y sistema] as F
+[Adaptador IA opcional] as AIA
+database "Base de datos relacional\nEntidades A-F" as DB
+[Auditoría] as AUD
+
+API --> B : casos de uso
+A --> B : clientes
+F --> B : tarifas y umbrales
+B --> C : cuotas y descuentos
+B --> DB : CRUD
+B --> AUD : eventos
+B ..> AIA : sugerencias
+@enduml
