@@ -49,6 +49,7 @@ Añadir **capturas reales legibles** del estado del tablero en Sprint Planning y
 | Realización diagramas de secuencia | Juan Romero Cobos, Laura Santiago Medina | Entrega 2 | Alta | diagrama | Diagramas de Secuencias. EN CURSO |
 | Presentación y validación de los diagramas de secuencia | Todos los integrantes | Entrega 2 | Media | revisión | Presentación de los diagramas de secuencia a los demás miembros del grupo para su validación. EN CURSO.|
 | Diagrama de arquitectura | Pablo Roldán Coll, Carlos “Emérito” López Lovera, Andrés Felipe Jaramillo Ranzini,   | Entrega 2 | Alta | diagrama | Realización del diagrama de arquitectura. COMPLETADO |
+| Documentación del Diagrama de arquitectura | Pablo Roldán Coll, Carlos “Emérito” López Lovera, Andrés Felipe Jaramillo Ranzini,   | Entrega 2 | Alta | diagrama | Documentación del diagrama de arquitectura. COMPLETADO |
 | Presentación y validación del diagrama de arquitectura | Todos los integrantes | Entrega 2 | Media | revisión | Presentación de los diagramas de arquitectura a los demás miembros del grupo para su validación. COMPLETADO.|
 | Informe Scrum | Pablo Fernández Carabantes | Entrega 2 | Media | gestión | Este documento y las capturas del tablero. En curso. |
 | Informe final | Pablo Fernández Carabantes | Entrega 2 | Alta | documentación | Realización del informe final gracias a los informes de todos los diagramas. Pendiente. |
