@@ -1,4 +1,3 @@
-
 @startuml diagrama_clases_completo
 title Diagrama de clases - Sistema de facturación de Turbine
 skinparam classAttributeIconSize 0
@@ -750,8 +749,4 @@ Informe ..> FormatoInforme
 Informe ..> EstadoInforme
 CentroCoste ..> TipoCentroCoste
 
-legend bottom right
-  Tipos: Fecha = día · FechaHora = día y hora · Decimal = importe exacto, nunca float (NFR-06)
-  Archivo = documento binario (PDF de la factura, FR-12) · [0..1] = opcional · /atributo = derivado
-endlegend
 @enduml
