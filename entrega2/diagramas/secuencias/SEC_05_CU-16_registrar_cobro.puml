@@ -1,13 +1,4 @@
 @startuml SEC_05_CU-16_registrar_cobro
-' =====================================================================
-'  DIAGRAMA DE SECUENCIA 5 - CU-16 Registrar movimiento de cobro
-'  (+ CU-17 FA-1 conciliación automática)
-'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
-'  Flujo principal (notificación) + FA-1 (consulta periódica),
-'  FA-2 (sin referencia clara), FE-1 (duplicado), FE-2 (fallo de la
-'  integración).
-'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
-' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
 skinparam ParticipantPadding 12

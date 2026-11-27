@@ -1,12 +1,4 @@
 @startuml SEC_04_CU-12_emitir_factura
-' =====================================================================
-'  DIAGRAMA DE SECUENCIA 4 - CU-12 Emitir factura
-'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
-'  Flujo principal (manual) + FA-1 (retención -> CU-13), FA-2 (emisión
-'  recurrente desde CU-11), FA-3 (fallo de envío), FE-1 (dato fiscal),
-'  FE-2 (duplicidad / concurrencia), FE-3 (no se puede generar el PDF).
-'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
-' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
 skinparam ParticipantPadding 12

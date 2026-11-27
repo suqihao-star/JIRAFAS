@@ -1,11 +1,4 @@
 @startuml SEC_01_CU-01_alta_cliente
-' =====================================================================
-'  DIAGRAMA DE SECUENCIA 1 - CU-01 Gestionar cliente y contactos (alta)
-'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
-'  Flujo principal + FA-4 (excepción comercial), FA-5 (datos fiscales
-'  incompletos), FE-1 (duplicado), FE-2 (formato inválido).
-'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
-' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
 skinparam ParticipantPadding 12

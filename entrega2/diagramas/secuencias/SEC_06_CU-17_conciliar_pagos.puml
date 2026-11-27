@@ -1,12 +1,4 @@
 @startuml SEC_06_CU-17_conciliar_pagos
-' =====================================================================
-'  DIAGRAMA DE SECUENCIA 6 - CU-17 Conciliar pagos (manual)
-'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
-'  Flujo principal + FA-2 (un cobro para varias facturas),
-'  FE-1 (importe superior), FE-2 (movimiento ya conciliado).
-'  FA-1 (automática) está en SEC_05; FA-3 (deshacer) en anexo/SEC_06b.
-'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
-' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
 skinparam ParticipantPadding 12

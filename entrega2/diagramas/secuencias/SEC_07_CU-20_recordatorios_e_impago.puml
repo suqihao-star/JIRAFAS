@@ -1,14 +1,4 @@
 @startuml SEC_07_CU-20_recordatorios_e_impago
-' =====================================================================
-'  DIAGRAMA DE SECUENCIA 7 - CU-20 Ejecutar flujo de recordatorios
-'  e impago
-'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
-'  Flujo principal + FA-1 (cliente de baja), FA-2 (pago detectado),
-'  FA-3 (suspendidos), FE-1 (fallo o rebote), FE-2 (ejecución
-'  interrumpida), FE-3 (falta contacto de impagos).
-'  CU-19 se alcanza a través de CU-18 (FE-1).
-'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
-' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
 skinparam ParticipantPadding 12

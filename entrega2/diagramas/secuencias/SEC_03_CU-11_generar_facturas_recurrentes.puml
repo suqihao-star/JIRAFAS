@@ -1,12 +1,4 @@
 @startuml SEC_03_CU-11_generar_facturas_recurrentes
-' =====================================================================
-'  DIAGRAMA DE SECUENCIA 3 - CU-11 Generar facturas recurrentes
-'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
-'  Flujo principal + FA-1 (no facturable), FA-2 (prorrateo), FA-3
-'  (recuperación tras interrupción), FA-4 (excepción comercial),
-'  FE-1 (datos / aprobación pendiente), FE-2 (fallo en la emisión).
-'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
-' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
 skinparam ParticipantPadding 12

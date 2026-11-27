@@ -1,12 +1,4 @@
 @startuml SEC_02_CU-08_aprobar_descuento
-' =====================================================================
-'  DIAGRAMA DE SECUENCIA 2 - CU-08 Aprobar descuento
-'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
-'  Flujo principal + FA-1 (rechazar), FA-2 (aprobación condicionada),
-'  FA-3 / FE-2 (supera el umbral: escalado a CU-09), FE-1 (ya
-'  resuelta). La solicitud procede de CU-07.
-'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
-' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
 skinparam ParticipantPadding 12
