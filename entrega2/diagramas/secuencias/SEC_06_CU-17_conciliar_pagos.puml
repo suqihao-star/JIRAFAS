@@ -1,4 +1,12 @@
 @startuml SEC_06_CU-17_conciliar_pagos
+' =====================================================================
+'  DIAGRAMA DE SECUENCIA 6 - CU-17 Conciliar pagos (manual)
+'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
+'  Flujo principal + FA-2 (un cobro para varias facturas),
+'  FE-1 (importe superior), FE-2 (movimiento ya conciliado).
+'  FA-1 (automática) está en SEC_05; FA-3 (deshacer) en anexo/SEC_06b.
+'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
+' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
 skinparam ParticipantPadding 12
@@ -20,7 +28,7 @@ UO -> SYS : seleccionarMovimiento(idMovimiento)
 SYS -> M ++ : getEstado()
 return estado
 
-break [FE-2: el movimiento ya está conciliado]
+break FE-2: el movimiento ya está conciliado
   SYS --> UO : impide asociarlo de nuevo;\npuede elegir otro movimiento
 end
 
@@ -28,31 +36,31 @@ SYS -> SYS : filtrarPorAmbitoAutorizado(u, facturas)
 SYS --> UO : facturas pendientes autorizadas
 UO -> SYS : asociar(m, facturas[], importes[])
 SYS -> SYS : comprobarAsignacion(u, cliente)
-break [PRE-3: cliente no asignado y el usuario no es Administrador]
+break PRE-3: cliente no asignado y el usuario no es Administrador
   SYS --> UO : acceso denegado; sin cambios
 end
-break [alguna factura no es del cliente del movimiento\n(FA-2: el reparto es entre facturas del mismo cliente)]
+break alguna factura no es del cliente del movimiento\n(FA-2: el reparto es entre facturas del mismo cliente)
   SYS --> UO : asociación rechazada; sin cambios
 end
 SYS -> SYS : validarImportes(m, facturas, importes)
 
-alt [FE-1: algún importe supera el saldo pendiente de su factura]
+alt FE-1: algún importe supera el saldo pendiente de su factura
   SYS --> UO : señala la diferencia; la factura NO\nse marca como pagada (FR-21)
-  opt [el usuario deja la diferencia pendiente de revisión]
+  opt el usuario deja la diferencia pendiente de revisión
     SYS -> SYS : registrarDiferenciaPendiente(m, f, diferencia)
   end
   note right of UO : si no, corrige la asociación\n(vuelve a asociar())
-else [sin excesos, pero la suma no coincide con el importe\ndisponible del movimiento (validación de FA-2)]
+else sin excesos, pero la suma no coincide con el importe\ndisponible del movimiento (validación de FA-2)
   SYS --> UO : la suma no coincide; corregir el reparto
-else [suma correcta, pero moneda incompatible,\nimporte no positivo o factura no cobrable]
+else suma correcta, pero moneda incompatible,\nimporte no positivo o factura no cobrable
   SYS --> UO : corregir los datos; sin cambios
-else [importes válidos]
+else importes válidos
   critical conciliación atómica
     SYS -> SYS : revalidar permisos, importe disponible, moneda,\nestado del movimiento y saldos actuales
-    alt [permiso revocado o conflicto concurrente]
+    alt permiso revocado o conflicto concurrente
       SYS --> UO : operación no aplicada; actualizar los datos
-    else [validación vigente]
-      loop [para cada factura asociada]
+    else validación vigente
+      loop para cada factura asociada
         SYS -> U ++ : conciliarPago(m, f)
         create participant "con : Conciliacion" as CON
         U -->> CON : <<create>> Conciliacion(m, f, tipo = MANUAL,\nrealizadaPor = u)

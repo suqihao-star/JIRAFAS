@@ -1,4 +1,13 @@
 @startuml SEC_05_CU-16_registrar_cobro
+' =====================================================================
+'  DIAGRAMA DE SECUENCIA 5 - CU-16 Registrar movimiento de cobro
+'  (+ CU-17 FA-1 conciliación automática)
+'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
+'  Flujo principal (notificación) + FA-1 (consulta periódica),
+'  FA-2 (sin referencia clara), FE-1 (duplicado), FE-2 (fallo de la
+'  integración).
+'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
+' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
 skinparam ParticipantPadding 12
@@ -13,44 +22,44 @@ participant "m : MovimientoCobro" as M
 participant "f : Factura" as F
 participant "c : Cliente" as C
 
-alt [flujo principal: el sistema de pagos notifica un cobro]
+alt flujo principal: el sistema de pagos notifica un cobro
   PAG -> SYS : notificarCobro(m : MovimientoCobro)
   note left of PAG : implementada por Stripe / Revolut\n(FR-15). En ambos orígenes la interfaz\nentrega objetos MovimientoCobro\n(SistemaPagos ..> MovimientoCobro «notifica»)
-else [FA-1: consulta periódica del Planificador]
+else FA-1: consulta periódica del Planificador
   PL -> SYS : ejecutarTarea(CONSULTA_PAGOS)
 end
 activate SYS
-opt [FA-1: consulta periódica]
+opt FA-1: consulta periódica
   create participant "ej : EjecucionTarea" as EJ
   SYS -->> EJ : <<create>> EjecucionTarea(CONSULTA_PAGOS, inicio)
   SYS -> PAG ++ : consultarPagos(desde = fin de la última consulta completada)
   return movimientos : List<MovimientoCobro> | error
 end
 
-break [FE-2 (en FA-1): el sistema de pagos no responde o devuelve un error]
+break FE-2 (en FA-1): el sistema de pagos no responde o devuelve un error
   SYS -> EJ : setEstado(COMPLETADA_CON_ERRORES)
   SYS -> EJ : setErrores(detalle)
   note right of EJ : visible en la monitorización\n(CU-33, FR-48); se reintenta en\nla siguiente ejecución desde la\nmisma fecha (no se pierde nada)
   SYS --> PL : error de integración registrado
 end
 
-loop [para cada movimiento recibido m]
+loop para cada movimiento recibido m
   note over SYS, M : m llega de la interfaz; aquí solo se registra (persiste) si no es duplicado
-  critical [registro único por idExterno y actualización exclusiva del saldo de la factura]
+  critical registro único por idExterno y actualización exclusiva del saldo de la factura
     SYS -> M ++ : esDuplicado()
     return duplicado : Boolean
 
-    alt [FE-1: el evento ya estaba registrado]
+    alt FE-1: el evento ya estaba registrado
       SYS -> SYS : descartar(m)
       note right of SYS : no se contabiliza dos veces
 
-    else [movimiento nuevo]
+    else movimiento nuevo
       SYS -> M : setEstado(PENDIENTE_CONCILIACION)
       note right of M : registro inmutable
       SYS -> SYS : buscarFacturaPorReferencia(referencia)
       SYS -> SYS : si hay factura candidata, releer su saldo,\nmoneda y estado bajo la misma exclusión
 
-      alt [factura cobrable, coincidencia clara, misma moneda\ny 0 < importe <= saldo (CU-17 FA-1)]
+      alt factura cobrable, coincidencia clara, misma moneda\ny 0 < importe <= saldo (CU-17 FA-1)
         create participant "con : Conciliacion" as CON
         SYS -->> CON : <<create>> Conciliacion(m, f, importeAsignado,\ntipo = AUTOMATICA, regla)
         note right of CON : la regla queda guardada\n(trazable si se revierte, FR-22)
@@ -59,11 +68,11 @@ loop [para cada movimiento recibido m]
         return ok
         SYS -> M : setEstado(CONCILIADO)
 
-      else [else: FA-2 (sin coincidencia clara o varias posibles),\nimporte superior al saldo, moneda distinta\no factura no cobrable]
-        alt [cliente identificado]
+      else else: FA-2 (sin coincidencia clara o varias posibles),\nimporte superior al saldo, moneda distinta\no factura no cobrable
+        alt cliente identificado
           SYS -> C ++ : getResponsableInterno()
           return destinatario
-        else [cliente no identificado]
+        else cliente no identificado
           SYS -> SYS : destinatario = obtenerPersonaDesignada()
         end
         SYS -> M : setAsignadoA(destinatario)
@@ -76,9 +85,9 @@ loop [para cada movimiento recibido m]
   end
 end
 
-alt [origen: notificación]
+alt origen: notificación
   SYS --> PAG : recibido
-else [origen: consulta periódica]
+else origen: consulta periódica
   SYS -> EJ : setFin(ahora)
   SYS -> EJ : setEstado(COMPLETADA)
   SYS -> EJ : setResumen(resumen)
