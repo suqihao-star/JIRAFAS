@@ -1,11 +1,4 @@
 @startuml SEC_06b_CU-17_deshacer_conciliacion
-' =====================================================================
-'  ANEXO - DIAGRAMA DE SECUENCIA 6b - CU-17 FA-3 Deshacer una conciliación
-'  Sistema de facturación de Turbine - Grupo JIRAFAS - Entrega 2
-'  Interacción independiente: sirve para conciliaciones manuales
-'  (SEC_06) y automáticas (SEC_05). Cubre FR-22.
-'  Clases: PROPUESTA_PABLO_FERNANDEZ_CARABANTES/POSIBLE PUESTA EN COMUN
-' =====================================================================
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 170
 skinparam ParticipantPadding 12
