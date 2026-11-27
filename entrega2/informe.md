@@ -18,11 +18,11 @@ Incorporad un resumen y el contenido pertinente de `cambios_entrega1.md`. Indica
 
 ## 3. Modelo físico de datos (Entidad–Relación)
 
-Insertad aquí el diagrama exportado de `diagramas/modelo_datos.puml` y la explicación de `documentacion/modelo_datos.md`. Incluid relaciones, PK/FK y decisiones relevantes.
+Insertad aquí el diagrama exportado de `diagramas/modelo_datos.puml` y la explicación de `documentacion/modelo_datos.md`. Incluid relaciones, PK/FK y decisiones relevantes. Capturas exportadas en `/BORRADORES/Diagramas_Entrega2/`
 
 ## 4. Diagrama UML de clases
 
-Insertad el diagrama exportado de `diagramas/diagrama_clases.puml` y la explicación de `documentacion/diagrama_clases.md`.
+Insertad el diagrama exportado de `diagramas/diagrama_clases.puml` y la explicación de `documentacion/diagrama_clases.md`. Capturas exportadas en `/BORRADORES/Diagramas_Entrega2/`
 
 ## 5. Diagramas UML de secuencia
 
